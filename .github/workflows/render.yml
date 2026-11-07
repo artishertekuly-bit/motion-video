@@ -122,8 +122,12 @@ jobs:
             if [[ -n "$FRAMES" ]]; then args+=(--frames="$FRAMES"); fi
             npx remotion "${args[@]}"
 
-            # Лист кадров каждые 0,5 с — для самопроверки
-            ffmpeg -v error -y -i "result/$NAME.mp4" -vf "fps=2,scale=480:-1,tile=8x4" "result/$NAME-sheet-%02d.png"
+            # Лист кадров каждые 0,5 с — для самопроверки (сетка по длине видео, максимум 8x4 на лист)
+            dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "result/$NAME.mp4")
+            n=$(awk -v d="$dur" 'BEGIN { n = int(d * 2 + 0.999); print (n < 1 ? 1 : n) }')
+            cols=$(( n < 8 ? n : 8 )); rows=$(( (n + cols - 1) / cols )); rows=$(( rows > 4 ? 4 : rows ))
+            ffmpeg -v error -y -i "result/$NAME.mp4" \
+              -vf "fps=2,scale=480:-1,tile=${cols}x${rows}:padding=4:color=white" "result/$NAME-sheet-%02d.png"
 
             # Громкость (если есть звук)
             has_audio=$(ffprobe -v error -select_streams a -show_entries stream=index -of csv=p=0 "result/$NAME.mp4")

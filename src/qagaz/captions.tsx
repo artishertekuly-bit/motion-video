@@ -21,7 +21,7 @@ const DEFS: { id: string; text: string }[] = [
 ];
 
 type Tok = { text: string; key: boolean; s: number };
-type Chunk = { toks: Tok[]; from: number; to: number };
+type Chunk = { toks: Tok[]; from: number; to: number; fade: boolean };
 
 const CHUNKS: Chunk[] = (() => {
   const all: Chunk[] = [];
@@ -43,19 +43,26 @@ const CHUNKS: Chunk[] = (() => {
         toks.push({ text: key ? raw.slice(1) : raw, key, s: sec(START[d.id] + w.start) });
       }
       const last = words[k - 1];
-      all.push({ toks, from: toks[0].s - 2, to: sec(START[d.id] + last.end) + 12 });
+      all.push({ toks, from: toks[0].s - 2, to: sec(START[d.id] + last.end) + 12, fade: true });
     }
   }
   all.sort((a, b) => a.from - b.from);
-  for (let i = 0; i + 1 < all.length; i++) all[i].to = Math.min(all[i].to, all[i + 1].from);
+  // если следующая порция идёт сразу — без затухания (иначе мигает)
+  for (let i = 0; i + 1 < all.length; i++) {
+    if (all[i + 1].from <= all[i].to + 3) {
+      all[i].to = all[i + 1].from;
+      all[i].fade = false;
+    }
+  }
   return all;
 })();
 
 export const Captions: React.FC<{ f: number }> = ({ f }) => {
   const c = CHUNKS.find((x) => f >= x.from && f < x.to);
   if (!c) return null;
-  const out = interpolate(f, [c.to - 4, c.to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const inn = interpolate(f, [c.from, c.from + 4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const prev = CHUNKS[CHUNKS.indexOf(c) - 1];
+  const out = c.fade ? interpolate(f, [c.to - 4, c.to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;
+  const inn = prev && !prev.fade ? 1 : interpolate(f, [c.from, c.from + 4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
       {/* мягкая тёмная подложка: субтитры читаются и на светлом полу */}

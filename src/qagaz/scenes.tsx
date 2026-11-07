@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile } from "remotion";
+import { AbsoluteFill, Img, OffthreadVideo, Sequence, interpolate, staticFile } from "remotion";
 import { C, H, OSW, W } from "./theme";
 import { COLLIDE, FPS, Shot, sec, shotStart } from "./timeline";
 import { PapersToCamera } from "./papers";
@@ -12,12 +12,22 @@ const clamp = (v: number, lim: number) => Math.max(-lim, Math.min(lim, v));
 const IMG_ASPECT = 2752 / 1536; // высота/ширина кадров Flow
 const COVER_SCALE = Math.max(1, (W * IMG_ASPECT) / H); // картинка при «cover» чуть выше кадра
 
-export const Frame: React.FC<{ img: string; video?: string; style?: React.CSSProperties }> = ({ img, video, style }) =>
-  video ? (
-    <OffthreadVideo src={staticFile(video)} muted style={{ width: "100%", height: "100%", objectFit: "cover", ...style }} />
-  ) : (
-    <Img src={staticFile(`qagaz/img/${img}.jpg`)} style={{ width: "100%", height: "100%", objectFit: "cover", ...style }} />
-  );
+export const Frame: React.FC<{ img: string; style?: React.CSSProperties }> = ({ img, style }) => (
+  <Img src={staticFile(`qagaz/img/${img}.jpg`)} style={{ width: "100%", height: "100%", objectFit: "cover", ...style }} />
+);
+
+// Видео плана: время ролика отсчитывается от начала плана
+const ShotVideo: React.FC<{ shot: Shot }> = ({ shot }) => (
+  <Sequence from={shot.from} durationInFrames={shot.to - shot.from} layout="none">
+    <OffthreadVideo
+      src={staticFile(shot.video!)}
+      muted
+      trimBefore={Math.round((shot.vStart ?? 0) * FPS)}
+      playbackRate={shot.rate ?? 1}
+      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+    />
+  </Sequence>
+);
 
 // Один план: картинка (или видео) + движение камеры
 export const ShotView: React.FC<{ shot: Shot; f: number }> = ({ shot, f }) => {
@@ -48,7 +58,7 @@ export const ShotView: React.FC<{ shot: Shot; f: number }> = ({ shot, f }) => {
   return (
     <AbsoluteFill style={{ overflow: "hidden", background: "#000" }}>
       <AbsoluteFill style={{ transform: `translate(${x}%, ${y}%) scale(${s})`, filter }}>
-        <Frame img={shot.img} video={shot.video} />
+        {shot.video ? <ShotVideo shot={shot} /> : <Frame img={shot.img} />}
       </AbsoluteFill>
       {shot.grade === "replay" ? <ReplayLook f={f} /> : null}
     </AbsoluteFill>

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Composition, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { H, W } from "./theme";
-import { AUDIO, COLLIDE, DURATION, FLASHES, FPS, WIPES, cs, sec, shotAt, shotStart } from "./timeline";
+import { AUDIO, DURATION, FLASHES, FPS, WIPES, cs, sec, shotAt, shotStart } from "./timeline";
 import { Grade, HOOK_END, Hook, ShotView } from "./scenes";
 import { Dust, Flash, PaperBurst, PaperFall, PaperWipe } from "./papers";
 import { BigWords, Captions } from "./captions";
@@ -24,8 +24,8 @@ export const Qagaz: React.FC = () => {
       {/* пылинки в лучах (не в яме из бумаг) */}
       {f >= HOOK_END && !(f >= sh22 && f < shotStart("sh23")) ? <Dust f={f} opacity={shot.grade ? 0.4 : 1} /> : null}
 
-      {/* столкновение: листы взлетают и продолжают падать в следующем плане */}
-      {f >= sec(COLLIDE) - 1 && f < sh07 ? <PaperBurst f={f} t0={COLLIDE} x={560} y={880} n={18} seed="hit" /> : null}
+      {/* столкновение — взрыв листов уже в видео V2; в следующем плане листы ещё долетают */}
+      {f >= sh06 && f < sh07 ? <PaperBurst f={f} t0={sh06 / FPS - 0.35} x={560} y={700} n={10} power={0.7} seed="hit" life={2.4} /> : null}
       {f >= sh06 && f < sh07 ? <PaperFall f={f} t0={sh06 / FPS} /> : null}
       {/* «қағаздай шашылады» */}
       {f >= sh19b && f < sh20 ? <PaperBurst f={f} t0={sh19b / FPS + 0.05} x={540} y={980} n={22} power={1.25} seed="sha" life={2.6} /> : null}

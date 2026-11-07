@@ -1,0 +1,13 @@
+[
+  {"id": "sfx-vibrate", "text": "Smartphone vibrating on a wooden kitchen table, two short buzzes, close up, dry", "duration": 1.6},
+  {"id": "sfx-notify", "text": "Single soft smartphone message notification chime, minimal, slightly dark", "duration": 1.0},
+  {"id": "sfx-heartbeat", "text": "Tense heavy human heartbeat, low frequency thumps, cinematic thriller, steady fast pace", "duration": 6, "loop": true},
+  {"id": "sfx-glitch", "text": "Short digital glitch transition, data corruption stutter, electronic static burst", "duration": 0.8},
+  {"id": "sfx-key", "text": "Key inserted into an apartment door lock and turned twice, metal lock clicks open, quiet hallway, close", "duration": 2.5},
+  {"id": "sfx-door", "text": "Apartment front door opening slowly with a soft creak, then two footsteps entering, warm room", "duration": 3},
+  {"id": "sfx-drone", "text": "Dark ambient tension drone, low sub bass hum with faint high shimmer, thriller underscore, no melody, no drums", "duration": 22, "loop": true, "influence": 0.6},
+  {"id": "sfx-whoosh", "text": "Fast short cinematic whoosh transition, airy swipe", "duration": 0.8},
+  {"id": "sfx-typing", "text": "Fingers tapping on a smartphone touchscreen keyboard, soft quick clicks, typing a short message", "duration": 2.5},
+  {"id": "sfx-stamp", "text": "Heavy cinematic impact hit with deep boom and short tail, stamp", "duration": 1.2},
+  {"id": "sfx-riser", "text": "Short tension riser, rising reversed swell that cuts into silence", "duration": 2}
+]

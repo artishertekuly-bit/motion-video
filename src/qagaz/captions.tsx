@@ -70,6 +70,7 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
           opacity: out * inn,
         }}
       />
+      <div
         style={{
           position: "absolute",
           left: 90,

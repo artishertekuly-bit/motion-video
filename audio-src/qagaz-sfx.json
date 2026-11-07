@@ -1,0 +1,15 @@
+[
+  {"id": "q-bell", "text": "Old electric school bell ringing loudly in a long school corridor, metallic continuous ring, then stops", "duration": 3.0},
+  {"id": "q-crowd", "text": "School corridor right after the bell: many children running, sneakers squeaking, backpacks, excited voices in the distance, no clear words", "duration": 6.0},
+  {"id": "q-steps-fast", "text": "Hurried adult footsteps in leather shoes on a polished school corridor floor, fast walking", "duration": 2.5},
+  {"id": "q-collide", "text": "Two people bump into each other and fall on a wooden floor, soft body thud, a big stack of paper sheets bursts and scatters with loud rustling", "duration": 2.0},
+  {"id": "q-papers-settle", "text": "Many loose paper sheets gently fluttering and landing on a floor, soft rustle", "duration": 2.5},
+  {"id": "q-run-away", "text": "A child quickly gets up and runs away down a corridor in sneakers", "duration": 2.0},
+  {"id": "q-door-close", "text": "Wooden classroom door closing with a soft click, school corridor", "duration": 1.5},
+  {"id": "q-steps-calm", "text": "Calm slow adult footsteps in leather shoes approaching on a polished floor, then stop", "duration": 2.0},
+  {"id": "q-gather", "text": "Hands gathering and stacking paper sheets on a floor, rustling paper", "duration": 3.0},
+  {"id": "q-room", "text": "Quiet empty school corridor room tone, faint distant classroom murmur behind closed doors, soft air", "duration": 20, "loop": true, "influence": 0.6},
+  {"id": "q-whoosh", "text": "Large paper sheet flying past the camera, airy paper whoosh", "duration": 0.9},
+  {"id": "q-burst", "text": "Dramatic slow motion burst of many paper sheets exploding into the air, deep soft whoosh with rustle", "duration": 2.0},
+  {"id": "q-pad", "text": "Soft warm ambient pad, gentle and hopeful, slow, no melody, no drums, cinematic underscore", "duration": 22, "loop": true, "influence": 0.6}
+]

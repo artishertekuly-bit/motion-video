@@ -94,8 +94,8 @@ export const PapersToCamera: React.FC<{ f: number; t0: number; n?: number; cx?: 
       new Array(n).fill(0).map((_, i) => ({
         seed: i + 1,
         t0: t0 + i * 0.11 + R(`tc-t${i}`, 0, 0.06),
-        p: [cx + R(`tc-x${i}`, -160, 160), cy + R(`tc-y${i}`, -60, 80), -500],
-        v: [R(`tc-vx${i}`, -900, 900), R(`tc-vy${i}`, -700, 200), R(`tc-vz${i}`, 1100, 1700)],
+        p: [cx + R(`tc-x${i}`, -160, 160), cy + R(`tc-y${i}`, -20, 80), -500],
+        v: [R(`tc-vx${i}`, -1100, 1100), R(`tc-vy${i}`, -150, 450), R(`tc-vz${i}`, 1100, 1700)],
         g: 260,
         k: 0.9,
         sway: R(`tc-s${i}`, 10, 40),

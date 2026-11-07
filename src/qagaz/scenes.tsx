@@ -85,6 +85,8 @@ export const Hook: React.FC<{ f: number }> = ({ f }) => {
   const bottom = H - top - bandH;
   const ring = t < 0.9 ? Math.sin(f * 2.4) * 3 * (1 - t / 0.9) : 0; // дрожь от звонка
   const s = interpolate(t, [0, 2.6], [1.16, 1.08]);
+  // в полосе — голова и стопка; при раскрытии камера «опускается» к полному кадру
+  const ty = interpolate(open, [0, 1], [440, 0]);
   const word = (at: number) => {
     const k = interpolate(t, [at, at + 0.18], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
     return { opacity: k * (1 - open), transform: `scale(${1.25 - 0.25 * k})` };
@@ -92,7 +94,7 @@ export const Hook: React.FC<{ f: number }> = ({ f }) => {
   const titleStyle: React.CSSProperties = {
     fontFamily: OSW,
     fontWeight: 700,
-    fontSize: 150,
+    fontSize: 140,
     lineHeight: 1,
     color: C.white,
     letterSpacing: 2,
@@ -102,17 +104,18 @@ export const Hook: React.FC<{ f: number }> = ({ f }) => {
   return (
     <AbsoluteFill style={{ background: "#050403" }}>
       <AbsoluteFill style={{ clipPath: `inset(${top}px 0px ${bottom}px 0px)` }}>
-        <AbsoluteFill style={{ transform: `translate(${ring}px, -4%) scale(${s})` }}>
+        <AbsoluteFill style={{ transform: `translate(${ring}px, ${ty}px) scale(${s})` }}>
           <Frame img="01" />
         </AbsoluteFill>
-        <AbsoluteFill style={{ background: "rgba(0,0,0,0.18)" }} />
+        <AbsoluteFill style={{ background: `rgba(0,0,0,${0.12 * (1 - open)})` }} />
       </AbsoluteFill>
-      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", paddingRight: 40, gap: 6, transform: `translateY(${top - 550}px)` }}>
-        <div style={{ ...titleStyle, ...word(0.15) }}>ҚАҒАЗ ПА,</div>
-        <div style={{ ...titleStyle, color: C.amber, ...word(0.7) }}>ОҚУШЫ МА?</div>
+      {/* заголовок — в чёрном поле над полосой (верх ≥ 250 px) */}
+      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", paddingRight: 40, gap: 4, transform: "translateY(-550px)" }}>
+        <div style={{ ...titleStyle, ...word(0.12) }}>ҚАҒАЗ ПА,</div>
+        <div style={{ ...titleStyle, color: C.amber, ...word(0.6) }}>ОҚУШЫ МА?</div>
       </AbsoluteFill>
-      {/* листы поверх полосы — «ломают» рамку */}
-      <PapersToCamera f={f} t0={0.25} cx={W / 2 - 20} cy={H / 2 - 40} />
+      {/* листы вылетают из полосы вниз и в стороны — «ломают» рамку, не закрывая заголовок */}
+      <PapersToCamera f={f} t0={0.55} n={11} cx={W / 2 - 20} cy={H / 2 + 40} />
     </AbsoluteFill>
   );
 };

@@ -55,9 +55,21 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
   const c = CHUNKS.find((x) => f >= x.from && f < x.to);
   if (!c) return null;
   const out = interpolate(f, [c.to - 4, c.to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const inn = interpolate(f, [c.from, c.from + 4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
+      {/* мягкая тёмная подложка: субтитры читаются и на светлом полу */}
       <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: CAPTION_Y - 200,
+          height: 400,
+          background: "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(8,5,2,0.42) 30%, rgba(8,5,2,0.42) 70%, rgba(0,0,0,0) 100%)",
+          opacity: out * inn,
+        }}
+      />
         style={{
           position: "absolute",
           left: 90,
@@ -75,17 +87,17 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
       >
         {c.toks.map((t, i) => {
           const d = f - t.s;
-          const k = interpolate(d, [-2, 3], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+          const k = interpolate(d, [-3, 2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
           return (
             <span
               key={i}
               style={{
                 fontFamily: MONT,
                 fontWeight: 800,
-                fontSize: 66,
+                fontSize: 72,
                 lineHeight: 1.15,
                 color: t.key ? C.amber : C.white,
-                opacity: 0.15 + 0.85 * k,
+                opacity: 0.5 + 0.5 * k,
                 transform: `translateY(${(1 - k) * 10}px) scale(${0.94 + 0.06 * k})`,
                 textShadow: "0 3px 14px rgba(0,0,0,0.85), 0 1px 3px rgba(0,0,0,0.9)",
                 whiteSpace: "nowrap",

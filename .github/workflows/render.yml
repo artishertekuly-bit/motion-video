@@ -1,0 +1,159 @@
+# Облачный рендер Remotion на сервере GitHub (ноутбук не нагружается).
+# Запуск: node scripts/cloud-render.mjs ...  (сам вызывает gh workflow run / watch / download)
+name: Render
+
+run-name: "render ${{ inputs.mode }} ${{ inputs.composition }} · ${{ inputs.request_id }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_id:
+        description: "Уникальный id запуска (по нему скрипт находит свой run и artifact)"
+        required: true
+        type: string
+      mode:
+        description: "video — черновое видео, stills — стоп-кадры, final — финал + копия для телефона"
+        required: true
+        type: choice
+        options: [video, stills, final]
+        default: video
+      composition:
+        description: "id композиции Remotion"
+        required: true
+        type: string
+      frames:
+        description: "video/final: диапазон «0-149» (пусто — весь ролик); stills: список «15,45,90»"
+        required: false
+        type: string
+        default: ""
+      scale:
+        description: "Масштаб (0.5 — половинный размер для тестов)"
+        required: false
+        type: string
+        default: "1"
+      name:
+        description: "Имя файла без расширения, например test-v1"
+        required: true
+        type: string
+      phone_copy:
+        description: "final: сделать лёгкую копию для телефона (crf 27)"
+        required: false
+        type: boolean
+        default: true
+      concurrency:
+        description: "Параллельность рендера (пусто — авто)"
+        required: false
+        type: string
+        default: ""
+      gl:
+        description: "OpenGL-рендерер (swangle — программный WebGL без видеокарты, для 3D)"
+        required: false
+        type: string
+        default: "swangle"
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Prepare Remotion browser
+        run: npx remotion browser ensure
+
+      - name: Bundle project
+        run: npx remotion bundle --out-dir build
+
+      - name: Render
+        env:
+          MODE: ${{ inputs.mode }}
+          COMP: ${{ inputs.composition }}
+          FRAMES: ${{ inputs.frames }}
+          SCALE: ${{ inputs.scale }}
+          NAME: ${{ inputs.name }}
+          PHONE: ${{ inputs.phone_copy }}
+          CONC: ${{ inputs.concurrency }}
+          GL: ${{ inputs.gl }}
+        run: |
+          set -euo pipefail
+          # Проверка параметров: в команды попадают только безопасные значения
+          [[ "$COMP"  =~ ^[A-Za-z0-9_-]+$ ]]      || { echo "bad composition: $COMP"; exit 1; }
+          [[ "$NAME"  =~ ^[A-Za-z0-9._-]+$ ]]     || { echo "bad name: $NAME"; exit 1; }
+          [[ "$SCALE" =~ ^[0-9]+(\.[0-9]+)?$ ]]   || { echo "bad scale: $SCALE"; exit 1; }
+          [[ "$GL"    =~ ^[a-z-]+$ ]]             || { echo "bad gl: $GL"; exit 1; }
+          [[ -z "$CONC" || "$CONC" =~ ^[0-9]+%?$ ]] || { echo "bad concurrency: $CONC"; exit 1; }
+
+          mkdir -p result
+          common=(--gl="$GL" --scale="$SCALE")
+          if [[ -n "$CONC" ]]; then common+=(--concurrency="$CONC"); fi
+
+          if [[ "$MODE" == "stills" ]]; then
+            [[ "$FRAMES" =~ ^[0-9]+(,[0-9]+)*$ ]] || { echo "stills need frames like 15,45,90"; exit 1; }
+            for f in ${FRAMES//,/ }; do
+              npx remotion still build "$COMP" "result/$NAME-f$(printf %05d "$f").png" --frame="$f" "${common[@]}"
+            done
+            n=$(ls result/*.png | wc -l)
+            cols=$(( n < 4 ? n : 4 )); rows=$(( (n + cols - 1) / cols ))
+            ffmpeg -v error -y -pattern_type glob -i "result/$NAME-f*.png" \
+              -vf "scale=480:-1,tile=${cols}x${rows}:padding=6:color=white" -frames:v 1 "result/$NAME-sheet.png"
+          else
+            [[ -z "$FRAMES" || "$FRAMES" =~ ^[0-9]+-[0-9]+$ ]] || { echo "video frames must look like 0-149"; exit 1; }
+            args=(render build "$COMP" "result/$NAME.mp4" "${common[@]}")
+            if [[ -n "$FRAMES" ]]; then args+=(--frames="$FRAMES"); fi
+            npx remotion "${args[@]}"
+
+            # Лист кадров каждые 0,5 с — для самопроверки
+            ffmpeg -v error -y -i "result/$NAME.mp4" -vf "fps=2,scale=480:-1,tile=8x4" "result/$NAME-sheet-%02d.png"
+
+            # Громкость (если есть звук)
+            has_audio=$(ffprobe -v error -select_streams a -show_entries stream=index -of csv=p=0 "result/$NAME.mp4")
+            if [[ -n "$has_audio" ]]; then
+              ffmpeg -hide_banner -nostats -i "result/$NAME.mp4" -af ebur128=framelog=quiet -f null - 2>&1 \
+                | sed -n '/Summary:/,$p' > "result/$NAME-loudness.txt"
+            fi
+
+            if [[ "$MODE" == "final" && "$PHONE" == "true" ]]; then
+              ffmpeg -v error -y -i "result/$NAME.mp4" -c:v libx264 -crf 27 -preset slow \
+                -c:a aac -b:a 128k -movflags +faststart "result/${NAME}_phone.mp4"
+            fi
+          fi
+
+          {
+            echo "### Render: $MODE · $COMP · $NAME"
+            echo '```'
+            for f in result/*.mp4; do
+              if [[ -e "$f" ]]; then
+                ffprobe -v error -show_entries format=duration,size:stream=codec_name,width,height,r_frame_rate -of compact "$f" | sed "s|^|$(basename "$f"): |"
+              fi
+            done
+            if [[ -e "result/$NAME-loudness.txt" ]]; then cat "result/$NAME-loudness.txt"; fi
+            ls -la result
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: render-${{ inputs.request_id }}
+          path: result/
+          retention-days: 7
+          if-no-files-found: error

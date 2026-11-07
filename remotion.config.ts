@@ -11,3 +11,5 @@ Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
 Config.setDefaultPremountInSeconds(2);
+// 3D (three.js): рендер через ANGLE — стабильная WebGL-графика на Windows
+Config.setChromiumOpenGlRenderer("angle");

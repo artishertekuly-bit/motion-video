@@ -102,11 +102,15 @@ export const Background: React.FC<{ f: number; tint: string; tintAmt: number; ci
         >
           <defs>
             <linearGradient id="cityfade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#000" stopOpacity="1" />
-              <stop offset="0.35" stopColor="#000" stopOpacity="0.35" />
-              <stop offset="1" stopColor="#000" stopOpacity="0" />
+              <stop offset="0" stopColor="#fff" stopOpacity="0" />
+              <stop offset="0.4" stopColor="#fff" stopOpacity="0.55" />
+              <stop offset="1" stopColor="#fff" stopOpacity="1" />
             </linearGradient>
+            <mask id="citymask">
+              <rect x={0} y={0} width={1080} height={680} fill="url(#cityfade)" />
+            </mask>
           </defs>
+          <g mask="url(#citymask)">
           <g transform={`translate(${drift},0)`}>
             {BUILDINGS.map((b, i) => {
               const top = 680 - b.h;
@@ -134,7 +138,7 @@ export const Background: React.FC<{ f: number; tint: string; tintAmt: number; ci
               );
             })}
           </g>
-          <rect x={0} y={0} width={1080} height={680} fill="url(#cityfade)" />
+          </g>
         </svg>
       )}
       <AbsoluteFill

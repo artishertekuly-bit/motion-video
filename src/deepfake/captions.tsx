@@ -9,7 +9,7 @@ import { p, rgba } from "./ui";
 type Who = "narr" | "fake" | "mom";
 const DEFS: { id: string; who: Who; text: string }[] = [
   { id: "m1", who: "fake", text: "%Балам! | Жол $апатына түстім… | Телефоным $өшіп барады!" },
-  { id: "n1", who: "narr", text: "Кешкі сағат | %тоғыз %жарым. | Сіз үйде %жалғызсыз. | Хабарлама $бейтаныс $нөмірден келді. | Бірақ дауыс — %анаңыздікі. | %Жүз %пайыз." },
+  { id: "n1", who: "narr", text: "Кешкі сағат | %тоғыз %жарым. | Сіз үйде %жалғызсыз. | Хабарлама $бейтаныс | $нөмірден келді. | Бірақ дауыс — %анаңыздікі. | %Жүз %пайыз." },
   { id: "m2", who: "fake", text: "%Тез мына нөмірге | $ақша $сал! | Болмаса — | $SMS-кодты $жібер!" },
   { id: "n2", who: "narr", text: "Код келді. | %Төрт %сан. | Саусағыңыз %«Жіберу» | түймесінің үстінде." },
   { id: "n3", who: "narr", text: "Дәл осы сәтте | көпшілік $қателеседі: | бірден $ақша $салады, | $кодты $жібереді | немесе сол нөмірге | $қайта $жазады. | Ал арғы жақтағыға | %дәл %осы %керек." },
@@ -38,11 +38,16 @@ const CHUNKS: Chunk[] = (() => {
     if (count !== words.length) throw new Error(`captions ${d.id}: ${count} tokens vs ${words.length} words`);
     let k = 0;
     for (const part of parts) {
-      const toks: Tok[] = part.map((raw) => {
-        const c = COLOR[raw[0]] ?? null;
+      const toks: Tok[] = [];
+      for (const raw of part) {
         const w = words[k++];
-        return { text: c ? raw.slice(1) : raw, color: c, s: sec(START[d.id] + w.start), e: sec(START[d.id] + w.end) };
-      });
+        if (raw === "—" && toks.length) {
+          toks[toks.length - 1].text += " —";
+          continue;
+        }
+        const c = COLOR[raw[0]] ?? null;
+        toks.push({ text: c ? raw.slice(1) : raw, color: c, s: sec(START[d.id] + w.start), e: sec(START[d.id] + w.end) });
+      }
       all.push({ who: d.who, toks, from: toks[0].s - 2, to: 0 });
     }
   }
@@ -67,8 +72,8 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
       style={{
         position: "absolute",
         top: CAPTION_TOP,
-        left: 60,
-        right: 60,
+        left: 50,
+        right: 50,
         height: 200,
         display: "flex",
         alignItems: "flex-start",
@@ -81,12 +86,12 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
         style={{
           fontFamily: MONT,
           fontWeight: 900,
-          fontSize: 78,
+          fontSize: 76,
           lineHeight: 1.06,
           letterSpacing: "-0.01em",
           textAlign: "center",
           textTransform: "uppercase",
-          maxWidth: 960,
+          maxWidth: 980,
         }}
       >
         {ch.toks.map((t, i) => {
@@ -104,6 +109,7 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
               key={i}
               style={{
                 display: "inline-block",
+                whiteSpace: "nowrap",
                 margin: "0 0.13em",
                 color: col,
                 transform: `scale(${on ? 1.08 - 0.08 * pop : 1}) translateX(${jit ? (random(`cx${f}${i}`) - 0.5) * 10 : 0}px)`,

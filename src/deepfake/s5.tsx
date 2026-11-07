@@ -88,7 +88,7 @@ export const S5: React.FC<{ f: number }> = ({ f }) => {
       )}
 
       {phoneIn > 0 && phoneOut < 1 && (
-        <Phone y={lerp(1300, 290, phoneIn) + phoneOut * 900} glow={unavailable ? "#8A93A6" : C.green} glowAmt={0.8} opacity={1 - phoneOut}>
+        <Phone y={lerp(1300, 290, phoneIn) + phoneOut * 900} glow={unavailable ? "#8A93A6" : C.green} glowAmt={0.8} clock="21:32" opacity={1 - phoneOut}>
           <div style={{ position: "absolute", left: 0, right: 0, top: 140, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ position: "relative", width: 210, height: 210 }}>
               {ringsOn &&

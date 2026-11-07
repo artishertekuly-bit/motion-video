@@ -132,7 +132,7 @@ export const FloorPlan: React.FC<{
 };
 
 /** Пульсирующая точка-человек на плане */
-export const Dot: React.FC<{ f: number; x: number; y: number; color: string; at: number; label?: string }> = ({ f, x, y, color, at, label }) => {
+export const Dot: React.FC<{ f: number; x: number; y: number; color: string; at: number; label?: string; labelDy?: number }> = ({ f, x, y, color, at, label, labelDy = 46 }) => {
   if (f < at) return null;
   const k = p(f, at, 8);
   const ph = ((f - at) % 36) / 36;
@@ -141,7 +141,7 @@ export const Dot: React.FC<{ f: number; x: number; y: number; color: string; at:
       <circle cx={x} cy={y} r={16 + ph * 34} fill="none" stroke={color} strokeWidth={3} opacity={1 - ph} />
       <circle cx={x} cy={y} r={15 * k} fill={color} style={{ filter: `drop-shadow(0 0 12px ${color})` }} />
       {label && (
-        <text x={x} y={y + 46} textAnchor="middle" fontFamily={MONO} fontWeight={800} fontSize={20} fill={color} letterSpacing="0.1em">
+        <text x={x} y={y + labelDy} textAnchor="middle" fontFamily={MONO} fontWeight={800} fontSize={20} fill={color} letterSpacing="0.1em">
           {label}
         </text>
       )}

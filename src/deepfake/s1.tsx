@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Easing } from "remotion";
 import { C, MONO } from "./theme";
-import { cs, SCENES } from "./timeline";
+import { ce, cs, SCENES } from "./timeline";
 import { ChatHeader, LiveWave, Phone, VoiceBubble, lerp, p } from "./ui";
 
 // S1 — крючок: незнакомый номер, голосовое «мамы»
@@ -40,6 +40,24 @@ export const S1: React.FC<{ f: number }> = ({ f }) => {
         </div>
         <div style={{ position: "absolute", top: 262, left: 28, transform: `scale(${0.85 + 0.15 * pop})`, transformOrigin: "left top", opacity: pop }}>
           <VoiceBubble f={f} cue="m1" fake />
+        </div>
+        <LiveWave f={f} cue="m1" cx={286} cy={590} width={500} height={300} color={C.red} jag bars={34} opacity={pop} idle={0.06} />
+        <div
+          style={{
+            position: "absolute",
+            top: 790,
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            fontFamily: MONO,
+            fontWeight: 700,
+            fontSize: 22,
+            letterSpacing: "0.14em",
+            color: C.red,
+            opacity: pop * (Math.floor(f / 12) % 2 === 0 ? 1 : 0.55),
+          }}
+        >
+          ● ТЫҢДАЛУДА 0:0{Math.min(4, Math.max(0, Math.floor((f - cs("m1")) / 30)))} / 0:0{Math.round((ce("m1") - cs("m1")) / 30)}
         </div>
       </Phone>
     </AbsoluteFill>

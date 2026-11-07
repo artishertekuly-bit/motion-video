@@ -17,11 +17,8 @@ export const Door: React.FC<{ f: number; open: number; turn: number; leak: numbe
       <div
         style={{
           position: "absolute",
-          left: 0,
-          right: 0,
-          top: 160,
-          bottom: 560,
-          background: "linear-gradient(180deg, #0B0D12 0%, #0E1016 70%, #08090D 100%)",
+          inset: 0,
+          background: "radial-gradient(ellipse 70% 55% at 50% 42%, #14161D 0%, #0C0E13 55%, #06070A 100%)",
         }}
       />
       {/* пол */}

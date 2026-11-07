@@ -81,7 +81,7 @@ export const S2: React.FC<{ f: number }> = ({ f }) => {
       )}
 
       {planOn && (
-        <AbsoluteFill style={{ opacity: lerp(1, 0.13, planDim), transform: `scale(${lerp(1, 0.94, planDim)})` }}>
+        <AbsoluteFill style={{ opacity: lerp(1, 0.05, planDim), transform: `scale(${lerp(1, 0.94, planDim)})` }}>
           <FloorPlan f={f} drawAt={w(4) - 3} kitchen={p(f, w(5), 10)} warm={0}>
             <Dot f={f} x={YOU[0]} y={YOU[1]} color={C.amber} at={w(5)} />
             {f >= w(7) &&

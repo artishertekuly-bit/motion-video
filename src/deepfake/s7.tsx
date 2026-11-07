@@ -51,7 +51,7 @@ export const S7: React.FC<{ f: number }> = ({ f }) => {
     return (
       <AbsoluteFill>
         <FloorPlan f={f} drawAt={planA - 30} kitchen={1} warm={p(f, planA, 14)}>
-          <Dot f={f} x={YOU[0]} y={YOU[1]} color={safe ? C.green : C.amber} at={planA - 20} label="СІЗ" />
+          <Dot f={f} x={YOU[0]} y={YOU[1]} color={safe ? C.green : C.amber} at={planA - 20} label="СІЗ" labelDy={-34} />
           <Dot f={f} x={mx} y={my} color={C.green} at={planA} label="АНАҢЫЗ" />
           {safe && <circle cx={(YOU[0] + mx) / 2} cy={(YOU[1] + my) / 2} r={90 + 20 * Math.sin(f * 0.2)} fill="none" stroke={C.green} strokeWidth={4} opacity={0.6} />}
         </FloorPlan>
@@ -79,7 +79,7 @@ export const S7: React.FC<{ f: number }> = ({ f }) => {
       <div style={{ position: "absolute", left: 540, top: 0, width: 540, height: 1920, overflow: "hidden", background: "rgba(5,6,10,0.75)" }}>
         <Glitch f={f} amount={glitchR} id="g7">
           <div style={{ position: "absolute", inset: 0, transform: `translateX(${-270 + (1 - sp) * 200}px)` }}>
-            <Phone x={540} y={290} glow={C.red} glowAmt={0.9} scale={0.78}>
+            <Phone x={540} y={290} glow={C.red} glowAmt={0.9} scale={0.78} clock="21:34">
               <ChatHeader avatar="?" name="+7 708 ••• 41 17" sub="жазып жатыр…" subColor={C.amber} ring={C.red} glitch={glitchR} f={f} />
               <div style={{ position: "absolute", top: 214, left: 28 }}>
                 <VoiceBubble f={f} cue="m2" fake />

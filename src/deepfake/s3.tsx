@@ -24,6 +24,7 @@ export const S3: React.FC<{ f: number }> = ({ f }) => {
       <Phone
         y={290}
         glow={C.red}
+        clock="21:31"
         glowAmt={0.7 + 0.3 * Math.sin(f * 0.4)}
         ry={lerp(-4, 3, push)}
         rx={2}
@@ -47,7 +48,7 @@ export const S3: React.FC<{ f: number }> = ({ f }) => {
               top: lerp(-200, 80, sms),
               padding: "18px 22px",
               borderRadius: 28,
-              background: "rgba(46,52,68,0.97)",
+              background: "#2C3242", isolation: "isolate", zIndex: 5,
               boxShadow: "0 20px 40px rgba(0,0,0,0.5)",
               opacity: sms,
             }}

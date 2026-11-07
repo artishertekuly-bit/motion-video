@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate } from "remotion";
 import { BIG_Y, C, CAPTION_Y, MONT, OSW } from "./theme";
-import { AUDIO, BIG_WORDS, sec, START } from "./timeline";
+import { AUDIO, BIG_WORDS, CUTS, sec, START } from "./timeline";
 
 // Разметка: «|» — новая порция субтитра; «%» перед словом — жёлтое (ключевое) слово.
 // Количество слов должно совпадать с таймингами голоса.
@@ -43,7 +43,10 @@ const CHUNKS: Chunk[] = (() => {
         toks.push({ text: key ? raw.slice(1) : raw, key, s: sec(START[d.id] + w.start) });
       }
       const last = words[k - 1];
-      all.push({ toks, from: toks[0].s - 2, to: sec(START[d.id] + last.end) + 12, fade: true });
+      const lastF = sec(START[d.id] + last.end);
+      // не переносим субтитр через склейку на чужой план
+      const cut = CUTS.find((c) => c > lastF) ?? Infinity;
+      all.push({ toks, from: toks[0].s - 2, to: Math.min(lastF + 12, cut), fade: true });
     }
   }
   all.sort((a, b) => a.from - b.from);

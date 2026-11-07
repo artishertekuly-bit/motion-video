@@ -35,10 +35,10 @@ export const S7: React.FC<{ f: number }> = ({ f }) => {
       <AbsoluteFill>
         <AbsoluteFill style={{ transform: `scale(${lerp(1.08, 1, push)})` }}>{doorShot}</AbsoluteFill>
         <LiveWave f={f} cue="m3" cx={DX + 250} cy={DY + 905} width={440} height={60} color={C.warm} bars={34} opacity={0.9} idle={0} />
-        <Wire f={f} at={ws("m3", 1)} from={[330, 470]} to={[DX + 270, DY + 300]} color={C.green} />
-        <HudTag f={f} at={ws("m3", 1) - 2} x={70} y={392} color={C.green} title="Анаңыз" sub="нағыз · аман-есен" icon="ok" titleSize={30} />
-        <Wire f={f} at={we("m3", 2) + 2} from={[880, 1000]} to={[DX + 360, DY + 480]} color={C.amber} />
-        <HudTag f={f} at={we("m3", 2)} x={930} y={1000} align="right" color={C.amber} title="Қызғалдақ" sub="сүйікті гүлі ✓" icon="ok" titleSize={28} />
+        <Wire f={f} at={ws("m3", 0) + 6} from={[330, 470]} to={[DX + 270, DY + 300]} color={C.green} />
+        <HudTag f={f} at={ws("m3", 0) + 2} x={70} y={392} color={C.green} title="Анаңыз" sub="нағыз · аман-есен" icon="ok" titleSize={30} />
+        <Wire f={f} at={ws("m3", 2)} from={[880, 1000]} to={[DX + 360, DY + 480]} color={C.amber} />
+        <HudTag f={f} at={ws("m3", 2) - 4} x={930} y={1000} align="right" color={C.amber} title="Қызғалдақ" sub="сүйікті гүлі ✓" icon="ok" titleSize={28} />
       </AbsoluteFill>
     );
   }

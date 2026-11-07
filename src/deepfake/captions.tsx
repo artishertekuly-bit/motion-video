@@ -110,9 +110,9 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
               style={{
                 display: "inline-block",
                 whiteSpace: "nowrap",
-                margin: "0 0.13em",
+                margin: "0 0.16em",
                 color: col,
-                transform: `scale(${on ? 1.08 - 0.08 * pop : 1}) translateX(${jit ? (random(`cx${f}${i}`) - 0.5) * 10 : 0}px)`,
+                transform: `scale(${on ? 1.035 - 0.035 * pop : 1}) translateY(${on ? (1 - pop) * -4 : 0}px) translateX(${jit ? (random(`cx${f}${i}`) - 0.5) * 10 : 0}px)`,
                 textShadow: [
                   "0 4px 18px rgba(0,0,0,0.85)",
                   on && t.color ? `0 0 26px ${rgba(t.color, 0.45)}` : "",

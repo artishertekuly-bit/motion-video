@@ -9,7 +9,7 @@ export const DW = 500;
 export const DH = 940;
 export const LOCK: [number, number] = [DX + 430, DY + 420];
 
-export const Door: React.FC<{ f: number; open: number; turn: number; leak: number; behind?: React.ReactNode }> = ({ f, open, turn, leak, behind }) => {
+export const Door: React.FC<{ f: number; open: number; turn: number; leak: number; keyIn?: boolean; behind?: React.ReactNode }> = ({ f, open, turn, leak, keyIn = false, behind }) => {
   const flick = 0.92 + 0.08 * Math.sin(f * 0.9) * Math.sin(f * 0.37);
   return (
     <>
@@ -133,6 +133,22 @@ export const Door: React.FC<{ f: number; open: number; turn: number; leak: numbe
                 transform: `rotate(${i === 0 ? lerp(0, 360, turn) : 0}deg)`,
               }}
             />
+            {i === 0 && keyIn && (
+              <div
+                style={{
+                  position: "absolute",
+                  left: 22 - 13,
+                  top: 22 - 52,
+                  width: 26,
+                  height: 104,
+                  transform: `rotate(${lerp(0, 360, turn)}deg)`,
+                  transformOrigin: "13px 52px",
+                }}
+              >
+                <div style={{ position: "absolute", left: 4, top: 0, width: 18, height: 104, borderRadius: 9, background: "linear-gradient(90deg,#8C857D,#F1EBE2 45%,#9E968E)", boxShadow: "0 6px 14px rgba(0,0,0,0.7)" }} />
+                <div style={{ position: "absolute", left: 9, top: 10, width: 8, height: 8, borderRadius: 4, background: "#2A2522" }} />
+              </div>
+            )}
           </div>
         ))}
         {/* ручка */}

@@ -98,9 +98,11 @@ export const S6: React.FC<{ f: number }> = ({ f }) => {
   const leak = lerp(0.25, 1, p(kk, 0, 1.6 * FPS));
   const push = p(f, key, b - key, Easing.inOut(Easing.cubic));
   const clicks = [Math.round(1.0 * FPS), Math.round(1.7 * FPS)];
+  const macro = kk >= Math.round(0.45 * FPS) && kk < Math.round(1.95 * FPS);
+  const zoom = macro ? 2.5 + 0.25 * p(kk, Math.round(0.45 * FPS), Math.round(1.5 * FPS), Easing.linear) : 1 + 0.1 * push;
   return (
-    <AbsoluteFill style={{ transform: `scale(${1 + 0.1 * push})`, transformOrigin: `${LOCK[0]}px ${LOCK[1]}px` }}>
-      <Door f={f} open={0} turn={turn} leak={leak} />
+    <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: macro ? `${LOCK[0] + 120}px ${LOCK[1] + 13}px` : `${LOCK[0]}px ${LOCK[1]}px` }}>
+      <Door f={f} open={0} turn={turn} leak={leak} keyIn />
       {clicks.map((c) =>
         kk >= c && kk < c + 14 ? (
           <div
@@ -118,8 +120,8 @@ export const S6: React.FC<{ f: number }> = ({ f }) => {
           />
         ) : null,
       )}
-      <Wire f={f} at={key + 10} from={[300, 400]} to={LOCK} color={C.amber} />
-      <HudTag f={f} at={key + 6} x={70} y={330} color={C.amber} title="Есік ашылып жатыр" sub="21:34 · кіреберіс" icon="lock" titleSize={28} />
+      {!macro && <Wire f={f} at={key + 10} from={[300, 400]} to={LOCK} color={C.amber} />}
+      {!macro && <HudTag f={f} at={key + 6} x={70} y={330} color={C.amber} title="Есік ашылып жатыр" sub="21:34 · кіреберіс" icon="lock" titleSize={28} />}
       <div style={{ position: "absolute", left: 0, right: 0, top: 1255, textAlign: "center", fontFamily: MONO, fontSize: 20, letterSpacing: "0.3em", color: "rgba(255,180,107,0.5)", opacity: p(f, key + 20, 10) * (1 - p(f, ce("n7"), 6)) }}>
         ДӘЛІЗ
       </div>

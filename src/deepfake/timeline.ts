@@ -30,7 +30,7 @@ t = Math.max(t, S.n7 + AUDIO.n7.duration);
 put("door", 0.1); // S7 — мама входит
 S.m3 = S.door + 0.85;
 t = S.m3 + AUDIO.m3.duration;
-put("n8", 0.3);
+put("n8", 0.6);
 put("m4", 0.3);
 put("n9", 0.55); // S8 — вывод и вопрос
 put("n10", 0.4);

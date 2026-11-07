@@ -5,6 +5,7 @@ import { AUDIO, DURATION, FLASHES, FPS, WIPES, cs, sec, shotAt, shotStart } from
 import { Grade, HOOK_END, Hook, ShotView } from "./scenes";
 import { Dust, Flash, PaperBurst, PaperFall, PaperWipe } from "./papers";
 import { BigWords, Captions } from "./captions";
+import { Sound } from "./sound";
 
 const VOICES = ["s1", "m1", "j1", "m2", "m3", "m4", "m5", "m6", "j2", "m7", "m8", "j3"];
 
@@ -46,6 +47,7 @@ export const Qagaz: React.FC = () => {
           <Audio src={staticFile(AUDIO[id].file)} />
         </Sequence>
       ))}
+      <Sound />
     </AbsoluteFill>
   );
 };

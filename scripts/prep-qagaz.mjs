@@ -52,11 +52,27 @@ const data = {};
 for (const id of LINES) {
   const src = join(VOICE, `${id}.mp3`);
   const dst = join(AUD, `${id}.mp3`);
-  // Голоса разные по громкости: приводим каждую реплику к −17 LUFS
-  ff(["-i", src, "-af", "loudnorm=I=-17:TP=-2:LRA=7", "-ar", "44100", "-b:a", "192k", dst]);
+  // Голоса разные по громкости: приводим каждую реплику к −14,5 LUFS (итог ролика ≈ −14 LUFS)
+  ff(["-i", src, "-af", "loudnorm=I=-14.5:TP=-1.5:LRA=7", "-ar", "44100", "-b:a", "192k", dst]);
   const words = cleanWords(JSON.parse(readFileSync(join(VOICE, `${id}.words.json`), "utf8")));
   data[id] = { file: `qagaz/audio/${id}.mp3`, duration: +duration(dst).toFixed(3), words };
   console.log(`voice ${id}  ${data[id].duration.toFixed(2)} s  ${words.map((w) => w.word).join(" ")}`);
 }
+// ---------- эффекты: на ~7 дБ тише голоса, фон и музыка ещё тише ----------
+const SFX_IN = join(PUB, "sfx");
+const SFX_OUT = join(PUB, "sfx-n");
+mkdirSync(SFX_OUT, { recursive: true });
+const LEVEL = { "q-room": -31, "q-pad": -29, "q-crowd": -23 };
+const sfx = {};
+if (existsSync(SFX_IN)) {
+  for (const f of spawnSync("ls", [SFX_IN], { encoding: "utf8" }).stdout.split(/\r?\n/).filter((x) => x.endsWith(".mp3"))) {
+    const id = f.replace(/\.mp3$/, "");
+    const dst = join(SFX_OUT, f);
+    ff(["-i", join(SFX_IN, f), "-af", `loudnorm=I=${LEVEL[id] ?? -21.5}:TP=-3:LRA=11`, "-ar", "44100", "-b:a", "160k", dst]);
+    sfx[id] = { file: `qagaz/sfx-n/${f}`, duration: +duration(dst).toFixed(3) };
+    console.log(`sfx ${id}  ${sfx[id].duration.toFixed(2)} s`);
+  }
+}
+data._sfx = sfx;
 writeFileSync(join(ROOT, "src", "qagaz", "audio-data.json"), JSON.stringify(data, null, 1));
 console.log("→ src/qagaz/audio-data.json");

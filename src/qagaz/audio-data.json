@@ -495,5 +495,59 @@
     "end": 1.76
    }
   ]
+ },
+ "_sfx": {
+  "q-bell": {
+   "file": "qagaz/sfx-n/q-bell.mp3",
+   "duration": 3
+  },
+  "q-burst": {
+   "file": "qagaz/sfx-n/q-burst.mp3",
+   "duration": 2
+  },
+  "q-collide": {
+   "file": "qagaz/sfx-n/q-collide.mp3",
+   "duration": 2
+  },
+  "q-crowd": {
+   "file": "qagaz/sfx-n/q-crowd.mp3",
+   "duration": 6
+  },
+  "q-door-close": {
+   "file": "qagaz/sfx-n/q-door-close.mp3",
+   "duration": 1.48
+  },
+  "q-gather": {
+   "file": "qagaz/sfx-n/q-gather.mp3",
+   "duration": 3
+  },
+  "q-pad": {
+   "file": "qagaz/sfx-n/q-pad.mp3",
+   "duration": 22
+  },
+  "q-papers-settle": {
+   "file": "qagaz/sfx-n/q-papers-settle.mp3",
+   "duration": 2.48
+  },
+  "q-room": {
+   "file": "qagaz/sfx-n/q-room.mp3",
+   "duration": 20
+  },
+  "q-run-away": {
+   "file": "qagaz/sfx-n/q-run-away.mp3",
+   "duration": 2
+  },
+  "q-steps-calm": {
+   "file": "qagaz/sfx-n/q-steps-calm.mp3",
+   "duration": 2
+  },
+  "q-steps-fast": {
+   "file": "qagaz/sfx-n/q-steps-fast.mp3",
+   "duration": 2.48
+  },
+  "q-whoosh": {
+   "file": "qagaz/sfx-n/q-whoosh.mp3",
+   "duration": 0.88
+  }
  }
 }

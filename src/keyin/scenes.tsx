@@ -45,6 +45,9 @@ const Cam: React.FC<{ s: number; cx?: number; cy?: number; dx?: number; dy?: num
   <g transform={`translate(${cx + dx} ${cy + dy}) scale(${s}) translate(${-cx} ${-cy})`}>{children}</g>
 );
 
+// Пол ниже кадра: при наезде камеры низ мира (y=1920) поднимается выше края экрана
+const FloorExt: React.FC<{ c: string }> = ({ c }) => <rect x={-600} y={1500} width={2300} height={1500} fill={c} />;
+
 // ---------- общие позы ----------
 const DAD_PHONE: Pose = H(SEAT, { head: 30, lean: 12, aFs: 72, aFe: 78, aBs: 62, aBe: 88 });
 const RAISE: Pose = H(STAND, { aFs: 128, aFe: 12, aBs: 116, aBe: 22, head: -8 });
@@ -122,6 +125,7 @@ export const S03: React.FC<SceneProps> = ({ lf, len }) => {
   const bHand = handAt(bPose, 800, FL, 0.82, -1);
   return (
     <Cam s={lerp(1.22, 1.28, lf / len)} cx={620} cy={1350} dx={-80 - (dxp - 540) * 0.06} dy={-300}>
+      <FloorExt c="#B98A5A" />
       <Kitchen />
       {/* табурет и столик */}
       <rect x={750} y={FL - 112} width={100} height={18} rx={6} fill="#6B4226" />
@@ -149,6 +153,7 @@ export const S04: React.FC<SceneProps> = ({ lf, len }) => {
   const bPose = H(STAND, { head: lerp(0, 22, hang), aFs: 8, aBs: -6, aFe: 14, aBe: 14 });
   return (
     <Cam s={lerp(1.24, 1.3, lf / len)} cx={440} cy={1300} dx={100} dy={-250}>
+      <FloorExt c="#3A2416" />
       <LivingRoom night={1} door={1} />
       {/* тёплый свет из двери на полу */}
       <path d={`M 0 ${FL} L 110 ${FL} L 420 1920 L 0 1920 Z`} fill="#FFE2A8" opacity={0.28} />
@@ -227,6 +232,7 @@ export const S06b: React.FC<SceneProps> = ({ lf, len }) => {
   const hand = handAt(pose, x, FL, 1.1, -1);
   return (
     <Cam s={lerp(1.22, 1.28, lf / len)} cx={640} cy={1300} dx={-100} dy={-250}>
+      <FloorExt c="#6E7680" />
       <Office />
       <WallClock x={250} y={560} r={70} min={0} />
       <OfficeDesk />
@@ -379,6 +385,7 @@ export const S10b: React.FC<SceneProps> = ({ lf, len }) => {
   const dPose = H(KNEEL, { head: 24, lean: 18, aFs: 58 - scrib * 3, aFe: 36, aBs: 20, aBe: 30 });
   return (
     <Cam s={lerp(1.3, 1.38, lf / len)} cx={560} cy={1380} dx={-20} dy={-330}>
+      <FloorExt c="#5E3A22" />
       <LivingRoom night={0.35} frame />
       <rect x={830} y={742} width={56} height={18} rx={4} fill="#1B1D25" />
       <Person kind="boy" x={360} y={FL} s={0.8} face={1} pose={bPose} />

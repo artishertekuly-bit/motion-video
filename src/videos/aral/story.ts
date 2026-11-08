@@ -63,13 +63,13 @@ export const SHOTS: ShotDef[] = [
   { id: 5, a: 472, b: 553, light: "day", era: "1957", fogK: 2 }, // rivers turned to the cotton
   { id: 6, a: 553, b: 700, light: "day", era: "retreat", fogK: 2.5 }, // 1 km, 10, 100
   { id: 7, a: 700, b: 800, light: "day", era: "retreat", fogK: 2 }, // harbour dry, ships sit in the sand
-  { id: 8, a: 800, b: 942, light: "day", era: "split", fogK: 8 }, // the sea splits (aerial)
+  { id: 8, a: 800, b: 942, light: "day", era: "split", fogK: 14 }, // the sea splits (aerial)
   { id: 9, a: 942, b: 1072, light: "day", era: "low", fogK: 2 }, // luckily: a flounder
   { id: 10, a: 1072, b: 1152, light: "day", era: "low", fogK: 1.5 }, // unluckily: only flounder
   { id: 11, a: 1152, b: 1545, light: "golden", era: "bath", fogK: 2 }, // the bathtub
-  { id: 12, a: 1545, b: 1690, light: "day", era: "dam", fogK: 6 }, // the dam (aerial)
+  { id: 12, a: 1545, b: 1690, light: "day", era: "dam", fogK: 10 }, // the dam (aerial)
   { id: 13, a: 1690, b: 1785, light: "day", era: "dam", fogK: 2 }, // water back at the harbour, fish return
-  { id: 14, a: 1785, b: TOTAL, light: "golden", era: "now", fogK: 9 }, // twist: blue sea | endless sand
+  { id: 14, a: 1785, b: TOTAL, light: "golden", era: "now", fogK: 12 }, // twist: blue sea | endless sand
 ];
 export const XFADE: Record<number, number> = { 5: 8, 6: 8, 9: 8, 11: 10, 12: 8, 14: 10 };
 export const FLASH_AT = 188;
@@ -100,10 +100,10 @@ export const levels = (id: number, f: number): { n: number; s: number; dam: numb
     case "low": return { n: -8.5, s: -16, dam: 0 };
     case "bath": return { n: -8.5, s: -16, dam: 0 };
     case "dam": {
-      const rise = id === 12 ? glide((f - 1650) / 40) * 0.25 : glide((f - 1700) / 50);
-      return { n: -10 + 7.5 * rise, s: -18, dam: id === 12 ? glide((f - 1556) / 110) : 1 };
+      const n = id === 12 ? -9.4 + 3.6 * glide((f - 1640) / 50) : -5.8 + 4.8 * glide((f - 1700) / 50);
+      return { n, s: -18, dam: id === 12 ? glide((f - 1556) / 90) : 1 };
     }
-    case "now": return { n: -2.5, s: -22, dam: 1 };
+    case "now": return { n: -1.5, s: -22, dam: 1 };
   }
 };
 
@@ -158,31 +158,31 @@ export const BATH_C: V3 = [BATH[0], BATH_Y + 0.6, BATH[2]];
 // 1: hook — aerial over the dry shelf, down to a rusted hull, then low past it toward the empty horizon
 const C1a = (f: number) => dolly([S0[0] + 70, S0[1] + 44, S0[2] + 95], [S0[0] - 4, S0[1] + 1, S0[2] - 10], pushK(f, 0, 0.004), { fov: 42, near: 0.8 });
 const C1b = (f: number) => dolly([S0[0] + 16, S0[1] + 1.7, S0[2] + 24], [S0[0] - 2, S0[1] + 2.4, S0[2] - 4], pushK(f, 70, 0.003), { fov: 40, roll: 0.03, near: 0.4 });
-const C1c = (f: number) => dolly([S0[0] + 6, S0[1] + 1.3, S0[2] - 6], [S0[0] - 60, S0[1] - 2, S0[2] - 220], pushK(f, 140, 0.0015), { fov: 46, roll: -0.04, near: 0.4 });
+const C1c = (f: number) => dolly([S0[0] + 19, S0[1] + 2.2, S0[2] + 3], [S0[0] - 25, S0[1] + 0.5, S0[2] - 210], pushK(f, 140, 0.0015), { fov: 46, roll: -0.04, near: 0.4 });
 // 2: 1957 harbour from the shore, golden
-const C2a = (f: number) => zoom([46, 9, 664], [0, 0.5, 520], 44, pushK(f, 188, 0.002), { near: 0.4 });
+const C2a = (f: number) => dolly([15, 4.2, 606], [3, 1.4, 520], pushK(f, 188, 0.0025), { fov: 44, near: 0.4 });
 // 3: aerial: the sea to the horizon
 const C3a = (f: number) => dolly([60, 300, 900], [0, -10, 120], pushK(f, 258, 0.0022), { fov: 50, near: 3 });
 // 4: fishermen and crates on the pier
 const C4a = (f: number) => dolly([PIER_END[0] + 6.5, 3.2, PIER_END[2] + 13], [PIER_END[0] - 0.5, 2.0, PIER_END[2] + 3], pushK(f, 345, 0.0025), { fov: 40, near: 0.3 });
 const C4b = (f: number) => dolly([PIER_END[0] + 4.2, 2.6, PIER_END[2] + 9.5], [PIER_END[0] - 0.8, 2.2, PIER_END[2] + 3], pushK(f, 395, 0.002, 0.006, 30), { fov: 38, roll: 0.035, near: 0.3 });
 // 5: the river gate: water swings into the canal toward the cotton
-const C5a = (f: number) => dolly([872, 7, 412], [905, 0, 520], pushK(f, 472, 0.003), { fov: 44, roll: -0.03, near: 0.4 });
+const C5a = (f: number) => dolly([862, 30, 400], [915, 0, 640], pushK(f, 472, 0.003), { fov: 46, roll: -0.03, near: 0.5 });
 // 6: harbour, the water runs away in three jumps (look follows it south)
 const C6 = (f: number): Shot => {
   const k = glide((f - 566) / 14) * 0.25 + glide((f - 618) / 12) * 0.3 + glide((f - 656) / 14) * 0.45;
-  return dolly([30, 10, 690], [0, -1 - 5 * k, 520 - 180 * k], pushK(f, 553, 0.0018), { fov: 46, near: 0.5 });
+  return dolly([26, 6.5, 628], [2, -1 - 5 * k, 520 - 180 * k], pushK(f, 553, 0.0018), { fov: 46, near: 0.5 });
 };
 // 7: the dry pier, then the ship that sits down
 const C7a = (f: number) => dolly([PIER_END[0] + 9, 4.2, PIER_END[2] + 8], [PIER_END[0] - 2, -2.0, PIER_END[2] - 14], pushK(f, 700, 0.0025), { fov: 42, near: 0.3 });
 const C7b = (f: number) => dolly([S1[0] + 22, S1[1] + 3.2, S1[2] + 26], [S1[0], S1[1] + 1.8, S1[2]], pushK(f, 740, 0.0025, 0.006, 30), { fov: 42, roll: -0.04, near: 0.4 });
 // 8: aerial: the split
-const C8a = (f: number) => dolly([-420, 820, 760], [40, -12, -170], pushK(f, 800, 0.0016), { fov: 48, near: 4 });
+const C8a = (f: number) => dolly([-320, 560, 560], [40, -12, -160], pushK(f, 800, 0.0016), { fov: 50, near: 4 });
 // 9-10: the low sea: a fisherman with a flounder, then a crate of only flounders
 export const BOAT: V3 = [0, 0, 250]; // the boat floats at the north level (era "low": -8.5 m)
 const LOW = -8.5;
-const C9a = (f: number) => dolly([BOAT[0] + 7, LOW + 2.4, BOAT[2] + 9], [BOAT[0], LOW + 1.2, BOAT[2]], pushK(f, 942, 0.002), { fov: 40, near: 0.3 });
-const C9b = (f: number) => dolly([BOAT[0] + 3.4, LOW + 1.9, BOAT[2] + 4.3], [BOAT[0] - 0.2, LOW + 1.7, BOAT[2] + 0.3], pushK(f, 1028, 0.002, 0.006, 30), { fov: 36, roll: 0.035, near: 0.2 });
+const C9a = (f: number) => dolly([BOAT[0] + 6.5, LOW + 2.6, BOAT[2] + 8.5], [BOAT[0], LOW + 0.8, BOAT[2]], pushK(f, 942, 0.002), { fov: 42, near: 0.3 });
+const C9b = (f: number) => dolly([BOAT[0] + 3.6, LOW + 2.0, BOAT[2] + 4.6], [BOAT[0] - 0.1, LOW + 1.3, BOAT[2] + 0.3], pushK(f, 1028, 0.002, 0.006, 30), { fov: 40, roll: 0.035, near: 0.2 });
 const C10a = (f: number) => dolly([BOAT[0] + 1.6, LOW + 2.9, BOAT[2] + 3.0], [BOAT[0] - 0.4, LOW + 0.6, BOAT[2] - 0.4], pushK(f, 1072, 0.0025), { fov: 40, near: 0.2 });
 // 11: the bathtub yard
 const B = BATH_C;
@@ -192,12 +192,12 @@ const C11c = (f: number) => zoom([B[0] + 4.0, B[1] + 0.8, B[2] + 5.0], [B[0] + 1
 const C11d = (f: number) => dolly([B[0] + 2.8, B[1] + 2.0, B[2] + 3.2], [B[0], B[1], B[2]], pushK(f, 1355, 0.0025, 0.006, 30), { fov: 40, roll: -0.03, near: 0.2 });
 const C11e = (f: number) => dolly([B[0] - 3.4, B[1] + 1.8, B[2] + 3.4], [B[0] - 0.4, B[1], B[2]], pushK(f, 1426, 0.0022), { fov: 40, roll: 0.03, near: 0.2 });
 // 12: the dam (aerial, along it)
-const C12a = (f: number) => dolly([DAM_X0 - 160, 140, DAM_Z + 230], [270, -6, DAM_Z], pushK(f, 1545, 0.002), { fov: 46, near: 1.5 });
+const C12a = (f: number) => dolly([DAM_X0 - 70, 52, DAM_Z + 130], [275, -7, DAM_Z - 10], pushK(f, 1545, 0.002), { fov: 46, near: 1 });
 // 13: the harbour again: water comes back, fish jump
-const C13a = (f: number) => dolly([PIER_END[0] + 10, 3.4, PIER_END[2] + 12], [PIER_END[0] - 3, -1.0, PIER_END[2] - 16], pushK(f, 1690, 0.0025), { fov: 44, near: 0.3 });
+const C13a = (f: number) => dolly([PIER_END[0] + 6.5, 3.0, PIER_END[2] + 10], [PIER_END[0] - 1.5, 1.2, PIER_END[2] - 4], pushK(f, 1690, 0.0025), { fov: 44, near: 0.3 });
 // 14: twist: rise over the dam: blue small sea on the left, endless sand on the right
-const C14a = (f: number) => dolly([520, 260, 120], [180, -14, -300], pushK(f, 1785, 0.0012), { fov: 48, near: 2 });
-const C14b = (f: number) => dolly([760, 520, 200], [100, -18, -480], pushK(f, 1860, 0.001), { fov: 54, roll: 0.0, near: 3 });
+const C14a = (f: number) => dolly([470, 110, -112], [262, -8, -132], pushK(f, 1785, 0.0012), { fov: 48, near: 1.5 });
+const C14b = (f: number) => dolly([700, 330, -95], [180, -12, -150], pushK(f, 1860, 0.001), { fov: 54, near: 2.5 });
 
 const CAMS: Record<number, Key[]> = {
   1: [{ f: 0, s: C1a }, { f: 70, dur: 40, s: C1b }, { f: 140, dur: 30, s: C1c }],

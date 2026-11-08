@@ -106,7 +106,7 @@ const rounded = (w: number, d: number, rr: number) => {
 };
 
 type Mats = Record<string, THREE.Material>;
-const SUN_SHOT: Record<number, { az?: number; el?: number }> = { 3: { az: 150, el: 22 }, 8: { az: 120, el: 40 }, 12: { az: 130, el: 40 }, 14: { az: 30, el: 9 } };
+const SUN_SHOT: Record<number, { az?: number; el?: number }> = { 2: { az: 150, el: 14 }, 3: { az: 150, el: 22 }, 8: { az: 120, el: 40 }, 11: { az: 140, el: 18 }, 12: { az: 130, el: 40 }, 14: { az: 30, el: 9 } };
 
 export class World {
   root = new THREE.Group();
@@ -282,7 +282,7 @@ export class World {
     }
 
     // ---- river gate leaf (moves), the dam (grows) ----
-    this.gate = new THREE.Mesh(boxGeo(V(-1, -3, -26), V(1, 2.5, 26)), M.iron);
+    this.gate = new THREE.Mesh(boxGeo(V(-0.6, -2.2, -25), V(0.6, 1.2, 25)), M.concrete);
     this.gate.position.set(CANAL[0][0] - 30, terrainH(CANAL[0][0] - 30, CANAL[0][2] + 26), CANAL[0][2]); this.gate.rotation.y = 0;
     this.gate.castShadow = true; R.add(this.gate);
     this.dam = new THREE.Mesh(boxGeo(V(0, -12, -6), V(1, -1.0, 6), 3), M.concrete);

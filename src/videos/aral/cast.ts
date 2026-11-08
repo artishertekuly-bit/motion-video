@@ -201,7 +201,7 @@ export const stage = (id: number, f: number, cam: CamInfo, lv: Lv): Stage => {
       const n = 3 + Math.max(0, Math.min(12, Math.floor((f - 394) / 4)));
       for (let k = 0; k < n; k++) {
         const row = k < 5 ? 0 : k < 9 ? 1 : k < 12 ? 2 : 3, inRow = row === 0 ? k : row === 1 ? k - 5 : row === 2 ? k - 9 : k - 12;
-        out.fx.push({ key: `crate${k % 3}`, cw: 360, ch: 300, draw: (p) => fxCrate(p, k % 3), x: ex + 1.6 + (inRow - (4 - row) / 2) * 0.5, y: py + 0.24 + row * 0.42, z: ez + 1.0, w: 0.6, h: 0.5 });
+        out.fx.push({ key: `crate${k % 3}`, cw: 360, ch: 300, draw: (p) => fxCrate(p, k % 3), x: ex + 1.3 + (inRow - (4 - row) / 2) * 0.45, y: py + 0.24 + row * 0.42, z: ez + 6.0, w: 0.6, h: 0.5 });
       }
       break;
     }

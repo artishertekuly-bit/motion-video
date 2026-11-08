@@ -42,8 +42,10 @@ type Look = {
   beard?: string;
   backpack?: string;
   skirt?: string; // юбка поверх бёдер
+  scarf?: string; // орамал (апа)
+  bow?: boolean; // бантик
 };
-export type Kind = "young" | "master" | "boy" | "teacher" | "teen" | "girl90";
+export type Kind = "young" | "master" | "boy" | "teacher" | "teen" | "girl90" | "aruzhan" | "mom" | "apa" | "apa2";
 export const LOOKS: Record<Kind, Look> = {
   teacher: {
     skin: "#DDA582",
@@ -69,6 +71,56 @@ export const LOOKS: Record<Kind, Look> = {
     pants: "#4A5262",
     pantsDk: "#363C49",
     shoe: "#1C1C22",
+  },
+  aruzhan: {
+    skin: "#E8BC98",
+    skinDk: "#CB9C7A",
+    hair: "#1E1410",
+    top: "#2E3E66",
+    topDk: "#1F2B4A",
+    topHi: "#43578A",
+    under: "#FFFFFF",
+    pants: "#E8BC98",
+    pantsDk: "#CB9C7A",
+    shoe: "#1C1C22",
+    skirt: "#2E3E66",
+    bow: true,
+  },
+  mom: {
+    skin: "#D9A47E",
+    skinDk: "#BC8762",
+    hair: "#2A1C14",
+    top: "#3F7F6F",
+    topDk: "#2C5E52",
+    topHi: "#4F9784",
+    under: "#F2E6D0",
+    pants: "#4E4A5E",
+    pantsDk: "#3A3748",
+    shoe: "#6A4A3A",
+  },
+  apa: {
+    skin: "#C98F6A",
+    skinDk: "#A9714E",
+    hair: "#B9B9BE",
+    top: "#6B4E8A",
+    topDk: "#4E3866",
+    topHi: "#7E62A0",
+    pants: "#6B4E8A",
+    pantsDk: "#4E3866",
+    shoe: "#2A2A2E",
+    scarf: "#C0392B",
+  },
+  apa2: {
+    skin: "#CF9670",
+    skinDk: "#AE7653",
+    hair: "#B9B9BE",
+    top: "#8A5A3A",
+    topDk: "#664128",
+    topHi: "#A06C48",
+    pants: "#8A5A3A",
+    pantsDk: "#664128",
+    shoe: "#2A2A2E",
+    scarf: "#2E6FB0",
   },
   // школьница 90-х: коричневое платье и белый фартук
   girl90: {
@@ -279,19 +331,42 @@ export const Sheet2D: React.FC<{ w?: number; glow?: number }> = ({ w = 70, glow 
 // Голова без лица
 const Head: React.FC<{ L: Look; kind: string; glint?: number }> = ({ L, kind, glint = 0 }) => (
   <g>
-    {kind === "teacher" || kind === "girl90" ? <circle cx={-HR + 4} cy={-HR * 0.45} r={kind === "girl90" ? 14 : 20} fill={L.hair} /> : null}
+    {kind === "teacher" || kind === "girl90" || kind === "mom" ? <circle cx={-HR + 4} cy={-HR * 0.45} r={kind === "girl90" ? 14 : 20} fill={L.hair} /> : null}
+    {/* длинные волосы и хвост Аружан */}
+    {kind === "aruzhan" ? <path d={`M ${-HR + 4} ${-HR * 0.6} Q ${-HR - 46} -6 ${-HR - 20} ${HR + 46} Q ${-HR - 2} ${HR + 14} ${-HR + 12} -4 Z`} fill={L.hair} /> : null}
     <ellipse cx={4} cy={0} rx={HR * 0.92} ry={HR} fill={L.skin} />
     <ellipse cx={-6} cy={6} rx={HR * 0.6} ry={HR * 0.8} fill={L.skinDk} opacity={0.35} />
-    {/* волосы */}
-    {kind === "teacher" || kind === "girl90" ? (
+    {/* волосы / орамал */}
+    {L.scarf ? (
+      <g>
+        <path d={`M ${-HR - 8} 26 Q ${-HR - 14} ${-HR - 14} 6 ${-HR - 12} Q ${HR + 12} ${-HR - 10} ${HR + 6} -2 Q ${HR - 6} -26 10 -28 Q -14 -26 -18 22 Z`} fill={L.scarf} />
+        <path d={`M ${-HR - 8} 26 L ${-HR - 22} 56 L ${-HR + 8} 46 Z`} fill={L.scarf} />
+        {[
+          [-20, -30],
+          [4, -38],
+          [26, -24],
+          [-32, -6],
+          [-26, 14],
+        ].map(([dx, dy], i) => (
+          <circle key={i} cx={dx} cy={dy} r={4} fill="#FFFFFF" opacity={0.85} />
+        ))}
+      </g>
+    ) : kind === "teacher" || kind === "girl90" || kind === "mom" || kind === "aruzhan" ? (
       <path d={`M ${-HR - 2} 10 Q ${-HR - 6} ${-HR - 8} 4 ${-HR - 7} Q ${HR + 6} ${-HR - 4} ${HR} -14 Q ${HR - 18} -30 6 -28 Q -16 -24 -24 8 Z`} fill={L.hair} />
     ) : kind === "master" ? (
       <path d={`M ${-HR - 2} 6 Q ${-HR - 6} ${-HR - 6} 2 ${-HR - 6} Q ${HR + 4} ${-HR - 4} ${HR - 2} -10 Q ${HR - 14} -26 ${8} -26 Q -14 -24 -22 4 Z`} fill={L.hair} />
     ) : (
       <path d={`M ${-HR - 3} 12 Q ${-HR - 8} ${-HR - 10} 4 ${-HR - 9} Q ${HR + 8} ${-HR - 6} ${HR + 2} -8 Q ${HR - 10} -30 10 -24 Q -10 -22 -20 10 Z`} fill={L.hair} />
     )}
+    {/* бантик */}
+    {L.bow ? (
+      <g transform={`translate(${-HR + 2} ${-HR * 0.62})`}>
+        <path d="M 0 0 L -28 -18 L -28 18 Z M 0 0 L 28 -18 L 28 18 Z" fill="#FFFFFF" />
+        <circle r={8} fill="#EDEDED" />
+      </g>
+    ) : null}
     {/* ухо */}
-    <ellipse cx={-6} cy={4} rx={7} ry={10} fill={L.skinDk} />
+    {L.scarf ? null : <ellipse cx={-6} cy={4} rx={7} ry={10} fill={L.skinDk} />}
     {/* борода у мастера */}
     {L.beard ? <path d={`M -6 18 Q 6 ${HR + 10} ${HR - 2} 16 Q ${HR - 8} 30 18 30 Q 4 30 -6 18 Z`} fill={L.beard} /> : null}
     {/* очки учительницы и их блеск («бүркіт көз») */}
@@ -352,6 +427,15 @@ const Torso: React.FC<{ L: Look; kind: string }> = ({ L, kind }) => (
         <path d={`M 14 ${-TO + 4} L 36 ${-TO + 18} L 28 ${-TO + 30} Z`} fill={L.under} />
       </>
     ) : null}
+    {/* Аружан: белая блузка под жилеткой */}
+    {kind === "aruzhan" ? (
+      <>
+        <path d={`M 10 ${-TO + 2} L 36 ${-TO + 20} L 32 ${-TO + 70} L 14 ${-TO + 60} Z`} fill={L.under} />
+        <path d={`M -38 ${-TO + 30} L -42 ${-TO + 4} L -20 ${-TO} Z`} fill={L.under} />
+      </>
+    ) : null}
+    {/* мама: фартук */}
+    {kind === "mom" ? <path d={`M 6 ${-TO + 40} L 40 ${-TO + 44} L 46 20 L 10 20 Z`} fill={L.under} /> : null}
   </g>
 );
 

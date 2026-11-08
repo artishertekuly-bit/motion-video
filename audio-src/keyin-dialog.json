@@ -1,0 +1,16 @@
+[
+  {"id": "b1", "voice": "eXEr1iiK7vnX4qM1sNwu", "text": "[excited] Әке, қараңызшы! Мен сурет салдым!"},
+  {"id": "d1", "voice": "Wa5gy7cwht3pl9r3Ml1W", "text": "[distracted] Кейін, балам."},
+  {"id": "n1", "voice": "wbGUrCE6cHpRbU9idaMy", "text": "Айбардың әкесі — жақсы адам. Тек оның ең жиі айтатын сөзі — кейін."},
+  {"id": "b2", "voice": "eXEr1iiK7vnX4qM1sNwu", "text": "[excited] Әке, ертең мектепте көрме болады!"},
+  {"id": "d2", "voice": "Wa5gy7cwht3pl9r3Ml1W", "text": "[hurried] Кейін, кейін. Кешігіп барамын."},
+  {"id": "b3", "voice": "eXEr1iiK7vnX4qM1sNwu", "text": "[softly] Әке, ертең келесіз бе?"},
+  {"id": "d3", "voice": "Wa5gy7cwht3pl9r3Ml1W", "text": "[distracted] Көрерміз. Кейін айтам."},
+  {"id": "n2", "voice": "wbGUrCE6cHpRbU9idaMy", "text": "Айбар суретін бүктеп, рюкзагына салды.", "prev": "Айбардың әкесі — жақсы адам. Тек оның ең жиі айтатын сөзі — кейін."},
+  {"id": "n3", "voice": "wbGUrCE6cHpRbU9idaMy", "text": "Ертеңіне мектептен хабарласты.", "prev": "Айбар суретін бүктеп, рюкзагына салды."},
+  {"id": "t1", "voice": "pFZP5JQG7iQjIQuC4Bku", "text": "[warmly] Айбардың суреті бірінші орын алды. Келіп көріңізші."},
+  {"id": "b4", "voice": "eXEr1iiK7vnX4qM1sNwu", "text": "[sadly] Ұнамады ма? Мейлі... кейін қарарсыз."},
+  {"id": "d4", "voice": "Wa5gy7cwht3pl9r3Ml1W", "text": "[gently] Жоқ, балам. Қазір."},
+  {"id": "n4", "voice": "wbGUrCE6cHpRbU9idaMy", "text": "Сол кеші телефон алғаш рет сөреде жалғыз жатты.", "prev": "Ертеңіне мектептен хабарласты."},
+  {"id": "n5", "voice": "wbGUrCE6cHpRbU9idaMy", "text": "Бүгін балаңа «кейін» десең, ертең ол саған «кейін» дейді.", "prev": "Сол кеші телефон алғаш рет сөреде жалғыз жатты."}
+]

@@ -1,0 +1,536 @@
+{
+ "b1": {
+  "file": "keyin/audio/b1.mp3",
+  "duration": 2.88,
+  "words": [
+   {
+    "word": "Әке,",
+    "start": 0.137,
+    "end": 0.48
+   },
+   {
+    "word": "қараңызшы!",
+    "start": 0.56,
+    "end": 1.36
+   },
+   {
+    "word": "Мен",
+    "start": 1.52,
+    "end": 1.68
+   },
+   {
+    "word": "сурет",
+    "start": 1.76,
+    "end": 2.08
+   },
+   {
+    "word": "салдым!",
+    "start": 2.16,
+    "end": 2.88
+   }
+  ]
+ },
+ "d1": {
+  "file": "keyin/audio/d1.mp3",
+  "duration": 2.08,
+  "words": [
+   {
+    "word": "Кейін,",
+    "start": 0.16,
+    "end": 1.04
+   },
+   {
+    "word": "балам.",
+    "start": 1.28,
+    "end": 2.08
+   }
+  ]
+ },
+ "n1": {
+  "file": "keyin/audio/n1.mp3",
+  "duration": 5.52,
+  "words": [
+   {
+    "word": "Айбардың",
+    "start": 0,
+    "end": 0.56
+   },
+   {
+    "word": "әкесі",
+    "start": 0.6,
+    "end": 1.04
+   },
+   {
+    "word": "—",
+    "start": 1.28,
+    "end": 1.32
+   },
+   {
+    "word": "жақсы",
+    "start": 1.36,
+    "end": 1.68
+   },
+   {
+    "word": "адам.",
+    "start": 1.72,
+    "end": 2.2
+   },
+   {
+    "word": "Тек",
+    "start": 2.4,
+    "end": 2.56
+   },
+   {
+    "word": "оның",
+    "start": 2.6,
+    "end": 2.96
+   },
+   {
+    "word": "ең",
+    "start": 3.04,
+    "end": 3.28
+   },
+   {
+    "word": "жиі",
+    "start": 3.36,
+    "end": 3.52
+   },
+   {
+    "word": "айтатын",
+    "start": 3.56,
+    "end": 4
+   },
+   {
+    "word": "сөзі",
+    "start": 4.04,
+    "end": 4.4
+   },
+   {
+    "word": "—",
+    "start": 4.8,
+    "end": 4.853
+   },
+   {
+    "word": "кейін.",
+    "start": 4.907,
+    "end": 5.6
+   }
+  ]
+ },
+ "b2": {
+  "file": "keyin/audio/b2.mp3",
+  "duration": 2.88,
+  "words": [
+   {
+    "word": "Әке,",
+    "start": 0.08,
+    "end": 0.72
+   },
+   {
+    "word": "ертең",
+    "start": 0.8,
+    "end": 1.12
+   },
+   {
+    "word": "мектепте",
+    "start": 1.16,
+    "end": 1.6
+   },
+   {
+    "word": "көрме",
+    "start": 1.68,
+    "end": 2
+   },
+   {
+    "word": "болады!",
+    "start": 2.12,
+    "end": 2.88
+   }
+  ]
+ },
+ "d2": {
+  "file": "keyin/audio/d2.mp3",
+  "duration": 2.64,
+  "words": [
+   {
+    "word": "Кейін,",
+    "start": 0.137,
+    "end": 0.56
+   },
+   {
+    "word": "кейін.",
+    "start": 0.64,
+    "end": 1.44
+   },
+   {
+    "word": "Кешігіп",
+    "start": 1.48,
+    "end": 1.867
+   },
+   {
+    "word": "барамын.",
+    "start": 1.893,
+    "end": 2.64
+   }
+  ]
+ },
+ "b3": {
+  "file": "keyin/audio/b3.mp3",
+  "duration": 2.24,
+  "words": [
+   {
+    "word": "Әке,",
+    "start": 0.08,
+    "end": 0.68
+   },
+   {
+    "word": "ертең",
+    "start": 0.88,
+    "end": 1.2
+   },
+   {
+    "word": "келесіз",
+    "start": 1.28,
+    "end": 1.76
+   },
+   {
+    "word": "бе?",
+    "start": 1.84,
+    "end": 2.08
+   }
+  ]
+ },
+ "d3": {
+  "file": "keyin/audio/d3.mp3",
+  "duration": 1.84,
+  "words": [
+   {
+    "word": "Көрерміз.",
+    "start": 0.08,
+    "end": 0.88
+   },
+   {
+    "word": "Кейін",
+    "start": 1.12,
+    "end": 1.32
+   },
+   {
+    "word": "айтам.",
+    "start": 1.36,
+    "end": 1.92
+   }
+  ]
+ },
+ "n2": {
+  "file": "keyin/audio/n2.mp3",
+  "duration": 2.88,
+  "words": [
+   {
+    "word": "Айбар",
+    "start": 0,
+    "end": 0.4
+   },
+   {
+    "word": "суретін",
+    "start": 0.48,
+    "end": 0.88
+   },
+   {
+    "word": "бүктеп,",
+    "start": 0.96,
+    "end": 1.653
+   },
+   {
+    "word": "рюкзагына",
+    "start": 1.707,
+    "end": 2.24
+   },
+   {
+    "word": "салды.",
+    "start": 2.36,
+    "end": 2.96
+   }
+  ]
+ },
+ "n3": {
+  "file": "keyin/audio/n3.mp3",
+  "duration": 2.16,
+  "words": [
+   {
+    "word": "Ертеңіне",
+    "start": 0,
+    "end": 0.64
+   },
+   {
+    "word": "мектептен",
+    "start": 0.68,
+    "end": 1.2
+   },
+   {
+    "word": "хабарласты.",
+    "start": 1.24,
+    "end": 2.24
+   }
+  ]
+ },
+ "t1": {
+  "file": "keyin/audio/t1.mp3",
+  "duration": 3.84,
+  "words": [
+   {
+    "word": "Айбардың",
+    "start": 0.16,
+    "end": 0.72
+   },
+   {
+    "word": "суреті",
+    "start": 0.76,
+    "end": 1.2
+   },
+   {
+    "word": "бірінші",
+    "start": 1.24,
+    "end": 1.6
+   },
+   {
+    "word": "орын",
+    "start": 1.68,
+    "end": 1.92
+   },
+   {
+    "word": "алды.",
+    "start": 1.96,
+    "end": 2.56
+   },
+   {
+    "word": "Келіп",
+    "start": 2.64,
+    "end": 2.88
+   },
+   {
+    "word": "көріңізші.",
+    "start": 2.92,
+    "end": 3.84
+   }
+  ]
+ },
+ "b4": {
+  "file": "keyin/audio/b4.mp3",
+  "duration": 3.76,
+  "words": [
+   {
+    "word": "Ұнамады",
+    "start": 0.16,
+    "end": 0.68
+   },
+   {
+    "word": "ма?",
+    "start": 0.72,
+    "end": 1.28
+   },
+   {
+    "word": "Мейлі...",
+    "start": 1.6,
+    "end": 2.32
+   },
+   {
+    "word": "кейін",
+    "start": 2.56,
+    "end": 2.88
+   },
+   {
+    "word": "қарарсыз.",
+    "start": 2.96,
+    "end": 3.84
+   }
+  ]
+ },
+ "d4": {
+  "file": "keyin/audio/d4.mp3",
+  "duration": 2.16,
+  "words": [
+   {
+    "word": "Жоқ,",
+    "start": 0.22,
+    "end": 0.533
+   },
+   {
+    "word": "балам.",
+    "start": 0.587,
+    "end": 1.36
+   },
+   {
+    "word": "Қазір.",
+    "start": 1.4,
+    "end": 2
+   }
+  ]
+ },
+ "n4": {
+  "file": "keyin/audio/n4.mp3",
+  "duration": 3.52,
+  "words": [
+   {
+    "word": "Сол",
+    "start": 0,
+    "end": 0.24
+   },
+   {
+    "word": "кеші",
+    "start": 0.32,
+    "end": 0.64
+   },
+   {
+    "word": "телефон",
+    "start": 0.72,
+    "end": 1.2
+   },
+   {
+    "word": "алғаш",
+    "start": 1.32,
+    "end": 1.68
+   },
+   {
+    "word": "рет",
+    "start": 1.72,
+    "end": 1.92
+   },
+   {
+    "word": "сөреде",
+    "start": 1.96,
+    "end": 2.48
+   },
+   {
+    "word": "жалғыз",
+    "start": 2.6,
+    "end": 2.92
+   },
+   {
+    "word": "жатты.",
+    "start": 2.96,
+    "end": 3.6
+   }
+  ]
+ },
+ "n5": {
+  "file": "keyin/audio/n5.mp3",
+  "duration": 4.08,
+  "words": [
+   {
+    "word": "Бүгін",
+    "start": 0,
+    "end": 0.32
+   },
+   {
+    "word": "балаңа",
+    "start": 0.36,
+    "end": 0.96
+   },
+   {
+    "word": "«кейін»",
+    "start": 1.013,
+    "end": 1.387
+   },
+   {
+    "word": "десең,",
+    "start": 1.413,
+    "end": 2.04
+   },
+   {
+    "word": "ертең",
+    "start": 2.08,
+    "end": 2.44
+   },
+   {
+    "word": "ол",
+    "start": 2.48,
+    "end": 2.56
+   },
+   {
+    "word": "саған",
+    "start": 2.64,
+    "end": 3.12
+   },
+   {
+    "word": "«кейін»",
+    "start": 3.173,
+    "end": 3.52
+   },
+   {
+    "word": "дейді.",
+    "start": 3.64,
+    "end": 4.16
+   }
+  ]
+ },
+ "_sfx": {
+  "k-piano": {
+   "file": "keyin/sfx-n/k-piano.mp3",
+   "duration": 22
+  },
+  "k-hope": {
+   "file": "keyin/sfx-n/k-hope.mp3",
+   "duration": 18
+  },
+  "k-shutter": {
+   "file": "keyin/sfx-n/k-shutter.mp3",
+   "duration": 0.6
+  },
+  "k-crayon": {
+   "file": "keyin/sfx-n/k-crayon.mp3",
+   "duration": 3
+  },
+  "k-fold": {
+   "file": "keyin/sfx-n/k-fold.mp3",
+   "duration": 1.2
+  },
+  "s-stamp": {
+   "file": "keyin/sfx-n/s-stamp.mp3",
+   "duration": 1.2
+  },
+  "s-vibrate": {
+   "file": "keyin/sfx-n/s-vibrate.mp3",
+   "duration": 1.6
+  },
+  "s-notify": {
+   "file": "keyin/sfx-n/s-notify.mp3",
+   "duration": 1
+  },
+  "s-typing": {
+   "file": "keyin/sfx-n/s-typing.mp3",
+   "duration": 2.48
+  },
+  "s-heart": {
+   "file": "keyin/sfx-n/s-heart.mp3",
+   "duration": 6
+  },
+  "s-door": {
+   "file": "keyin/sfx-n/s-door.mp3",
+   "duration": 1.48
+  },
+  "s-steps": {
+   "file": "keyin/sfx-n/s-steps.mp3",
+   "duration": 2.48
+  },
+  "s-crowd": {
+   "file": "keyin/sfx-n/s-crowd.mp3",
+   "duration": 6
+  },
+  "s-room": {
+   "file": "keyin/sfx-n/s-room.mp3",
+   "duration": 20
+  },
+  "s-whoosh": {
+   "file": "keyin/sfx-n/s-whoosh.mp3",
+   "duration": 0.88
+  },
+  "s-tick": {
+   "file": "keyin/sfx-n/s-tick.mp3",
+   "duration": 10
+  },
+  "s-ping": {
+   "file": "keyin/sfx-n/s-ping.mp3",
+   "duration": 1.6
+  }
+ }
+}

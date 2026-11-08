@@ -1,0 +1,7 @@
+[
+  {"id": "k-piano", "text": "Gentle solo felt piano loop, slow, tender and slightly melancholic, family drama underscore, quiet, no drums, no vocals", "duration": 22, "loop": true, "influence": 0.6},
+  {"id": "k-hope", "text": "Warm hopeful solo piano with soft string pad, gentle uplifting resolution, slow, quiet, no drums, no vocals", "duration": 18, "loop": true, "influence": 0.6},
+  {"id": "k-shutter", "text": "Single smartphone camera shutter click, close, clean", "duration": 0.6},
+  {"id": "k-crayon", "text": "Child drawing with wax crayons on paper, quick waxy scribbling strokes, close up", "duration": 3},
+  {"id": "k-fold", "text": "Folding a sheet of drawing paper in half, crisp paper crease, close", "duration": 1.2}
+]

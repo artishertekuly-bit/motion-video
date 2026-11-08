@@ -9,6 +9,7 @@ import { KeyinComposition } from "./keyin";
 import { BridgeTestComposition } from "./videos/bridgetest";
 import { AralComposition } from "./videos/aral";
 import { Ubt2Composition } from "./videos/ubt2/Ubt2";
+import { TundeComposition } from "./tunde";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ export const RemotionRoot: React.FC = () => {
       <BridgeTestComposition />
       <AralComposition />
       <Ubt2Composition />
+      <TundeComposition />
     </>
   );
 };

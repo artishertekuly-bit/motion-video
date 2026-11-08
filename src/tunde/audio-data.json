@@ -1,0 +1,717 @@
+{
+ "h1": {
+  "file": "tunde/audio/h1.mp3",
+  "duration": 3.92,
+  "words": [
+   {
+    "word": "Естідің",
+    "start": 0.16,
+    "end": 0.56
+   },
+   {
+    "word": "бе?..",
+    "start": 0.68,
+    "end": 1.173
+   },
+   {
+    "word": "Қоңырау",
+    "start": 1.36,
+    "end": 1.76
+   },
+   {
+    "word": "соғылып",
+    "start": 1.84,
+    "end": 2.16
+   },
+   {
+    "word": "тұр.",
+    "start": 2.2,
+    "end": 2.64
+   },
+   {
+    "word": "Түн",
+    "start": 2.88,
+    "end": 3
+   },
+   {
+    "word": "ортасында.",
+    "start": 3.04,
+    "end": 3.92
+   }
+  ]
+ },
+ "n1": {
+  "file": "tunde/audio/n1.mp3",
+  "duration": 7.28,
+  "words": [
+   {
+    "word": "Бұл",
+    "start": 0.16,
+    "end": 0.28
+   },
+   {
+    "word": "оқиға",
+    "start": 0.32,
+    "end": 0.8
+   },
+   {
+    "word": "тоғызыншы",
+    "start": 1.04,
+    "end": 1.52
+   },
+   {
+    "word": "сыныпта",
+    "start": 1.56,
+    "end": 1.92
+   },
+   {
+    "word": "болған.",
+    "start": 2,
+    "end": 2.64
+   },
+   {
+    "word": "Біз",
+    "start": 2.96,
+    "end": 3.12
+   },
+   {
+    "word": "үшеуміз",
+    "start": 3.16,
+    "end": 3.6
+   },
+   {
+    "word": "мектеп",
+    "start": 4,
+    "end": 4.32
+   },
+   {
+    "word": "мерейтойына",
+    "start": 4.4,
+    "end": 5.04
+   },
+   {
+    "word": "сахна",
+    "start": 5.08,
+    "end": 5.44
+   },
+   {
+    "word": "безендіріп,",
+    "start": 5.48,
+    "end": 6.24
+   },
+   {
+    "word": "кешігіп",
+    "start": 6.28,
+    "end": 6.72
+   },
+   {
+    "word": "қалдық.",
+    "start": 6.76,
+    "end": 7.36
+   }
+  ]
+ },
+ "n2": {
+  "file": "tunde/audio/n2.mp3",
+  "duration": 3.92,
+  "words": [
+   {
+    "word": "Тазалықшы",
+    "start": 0,
+    "end": 0.533
+   },
+   {
+    "word": "апай",
+    "start": 0.587,
+    "end": 0.8
+   },
+   {
+    "word": "бізді",
+    "start": 0.84,
+    "end": 1.12
+   },
+   {
+    "word": "байқамай,",
+    "start": 1.16,
+    "end": 1.84
+   },
+   {
+    "word": "есікті",
+    "start": 1.92,
+    "end": 2.32
+   },
+   {
+    "word": "сыртынан",
+    "start": 2.4,
+    "end": 2.88
+   },
+   {
+    "word": "құлыптап",
+    "start": 2.92,
+    "end": 3.36
+   },
+   {
+    "word": "кетті.",
+    "start": 3.4,
+    "end": 4
+   }
+  ]
+ },
+ "m1": {
+  "file": "tunde/audio/m1.mp3",
+  "duration": 2.96,
+  "words": [
+   {
+    "word": "Желі",
+    "start": 0.24,
+    "end": 0.56
+   },
+   {
+    "word": "жоқ...",
+    "start": 0.64,
+    "end": 1.52
+   },
+   {
+    "word": "Енді",
+    "start": 1.6,
+    "end": 1.84
+   },
+   {
+    "word": "не",
+    "start": 1.92,
+    "end": 2
+   },
+   {
+    "word": "істейміз?",
+    "start": 2.053,
+    "end": 2.96
+   }
+  ]
+ },
+ "n3": {
+  "file": "tunde/audio/n3.mp3",
+  "duration": 3.92,
+  "words": [
+   {
+    "word": "Біріншісі",
+    "start": 0,
+    "end": 0.96
+   },
+   {
+    "word": "—",
+    "start": 1.04,
+    "end": 1.147
+   },
+   {
+    "word": "бор.",
+    "start": 1.253,
+    "end": 2
+   },
+   {
+    "word": "Тақтаға",
+    "start": 2.04,
+    "end": 2.64
+   },
+   {
+    "word": "өзі",
+    "start": 2.72,
+    "end": 2.96
+   },
+   {
+    "word": "жаза",
+    "start": 3,
+    "end": 3.24
+   },
+   {
+    "word": "бастады.",
+    "start": 3.28,
+    "end": 4
+   }
+  ]
+ },
+ "n4": {
+  "file": "tunde/audio/n4.mp3",
+  "duration": 5.92,
+  "words": [
+   {
+    "word": "Екіншісі",
+    "start": 0,
+    "end": 0.64
+   },
+   {
+    "word": "—",
+    "start": 0.96,
+    "end": 0.987
+   },
+   {
+    "word": "қадам",
+    "start": 1.013,
+    "end": 1.28
+   },
+   {
+    "word": "дыбысы.",
+    "start": 1.36,
+    "end": 2.4
+   },
+   {
+    "word": "Жоғарғы",
+    "start": 2.48,
+    "end": 2.96
+   },
+   {
+    "word": "қабатта.",
+    "start": 3,
+    "end": 4.08
+   },
+   {
+    "word": "Ал",
+    "start": 4.16,
+    "end": 4.28
+   },
+   {
+    "word": "онда",
+    "start": 4.32,
+    "end": 4.8
+   },
+   {
+    "word": "ешкім",
+    "start": 4.88,
+    "end": 5.2
+   },
+   {
+    "word": "жоқ",
+    "start": 5.28,
+    "end": 5.44
+   },
+   {
+    "word": "еді.",
+    "start": 5.52,
+    "end": 6
+   }
+  ]
+ },
+ "n5": {
+  "file": "tunde/audio/n5.mp3",
+  "duration": 3.28,
+  "words": [
+   {
+    "word": "Үшіншісі",
+    "start": 0.08,
+    "end": 0.72
+   },
+   {
+    "word": "—",
+    "start": 1.2,
+    "end": 1.227
+   },
+   {
+    "word": "түн",
+    "start": 1.253,
+    "end": 1.44
+   },
+   {
+    "word": "ортасында",
+    "start": 1.56,
+    "end": 2.08
+   },
+   {
+    "word": "қоңырау",
+    "start": 2.16,
+    "end": 2.56
+   },
+   {
+    "word": "соғылды.",
+    "start": 2.64,
+    "end": 3.36
+   }
+  ]
+ },
+ "d1": {
+  "file": "tunde/audio/d1.mp3",
+  "duration": 0.88,
+  "words": [
+   {
+    "word": "Қаш!",
+    "start": 0.08,
+    "end": 0.88
+   }
+  ]
+ },
+ "a1": {
+  "file": "tunde/audio/a1.mp3",
+  "duration": 3.6,
+  "words": [
+   {
+    "word": "Әй,",
+    "start": 0.16,
+    "end": 0.48
+   },
+   {
+    "word": "балалар!",
+    "start": 0.56,
+    "end": 1.24
+   },
+   {
+    "word": "Түн",
+    "start": 1.44,
+    "end": 1.6
+   },
+   {
+    "word": "ортасында",
+    "start": 1.68,
+    "end": 2.16
+   },
+   {
+    "word": "мұнда",
+    "start": 2.187,
+    "end": 2.48
+   },
+   {
+    "word": "не",
+    "start": 2.56,
+    "end": 2.64
+   },
+   {
+    "word": "істеп",
+    "start": 2.68,
+    "end": 2.88
+   },
+   {
+    "word": "жүрсіңдер?",
+    "start": 2.92,
+    "end": 3.68
+   }
+  ]
+ },
+ "n6": {
+  "file": "tunde/audio/n6.mp3",
+  "duration": 6.16,
+  "words": [
+   {
+    "word": "Ол",
+    "start": 0,
+    "end": 0.16
+   },
+   {
+    "word": "бізді",
+    "start": 0.24,
+    "end": 0.72
+   },
+   {
+    "word": "артқы",
+    "start": 0.8,
+    "end": 1.08
+   },
+   {
+    "word": "есіктен",
+    "start": 1.12,
+    "end": 1.6
+   },
+   {
+    "word": "шығарып",
+    "start": 1.64,
+    "end": 2
+   },
+   {
+    "word": "салды.",
+    "start": 2.12,
+    "end": 3
+   },
+   {
+    "word": "Дамирдың",
+    "start": 3.04,
+    "end": 3.52
+   },
+   {
+    "word": "қолына",
+    "start": 3.56,
+    "end": 3.92
+   },
+   {
+    "word": "шамын",
+    "start": 4,
+    "end": 4.28
+   },
+   {
+    "word": "ұстатып,",
+    "start": 4.32,
+    "end": 5.08
+   },
+   {
+    "word": "бір-ақ",
+    "start": 5.12,
+    "end": 5.36
+   },
+   {
+    "word": "сөз",
+    "start": 5.44,
+    "end": 5.6
+   },
+   {
+    "word": "айтты:",
+    "start": 5.68,
+    "end": 6.24
+   }
+  ]
+ },
+ "a2": {
+  "file": "tunde/audio/a2.mp3",
+  "duration": 2.28,
+  "words": [
+   {
+    "word": "Түнде",
+    "start": 0.16,
+    "end": 0.48
+   },
+   {
+    "word": "мектеп",
+    "start": 0.52,
+    "end": 0.96
+   },
+   {
+    "word": "—",
+    "start": 1.28,
+    "end": 1.32
+   },
+   {
+    "word": "басқалардікі.",
+    "start": 1.36,
+    "end": 2.32
+   }
+  ]
+ },
+ "n7": {
+  "file": "tunde/audio/n7.mp3",
+  "duration": 3.44,
+  "words": [
+   {
+    "word": "Ертеңіне",
+    "start": 0,
+    "end": 0.72
+   },
+   {
+    "word": "біз",
+    "start": 0.76,
+    "end": 1.04
+   },
+   {
+    "word": "күзетші",
+    "start": 1.08,
+    "end": 1.48
+   },
+   {
+    "word": "атаға",
+    "start": 1.52,
+    "end": 2
+   },
+   {
+    "word": "рахмет",
+    "start": 2.08,
+    "end": 2.4
+   },
+   {
+    "word": "айтуға",
+    "start": 2.48,
+    "end": 2.8
+   },
+   {
+    "word": "бардық.",
+    "start": 2.88,
+    "end": 3.52
+   }
+  ]
+ },
+ "t1": {
+  "file": "tunde/audio/t1.mp3",
+  "duration": 4.424,
+  "words": [
+   {
+    "word": "Қандай",
+    "start": 0.08,
+    "end": 0.48
+   },
+   {
+    "word": "күзетші?",
+    "start": 0.52,
+    "end": 1.52
+   },
+   {
+    "word": "Сәкен",
+    "start": 1.6,
+    "end": 1.92
+   },
+   {
+    "word": "ата",
+    "start": 2.08,
+    "end": 2.24
+   },
+   {
+    "word": "он",
+    "start": 2.48,
+    "end": 2.64
+   },
+   {
+    "word": "жыл",
+    "start": 2.68,
+    "end": 2.8
+   },
+   {
+    "word": "бұрын",
+    "start": 2.84,
+    "end": 3.04
+   },
+   {
+    "word": "дүниеден",
+    "start": 3.08,
+    "end": 3.44
+   },
+   {
+    "word": "өткен",
+    "start": 3.48,
+    "end": 3.76
+   },
+   {
+    "word": "ғой...",
+    "start": 3.84,
+    "end": 4.4
+   }
+  ]
+ },
+ "n8": {
+  "file": "tunde/audio/n8.mp3",
+  "duration": 5.92,
+  "words": [
+   {
+    "word": "Сол",
+    "start": 0.16,
+    "end": 0.4
+   },
+   {
+    "word": "түні",
+    "start": 0.48,
+    "end": 0.72
+   },
+   {
+    "word": "бізді",
+    "start": 0.747,
+    "end": 1.12
+   },
+   {
+    "word": "кім",
+    "start": 1.16,
+    "end": 1.36
+   },
+   {
+    "word": "қорқытқанын",
+    "start": 1.4,
+    "end": 2.4
+   },
+   {
+    "word": "—",
+    "start": 2.427,
+    "end": 2.453
+   },
+   {
+    "word": "білмеймін.",
+    "start": 2.48,
+    "end": 3.68
+   },
+   {
+    "word": "Ал",
+    "start": 3.72,
+    "end": 3.92
+   },
+   {
+    "word": "кім",
+    "start": 3.96,
+    "end": 4.16
+   },
+   {
+    "word": "құтқарғанын",
+    "start": 4.187,
+    "end": 4.88
+   },
+   {
+    "word": "—",
+    "start": 5.28,
+    "end": 5.307
+   },
+   {
+    "word": "білемін.",
+    "start": 5.333,
+    "end": 6
+   }
+  ]
+ },
+ "_sfx": {
+  "t-bell": {
+   "file": "tunde/sfx-n/t-bell.mp3",
+   "duration": 4.48
+  },
+  "t-musicbox": {
+   "file": "tunde/sfx-n/t-musicbox.mp3",
+   "duration": 22
+  },
+  "t-night": {
+   "file": "tunde/sfx-n/t-night.mp3",
+   "duration": 20
+  },
+  "t-chalk": {
+   "file": "tunde/sfx-n/t-chalk.mp3",
+   "duration": 3.48
+  },
+  "t-steps": {
+   "file": "tunde/sfx-n/t-steps.mp3",
+   "duration": 5,
+   "hits": [
+    3.26,
+    4.44,
+    5
+   ]
+  },
+  "t-lock": {
+   "file": "tunde/sfx-n/t-lock.mp3",
+   "duration": 2.48
+  },
+  "t-handle": {
+   "file": "tunde/sfx-n/t-handle.mp3",
+   "duration": 2.2
+  },
+  "t-creak": {
+   "file": "tunde/sfx-n/t-creak.mp3",
+   "duration": 2.56
+  },
+  "t-click": {
+   "file": "tunde/sfx-n/t-click.mp3",
+   "duration": 0.48
+  },
+  "t-flicker": {
+   "file": "tunde/sfx-n/t-flicker.mp3",
+   "duration": 2.48
+  },
+  "t-static": {
+   "file": "tunde/sfx-n/t-static.mp3",
+   "duration": 0.8
+  },
+  "t-run": {
+   "file": "tunde/sfx-n/t-run.mp3",
+   "duration": 2.48
+  },
+  "t-breath": {
+   "file": "tunde/sfx-n/t-breath.mp3",
+   "duration": 3.48
+  },
+  "t-morning": {
+   "file": "tunde/sfx-n/t-morning.mp3",
+   "duration": 8
+  },
+  "t-sting": {
+   "file": "tunde/sfx-n/t-sting.mp3",
+   "duration": 2.2
+  },
+  "t-wind": {
+   "file": "tunde/sfx-n/t-wind.mp3",
+   "duration": 4
+  }
+ }
+}

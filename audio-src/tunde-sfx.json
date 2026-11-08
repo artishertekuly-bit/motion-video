@@ -1,0 +1,18 @@
+[
+  {"id": "t-bell", "text": "Old electric school bell ringing loudly and continuously in an empty echoing school corridor at night, metallic, harsh, reverberant", "duration": 4.5, "influence": 0.6},
+  {"id": "t-musicbox", "text": "Eerie slow music box lullaby, slightly detuned and warped, sparse notes, haunted childhood memory, quiet, no drums", "duration": 22, "loop": true, "influence": 0.6},
+  {"id": "t-night", "text": "Empty school building at night ambience, faint wind outside windows, distant hum of fluorescent lights, very quiet room tone", "duration": 20, "loop": true, "influence": 0.5},
+  {"id": "t-chalk", "text": "Chalk slowly writing on a blackboard by itself, long squeaky chalk strokes and taps, in a quiet empty classroom", "duration": 3.5},
+  {"id": "t-steps", "text": "Slow heavy footsteps on creaky wooden floor heard from the floor above through the ceiling, muffled, five steps then stop", "duration": 5},
+  {"id": "t-lock", "text": "Heavy old double door being locked from the outside with a key, metal bolt sliding, keys jingling, echo in empty hall", "duration": 2.5},
+  {"id": "t-handle", "text": "Old metal door handle slowly turning and squeaking, latch clicking, tense silence", "duration": 2.2},
+  {"id": "t-creak", "text": "Old wooden classroom door creaking open slowly, long eerie creak", "duration": 2.6},
+  {"id": "t-click", "text": "Single metal flashlight switch click, close up, crisp", "duration": 0.5},
+  {"id": "t-flicker", "text": "Fluorescent ceiling lights flickering on and off with electric buzz and clicks, then power cuts out", "duration": 2.5},
+  {"id": "t-static", "text": "Short burst of video camera static and digital interference noise, glitchy recording", "duration": 0.8},
+  {"id": "t-run", "text": "Three teenagers running fast down an empty school corridor, sneakers squeaking, echoing footsteps, panicked", "duration": 2.5},
+  {"id": "t-breath", "text": "Frightened teenager breathing fast and shallow while hiding, trying to be quiet, very close", "duration": 3.5},
+  {"id": "t-morning", "text": "Morning school yard ambience, birds chirping, distant children talking and laughing, bright and calm", "duration": 8, "loop": true},
+  {"id": "t-sting", "text": "Single deep orchestral string stab with low piano hit, shocking horror reveal, short tail", "duration": 2.2},
+  {"id": "t-wind", "text": "Cold night wind outside a school back door, gentle gust, leaves rustling", "duration": 4}
+]

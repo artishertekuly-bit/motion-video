@@ -95,7 +95,7 @@ export const Qagaz2: React.FC = () => {
       {f >= sec(COLLIDE) - 1 && f < sh07 ? <PaperBurst f={f} t0={COLLIDE} x={420} y={1180} n={20} seed="hit2" /> : null}
       {f >= sh06 && f < sh07 ? <PaperFall f={f} t0={sh06 / FPS} /> : null}
       {/* «шашылады»: кирпичи уважения превращаются в листы */}
-      {f >= sh19b && f < sh20 ? <PaperBurst f={f} t0={sh19b / FPS + 0.05} x={760} y={1380} n={26} power={1.3} seed="sha2" life={2.6} /> : null}
+      {f >= sh19b && f < sh20 ? <PaperBurst f={f} t0={sh19b / FPS + 0.05} x={800} y={1400} n={26} power={1.3} seed="sha2" life={2.6} /> : null}
 
       {WIPES.map((c) => (
         <PaperWipe key={c} f={f} cut={c} />

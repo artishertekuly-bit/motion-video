@@ -165,19 +165,12 @@ export const S08: React.FC<SceneProps> = ({ lf, len }) => {
 export const S09: React.FC<SceneProps> = ({ lf }) => {
   const mx = lerp(-300, 260, eo(lf / 30));
   return (
-    <Cam s={1.25} cx={540} cy={1700}>
+    <Cam s={1.12} cx={540} cy={1600}>
       <CorridorSide sx={5150} />
       <FloorPapers x0={250} x1={1000} y={1590} n={14} seed="s9" />
-      <Person kind="young" x={720} y={1690} s={1.25} face={-1} pose={H(KNEEL, { aFs: 85 + Math.sin(lf * 0.3) * 10, aFe: 10, head: 30 })} />
-      <defs>
-        <clipPath id="legs9">
-          <rect x={-400} y={1330} width={1600} height={800} />
-        </clipPath>
-      </defs>
-      {/* видны только брюки и туфли мастера — он входит в кадр */}
-      <g clipPath="url(#legs9)">
-        <Person kind="master" x={mx} y={1880} s={1.75} pose={lf < 30 ? walk(lf * 0.32, 1.0) : STAND} />
-      </g>
+      <Person kind="young" x={740} y={1690} s={1.25} face={-1} pose={H(KNEEL, { aFs: 85 + Math.sin(lf * 0.3) * 10, aFe: 10, head: 30 })} />
+      {/* мастер спокойно входит в кадр */}
+      <Person kind="master" x={mx} y={1710} s={1.32} pose={lf < 30 ? H(walk(lf * 0.32, 0.9), { aFs: 14, aFe: 30 }) : STAND} carry="notebook" />
     </Cam>
   );
 };
@@ -223,7 +216,7 @@ export const S11b: React.FC<SceneProps> = ({ lf, len }) => {
     <g>
       <rect width={1080} height={1920} fill="#2A1A0F" />
       <ellipse cx={540} cy={900} rx={700} ry={900} fill="#5A3A1E" opacity={0.7} filter="url(#blur20)" />
-      <Person kind="young" x={400} y={1840} s={1.55} pose={H(KNEEL, { ...HUG, head: -4 })} carry="stack" stackN={n} stackWobble={Math.sin(lf * 0.25) * cl(lf / len) * 2.2} />
+      <Person kind="young" x={400} y={1900} s={1.85} pose={H(KNEEL, { ...HUG, head: -4 })} carry="stack" stackN={n} stackWobble={Math.sin(lf * 0.25) * cl(lf / len) * 2.2} />
       {LABELS.map((lab, i) => {
         const t0 = 6 + i * (len - 16) / LABELS.length;
         const k = cl((lf - t0) / 9);
@@ -349,13 +342,14 @@ export const S16: React.FC<SceneProps> = ({ lf }) => {
       <rect width={1080} height={1920} fill="#1E140B" />
       <rect x={540} y={0} width={540} height={1920} fill="#2E1E10" />
       <ellipse cx={810} cy={1150} rx={330} ry={520} fill={P.sun} opacity={0.3 + 0.08 * Math.sin(lf * 0.15)} filter="url(#blur20)" />
-      <rect y={1640} width={1080} height={280} fill={P.floorDk} />
-      <rect x={537} y={300} width={6} height={1340} fill={P.amber} opacity={0.55 * k} />
-      {/* левая половина */}
-      <Person kind="young" x={270} y={1660} s={1.0} pose={H(STAND, { ...HUG, head: 18, lean: 6 })} carry="stack" stackN={Math.round(24 + 70 * k)} stackWobble={wob} />
-      {/* правая половина */}
-      <Person kind="master" x={800} y={1660} s={1.0} face={-1} pose={H(STAND, { aFs: 62, aFe: 70, head: 12 })} carry="notebook" />
-      <circle cx={735} cy={1250} r={60 + 6 * Math.sin(lf * 0.2)} fill={P.sunHi} opacity={0.35 * k} filter="url(#blur8)" />
+      <rect y={1700} width={1080} height={220} fill={P.floorDk} />
+      <ellipse cx={810} cy={1720} rx={300} ry={40} fill={P.sun} opacity={0.35} filter="url(#blur8)" />
+      <rect x={537} y={300} width={6} height={1400} fill={P.amber} opacity={0.55 * k} />
+      {/* левая половина: шаткая башня бумаг */}
+      <Person kind="young" x={250} y={1720} s={1.3} pose={H(STAND, { ...HUG, head: 18, lean: 6 })} carry="stack" stackN={Math.round(24 + 52 * k)} stackWobble={wob} />
+      {/* правая половина: один блокнот и тёплый свет */}
+      <Person kind="master" x={830} y={1720} s={1.3} face={-1} pose={H(STAND, { aFs: 62, aFe: 70, head: 12 })} carry="notebook" />
+      <circle cx={745} cy={1180} r={70 + 6 * Math.sin(lf * 0.2)} fill={P.sunHi} opacity={0.4 * k} filter="url(#blur8)" />
     </g>
   );
 };
@@ -406,11 +400,11 @@ const Bricks: React.FC<{ n: number; x: number; y: number; fade?: number }> = ({ 
   <g opacity={fade}>
     {new Array(n).fill(0).map((_, i) => (
       <g key={i}>
-        <rect x={x - 110 + (i % 2) * 14} y={y - (i + 1) * 74} width={220} height={66} rx={8} fill={P.amber} />
-        <rect x={x - 110 + (i % 2) * 14} y={y - (i + 1) * 74} width={220} height={16} rx={6} fill={P.sunHi} opacity={0.8} />
+        <rect x={x - 140 + (i % 2) * 16} y={y - (i + 1) * 92} width={280} height={84} rx={10} fill={P.amber} />
+        <rect x={x - 140 + (i % 2) * 16} y={y - (i + 1) * 92} width={280} height={20} rx={8} fill={P.sunHi} opacity={0.8} />
       </g>
     ))}
-    <ellipse cx={x} cy={y - n * 37} rx={200} ry={n * 50 + 60} fill={P.sun} opacity={0.25} filter="url(#blur20)" />
+    <ellipse cx={x} cy={y - n * 46} rx={240} ry={n * 60 + 70} fill={P.sun} opacity={0.25} filter="url(#blur20)" />
   </g>
 );
 export const S18b: React.FC<SceneProps> = ({ lf, len }) => {
@@ -419,9 +413,9 @@ export const S18b: React.FC<SceneProps> = ({ lf, len }) => {
     <g>
       <rect width={1080} height={1920} fill="#2A1A0F" />
       <ellipse cx={540} cy={1000} rx={700} ry={900} fill="#5A3A1E" opacity={0.6} filter="url(#blur20)" />
-      <rect y={1660} width={1080} height={260} fill={P.floorDk} />
-      <Person kind="master" x={330} y={1700} s={1.4} pose={H(STAND, { head: -4, aFs: 25, aFe: 40 })} carry="notebook" />
-      <Bricks n={n} x={760} y={1700} />
+      <rect y={1720} width={1080} height={200} fill={P.floorDk} />
+      <Person kind="master" x={300} y={1760} s={1.85} pose={H(STAND, { head: -4, aFs: 25, aFe: 40 })} carry="notebook" />
+      <Bricks n={n} x={800} y={1760} />
     </g>
   );
 };
@@ -439,9 +433,9 @@ export const S19b: React.FC<SceneProps> = ({ lf }) => {
   return (
     <g>
       <rect width={1080} height={1920} fill="#1E140B" />
-      <rect y={1660} width={1080} height={260} fill={P.floorDk} />
-      <Person kind="master" x={330} y={1700} s={1.4} pose={H(STAND, { head: 8 })} carry="notebook" />
-      <Bricks n={8} x={760} y={1700} fade={1 - k} />
+      <rect y={1720} width={1080} height={200} fill={P.floorDk} />
+      <Person kind="master" x={300} y={1760} s={1.85} pose={H(STAND, { head: 8 })} carry="notebook" />
+      <Bricks n={8} x={800} y={1760} fade={1 - k} />
     </g>
   );
 };

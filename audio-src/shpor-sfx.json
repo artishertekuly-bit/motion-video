@@ -1,0 +1,8 @@
+[
+  {"id": "s-tick", "text": "Wall clock ticking steadily in a quiet room at night, clear mechanical tick tock, close", "duration": 10, "loop": true},
+  {"id": "s-scribble", "text": "Pencil writing very fast on paper, quick scribbling and scratching, close up", "duration": 3},
+  {"id": "s-ping", "text": "Bright magical idea ping, light bulb moment, sparkling shimmer chime", "duration": 1.6},
+  {"id": "s-boing", "text": "Short comedic cartoon surprise boing with a quick slide whistle", "duration": 1.0},
+  {"id": "s-pop", "text": "Single short soft pop, cartoon item appears, clean", "duration": 0.5},
+  {"id": "s-music", "text": "Light playful sneaky pizzicato strings loop, tiptoe comedy, quiet, no drums, no vocals", "duration": 22, "loop": true, "influence": 0.6}
+]

@@ -41,8 +41,49 @@ type Look = {
   tie?: string;
   beard?: string;
   backpack?: string;
+  skirt?: string; // юбка поверх бёдер
 };
-export const LOOKS: Record<"young" | "master" | "boy", Look> = {
+export type Kind = "young" | "master" | "boy" | "teacher" | "teen" | "girl90";
+export const LOOKS: Record<Kind, Look> = {
+  teacher: {
+    skin: "#DDA582",
+    skinDk: "#BD8562",
+    hair: "#3A2418",
+    top: "#7A2E3A",
+    topDk: "#5A1F2A",
+    topHi: "#984052",
+    under: "#F4EFE6",
+    pants: "#2B2A30",
+    pantsDk: "#1E1D22",
+    shoe: "#1E1E22",
+    skirt: "#3A3A46",
+  },
+  teen: {
+    skin: "#E3B08A",
+    skinDk: "#C69170",
+    hair: "#17161B",
+    top: "#2E3E66",
+    topDk: "#1F2B4A",
+    topHi: "#43578A",
+    under: "#F4F4F0",
+    pants: "#4A5262",
+    pantsDk: "#363C49",
+    shoe: "#1C1C22",
+  },
+  // школьница 90-х: коричневое платье и белый фартук
+  girl90: {
+    skin: "#E6B892",
+    skinDk: "#C99472",
+    hair: "#4A2E1C",
+    top: "#6B3F24",
+    topDk: "#4E2C18",
+    topHi: "#85532F",
+    under: "#FFFFFF",
+    pants: "#E6B892",
+    pantsDk: "#C99472",
+    shoe: "#2A1A10",
+    skirt: "#6B3F24",
+  },
   young: {
     skin: "#E0AE86",
     skinDk: "#C48C66",
@@ -136,6 +177,8 @@ export const KNEEL: Pose = { lean: 8, head: 10, lFh: 88, lFk: 92, lBh: -8, lBk: 
 export const SIT: Pose = { lean: -14, head: -4, lFh: 82, lFk: 70, lBh: 76, lBk: 40, drop: 205, aFs: -30, aFe: 10, aBs: -40, aBe: 10 };
 export const CROUCH: Pose = { lean: 22, head: 18, lFh: 100, lFk: 130, lBh: 30, lBk: 135, drop: 130, aFs: 70, aFe: 40, aBs: 40, aBe: 30 };
 export const BOW: Pose = { ...STAND, lean: 12, head: 34, aFs: 50, aFe: 70, aBs: 40, aBe: 75 };
+// сидит на стуле за партой (таз на высоте ~135 px)
+export const SEAT: Pose = { lean: 6, head: 8, lFh: 90, lFk: 90, lBh: 86, lBk: 88, drop: 120, aFs: 62, aFe: 40, aBs: 52, aBe: 46 };
 
 export const mix = (a: Pose, b: Pose, t: number): Pose => {
   const k = Math.max(0, Math.min(1, t));
@@ -167,6 +210,7 @@ const Leg: React.FC<{ L: Look; h: number; k: number; back?: boolean }> = ({ L, h
   return (
     <g transform={`rotate(${-h})`}>
       <path d={`M -24 -6 L 24 -6 L 21 ${TH} L -19 ${TH} Z`} fill={pc} />
+      {L.skirt ? <path d={`M -34 -14 L 34 -14 L 44 ${TH * 0.92} L -40 ${TH * 0.92} Z`} fill={back ? L.topDk : L.skirt} /> : null}
       <g transform={`translate(0 ${TH}) rotate(${k})`}>
         <circle r={20} fill={pc} />
         <path d={`M -19 0 L 20 0 L 16 ${SH} L -15 ${SH} Z`} fill={pc} />
@@ -233,12 +277,15 @@ export const Sheet2D: React.FC<{ w?: number; glow?: number }> = ({ w = 70, glow 
 );
 
 // Голова без лица
-const Head: React.FC<{ L: Look; kind: string }> = ({ L, kind }) => (
+const Head: React.FC<{ L: Look; kind: string; glint?: number }> = ({ L, kind, glint = 0 }) => (
   <g>
+    {kind === "teacher" || kind === "girl90" ? <circle cx={-HR + 4} cy={-HR * 0.45} r={kind === "girl90" ? 14 : 20} fill={L.hair} /> : null}
     <ellipse cx={4} cy={0} rx={HR * 0.92} ry={HR} fill={L.skin} />
     <ellipse cx={-6} cy={6} rx={HR * 0.6} ry={HR * 0.8} fill={L.skinDk} opacity={0.35} />
     {/* волосы */}
-    {kind === "master" ? (
+    {kind === "teacher" || kind === "girl90" ? (
+      <path d={`M ${-HR - 2} 10 Q ${-HR - 6} ${-HR - 8} 4 ${-HR - 7} Q ${HR + 6} ${-HR - 4} ${HR} -14 Q ${HR - 18} -30 6 -28 Q -16 -24 -24 8 Z`} fill={L.hair} />
+    ) : kind === "master" ? (
       <path d={`M ${-HR - 2} 6 Q ${-HR - 6} ${-HR - 6} 2 ${-HR - 6} Q ${HR + 4} ${-HR - 4} ${HR - 2} -10 Q ${HR - 14} -26 ${8} -26 Q -14 -24 -22 4 Z`} fill={L.hair} />
     ) : (
       <path d={`M ${-HR - 3} 12 Q ${-HR - 8} ${-HR - 10} 4 ${-HR - 9} Q ${HR + 8} ${-HR - 6} ${HR + 2} -8 Q ${HR - 10} -30 10 -24 Q -10 -22 -20 10 Z`} fill={L.hair} />
@@ -247,6 +294,19 @@ const Head: React.FC<{ L: Look; kind: string }> = ({ L, kind }) => (
     <ellipse cx={-6} cy={4} rx={7} ry={10} fill={L.skinDk} />
     {/* борода у мастера */}
     {L.beard ? <path d={`M -6 18 Q 6 ${HR + 10} ${HR - 2} 16 Q ${HR - 8} 30 18 30 Q 4 30 -6 18 Z`} fill={L.beard} /> : null}
+    {/* очки учительницы и их блеск («бүркіт көз») */}
+    {kind === "teacher" ? (
+      <g>
+        <line x1={-4} y1={-6} x2={22} y2={-8} stroke="#1E1A18" strokeWidth={3} />
+        <rect x={20} y={-16} width={22} height={15} rx={4} fill="#CFE8FF" fillOpacity={0.35} stroke="#1E1A18" strokeWidth={3} />
+        {glint > 0 ? (
+          <g transform={`translate(34 -10) scale(${glint})`}>
+            <circle r={26} fill="#FFFFFF" opacity={0.35} />
+            <path d="M 0 -30 L 5 -5 L 30 0 L 5 5 L 0 30 L -5 5 L -30 0 L -5 -5 Z" fill="#FFFFFF" />
+          </g>
+        ) : null}
+      </g>
+    ) : null}
     {/* блик */}
     <ellipse cx={18} cy={-8} rx={12} ry={16} fill="#FFFFFF" opacity={0.12} />
   </g>
@@ -279,17 +339,31 @@ const Torso: React.FC<{ L: Look; kind: string }> = ({ L, kind }) => (
         <rect x={-68} y={-TO + 70} width={34} height={40} rx={8} fill="#A52C22" />
       </>
     ) : null}
+    {kind === "teen" ? <path d={`M 18 ${-TO + 4} L 36 ${-TO + 22} L 30 ${-TO + 50} Z`} fill={L.under} /> : null}
+    {kind === "teacher" ? (
+      <>
+        <path d={`M 20 ${-TO + 6} L 37 ${-TO + 26} L 34 ${-TO + 96} L 22 ${-TO + 96} Z`} fill={L.under} />
+        <circle cx={30} cy={-TO + 40} r={4} fill="#D9A441" />
+      </>
+    ) : null}
+    {kind === "girl90" ? (
+      <>
+        <path d={`M 4 ${-TO + 30} L 36 ${-TO + 30} L 40 -6 L 8 -6 Z`} fill={L.under} />
+        <path d={`M 14 ${-TO + 4} L 36 ${-TO + 18} L 28 ${-TO + 30} Z`} fill={L.under} />
+      </>
+    ) : null}
   </g>
 );
 
 export type PersonProps = {
-  kind: "young" | "master" | "boy";
+  kind: Kind;
+  glint?: number;
   x: number;
   y: number;
   s?: number;
   face?: 1 | -1;
   pose: Pose;
-  carry?: "stack" | "notebook" | "sheet" | null;
+  carry?: "stack" | "notebook" | "sheet" | "pencil" | null;
   stackN?: number;
   stackWobble?: number;
   sheetGlow?: number;
@@ -312,6 +386,7 @@ export const Person: React.FC<PersonProps> = ({
   shadow = 0.28,
   tint,
   opacity = 1,
+  glint = 0,
 }) => {
   const L = LOOKS[kind];
   const p = { ...STAND, ...pose };
@@ -320,6 +395,12 @@ export const Person: React.FC<PersonProps> = ({
     carry === "notebook" ? (
       <g transform="translate(-4 4)">
         <Notebook s={0.9} />
+      </g>
+      ) : carry === "pencil" ? (
+      <g transform="rotate(-60)">
+        <rect x={-5} y={-60} width={10} height={70} rx={2} fill="#F2B632" />
+        <path d="M -5 10 L 5 10 L 0 24 Z" fill="#E9C9A0" />
+        <rect x={-5} y={-66} width={10} height={8} rx={2} fill="#E07A8A" />
       </g>
     ) : carry === "sheet" ? (
       <g transform="translate(10 -50) rotate(-8)">
@@ -351,7 +432,7 @@ export const Person: React.FC<PersonProps> = ({
           </g>
           <g transform={`translate(4 ${-TO - NK}) rotate(${p.head ?? 0}) translate(0 ${-HR + 4})`}>
             <rect x={-10} y={HR - 10} width={22} height={NK + 12} fill={L.skinDk} />
-            <Head L={L} kind={kind} />
+            <Head L={L} kind={kind} glint={glint} />
           </g>
         </g>
       </g>
@@ -359,7 +440,7 @@ export const Person: React.FC<PersonProps> = ({
   );
   return (
     <g transform={`translate(${x} ${y}) scale(${s * face} ${s})`} opacity={opacity}>
-      {shadow > 0 ? <ellipse cx={0} cy={4} rx={kind === "boy" ? 70 : 95} ry={14} fill="#000" opacity={shadow} filter="url(#blur6)" /> : null}
+      {shadow > 0 ? <ellipse cx={0} cy={4} rx={kind === "boy" || kind === "girl90" ? 70 : 95} ry={14} fill="#000" opacity={shadow} filter="url(#blur6)" /> : null}
       {tint ? (
         <g filter={`url(#tint-${tint})`}>{body}</g>
       ) : (
@@ -370,7 +451,7 @@ export const Person: React.FC<PersonProps> = ({
 };
 
 // Силуэт со спины (для перспективных планов)
-export const BackFigure: React.FC<{ x: number; y: number; h: number; kind: "young" | "master"; ph: number; rim?: number }> = ({ x, y, h, kind, ph, rim = 0.6 }) => {
+export const BackFigure: React.FC<{ x: number; y: number; h: number; kind: Kind; ph: number; rim?: number }> = ({ x, y, h, kind, ph, rim = 0.6 }) => {
   const L = LOOKS[kind];
   const k = h / 560;
   const sw = Math.sin(ph) * 10;

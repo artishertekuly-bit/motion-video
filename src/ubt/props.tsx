@@ -416,7 +416,7 @@ export const Stamp: React.FC<{ x: number; y: number; k: number; text: string; s?
   const w = text.length * 52 + 80;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s * sc})`} opacity={cl(k * 3)}>
-      <rect x={-w / 2} y={-70} width={w} height={140} rx={18} fill="none" stroke={c} strokeWidth={12} />
+      <rect x={-w / 2} y={-70} width={w} height={140} rx={18} fill="#FFF8EC" fillOpacity={0.88} stroke={c} strokeWidth={12} />
       <rect x={-w / 2 + 14} y={-56} width={w - 28} height={112} rx={10} fill="none" stroke={c} strokeWidth={4} />
       <T x={0} y={28} s={84} f="o" w={700} c={c}>
         {text}
@@ -471,7 +471,7 @@ export const Yard: React.FC = () => (
     <rect x={460} y={1210} width={160} height={190} fill="#6B4E3A" />
     <rect x={440} y={1190} width={200} height={22} fill="#9A938A" />
     {/* земля, деревья */}
-    <rect y={1400} width={1080} height={520} fill="#9FBF6A" />
+    <rect y={1400} width={1080} height={1200} fill="#9FBF6A" />
     <rect y={1400} width={1080} height={24} fill="#8AA85A" />
     <rect y={1560} width={1080} height={120} fill="#B9B2A6" />
     <g transform="translate(900 1400)">
@@ -574,39 +574,45 @@ export const Wardrobe: React.FC<{ x: number; y: number; open: number }> = ({ x, 
 // Учебник истории (вид спереди), раскрывается
 export const HistoryBook: React.FC<{ x: number; y: number; s: number; open: number; shake?: number }> = ({ x, y, s, open, shake = 0 }) => {
   const k = Math.cos(cl(open) * Math.PI);
+  const cover = (
+    <g transform={`scale(${k} 1)`}>
+      <rect x={0} y={-206} width={306} height={412} rx={8} fill={k > 0 ? "#B0412E" : "#8E2F20"} />
+      {k > 0 ? (
+        <g>
+          <rect x={30} y={-170} width={246} height={6} fill="#F2D27A" />
+          <T x={153} y={-90} s={40} c="#F2D27A">
+            ҚАЗАҚСТАН
+          </T>
+          <T x={153} y={-40} s={40} c="#F2D27A">
+            ТАРИХЫ
+          </T>
+          <circle cx={153} cy={70} r={60} fill="none" stroke="#F2D27A" strokeWidth={6} />
+          <path d="M 153 20 L 166 58 L 205 58 L 174 82 L 186 120 L 153 96 L 120 120 L 132 82 L 101 58 L 140 58 Z" fill="#F2D27A" />
+          <T x={153} y={180} s={26} c="#F2D27A">
+            11-сынып
+          </T>
+        </g>
+      ) : null}
+    </g>
+  );
   return (
     <g transform={`translate(${x} ${y}) scale(${s}) rotate(${shake})`}>
-      {/* страницы */}
       <rect x={-300} y={-200} width={600} height={400} fill="#000" opacity={0.25} transform="translate(14 18)" />
+      {k <= 0 ? cover : null}
       <rect x={0} y={-200} width={300} height={400} fill="#F7F2E7" />
-      {open > 0.5 ? <rect x={-300} y={-200} width={300} height={400} fill="#F1EADA" /> : null}
       {new Array(9).fill(0).map((_, i) => (
         <rect key={i} x={30} y={-160 + i * 38} width={220 - (i % 3) * 30} height={8} rx={4} fill="#9A8E78" opacity={0.6} />
       ))}
-      {open > 0.5
-        ? new Array(9).fill(0).map((_, i) => <rect key={i} x={-270} y={-160 + i * 38} width={220 - (i % 2) * 40} height={8} rx={4} fill="#9A8E78" opacity={0.6} />)
-        : null}
+      {k <= 0 ? (
+        <g opacity={cl(-k * 3)}>
+          <rect x={-300} y={-200} width={300} height={400} fill="#F1EADA" />
+          {new Array(9).fill(0).map((_, i) => (
+            <rect key={i} x={-270} y={-160 + i * 38} width={220 - (i % 2) * 40} height={8} rx={4} fill="#9A8E78" opacity={0.6} />
+          ))}
+        </g>
+      ) : null}
       <rect x={-3} y={-200} width={6} height={400} fill="#C9BFA8" />
-      {/* обложка */}
-      <g transform={`scale(${k} 1)`}>
-        <rect x={0} y={-206} width={306} height={412} rx={8} fill={k > 0 ? "#B0412E" : "#8E2F20"} />
-        {k > 0 ? (
-          <g>
-            <rect x={30} y={-170} width={246} height={6} fill="#F2D27A" />
-            <T x={153} y={-90} s={40} c="#F2D27A">
-              ҚАЗАҚСТАН
-            </T>
-            <T x={153} y={-40} s={40} c="#F2D27A">
-              ТАРИХЫ
-            </T>
-            <circle cx={153} cy={70} r={60} fill="none" stroke="#F2D27A" strokeWidth={6} />
-            <path d="M 153 20 L 166 58 L 205 58 L 174 82 L 186 120 L 153 96 L 120 120 L 132 82 L 101 58 L 140 58 Z" fill="#F2D27A" />
-            <T x={153} y={180} s={26} c="#F2D27A">
-              11-сынып
-            </T>
-          </g>
-        ) : null}
-      </g>
+      {k > 0 ? cover : null}
     </g>
   );
 };

@@ -107,9 +107,9 @@ export const S01: React.FC<SceneProps> = ({ lf, len }) => {
 
 // ---------- 2: «ертең бастаймын» — стикеры на стене ----------
 const STICKS = [
-  { x: 260, y: 900, rot: -8, text: "ЕРТЕҢ\nБАСТАЙМЫН", c: "#FFE066", w: 4 },
-  { x: 500, y: 1010, rot: 6, text: "ДҮЙСЕНБІДЕН", c: "#9FE3B4", w: 5 },
-  { x: 180, y: 1110, rot: 5, text: "1-ҚАҢТАРДАН", c: "#FFB3C7", w: 5 },
+  { x: 250, y: 930, rot: -8, text: "ЕРТЕҢ\nБАСТАЙМЫН", c: "#FFE066", w: 4 },
+  { x: 470, y: 1030, rot: 6, text: "ДҮЙСЕНБІДЕН", c: "#9FE3B4", w: 5 },
+  { x: 660, y: 1120, rot: 5, text: "1-ҚАҢТАРДАН", c: "#FFB3C7", w: 5 },
   { x: 470, y: 780, rot: -4, text: "ТУҒАН\nКҮННЕН КЕЙІН", c: "#A9D3FF", w: 6 },
 ];
 export const S02: React.FC<SceneProps> = ({ lf }) => {
@@ -239,7 +239,7 @@ export const S03c: React.FC<SceneProps> = ({ lf, len }) => {
   return (
     <Cam s={lerp(1.0, 1.06, lf / len)} sx={540 + shakeAt(lf, at + 4, 16)}>
       <DeskTop />
-      <g transform="translate(540 900) rotate(-4)">
+      <g transform="translate(540 1010) rotate(-4) scale(0.86)">
         <rect x={-380} y={-520} width={760} height={1000} fill="#000" opacity={0.25} transform="translate(16 20)" />
         <rect x={-380} y={-520} width={760} height={1000} rx={6} fill={P.paper} />
         <T x={0} y={-430} s={54} c="#2B3550">
@@ -258,12 +258,12 @@ export const S03c: React.FC<SceneProps> = ({ lf, len }) => {
         ))}
         {/* оценка */}
         {st > 0 ? (
-          <g transform={`translate(160 280) rotate(-10) scale(${1 + 1.8 * Math.pow(1 - st, 2)})`} opacity={cl(st * 3)}>
+          <g transform={`translate(110 250) rotate(-10) scale(${1 + 1.8 * Math.pow(1 - st, 2)})`} opacity={cl(st * 3)}>
             <circle r={170} fill="none" stroke="#D62F26" strokeWidth={14} />
             <T x={-10} y={50} s={170} f="o" w={700} c="#D62F26">
               47
             </T>
-            <T x={110} y={120} s={52} f="o" w={700} c="#D62F26">
+            <T x={90} y={124} s={52} f="o" w={700} c="#D62F26">
               /140
             </T>
           </g>
@@ -284,13 +284,13 @@ export const S04a: React.FC<SceneProps> = ({ lf }) => {
   ]);
   return (
     <g>
-      <Cam s={c.s} cx={c.cx} cy={c.cy} sx={540} sy={1150}>
+      <Cam s={c.s} cx={c.cx} cy={c.cy} sx={540} sy={960}>
         <Room night={0.35} />
         <LyingYerasyl ph={lf * 0.12} jolt={j} glow={1 + note} />
       </Cam>
       {/* уведомление над телефоном */}
       {note > 0 ? (
-        <g transform={`translate(540 700) scale(${0.4 + 0.6 * Math.min(1.08, note)})`} opacity={cl(note * 3)}>
+        <g transform={`translate(540 580) scale(${0.4 + 0.6 * Math.min(1.08, note)})`} opacity={cl(note * 3)}>
           <rect x={-380} y={-90} width={760} height={180} rx={40} fill="#FFFFFF" stroke="#120C06" strokeWidth={6} />
           <circle cx={-290} cy={0} r={56} fill="#F3C1D3" />
           <Heart x={-290} y={-4} s={1.2} />
@@ -302,7 +302,7 @@ export const S04a: React.FC<SceneProps> = ({ lf }) => {
           </T>
         </g>
       ) : null}
-      <Mark x={300} y={1000} k={pop(lf, at + 2)} ch="!" c={U.yellow} s={1.1} />
+      <Mark x={210} y={930} k={pop(lf, at + 2)} ch="!" c={U.yellow} s={1.1} />
     </g>
   );
 };
@@ -381,7 +381,7 @@ export const S05: React.FC<SceneProps> = ({ lf }) => {
   return (
     <g>
       <Glow c1="#5A3D7A" c2="#1A1230" />
-      <Cam s={lerp(1, 1.12, zoom)} cx={540} cy={760}>
+      <Cam s={lerp(1.2, 1.36, zoom)} cx={540} cy={lerp(890, 780, zoom)} sy={960}>
         <BigPhone>
           <ChatHeader typing={lf < 10 ? 1 : 0} />
           <rect x={PSW / 2 - 50} y={160} width={100} height={36} rx={18} fill="#DDE1EA" />
@@ -523,7 +523,7 @@ export const S07: React.FC<SceneProps> = ({ lf }) => {
           <rect x={86} y={86} width={40} height={180} rx={18} fill="#6B4226" transform="rotate(-45 106 106)" />
         </g>
       ) : null}
-      <Stamp x={540} y={960} k={cl((lf - wNo + 2) / 6)} text="КІТАП ЖОҚ" s={1.1} />
+      <Stamp x={540} y={960} k={cl((lf - wNo + 2) / 6)} text="КІТАП ЖОҚ" s={1.35} />
     </g>
   );
 };
@@ -572,7 +572,7 @@ export const S09: React.FC<SceneProps> = ({ lf, len }) => {
     <g>
       <Cam s={lerp(1.0, 1.08, lf / len)}>
         <DeskTop />
-        <HistoryBook x={540 + open * 150} y={1000} s={1.3} open={open} shake={shake} />
+        <HistoryBook x={lerp(341, 540, open)} y={1000} s={1.3} open={open} shake={shake} />
         {puff > 0 && puff < 1
           ? new Array(10).fill(0).map((_, i) => (
               <circle key={i} cx={690 + (random(`pf${i}`) - 0.5) * 700 * puff} cy={760 - random(`pg${i}`) * 260 * puff} r={30 + 30 * puff} fill="#E8E0CF" opacity={0.7 * (1 - puff)} />
@@ -619,7 +619,7 @@ export const S10b: React.FC<SceneProps> = ({ lf }) => {
   const at = wordIn("e1", 0, "sh10b");
   const j = lf >= at - 2 ? Math.max(0, Math.sin(cl((lf - at + 2) / 9) * Math.PI)) : 0;
   return (
-    <Cam s={1.35} cx={820} cy={1200} sx={540} sy={1020}>
+    <Cam s={1.35} cx={670} cy={1200} sx={540} sy={1020}>
       <Room />
       <Chair x={760} />
       <Person kind="teen" x={770} y={FL - j * 30} s={1.0} face={1} pose={H(SEAT, { aFs: 80, aFe: 30, aBs: 70, aBe: 40, head: -6 - j * 10 })} shadow={0} />
@@ -632,7 +632,7 @@ export const S10b: React.FC<SceneProps> = ({ lf }) => {
           ТАРИХ
         </T>
       </g>
-      <Mark x={700} y={960} k={pop(lf, at)} ch="!" s={0.8} />
+      <Mark x={680} y={930} k={pop(lf, at)} ch="!" s={0.8} />
     </Cam>
   );
 };
@@ -680,12 +680,12 @@ export const S11: React.FC<SceneProps> = ({ lf }) => {
     <Cam s={c.s} cx={c.cx} cy={c.cy} sx={540} sy={1060}>
       <Yard />
       <Bench x={330} y={1610} />
-      <Person kind="apa" x={240} y={1610} s={1.0} face={1} pose={H(SEAT, { lean: 6 + lean * 14, head: 8 + lean * 10, aFs: 40, aFe: 60 })} shadow={0} />
-      <Person kind="apa2" x={440} y={1610} s={1.0} face={turn ? -1 : 1} pose={H(SEAT, { lean: 6 + lean * 14, head: 8 + lean * 10, aFs: 40, aFe: 60 })} shadow={0} />
+      <Person kind="apa" x={220} y={1610} s={1.0} face={1} pose={H(SEAT, { lean: 6 + lean * 8, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
+      <Person kind="apa2" x={460} y={1610} s={1.0} face={turn ? -1 : 1} pose={H(SEAT, { lean: 6 + lean * 8, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
       <Person kind="teen" x={yx} y={1660} s={1.0} face={-1} pose={yp} carry="notebook" />
       {/* термометр-шутка */}
       {lf >= wSick ? (
-        <g transform={`translate(340 900) rotate(${Math.sin(lf * 0.3) * 6}) scale(${0.4 + 0.6 * Math.min(1.08, pop(lf, wSick))})`}>
+        <g transform={`translate(340 1010) rotate(${Math.sin(lf * 0.3) * 6}) scale(${0.4 + 0.6 * Math.min(1.08, pop(lf, wSick))})`}>
           <rect x={-22} y={-140} width={44} height={200} rx={22} fill="#FFFFFF" stroke="#120C06" strokeWidth={5} />
           <circle cx={0} cy={80} r={40} fill="#E2483D" stroke="#120C06" strokeWidth={5} />
           <rect x={-9} y={-110} width={18} height={180} rx={9} fill="#E2483D" />
@@ -736,7 +736,7 @@ export const S12: React.FC<SceneProps> = ({ lf }) => {
   return (
     <g>
       <Glow c1="#22305A" c2="#0A0E1E" />
-      <Cam s={lerp(1.0, 1.04, cl(lf / 200))} cx={540} cy={900}>
+      <Cam s={lerp(1.18, 1.22, cl(lf / 200))} cx={540} cy={890} sy={950}>
         <BigPhone dark>
           <ChatHeader dark />
           <Bubble y={160} side={-1} lines={["Алматыға грантқа", "түсемін. Сен ше?"]} dark time="21:47" />

@@ -62,4 +62,4 @@ export const shotAt = (f: number) => SHOTS.find((s) => f >= s.from && f < s.to) 
 export const shotStart = (id: string) => sec(B[id]);
 export const wordIn = (id: string, i: number, shot: string) => ws(id, i) - sec(B[shot]);
 
-export const BIG_WORDS: { text: string; from: number; to: number; y?: number }[] = [{ text: "АДАМ БОЛУҒА", from: ws("n5", 2) - 2, to: sec(B.sh07), y: 640 }];
+export const BIG_WORDS: { text: string; from: number; to: number; y?: number }[] = [{ text: "АДАМ БОЛУҒА", from: ws("n5", 2) - 2, to: ws("n5", 4) + 2, y: 640 }];

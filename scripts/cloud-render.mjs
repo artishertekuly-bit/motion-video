@@ -108,7 +108,16 @@ console.log(`✓ render finished in ${minutes} min`);
 
 // ---------- 4. скачивание ----------
 const tmp = join(OUT_DIR, `.dl-${rid}`);
-gh("run", "download", String(runInfo.databaseId), "-n", `render-${rid}`, "-D", tmp);
+// the artifact download often times out on a slow link: retry it (the artifact stays on GitHub for 7 days)
+for (let k = 1; ; k++) {
+  rmSync(tmp, { recursive: true, force: true });
+  const dl = run(GH, ["run", "download", String(runInfo.databaseId), "-n", `render-${rid}`, "-D", tmp], { allowFail: true });
+  if (dl.status === 0) break;
+  if (k >= 6) die(`download failed 6 times: gh run download ${runInfo.databaseId} -n render-${rid} -D <dir>
+${(dl.stderr || "").trim().slice(0, 300)}`);
+  console.log(`  download failed (try ${k}), retrying...`);
+  await sleep(8000 * k);
+}
 
 const saved = [];
 for (const f of readdirSync(tmp)) {

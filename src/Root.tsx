@@ -7,6 +7,7 @@ import { ShporComposition } from "./shpor";
 import { Ubt1Composition } from "./ubt";
 import { KeyinComposition } from "./keyin";
 import { BridgeTestComposition } from "./videos/bridgetest";
+import { AralComposition } from "./videos/aral";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ export const RemotionRoot: React.FC = () => {
       <Ubt1Composition />
       <KeyinComposition />
       <BridgeTestComposition />
+      <AralComposition />
     </>
   );
 };

@@ -680,8 +680,8 @@ export const S11: React.FC<SceneProps> = ({ lf }) => {
     <Cam s={c.s} cx={c.cx} cy={c.cy} sx={540} sy={1060}>
       <Yard />
       <Bench x={330} y={1610} />
-      <Person kind="apa" x={220} y={1610} s={1.0} face={1} pose={H(SEAT, { lean: 6 + lean * 8, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
-      <Person kind="apa2" x={460} y={1610} s={1.0} face={turn ? -1 : 1} pose={H(SEAT, { lean: 6 + lean * 8, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
+      <Person kind="apa" x={220} y={1610} s={1.0} face={1} pose={H(SEAT, { lean: 6, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
+      <Person kind="apa2" x={460} y={1610} s={1.0} face={turn ? -1 : 1} pose={H(SEAT, { lean: 6, head: 8 + lean * 8, aFs: 40, aFe: 60 })} shadow={0} />
       <Person kind="teen" x={yx} y={1660} s={1.0} face={-1} pose={yp} carry="notebook" />
       {/* термометр-шутка */}
       {lf >= wSick ? (

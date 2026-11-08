@@ -127,7 +127,7 @@ export const Room: React.FC<{ night?: number; desk?: boolean; poster?: boolean }
     ) : null}
     {/* пол */}
     <rect y={FL - 18} width={1080} height={18} fill="#F2EEE6" />
-    <rect y={FL} width={1080} height={1920 - FL} fill={U.floor} />
+    <rect x={-300} y={FL} width={1680} height={900} fill={U.floor} />
     {new Array(6).fill(0).map((_, i) => (
       <rect key={i} y={FL + 30 + i * 60} width={1080} height={4} fill={U.floorDk} opacity={0.5} />
     ))}
@@ -471,9 +471,9 @@ export const Yard: React.FC = () => (
     <rect x={460} y={1210} width={160} height={190} fill="#6B4E3A" />
     <rect x={440} y={1190} width={200} height={22} fill="#9A938A" />
     {/* земля, деревья */}
-    <rect y={1400} width={1080} height={1200} fill="#9FBF6A" />
-    <rect y={1400} width={1080} height={24} fill="#8AA85A" />
-    <rect y={1560} width={1080} height={120} fill="#B9B2A6" />
+    <rect x={-300} y={1400} width={1680} height={1200} fill="#9FBF6A" />
+    <rect x={-300} y={1400} width={1680} height={24} fill="#8AA85A" />
+    <rect x={-300} y={1560} width={1680} height={120} fill="#B9B2A6" />
     <g transform="translate(900 1400)">
       <rect x={-14} y={-260} width={28} height={260} fill="#6B4A2A" />
       <circle cx={0} cy={-300} r={120} fill="#5E9E48" />

@@ -27,7 +27,7 @@ const Hook: React.FC<{ f: number }> = ({ f }) => {
   const bandH = interpolate(open, [0, 1], [680, H]);
   const top = (H - bandH) / 2 - interpolate(open, [0, 1], [70, 0]);
   const bottom = H - top - bandH;
-  const ty = interpolate(open, [0, 1], [-380, 0]);
+  const ty = interpolate(open, [0, 1], [-250, 0]);
   const word = (at: number) => {
     const k = interpolate(t, [at, at + 0.18], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
     return { opacity: k * (1 - open), transform: `scale(${1.25 - 0.25 * k})` };

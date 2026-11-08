@@ -46,7 +46,7 @@ const deskX = EX - 230 * ES;
 export const HookScene: React.FC<SceneProps> = ({ lf, len }) => {
   const write = Math.sin(lf * 0.9);
   return (
-    <g>
+    <g transform="translate(0 -170)">
       <NightRoom min={47 + (lf / len) * 12} />
       <Person kind="teen" x={380} y={1640} s={1.3} pose={H(SEAT, { head: 22, lean: 14, aFs: 64 + write * 6, aFe: 34 + write * 6 })} carry="pencil" shadow={0} />
       <NightDesk />
@@ -119,7 +119,7 @@ export const S04a: React.FC<SceneProps> = ({ lf, len }) => {
   const glint = Math.max(0, Math.sin(cl((lf - 18) / 14) * Math.PI));
   const pose = walkT > 0 && walkT < 1 ? walk(lf * 0.32, 0.8) : STAND;
   return (
-    <Cam s={1.0}>
+    <Cam s={1.0} dy={-200}>
       <ClassSide door={door} />
       <Row floor={1700} s={1.0} />
       <Person kind="teacher" x={tx} y={lerp(1460, 1690, ez(walkT))} s={lerp(1.0, 1.3, ez(walkT))} pose={H(pose, { aFs: 30, aFe: 60 })} carry="notebook" opacity={1 - sil} glint={glint} />
@@ -172,7 +172,7 @@ export const S04b: React.FC<SceneProps> = ({ lf }) => {
 export const S05a: React.FC<SceneProps> = ({ lf }) => {
   const ph = [eo((lf - 12) / 6), eo((lf - 22) / 6)];
   return (
-    <Cam s={1.0}>
+    <Cam s={1.0} dy={-200}>
       <ClassSide />
       <Person kind="teacher" x={140} y={1690} s={1.3} pose={H(STAND, { aFs: lerp(10, 120, eo(lf / 12)), aFe: 20, head: -4 })} />
       <Row floor={1700} s={1.0} phones={ph} />
@@ -207,7 +207,7 @@ const Attempt: React.FC<{ lf: number; hit: number; item: "pen" | "bottle" }> = (
   const reach = cl(lf / 16) * (lf < hit ? 1 : 1 - cl((lf - hit) / 4));
   const k = lf >= hit ? 1 - cl((lf - hit - 14) / 8) : 0;
   return (
-    <Cam s={1.55} cx={560} cy={1360}>
+    <Cam s={1.55} cx={560} cy={1360} dy={-261}>
       <ClassSide board={false} />
       <DeskChair
         x={EX}
@@ -238,7 +238,7 @@ export const S06c: React.FC<SceneProps> = ({ lf }) => {
   const bend = cl(lf / 12) * (lf < appear ? 1 : 1 - cl((lf - appear - 4) / 6));
   const tk = eo((lf - appear + 6) / 8);
   return (
-    <Cam s={1.3} cx={600} cy={1300}>
+    <Cam s={1.3} cx={600} cy={1300} dy={-262}>
       <ClassSide board={false} />
       <DeskChair x={EX} floor={EF} s={ES} />
       <Person kind="teen" x={EX} y={EF} s={ES} face={-1} pose={H(SEAT, { lean: lerp(6, 48, bend), head: lerp(10, 36, bend) - (lf > appear + 6 ? 30 : 0), aFs: lerp(55, -5, bend), aFe: lerp(40, 10, bend) })} shadow={0} />
@@ -251,7 +251,7 @@ export const S06c: React.FC<SceneProps> = ({ lf }) => {
 export const S07: React.FC<SceneProps> = ({ lf }) => {
   const down = eo(lf / 12);
   return (
-    <Cam s={1.55} cx={560} cy={1360}>
+    <Cam s={1.55} cx={560} cy={1360} dy={-261}>
       <ClassSide board={false} />
       <DeskChair x={EX} floor={EF} s={ES} />
       <Person kind="teen" x={EX} y={EF} s={ES} face={-1} pose={H(SEAT, { lean: lerp(6, 46, down), head: lerp(10, 40, down), aFs: lerp(55, 85, down), aFe: lerp(40, 70, down) })} shadow={0} />
@@ -285,7 +285,7 @@ export const S08b: React.FC<SceneProps> = ({ lf, len }) => {
   const on = wordIn("b2", 2, "sc08b");
   const head = { x: EX - 10, y: 1232 };
   return (
-    <Cam s={1.35} cx={600} cy={1250}>
+    <Cam s={1.35} cx={600} cy={1250} dy={-326}>
       <ClassSide board={false} />
       <DeskChair x={EX} floor={EF} s={ES} />
       <Person kind="teen" x={EX} y={EF} s={ES} face={-1} pose={H(SEAT, { head: -14, lean: -4, aFs: 30, aFe: 60 })} shadow={0} />
@@ -333,18 +333,15 @@ export const S09b: React.FC<SceneProps> = ({ lf, len }) => {
     <g>
       <rect width={1080} height={1920} fill="#1C1408" />
       <ellipse cx={540} cy={900} rx={700} ry={800} fill="#4A3418" opacity={0.6} filter="url(#blur20)" />
-      {/* голова-силуэт */}
-      <g transform="translate(700 760)">
-        <circle r={300} fill="#2E2010" stroke="#FFD58A" strokeWidth={8} opacity={0.9} />
-        <circle r={260 * fly} fill="#FFD58A" opacity={0.35 * fly} filter="url(#blur20)" />
-        <rect x={-120} y={260} width={240} height={260} fill="#2E2010" />
-      </g>
+      {/* Ерасыл крупно в профиль; в голове загорается свет */}
+      <Person kind="teen" x={800} y={2330} s={3.0} face={-1} pose={H(STAND, { head: -6 })} shadow={0} />
+      <circle cx={790} cy={830} r={110 + 40 * fly} fill="#FFD58A" opacity={0.55 * fly} filter="url(#blur20)" />
       {[0, 1, 2].map((i) => {
         const t0 = 4 + i * 8;
         const r = cl((lf - t0) / 14);
-        const x = lerp(400, 700, fly);
-        const y = lerp(1180 + i * 170, 760 + (i - 1) * 60, fly);
-        const s = lerp(1, 0.3, fly);
+        const x = lerp(400, 790, fly);
+        const y = lerp(1180 + i * 170, 830 + (i - 1) * 30, fly);
+        const s = lerp(1, 0.15, fly);
         return (
           <g key={i} opacity={r > 0 ? 1 : 0}>
             <text x={lerp(90, 600, fly)} y={1205 + i * 170} fontSize={90} fontWeight={800} fill={P.amber} fontFamily="Montserrat, sans-serif" opacity={1 - fly}>
@@ -374,7 +371,7 @@ export const S10a: React.FC<SceneProps> = ({ lf, len }) => {
   const w = ez(cl(lf / (len * 0.55)));
   const give = cl((lf - len * 0.55) / 10);
   return (
-    <Cam s={1.25} cx={540} cy={1300}>
+    <Cam s={1.25} cx={540} cy={1300} dy={-166}>
       <ClassSide board={false} />
       <Person kind="teacher" x={240} y={1690} s={1.3} pose={H(STAND, { aFs: 30 + 50 * give, aFe: 30, head: 4 })} />
       <TeacherDesk />
@@ -388,7 +385,7 @@ export const S10b: React.FC<SceneProps> = ({ lf }) => {
   const jump = lf > 12 ? Math.max(0, Math.sin(cl((lf - 12) / 10) * Math.PI)) : 0;
   const look = cl((lf - 26) / 8);
   return (
-    <Cam s={1.35} cx={560} cy={1260}>
+    <Cam s={1.35} cx={560} cy={1260} dy={-158}>
       <ClassSide board={false} />
       <Person kind="teacher" x={300} y={1690} s={1.3} pose={H(STAND, { lean: 16 * lean, head: 22 * lean, aFs: 20, aFe: 40 })} />
       <TeacherDesk />
@@ -422,7 +419,7 @@ export const S10c: React.FC<SceneProps> = ({ lf, len }) => {
 export const S11a: React.FC<SceneProps> = ({ lf, len }) => {
   const open = eo(cl((lf - len * 0.4) / 14));
   return (
-    <Cam s={lerp(1.15, 1.25, lf / len)} cx={560} cy={1340}>
+    <Cam s={lerp(1.15, 1.25, lf / len)} cx={560} cy={1340} dy={-330}>
       <ClassSide evening={1} board />
       <DeskChair x={420} floor={1700} s={1.2} face={1} items={<rect x={-80} y={-14} width={130} height={14} fill={P.paper} />} />
       <rect x={420 + 276 - 150 + open * 120} y={1700 - 262 * 1.2 + 26} width={300} height={56} fill={N.woodHi} stroke={N.woodDk} strokeWidth={4} />
@@ -435,9 +432,9 @@ export const S11a: React.FC<SceneProps> = ({ lf, len }) => {
 export const S11b: React.FC<SceneProps> = ({ lf }) => (
   <g>
     <DrawerTop open={eo(lf / 10)} unroll={eo((lf - 8) / 30)} />
-    <g opacity={cl((lf - 14) / 16) * 0.85}>
+    <g opacity={cl((lf - 14) / 16) * 0.95}>
       <ellipse cx={820} cy={1560} rx={260} ry={360} fill="#FFC27A" opacity={0.25} filter="url(#blur20)" />
-      <Person kind="girl90" x={820} y={1800} s={0.95} face={-1} pose={H(SEAT, { head: 22, lean: 14, aFs: 64 + Math.sin(lf * 0.9) * 6, aFe: 34 })} carry="pencil" tint="ghost" shadow={0} />
+      <Person kind="girl90" x={800} y={1900} s={1.3} face={-1} pose={H(SEAT, { head: 22, lean: 14, aFs: 64 + Math.sin(lf * 0.9) * 6, aFe: 34 })} carry="pencil" tint="ghost" shadow={0} />
     </g>
   </g>
 );

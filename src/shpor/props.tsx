@@ -83,7 +83,7 @@ export const NightDesk: React.FC<{ lamp?: number }> = ({ lamp = 1 }) => (
       </linearGradient>
     </defs>
     <rect x={-40} y={1330} width={1160} height={34} fill={N.woodHi} />
-    <rect x={-40} y={1364} width={1160} height={560} fill={N.woodDk} />
+    <rect x={-40} y={1364} width={1160} height={1300} fill={N.woodDk} />
     <Strip x={300} y={1318} w={260} h={22} rot={-4} seed="d1" />
     <Strip x={520} y={1322} w={200} h={18} rot={6} seed="d2" />
     <Strip x={150} y={1324} w={180} h={16} rot={-10} seed="d3" />
@@ -132,7 +132,7 @@ export const ClassSide: React.FC<{ door?: number; evening?: number; board?: bool
     <rect x={250} y={1130} width={160} height={320} fill={door > 0 ? "#FFF0CC" : "#2A1A10"} />
     <rect x={262} y={1130} width={136 * (1 - door * 0.85)} height={320} fill={P.wood} />
     <rect y={1118} width={1080} height={14} fill={P.rail} />
-    <rect y={1450} width={1080} height={470} fill="url(#floorG)" />
+    <rect y={1450} width={1080} height={1200} fill="url(#floorG)" />
     {evening > 0 ? <rect width={1080} height={1920} fill="#FF8A3A" opacity={0.12 * evening} style={{ mixBlendMode: "multiply" }} /> : null}
   </g>
 );

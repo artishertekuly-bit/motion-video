@@ -69,6 +69,6 @@ export const wordIn = (id: string, i: number, shot: string) => ws(id, i) - sec(B
 export const BIG_WORDS: { text: string; from: number; to: number; y?: number }[] = [
   { text: "ШПАРГАЛКА", from: ws("n1", 7) - 2, to: sec(B.sc03a) + 4 },
   { text: "БҮРКІТ КӨЗ", from: ws("n3", 7) - 2, to: sec(B.sc05a) },
-  { text: "БІЛЕМІН!", from: ws("b2", 2) - 2, to: sec(B.sc09a) },
+  { text: "БІЛЕМІН!", from: ws("b2", 2) - 2, to: sec(B.sc09a), y: 420 },
 ];
 export const WIPES = [sec(B.sc04a), sec(B.sc11a)];

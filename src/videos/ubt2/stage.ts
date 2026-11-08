@@ -1,6 +1,6 @@
 // «30 КҮН» 2-күн: our cast (outfits), per-shot staging and the custom effect cards.
 import { Pen, bodyFront, fxBurst, Outfit, Expr, FrontOpts, INK } from "./toon";
-import { FPS, clamp01, SHOTS, YSEAT, DESK, RTABLE, TABLE_K, FRIDGE, DOOR_X, SHELF_Z } from "./story";
+import { FPS, clamp01, SHOTS, YSEAT, DESK, RTABLE, TABLE_K, DOOR_X, SHELF_Z } from "./story";
 import { talking, ws } from "./timeline";
 import { CamInfo, Stage, Who, person, blob, lidAt, viewOf, setLight, q } from "./cast";
 
@@ -66,13 +66,13 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
   };
   switch (k) {
     case "sh01":
-      front(M, FRIDGE[0] + 0.75, 0, FRIDGE[2] + 0.85, { mode: "stand", prop: "phone", facing: 1, expr: f < W("n2", 4) ? "stern" : "grin" });
+      front(M, -0.65, 0, -1.55, { mode: "stand", prop: "phone", facing: 1, expr: f < W("n2", 4) ? "stern" : "grin" });
       front(Y, tx + 0.15, 0.3, tz - 0.65, { mode: "sit", facing: -1, expr: f < W("n2", 3) ? "neutral" : "pained" }, false);
       break;
     case "sh03": {
       const ph = q(0.5 + 0.5 * Math.sin(f * 0.9), 6);
       front(Y, tx, 0.3, tz - 0.65, { mode: "sit", facing: 0, expr: f < W("n3", 5) ? "neutral" : "dazed" }, false);
-      out.fx.push({ key: `hand${ph}`, cw: 600, ch: 600, draw: (p) => handBread(p, ph), x: tx, y: TABLE_K[1] + 0.03, z: tz + 0.22, w: 0.36, h: 0.36, flat: true });
+      out.fx.push({ key: `hand${ph}`, cw: 600, ch: 600, draw: (p) => handBread(p, ph), x: tx, y: TABLE_K[1] + 0.075, z: tz + 0.22, w: 0.36, h: 0.36, flat: true });
       break;
     }
     case "sh04": {
@@ -81,13 +81,13 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       else front(Y, tx, 0.3, tz - 0.65, { mode: "sit", facing: 1, expr: "think", look: 0.6 }, false);
       if (!up && f >= W("n4", 1) - 4) {
         const kk = clamp01((f - W("n4", 1) + 4) / 6);
-        out.fx.push({ key: "thought", cw: 800, ch: 600, draw: thought, x: tx + 0.55, y: 1.78, z: tz - 0.6, w: 1.0 * (0.6 + 0.4 * kk), h: 0.75 * (0.6 + 0.4 * kk) });
+        out.fx.push({ key: "thought", cw: 800, ch: 600, draw: thought, x: tx + 0.28, y: 1.95, z: tz - 0.6, w: 0.95 * (0.6 + 0.4 * kk), h: 0.71 * (0.6 + 0.4 * kk) });
       }
       break;
     }
     case "sh05": {
       const door = W("n5", 7) - 4;
-      const u = clamp01((f - 585) / 105), x = 38.1 - 0.15 * u, z = 4.3 - 3.4 * u;
+      const u = clamp01((f - 585) / 105), x = 37.05, z = 1.6 - 1.95 * u;
       if (f < 690) {
         const view = viewOf(cam, x, z, 0, -1);
         out.places.push(person(cam, Y, x, 0, z, view, {}, { mode: "march", phase: t, stride: 0.55 * Math.max(0.3, view.fs), stomp: 0.6, blink: lidAt(t, 1) }));
@@ -115,38 +115,38 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       ySeat(f < 1054 ? 0 : f < 1058 ? 0.08 : 0.17, { expr: "shock" });
       break;
     case "sh09":
-      front(A, RTABLE[0] + 1.25, 0, RTABLE[2] + 0.65, { mode: "stand", facing: -1, expr: say("a1", "say", "smile") });
+      front(A, RTABLE[0] + 0.65, 0, RTABLE[2] + 0.8, { mode: "stand", facing: -1, expr: say("a1", "say", "smile") });
       ySeat(0.17, { expr: "nervous" });
       break;
     case "sh10":
-      ySeat(0.24, { expr: say("e1", "sayNervous", "nervous") });
+      ySeat(0.32, { expr: say("e1", "sayNervous", "nervous") });
       break;
     case "sh11":
       front(L, DESK[0], 0, DESK[2] + 0.75, { mode: "stand", facing: 0, expr: say("l1", "sayStern", "stern") });
       break;
     case "sh12":
-      ySeat(0.24, { expr: f < W("n9", 2) ? "shock" : "dazed" });
+      ySeat(0.3, { expr: f < W("n9", 2) ? "shock" : "dazed" });
       break;
     case "sh13":
-      front(A, RTABLE[0] + 1.25, 0, RTABLE[2] + 0.65, { mode: "stand", facing: -1, expr: say("a2", "say", "smile"), wave: f >= W("a2", 1) - 6 ? 0.4 : undefined });
+      front(A, RTABLE[0] + 0.65, 0, RTABLE[2] + 0.8, { mode: "stand", facing: -1, expr: say("a2", "say", "smile"), wave: f >= W("a2", 1) - 6 ? 0.4 : undefined });
       ySeat(0.17, { expr: "nervous" });
       break;
     case "sh14": {
       const sit = f >= W("n10", 2) - 2;
-      if (sit) front(A, RTABLE[0] + 1.05, 0.3, RTABLE[2] + 0.1, { mode: "sit", facing: -1, expr: "smile_closed" }, false);
-      else front(A, RTABLE[0] + 1.25, 0, RTABLE[2] + 0.65, { mode: "stand", facing: -1, expr: "laugh" });
+      if (sit) front(A, RTABLE[0] + 0.7, 0.3, RTABLE[2] - 0.1, { mode: "sit", facing: -1, expr: "smile_closed" }, false);
+      else front(A, RTABLE[0] + 0.65, 0, RTABLE[2] + 0.8, { mode: "stand", facing: -1, expr: "laugh" });
       ySeat(0.2, { expr: sit ? "smile" : "nervous" });
       break;
     }
     case "sh15": {
       const jump = f >= W("e2", 0) - 3;
-      front(A, RTABLE[0] + 1.05, 0.3, RTABLE[2] + 0.1, { mode: "sit", facing: -1, expr: say("a3", "say", "smile") }, false);
+      front(A, RTABLE[0] + 0.7, 0.3, RTABLE[2] - 0.1, { mode: "sit", facing: -1, expr: say("a3", "say", "smile") }, false);
       if (jump) front(Y, YSEAT[0], 0, YSEAT[2], { mode: "stand", facing: 0, expr: "relief_open", wave: 1 });
       else ySeat(0.22, { expr: f < W("a3", 4) ? "shock" : "relief" });
       break;
     }
     case "sh16":
-      ySeat(f < W("n11", 4) - 2 ? 0.2 : 0.24, { expr: f < W("n11", 2) ? "neutral" : f < W("n11", 4) - 2 ? "nervous" : f < W("n11", 9) ? "shock" : "dazed" });
+      ySeat(f < W("n11", 4) - 2 ? 0.2 : 0.3, { expr: f < W("n11", 2) ? "neutral" : f < W("n11", 4) - 2 ? "nervous" : f < W("n11", 9) ? "shock" : "dazed" });
       break;
   }
   return out;

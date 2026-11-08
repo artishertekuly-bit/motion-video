@@ -533,8 +533,8 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
         : [S, [tcx + 1.15 * T.a + 8 * u, S[1] + 0.1 * HH], [tcx + 1.02 * T.a + 6 * u, chin - 0.12 * HH]], front: true });
     } else if (prop === "book") {
       const S = sh(1);
-      arms[0] = { pts: [sh(-1), [tcx - 1.0 * T.a - 2 * u, S[1] + 0.42 * HH], [tcx - 0.42 * T.a, S[1] + 0.5 * HH]], front: true };
-      arms.push({ pts: [S, [tcx + 1.0 * T.a + 2 * u, S[1] + 0.42 * HH], [tcx + 0.42 * T.a, S[1] + 0.5 * HH]], front: true });
+      arms[0] = { pts: [sh(-1), [tcx - 1.1 * T.a - 4 * u, S[1] + 0.3 * HH], [tcx - 0.92 * T.a, S[1] + 0.42 * HH]], front: true };
+      arms.push({ pts: [S, [tcx + 1.1 * T.a + 4 * u, S[1] + 0.3 * HH], [tcx + 0.92 * T.a, S[1] + 0.42 * HH]], front: true });
     } else if (prop === "icecream") {
       const S = sh(1);
       arms.push({ pts: [S, [tcx + 1.05 * T.a + 4 * u, S[1] + 0.45 * HH], [tcx + 0.5 * T.a, S[1] + 0.4 * HH]], front: true });
@@ -609,10 +609,11 @@ export const bodyFront = (p: Pen, o: Outfit, opts: FrontOpts) => {
     }
   }
   if (prop === "book") { // held up in front of the chest with both hands
-    const y0 = sh(1)[1] + 0.12 * HH, y1 = sh(1)[1] + 0.62 * HH, w = 0.62 * T.a;
-    p.poly(rrect(tcx - w, y0, tcx + w, y1, 3 * u), "#b0412e", 2.4 * u);
-    p.stroke([[tcx - w + 8 * u, y0 + 12 * u], [tcx + w - 8 * u, y0 + 12 * u]], 3 * u, "#f2d27a");
-    for (const a of arms) p.dot(a.pts[2][0], a.pts[2][1], 5.5 * u);
+    const y0 = sh(1)[1] + 0.02 * HH, y1 = sh(1)[1] + 0.78 * HH, w = 0.9 * T.a;
+    p.poly(rrect(tcx - w + 10 * u, y0 + 10 * u, tcx + w + 10 * u, y1 + 10 * u, 3 * u), "#f4f1ea", 2.4 * u); // thick page block
+    p.poly(rrect(tcx - w, y0, tcx + w, y1, 3 * u), "#b0412e", 2.8 * u);
+    p.poly(rrect(tcx - w + 10 * u, y0 + 10 * u, tcx + w - 10 * u, y1 - 10 * u, 2 * u), null, 2 * u);
+    p.ell(tcx, (y0 + y1) / 2, 16 * u, 16 * u, "#f2d27a", 2 * u);
   }
   if (prop === "shako") { // carried by the left hand
     const [hx, hy] = arms[0].pts[2];

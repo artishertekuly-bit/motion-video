@@ -29,10 +29,11 @@ const [mode, comp, ...rest] = process.argv.slice(2);
 if (!["video", "stills", "final"].includes(mode) || !comp) {
   die("Usage: node scripts/cloud-render.mjs <video|stills|final> <Composition> --name <name> [--frames ..] [--scale ..] [--concurrency ..] [--gl ..] [--no-phone]");
 }
-const opts = { frames: "", scale: "1", concurrency: "", gl: "swangle", phone: true, name: "" };
+const opts = { frames: "", scale: "1", concurrency: "", gl: "swangle", phone: true, name: "", allowDirty: false };
 for (let i = 0; i < rest.length; i++) {
   const a = rest[i];
   if (a === "--no-phone") opts.phone = false;
+  else if (a === "--allow-dirty") opts.allowDirty = true; // other sessions share this checkout: render the pushed HEAD anyway
   else if (a.startsWith("--") && ["frames", "scale", "concurrency", "gl", "name"].includes(a.slice(2))) opts[a.slice(2)] = rest[++i] ?? "";
   else die(`Unknown argument: ${a}`);
 }
@@ -60,7 +61,9 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ---------- 1. код на GitHub совпадает с локальным ----------
 const dirty = git("status", "--porcelain", "--untracked-files=no"); // other sessions' new files do not change what is pushed
-if (dirty) die(`Uncommitted changes — commit them first, the server renders what is pushed:\n${dirty}`);
+if (dirty && opts.allowDirty) console.log(`! --allow-dirty: rendering the pushed HEAD; local changes are ignored:
+${dirty}`);
+else if (dirty) die(`Uncommitted changes — commit them first, the server renders what is pushed:\n${dirty}`);
 const branch = git("rev-parse", "--abbrev-ref", "HEAD");
 const upstream = run("git", ["rev-parse", "--abbrev-ref", "@{u}"], { allowFail: true });
 if (upstream.status !== 0) die(`Branch ${branch} has no upstream on GitHub (git push -u origin ${branch})`);

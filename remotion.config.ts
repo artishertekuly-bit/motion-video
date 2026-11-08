@@ -13,3 +13,6 @@ Config.setOverwriteOutput(true);
 Config.setDefaultPremountInSeconds(2);
 // 3D (three.js): рендер через ANGLE — стабильная WebGL-графика на Windows
 Config.setChromiumOpenGlRenderer("angle");
+// Тяжёлая 3D-сцена (BridgeTest, скилл cartoon-3d-short) в облаке рисуется без видеокарты (swangle): один кадр может
+// идти дольше стандартных 30 с, поэтому ждём до 4 минут, прежде чем считать кадр зависшим.
+Config.setDelayRenderTimeoutInMilliseconds(240000);

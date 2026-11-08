@@ -10,9 +10,11 @@
   "private": true,
   "dependencies": {
     "@react-three/fiber": "9.8.2",
+    "@react-three/postprocessing": "3.2.2",
     "@remotion/cli": "4.0.541",
     "@remotion/google-fonts": "4.0.541",
     "@remotion/three": "4.0.541",
+    "postprocessing": "6.39.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "remotion": "4.0.541",

@@ -10,7 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
 import { AbsoluteFill, continueRender, delayRender, getInputProps, useCurrentFrame } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction, BloomEffect, ToneMappingEffect, ToneMappingMode } from "postprocessing";
 import { World, loadKit } from "./world";
@@ -39,14 +39,64 @@ const makeBloom = () => {
 
 const fwd = new THREE.Vector3(), fpt = new THREE.Vector3();
 
+// Release the kit hold only AFTER the render that mounts <ThreeCanvas/> has committed: its own delayRender is taken in a
+// layout effect of that commit, so there is never a moment with no pending handle (the original released it right
+// after setKit, and on a slow machine Remotion took the still before the canvas existed: background colour only).
 const useKit = () => {
   const [kit, setKit] = useState<Kit | null>(null);
   const [handle] = useState(() => delayRender("bridge kit"));
-  useEffect(() => { loadKit().then((k) => { setKit(k); continueRender(handle); }); }, [handle]);
+  useEffect(() => { loadKit().then(setKit); }, []);
+  useEffect(() => { if (kit) continueRender(handle); }, [kit, handle]);
   return kit;
 };
 
-const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
+// ---------------- smoke-test diagnostics (bridgetest only) ----------------
+// Collects console errors / warnings and per-frame WebGL facts, and prints them over the still, so a cloud run shows
+// what happened without a GPU or a log viewer.
+export const DIAG = { log: [] as string[], info: "", rendered: 0 };
+if (typeof window !== "undefined" && !(window as unknown as { __diag?: boolean }).__diag) {
+  (window as unknown as { __diag?: boolean }).__diag = true;
+  for (const k of ["error", "warn"] as const) {
+    const orig = console[k].bind(console);
+    console[k] = (...a: unknown[]) => { DIAG.log.push(`${k}: ${a.map(String).join(" ").replace(/\s+/g, " ").slice(0, 150)}`); orig(...a); };
+  }
+  window.addEventListener("error", (e) => DIAG.log.push(`onerror: ${String(e.message).slice(0, 150)}`));
+}
+const Diag: React.FC = () => {
+  const [, setN] = useState(0);
+  const [h] = useState(() => delayRender("diag overlay", { timeoutInMilliseconds: 200000 }));
+  useEffect(() => {
+    const t0 = Date.now();
+    const iv = setInterval(() => {
+      setN((n) => n + 1);
+      if (DIAG.rendered > 0 || Date.now() - t0 > 150000) { clearInterval(iv); setTimeout(() => { setN((n) => n + 1); setTimeout(() => continueRender(h), 200); }, 300); }
+    }, 250);
+    return () => clearInterval(iv);
+  }, [h]);
+  const lines = [`rendered=${DIAG.rendered}`, DIAG.info, ...DIAG.log.filter((l) => !l.includes("404")).slice(-12)];
+  return <div style={{ position: "absolute", left: 0, top: 0, right: 0, background: "rgba(0,0,0,0.72)", color: "#fff", font: "24px monospace", padding: 10, whiteSpace: "pre-wrap", wordBreak: "break-all", zIndex: 10 }}>{lines.join("\n")}</div>;
+};
+type TestProps = { raw?: boolean; diag?: boolean };
+/** reads WebGL facts right after the frame was drawn (priority 2 = after the composer); raw mode draws without post */
+const FrameProbe: React.FC<{ raw: boolean }> = ({ raw }) => {
+  const { gl, scene, camera } = useThree();
+  useFrame(() => { gl.info.autoReset = false; gl.info.reset(); }, 0);
+  useFrame(() => {
+    if (raw) gl.render(scene, camera);
+    const c = gl.getContext();
+    gl.setRenderTarget(null);
+    const px = new Uint8Array(4), w = c.drawingBufferWidth, hh = c.drawingBufferHeight;
+    c.readPixels(Math.floor(w / 2), Math.floor(hh * 0.7), 1, 1, c.RGBA, c.UNSIGNED_BYTE, px);
+    const ext = c.getExtension("WEBGL_debug_renderer_info");
+    const ren = ext ? c.getParameter(ext.UNMASKED_RENDERER_WEBGL) : c.getParameter(c.RENDERER);
+    DIAG.rendered++;
+    DIAG.info = `raw=${raw} calls=${gl.info.render.calls} tris=${gl.info.render.triangles} progs=${gl.info.programs?.length} tex=${gl.info.memory.textures}`
+      + ` buf=${w}x${hh} lost=${c.isContextLost()} px@0.7=${Array.from(px).join(",")} glerr=${c.getError()} maxTex=${gl.capabilities.maxTextureSize}\nGPU: ${String(ren).slice(0, 120)}`;
+  }, 2);
+  return null;
+};
+
+const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean }> = ({ id, kit, raw = false }) => {
   const f = useCurrentFrame();
   const { camera, scene } = useThree();
   const world = useMemo(() => new World(kit), [kit]);
@@ -86,31 +136,32 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   return (
     <>
       <primitive object={world.root} dispose={null} />
-      {post}
+      {raw ? null : post}
+      <FrameProbe raw={raw} />
     </>
   );
 };
 
 /** test stills only: inputProps `{ post: { dpr: 0.5 } }` forces the WebGL buffer size (R3F clamps dpr to >= 1 by default) */
 const dprOverride = () => (getInputProps() as { post?: { dpr?: number } }).post?.dpr;
-const ShotView: React.FC<{ id: number; kit: Kit; alpha: number }> = ({ id, kit, alpha }) => (
+const ShotView: React.FC<{ id: number; kit: Kit; alpha: number; raw?: boolean }> = ({ id, kit, alpha, raw }) => (
   <AbsoluteFill style={{ opacity: alpha }}>
     <ThreeCanvas width={1080} height={1920} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
       camera={{ fov: 40, near: 0.2, far: 1500 }}>
-      <Inner id={id} kit={kit} />
+      <Inner id={id} kit={kit} raw={raw} />
     </ThreeCanvas>
   </AbsoluteFill>
 );
 
-export const BridgeShort: React.FC = () => {
+export const BridgeShort: React.FC<TestProps> = ({ raw = false, diag = false }) => {
   const f = useCurrentFrame();
   const kit = useKit();
-  if (!kit) return null;
   const flash = f >= FLASH_AT && f < FLASH_AT + 4 ? [1, 0.75, 0.45, 0.2][f - FLASH_AT] : 0;
   return (
     <AbsoluteFill style={{ background: "#cfe3f2" }}>
-      {layersAt(f).map((l, i) => <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} />)}
+      {kit ? layersAt(f).map((l, i) => <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} raw={raw} />) : null}
       {flash > 0 && <AbsoluteFill style={{ background: "#ffffff", opacity: flash }} />}
+      {diag ? <Diag /> : null}
     </AbsoluteFill>
   );
 };

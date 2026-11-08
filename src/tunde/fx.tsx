@@ -39,6 +39,15 @@ export const TDefs: React.FC = () => (
         <feMergeNode in="c" />
       </feMerge>
     </filter>
+    <filter id="tn-ghostnv" x="-60%" y="-30%" width="220%" height="160%" colorInterpolationFilters="sRGB">
+      <feColorMatrix type="matrix" values="0 0 0 0 0.86  0 0 0 0 1  0 0 0 0 0.9  0 0 0 0.92 0" result="c" />
+      <feGaussianBlur in="c" stdDeviation="9" result="g" />
+      <feMerge>
+        <feMergeNode in="g" />
+        <feMergeNode in="g" />
+        <feMergeNode in="c" />
+      </feMerge>
+    </filter>
     <filter id="tn-sil" colorInterpolationFilters="sRGB">
       <feColorMatrix type="matrix" values="0 0 0 0 0.03  0 0 0 0 0.04  0 0 0 0 0.07  0 0 0 1 0" />
     </filter>

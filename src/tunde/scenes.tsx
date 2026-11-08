@@ -9,6 +9,7 @@ import { Lit, N, Snow } from "./fx";
 import {
   BackDoor,
   Board,
+  BoardText,
   Ceiling,
   DeskFront,
   Flashlight,
@@ -188,10 +189,10 @@ const Sc05: React.FC<SP> = ({ lf }) => {
         <g transform="translate(540 880)">
           <rect x={-190} y={-60} width={380} height={120} rx={60} fill="rgba(255,75,75,0.16)" stroke={N.red} strokeWidth={3} />
           {[0, 1, 2, 3].map((i) => (
-            <rect key={i} x={-150 + i * 18} y={10 - i * 14} width={12} height={14 + i * 14} rx={3} fill="#5C6783" />
+            <rect key={i} x={-168 + i * 18} y={10 - i * 14} width={12} height={14 + i * 14} rx={3} fill="#5C6783" />
           ))}
-          <path d="M -160 -26 L -78 26 M -78 -26 L -160 26" stroke={N.red} strokeWidth={7} strokeLinecap="round" />
-          <text x={40} y={16} textAnchor="middle" fontFamily={MONT} fontWeight={700} fontSize={48} fill="#FFFFFF">
+          <path d="M -178 -26 L -100 26 M -100 -26 L -178 26" stroke={N.red} strokeWidth={7} strokeLinecap="round" />
+          <text x={58} y={16} textAnchor="middle" fontFamily={MONT} fontWeight={700} fontSize={46} fill="#FFFFFF">
             Желі жоқ
           </text>
         </g>
@@ -227,6 +228,7 @@ const Sc06: React.FC<SP> = ({ lf, len }) => {
         <Lit id="b6" beams={[{ x: 560, y: 1650, tx: lerp(380, wx, Math.min(1, write * 1.2)), ty: 840, w: 300, k: 0.9 }]}>
           <Board f={lf} write={write} />
         </Lit>
+        <BoardText write={write} />
       </Cam>
       {[
         [300, "teen"],
@@ -260,9 +262,7 @@ const Sc07b: React.FC<SP> = ({ lf }) => {
   const hits = STEP_HITS.map((h) => s0 + sec(h));
   return (
     <Cam s={1.02}>
-      <g filter="url(#tn-moon)">
-        <Ceiling f={lf} hits={hits} />
-      </g>
+      <Ceiling f={lf} hits={hits} />
     </Cam>
   );
 };
@@ -312,13 +312,8 @@ const Sc08b: React.FC<SP> = ({ lf, len }) => {
     <g>
       <g filter="url(#tn-nv)">
         <Cam s={1.06} x={h.x} y={h.y} r={h.r}>
-          <g opacity={dark ? 0 : fl.on ? 1 : 0.12}>
-            <CorridorPersp camZ={0.3} glow={0.6} />
-            {ghost ? (
-              <g filter="url(#tn-ghost)">
-                <Person kind="girl90" x={ghost.gx} y={ghost.gy} s={ghost.s} face={-1} pose={{ ...STAND, head: 14, aFs: -2, aBs: 2, aFe: 4, aBe: 4 }} shadow={0} />
-              </g>
-            ) : null}
+          <g opacity={dark ? 0 : fl.on ? 0.55 : 0.08}>
+            <CorridorPersp camZ={0.3} glow={0.3} />
           </g>
           {dark ? <rect width={1080} height={1920} fill="#000" /> : null}
           {beamT > 0 ? (
@@ -330,6 +325,14 @@ const Sc08b: React.FC<SP> = ({ lf, len }) => {
           ) : null}
         </Cam>
       </g>
+      {ghost ? (
+        <Cam s={1.06} x={h.x} y={h.y} r={h.r}>
+          <ellipse cx={ghost.gx} cy={ghost.gy - 270 * ghost.s} rx={220 * ghost.s} ry={360 * ghost.s} fill="#C8FFD4" opacity={0.18} filter="url(#blur20)" />
+          <g filter="url(#tn-ghostnv)">
+            <Person kind="girl90" x={ghost.gx} y={ghost.gy} s={ghost.s} face={-1} pose={{ ...STAND, head: 14, aFs: -2, aBs: 2, aFe: 4, aBe: 4 }} shadow={0} />
+          </g>
+        </Cam>
+      ) : null}
     </g>
   );
 };
@@ -353,9 +356,9 @@ const Sc10a: React.FC<SP> = ({ lf }) => {
     <Cam s={1.03}>
       <g filter="url(#tn-moon)">
         <UnderDesks f={lf} />
-        <Person kind="boy" x={260} y={1500} s={0.95} face={1} pose={{ ...CROUCH, drop: 130 + br(0) }} />
-        <Person kind="aruzhan" x={560} y={1500} s={0.95} face={-1} pose={{ ...CROUCH, drop: 130 + br(1), head: 26 }} />
-        <Person kind="teen" x={850} y={1500} s={0.95} face={-1} pose={{ ...CROUCH, drop: 130 + br(2) }} />
+        <Person kind="boy" x={170} y={1520} s={1.1} face={1} pose={{ ...CROUCH, drop: 130 + br(0) }} />
+        <Person kind="aruzhan" x={400} y={1520} s={1.1} face={1} pose={{ ...CROUCH, drop: 130 + br(1), head: 30 }} />
+        <Person kind="teen" x={790} y={1520} s={1.1} face={1} pose={{ ...CROUCH, drop: 130 + br(2), head: 8 }} />
       </g>
       <g filter="url(#tn-sil)">
         <DeskFront x={250} y={720} s={1.3} />
@@ -532,13 +535,13 @@ const Sc15: React.FC<SP> = ({ lf }) => {
 // ---------- 16: фото с чёрной лентой ----------
 const Sc16: React.FC<SP> = ({ lf, len }) => {
   const pose: Pose = { ...STAND, aFs: 70, aFe: 60, head: 4 };
-  const hp = handAt(pose, 520, 1500, 1.25, 1);
+  const hp = handAt(pose, 540, 1330, 1.7, 1);
   return (
     <Cam s={1 + 0.09 * p(lf, 0, len, Easing.linear)} oy={760}>
       <Memorial>
-        <rect x={220} y={330} width={640} height={840} fill="#8F8777" />
-        <Person kind="master" x={520} y={1500} s={1.25} face={1} pose={pose} shadow={0} />
-        <Flashlight x={hp.x} y={hp.y} rot={-20} s={0.9} />
+        <rect x={258} y={278} width={564} height={704} fill="#8F8777" />
+        <Person kind="master" x={540} y={1330} s={1.7} face={1} pose={pose} shadow={0} />
+        <Flashlight x={hp.x} y={hp.y} rot={-20} s={1.2} />
       </Memorial>
     </Cam>
   );

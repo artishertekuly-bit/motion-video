@@ -92,7 +92,7 @@ export const Hall: React.FC<{ f: number; clock: number }> = ({ f, clock }) => {
       <path d="M 120 470 Q 540 600 960 470" stroke="#C9A06A" strokeWidth={4} fill="none" />
       {letters.map((l, i) =>
         l ? (
-          <g key={i} transform={`translate(${200 + i * 136} ${505 + Math.sin((i / 5) * Math.PI) * 52}) rotate(${Math.sin(f * 0.05 + i) * 3})`}>
+          <g key={i} transform={`translate(${270 + i * 118} ${505 + Math.sin((i / 5) * Math.PI) * 52}) rotate(${Math.sin(f * 0.05 + i) * 3})`}>
             {i === 5 ? null : (
               <>
                 <rect x={-52} y={0} width={104} height={124} rx={8} fill={cols[i]} />
@@ -189,6 +189,16 @@ export const LOBBY_GLASS = [
 ];
 
 // ---------- доска: мел пишет сам ----------
+export const BoardText: React.FC<{ write: number }> = ({ write }) => (
+  <g>
+    <clipPath id="tn-chalkclip2">
+      <rect x={0} y={500} width={lerp(160, 920, write)} height={620} />
+    </clipPath>
+    <text x={540} y={880} textAnchor="middle" fontFamily={CAVEAT} fontWeight={700} fontSize={176} fill="#F2F7F1" clipPath="url(#tn-chalkclip2)" letterSpacing="0.02em" style={{ filter: "drop-shadow(0 0 14px rgba(200,255,215,0.55))" }}>
+      ОТЫРЫҢДАР
+    </text>
+  </g>
+);
 export const Board: React.FC<{ f: number; write: number }> = ({ f, write }) => {
   const W0 = 160;
   const W1 = 920;
@@ -204,12 +214,6 @@ export const Board: React.FC<{ f: number; write: number }> = ({ f, write }) => {
         <ellipse key={i} cx={150 + random(`sm${i}`) * 780} cy={560 + random(`smy${i}`) * 500} rx={60 + random(`smr${i}`) * 120} ry={20 + random(`smh${i}`) * 40} fill="#FFFFFF" opacity={0.035} />
       ))}
       <rect x={100} y={1100} width={880} height={24} fill="#4A3622" />
-      <clipPath id="tn-chalkclip">
-        <rect x={0} y={500} width={wx} height={620} />
-      </clipPath>
-      <text x={540} y={880} textAnchor="middle" fontFamily={CAVEAT} fontWeight={700} fontSize={176} fill="#EEF4EE" clipPath="url(#tn-chalkclip)" opacity={0.92} letterSpacing="0.02em">
-        ОТЫРЫҢДАР
-      </text>
       {write > 0 && write < 1 ? (
         <g>
           <g transform={`translate(${wx} ${chalkY}) rotate(-38)`}>
@@ -261,15 +265,17 @@ export const Ceiling: React.FC<{ f: number; hits: number[] }> = ({ f, hits }) =>
   for (const h of hits) if (f >= h) swing += Math.exp(-(f - h) / 26) * Math.sin((f - h) * 0.22) * 9;
   return (
     <g>
-      <rect width={1080} height={1920} fill="#151B2A" />
+      <rect width={1080} height={1920} fill="#1A2234" />
+      <ellipse cx={540} cy={900} rx={620} ry={760} fill="#3C4C74" opacity={0.55} filter="url(#tn-blur40)" />
       {new Array(6).fill(0).map((_, i) => (
-        <line key={i} x1={0} y1={200 + i * 300} x2={1080} y2={150 + i * 300} stroke="#1F2738" strokeWidth={4} />
+        <line key={i} x1={0} y1={200 + i * 300} x2={1080} y2={150 + i * 300} stroke="#2A3550" strokeWidth={5} />
       ))}
       <path d="M 120 300 L 260 420 L 240 560 L 380 700 M 700 1200 L 820 1100 L 900 1180" stroke="#0A0E18" strokeWidth={4} fill="none" />
       <g transform={`rotate(${swing} 540 0)`}>
         <line x1={540} y1={0} x2={540} y2={760} stroke="#0C0F18" strokeWidth={6} />
-        <path d="M 440 760 L 640 760 L 600 880 L 480 880 Z" fill="#2A3142" />
-        <ellipse cx={540} cy={880} rx={60} ry={14} fill="#7D8597" />
+        <path d="M 440 760 L 640 760 L 600 880 L 480 880 Z" fill="#56617E" />
+        <path d="M 440 760 L 500 760 L 490 880 L 480 880 Z" fill="#7A86A6" opacity={0.6} />
+        <ellipse cx={540} cy={880} rx={60} ry={14} fill="#A9B2C6" />
       </g>
       {hits.map((h, i) =>
         f >= h
@@ -278,7 +284,7 @@ export const Ceiling: React.FC<{ f: number; hits: number[] }> = ({ f, hits }) =>
               const x0 = 200 + random(`dx${i}-${k}`) * 680;
               const y = 120 + random(`dy${i}-${k}`) * 300 + t * t * 900 + t * 160;
               if (y > 1950) return null;
-              return <circle key={`${i}-${k}`} cx={x0 + Math.sin(t * 3 + k) * 12} cy={y} r={2 + random(`dr${i}-${k}`) * 3.5} fill="#C9CFDB" opacity={0.7 * cl(1 - t / 2.2)} />;
+              return <circle key={`${i}-${k}`} cx={x0 + Math.sin(t * 3 + k) * 12} cy={y} r={3 + random(`dr${i}-${k}`) * 5} fill="#E2E8F4" opacity={0.85 * cl(1 - t / 2.2)} />;
             })
           : null,
       )}
@@ -416,25 +422,24 @@ export const Memorial: React.FC<{ children?: React.ReactNode }> = ({ children })
     <rect width={1080} height={1920} fill="#E7D2A9" />
     <rect y={1130} width={1080} height={790} fill="url(#tealG)" />
     <rect y={1118} width={1080} height={16} fill="#1B3F3C" />
-    <rect x={190} y={300} width={700} height={900} fill="#3A2412" />
-    <rect x={220} y={330} width={640} height={840} fill="#C9C2B4" />
-    <rect x={220} y={330} width={640} height={840} fill="#8C8577" opacity={0.25} />
+    <rect x={230} y={250} width={620} height={760} fill="#3A2412" />
+    <rect x={258} y={278} width={564} height={704} fill="#C9C2B4" />
     <clipPath id="tn-photo">
-      <rect x={220} y={330} width={640} height={840} />
+      <rect x={258} y={278} width={564} height={704} />
     </clipPath>
     <g clipPath="url(#tn-photo)" filter="url(#tn-sepia)">
       {children}
     </g>
-    <polygon points="760,300 890,300 890,430 760,300" fill="#111" />
-    <polygon points="690,300 760,300 890,430 890,500" fill="#111" />
-    <rect x={300} y={1230} width={480} height={160} rx={10} fill="#C9A441" />
-    <text x={540} y={1290} textAnchor="middle" fontFamily={MONT} fontWeight={800} fontSize={44} fill="#3A2412">
+    <polygon points="690,250 850,250 850,410" fill="#111" />
+    <polygon points="620,250 690,250 850,410 850,480" fill="#111" />
+    <rect x={320} y={1030} width={440} height={150} rx={10} fill="#C9A441" />
+    <text x={540} y={1080} textAnchor="middle" fontFamily={MONT} fontWeight={800} fontSize={42} fill="#3A2412">
       СӘКЕН АТА
     </text>
-    <text x={540} y={1336} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={26} fill="#3A2412" letterSpacing="0.08em">
+    <text x={540} y={1122} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={25} fill="#3A2412" letterSpacing="0.08em">
       МЕКТЕП КҮЗЕТШІСІ
     </text>
-    <text x={540} y={1374} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={26} fill="#3A2412">
+    <text x={540} y={1160} textAnchor="middle" fontFamily={MONO} fontWeight={700} fontSize={25} fill="#3A2412">
       1979 — 2016
     </text>
     <defs>

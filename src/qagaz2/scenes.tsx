@@ -1,7 +1,7 @@
 import React from "react";
 import { random } from "remotion";
 import { BOUND, COLLIDE, FPS, START, AUDIO, sec } from "../qagaz/timeline";
-import { BOW, CROUCH, HUG, KNEEL, P, Person, Pose, ReachHand, SIT, STAND, Stack, Notebook, BackFigure, KidFront, mix, run, walk } from "./art";
+import { BOW, CROUCH, HUG, KNEEL, P, Person, Pose, ReachHand, SIT, STAND, BackFigure, KidFront, mix, run, walk } from "./art";
 import { Bell, ClassroomBG, ClockHands, CorridorPersp, CorridorSide, Desk, FloorTop, Pit, TopFigure } from "./sets";
 
 export type SceneProps = { lf: number; len: number; f: number };
@@ -50,13 +50,13 @@ export const HookScene: React.FC<SceneProps> = ({ lf }) => {
 // ---------- 2: все бегут на урок ----------
 export const S02: React.FC<SceneProps> = ({ lf }) => {
   const sx = 1500 + lf * 5;
-  const kids = new Array(8).fill(0).map((_, i) => {
-    const dir = random(`kd${i}`) > 0.35 ? 1 : -1;
-    const sp = 9 + random(`ks${i}`) * 7;
-    const y = 1540 + random(`ky${i}`) * 260;
-    const s = 0.95 + (y - 1540) / 600;
-    const x0 = dir > 0 ? -150 - random(`kx${i}`) * 600 : 1230 + random(`kx${i}`) * 600;
-    return { i, dir, x: x0 + dir * sp * lf * 1.6, y, s, ph: lf * 0.5 + i };
+  const kids = new Array(6).fill(0).map((_, i) => {
+    const dir = i % 3 === 2 ? -1 : 1;
+    const sp = 10 + random(`ks${i}`) * 6;
+    const y = 1520 + (i % 3) * 90 + random(`ky${i}`) * 40;
+    const s = 0.78 + (y - 1520) / 900;
+    const x0 = dir > 0 ? -120 - i * 230 : 1200 + i * 120;
+    return { i, dir, x: x0 + dir * sp * lf * 1.5, y, s, ph: lf * 0.5 + i };
   });
   const order = [...kids].sort((a, b) => a.y - b.y);
   return (
@@ -163,19 +163,20 @@ export const S08: React.FC<SceneProps> = ({ lf, len }) => {
 
 // ---------- 9: туфли мастера входят в кадр ----------
 export const S09: React.FC<SceneProps> = ({ lf }) => {
-  const mx = lerp(-260, 150, eo(lf / 30));
+  const mx = lerp(-300, 260, eo(lf / 30));
   return (
     <Cam s={1.25} cx={540} cy={1700}>
       <CorridorSide sx={5150} />
       <FloorPapers x0={250} x1={1000} y={1590} n={14} seed="s9" />
-      <Person kind="young" x={650} y={1690} s={1.25} face={-1} pose={H(KNEEL, { aFs: 85 + Math.sin(lf * 0.3) * 10, aFe: 10, head: 30 })} />
+      <Person kind="young" x={720} y={1690} s={1.25} face={-1} pose={H(KNEEL, { aFs: 85 + Math.sin(lf * 0.3) * 10, aFe: 10, head: 30 })} />
       <defs>
         <clipPath id="legs9">
-          <rect x={-400} y={1240} width={1600} height={800} />
+          <rect x={-400} y={1330} width={1600} height={800} />
         </clipPath>
       </defs>
+      {/* видны только брюки и туфли мастера — он входит в кадр */}
       <g clipPath="url(#legs9)">
-        <Person kind="master" x={mx} y={1860} s={2.0} pose={lf < 30 ? walk(lf * 0.32, 0.9) : STAND} />
+        <Person kind="master" x={mx} y={1880} s={1.75} pose={lf < 30 ? walk(lf * 0.32, 1.0) : STAND} />
       </g>
     </Cam>
   );
@@ -188,10 +189,10 @@ export const S10: React.FC<SceneProps> = ({ lf, len }) => {
     <Cam s={lerp(1.0, 1.12, ez(lf / len))} cx={620} cy={1380}>
       <CorridorSide sx={5150} />
       <FloorPapers x0={180} x1={950} y={1590} n={14} seed="s10" />
-      <Person kind="young" x={330} y={1690} s={1.25} pose={H(KNEEL, { head: 6, aFs: 40, aFe: 30 })} />
+      <Person kind="young" x={250} y={1690} s={1.25} pose={H(KNEEL, { head: 6, aFs: 40, aFe: 30 })} />
       <Person
         kind="master"
-        x={700}
+        x={790}
         y={1690}
         s={1.3}
         face={-1}
@@ -339,20 +340,22 @@ export const S15: React.FC<SceneProps> = ({ lf }) => {
 };
 
 // ---------- 16: стопка против блокнота ----------
-export const S16: React.FC<SceneProps> = ({ lf, len }) => {
-  const k = eo(lf / 20);
+// Слева: молодой под огромной шаткой башней бумаг. Справа: мастер с одним блокнотом, в тёплом свете.
+export const S16: React.FC<SceneProps> = ({ lf }) => {
+  const k = eo(lf / 24);
+  const wob = Math.sin(lf * 0.2) * 1.4 * k;
   return (
     <g>
-      <rect width={1080} height={1920} fill="#24170D" />
+      <rect width={1080} height={1920} fill="#1E140B" />
       <rect x={540} y={0} width={540} height={1920} fill="#2E1E10" />
-      <ellipse cx={810} cy={950} rx={360} ry={420} fill={P.sun} opacity={0.22 + 0.1 * Math.sin(lf * 0.15)} filter="url(#blur20)" />
-      <rect x={536} y={260} width={8} height={1300} fill={P.amber} opacity={0.5 * k} />
-      <g transform={`translate(270 1560) scale(${1.25})`}>
-        <Stack n={Math.round(20 + 50 * k)} w={170} wobble={Math.sin(lf * 0.22) * 1.6 * k} seed={7} />
-      </g>
-      <g transform={`translate(790 1020) scale(${3.2 * (0.8 + 0.2 * k)})`}>
-        <Notebook />
-      </g>
+      <ellipse cx={810} cy={1150} rx={330} ry={520} fill={P.sun} opacity={0.3 + 0.08 * Math.sin(lf * 0.15)} filter="url(#blur20)" />
+      <rect y={1640} width={1080} height={280} fill={P.floorDk} />
+      <rect x={537} y={300} width={6} height={1340} fill={P.amber} opacity={0.55 * k} />
+      {/* левая половина */}
+      <Person kind="young" x={270} y={1660} s={1.0} pose={H(STAND, { ...HUG, head: 18, lean: 6 })} carry="stack" stackN={Math.round(24 + 70 * k)} stackWobble={wob} />
+      {/* правая половина */}
+      <Person kind="master" x={800} y={1660} s={1.0} face={-1} pose={H(STAND, { aFs: 62, aFe: 70, head: 12 })} carry="notebook" />
+      <circle cx={735} cy={1250} r={60 + 6 * Math.sin(lf * 0.2)} fill={P.sunHi} opacity={0.35 * k} filter="url(#blur8)" />
     </g>
   );
 };
@@ -448,28 +451,28 @@ const DOOR_SX = 7430; // дверь №37 на x≈600…840
 export const S20: React.FC<SceneProps> = ({ lf }) => (
   <Cam s={1.08} cx={540} cy={1300}>
     <CorridorSide sx={DOOR_SX} />
-    <Person kind="master" x={260} y={1690} s={1.36} pose={H(STAND, { head: 4 })} carry="notebook" />
-    <Person kind="young" x={500} y={1660} s={1.3} face={-1} pose={H(STAND, { ...HUG, head: lerp(6, -8, eo(lf / 20)) })} carry="stack" stackN={24} />
+    <Person kind="master" x={190} y={1690} s={1.36} pose={H(STAND, { head: 4 })} carry="notebook" />
+    <Person kind="young" x={590} y={1660} s={1.3} face={-1} pose={H(STAND, { ...HUG, head: lerp(6, -8, eo(lf / 20)) })} carry="stack" stackN={24} />
   </Cam>
 );
 
 export const S23: React.FC<SceneProps> = ({ lf }) => (
   <Cam s={1.15} cx={420} cy={1300}>
     <CorridorSide sx={DOOR_SX} />
-    <Person kind="master" x={260} y={1690} s={1.36} pose={H(STAND, { head: 2 })} carry="notebook" />
-    <Person kind="young" x={500} y={1660} s={1.3} face={-1} pose={mix(H(STAND, HUG), H(BOW, HUG), eo(lf / 14))} carry="stack" stackN={24} />
+    <Person kind="master" x={190} y={1690} s={1.36} pose={H(STAND, { head: 2 })} carry="notebook" />
+    <Person kind="young" x={590} y={1660} s={1.3} face={-1} pose={mix(H(STAND, HUG), H(BOW, HUG), eo(lf / 14))} carry="stack" stackN={24} />
   </Cam>
 );
 
 export const S24: React.FC<SceneProps> = ({ lf, len }) => {
   const go = Math.max(0, lf - 4);
-  const yx = 500 + go * 7;
-  const enter = cl((yx - 600) / 110);
+  const yx = 590 + go * 6;
+  const enter = cl((yx - 640) / 110);
   const close = cl((lf - len * 0.72) / 10);
   return (
     <Cam s={1.08} cx={540} cy={1300}>
       <CorridorSide sx={DOOR_SX} doorOpen={(i) => (i === 7 ? Math.min(cl(lf / 6), 1 - close) : 0)} />
-      <Person kind="master" x={260} y={1690} s={1.36} pose={H(STAND, { head: 0 })} carry="notebook" />
+      <Person kind="master" x={190} y={1690} s={1.36} pose={H(STAND, { head: 0 })} carry="notebook" />
       {enter < 1 ? (
         <Person kind="young" x={yx} y={lerp(1660, 1470, enter)} s={lerp(1.3, 1.05, enter)} pose={H(walk(go * 0.4, 1.1), HUG)} carry="stack" stackN={24} opacity={1 - cl((enter - 0.55) / 0.45)} />
       ) : null}
@@ -485,9 +488,9 @@ export const S21: React.FC<SceneProps> = ({ lf, len }) => {
       <g filter="url(#blur6)">
         <CorridorPersp vx={380} camZ={0.2} />
       </g>
-      <Person kind="young" x={gx} y={1380} s={0.62} pose={H(run(lf * 0.45, 0.8), HUG)} carry="stack" stackN={20} tint="ghost" shadow={0} opacity={0.75} />
+      <Person kind="young" x={gx} y={1420} s={0.8} pose={H(run(lf * 0.45, 0.8), HUG)} carry="stack" stackN={20} tint="ghost" shadow={0} opacity={0.95} />
       <Cam s={lerp(1.0, 1.06, lf / len)} cx={700} cy={1200}>
-        <Person kind="master" x={760} y={2860} s={3.1} face={-1} pose={H(STAND, { head: lerp(-2, 6, lf / len) })} shadow={0} />
+        <Person kind="master" x={760} y={2520} s={3.1} face={-1} pose={H(STAND, { head: lerp(-2, 6, lf / len) })} shadow={0} />
       </Cam>
     </g>
   );

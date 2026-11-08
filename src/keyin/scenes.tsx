@@ -79,7 +79,7 @@ export const S01: React.FC<SceneProps> = ({ lf, len }) => {
   const d0 = startIn("d1", "sc01");
   const wave = Math.max(0, Math.sin(cl((lf - d0) / 18) * Math.PI));
   return (
-    <Cam s={lerp(1.0, 1.08, lf / len)} cx={600} cy={1300} dy={-170}>
+    <Cam s={lerp(1.3, 1.38, lf / len)} cx={560} cy={1250} dx={-20} dy={-200}>
       <LivingRoom />
       <SofaBack x={600} />
       <DadSofa lf={lf} wave={wave} />
@@ -103,7 +103,7 @@ export const S02: React.FC<SceneProps> = ({ lf, len }) => {
       <LivingRoom />
       <SofaBack x={600} />
       <Person kind="boy" x={bx} y={FL} s={0.8} face={-1} pose={pose} opacity={0.95} />
-      <HeldSheet at={hand} s={0.8} rot={80} up={0} />
+      <HeldSheet at={hand} s={0.8} rot={80} up={0} flip={-1} />
       <DadSofa lf={lf} glow={flick} />
       <SofaArm x={600} />
     </Cam>
@@ -119,19 +119,19 @@ export const S03: React.FC<SceneProps> = ({ lf, len }) => {
   const raiseK = ramp(lf, startIn("b2", "sc03") - 4, startIn("b2", "sc03") + 8);
   const dropK = ramp(lf, endIn("d2", "sc03") - 10, endIn("d2", "sc03") + 6);
   const bPose = mix(mix(H(SEAT, { head: 6 }), H(SEAT, { aFs: 124, aFe: 8, aBs: 112, aBe: 18, head: -10, lean: -2 }), raiseK), H(SEAT, { head: 22, aFs: 50, aFe: 50 }), dropK);
-  const bHand = handAt(bPose, 250, FL, 0.82, 1);
+  const bHand = handAt(bPose, 800, FL, 0.82, -1);
   return (
-    <Cam s={lerp(1.0, 1.05, lf / len)} cx={540} cy={1300} dx={-(dxp - 540) * 0.08} dy={-140}>
+    <Cam s={lerp(1.22, 1.28, lf / len)} cx={620} cy={1350} dx={-80 - (dxp - 540) * 0.06} dy={-300}>
       <Kitchen />
       {/* табурет и столик */}
-      <rect x={200} y={FL - 112} width={100} height={18} rx={6} fill="#6B4226" />
-      <rect x={240} y={FL - 94} width={16} height={94} fill="#54311A" />
-      <Person kind="boy" x={250} y={FL} s={0.82} face={1} pose={bPose} />
-      <HeldSheet at={bHand} s={0.85} rot={lerp(-6, 60, dropK)} up={1 - dropK} />
-      <rect x={330} y={FL - 190} width={300} height={20} rx={4} fill="#9C6438" />
-      <rect x={350} y={FL - 170} width={16} height={170} fill="#7B4B28" />
-      <rect x={594} y={FL - 170} width={16} height={170} fill="#7B4B28" />
-      <rect x={430} y={FL - 214} width={60} height={26} rx={6} fill="#FFFFFF" />
+      <rect x={750} y={FL - 112} width={100} height={18} rx={6} fill="#6B4226" />
+      <rect x={792} y={FL - 94} width={16} height={94} fill="#54311A" />
+      <Person kind="boy" x={800} y={FL} s={0.82} face={-1} pose={bPose} />
+      <HeldSheet at={bHand} s={0.85} rot={lerp(-6, 60, dropK)} up={1 - dropK} flip={-1} />
+      <rect x={470} y={FL - 190} width={250} height={20} rx={4} fill="#9C6438" />
+      <rect x={488} y={FL - 170} width={16} height={170} fill="#7B4B28" />
+      <rect x={686} y={FL - 170} width={16} height={170} fill="#7B4B28" />
+      <rect x={560} y={FL - 214} width={60} height={26} rx={6} fill="#FFFFFF" />
       {/* папа на переднем плане */}
       <Person kind="young" x={dxp} y={1660} s={1.18} face={1} pose={dPose} shadow={0.22} />
       <HandPhone at={{ x: dHand.x - 4, y: dHand.y - 30 }} s={1.1} tilt={-12} glow={0.3} lit={0.4} />
@@ -148,7 +148,7 @@ export const S04: React.FC<SceneProps> = ({ lf, len }) => {
   const hang = ramp(lf, endIn("d3", "sc04") - 6, endIn("d3", "sc04") + 14);
   const bPose = H(STAND, { head: lerp(0, 22, hang), aFs: 8, aBs: -6, aFe: 14, aBe: 14 });
   return (
-    <Cam s={lerp(1.0, 1.06, lf / len)} cx={480} cy={1300} dy={-170}>
+    <Cam s={lerp(1.24, 1.3, lf / len)} cx={440} cy={1300} dx={100} dy={-250}>
       <LivingRoom night={1} door={1} />
       {/* тёплый свет из двери на полу */}
       <path d={`M 0 ${FL} L 110 ${FL} L 420 1920 L 0 1920 Z`} fill="#FFE2A8" opacity={0.28} />
@@ -226,7 +226,7 @@ export const S06b: React.FC<SceneProps> = ({ lf, len }) => {
   const x = lerp(760, 820, up);
   const hand = handAt(pose, x, FL, 1.1, -1);
   return (
-    <Cam s={lerp(1.0, 1.06, lf / len)} cx={600} cy={1300} dy={-170}>
+    <Cam s={lerp(1.22, 1.28, lf / len)} cx={640} cy={1300} dx={-100} dy={-250}>
       <Office />
       <WallClock x={250} y={560} r={70} min={0} />
       <OfficeDesk />
@@ -320,7 +320,7 @@ export const S07d: React.FC<SceneProps> = ({ lf, len }) => {
   const hand = handAt(dPose, DADX, FLOOR, 1.08, 1);
   const bPose = H(STAND, { head: 18, aFs: 4, aBs: -2, aFe: 30, aBe: 30, lean: 2 });
   return (
-    <Cam s={lerp(1.0, 1.06, lf / len)} cx={560} cy={1200} dy={-140}>
+    <Cam s={lerp(1.2, 1.26, lf / len)} cx={600} cy={1150} dx={-60} dy={-150}>
       <ExhibitWall />
       <Easel x={EX} />
       <Person kind="boy" x={BX} y={FLOOR} s={0.8} face={-1} pose={bPose} />
@@ -342,7 +342,7 @@ export const S09: React.FC<SceneProps> = ({ lf, len }) => {
   const hand = handAt(pose, x, FLOOR, 1.08, 1);
   const bPose = H(STAND, { head: lerp(18, -6, lift), aFs: 4, aBs: -2, aFe: 30, aBe: 30, lean: lerp(2, -2, lift) });
   return (
-    <Cam s={lerp(1.06, 1.16, lf / len)} cx={600} cy={1200} dy={-140}>
+    <Cam s={lerp(1.26, 1.36, lf / len)} cx={600} cy={1150} dx={-60} dy={-150}>
       <ExhibitWall />
       <Easel x={EX} />
       <Person kind="boy" x={BX} y={FLOOR} s={0.8} face={-1} pose={bPose} />
@@ -365,7 +365,9 @@ export const S10a: React.FC<SceneProps> = ({ lf, len }) => {
         <Person kind="young" x={760} y={FL} s={1.05} face={-1} pose={H(KNEEL, { head: 26, lean: 16, aFs: 60, aFe: 40 })} shadow={0} />
       </g>
       <rect width={1080} height={1920} fill="#1A0E06" opacity={0.25} />
-      <ShelfPhone lit={on} count={count} />
+      <g transform="translate(540 860) scale(1.55) translate(-560 -1235)">
+        <ShelfPhone lit={on} count={count} />
+      </g>
     </Cam>
   );
 };
@@ -376,7 +378,7 @@ export const S10b: React.FC<SceneProps> = ({ lf, len }) => {
   const bPose = H(CROUCH, { head: 26, aFs: 62 + scrib * 5, aFe: 30 + scrib * 6 });
   const dPose = H(KNEEL, { head: 24, lean: 18, aFs: 58 - scrib * 3, aFe: 36, aBs: 20, aBe: 30 });
   return (
-    <Cam s={lerp(1.0, 1.08, lf / len)} cx={560} cy={1300} dy={-170}>
+    <Cam s={lerp(1.3, 1.38, lf / len)} cx={560} cy={1380} dx={-20} dy={-330}>
       <LivingRoom night={0.35} frame />
       <rect x={830} y={742} width={56} height={18} rx={4} fill="#1B1D25" />
       <Person kind="boy" x={360} y={FL} s={0.8} face={1} pose={bPose} />

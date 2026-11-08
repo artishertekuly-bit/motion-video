@@ -171,6 +171,13 @@ export const LivingRoom: React.FC<{ night?: number; door?: number; frame?: boole
     <path d={`M 140 ${FL + 60} L 980 ${FL + 60} L 1060 ${FL + 260} L 60 ${FL + 260} Z`} fill={K.rug} />
     <path d={`M 180 ${FL + 90} L 940 ${FL + 90} L 1000 ${FL + 230} L 120 ${FL + 230} Z`} fill="none" stroke={K.rugDk} strokeWidth={10} />
     {night > 0 ? <rect width={1080} height={1920} fill="#0A0E28" opacity={0.5 * night} /> : null}
+    {/* свет из коридора ярче ночной тени */}
+    {door > 0 && night > 0 ? (
+      <g opacity={door}>
+        <rect x={0} y={900} width={110} height={FL - 900} fill="#FFE2A8" opacity={0.95} />
+        <rect x={-40} y={860} width={200} height={FL - 840} fill="#FFD58A" opacity={0.35} filter="url(#blur20)" />
+      </g>
+    ) : null}
   </g>
 );
 
@@ -435,8 +442,8 @@ export const PaperBack: React.FC<{ w: number; h: number; tint?: string }> = ({ w
 );
 
 // Лист в руках (вид сбоку, наискосок)
-export const HeldSheet: React.FC<{ at: Pt; s: number; rot?: number; up?: number }> = ({ at, s, rot: r = -8, up = 1 }) => (
-  <g transform={`translate(${at.x} ${at.y}) rotate(${r}) scale(${s})`}>
+export const HeldSheet: React.FC<{ at: Pt; s: number; rot?: number; up?: number; flip?: 1 | -1 }> = ({ at, s, rot: r = -8, up = 1, flip = 1 }) => (
+  <g transform={`translate(${at.x} ${at.y}) scale(${flip} 1) rotate(${r}) scale(${s})`}>
     <path d="M -10 -110 L 40 -96 L 40 70 L -10 60 Z" fill={K.paper} stroke="#D8CDB6" strokeWidth={3} />
     <circle cx={22} cy={-60} r={9} fill="#FFD84A" opacity={0.9 * up} />
     <path d="M -2 30 L 34 36" stroke="#3E9A4E" strokeWidth={5} opacity={0.8} />

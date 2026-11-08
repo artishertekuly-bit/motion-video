@@ -70,6 +70,7 @@ void mainImage(const in vec4 inputColor, const in vec2 uv, const in float depth,
 type Stage = { taps: number; spread: number; nearTaps: number; rot: number };
 const PRE: Stage = { taps: 16, spread: 0.287, nearTaps: 0, rot: 0.61 };
 const MAIN: Stage = { taps: 64, spread: 0.958, nearTaps: 32, rot: 0 };
+const MAIN_FAST: Stage = { taps: 32, spread: 0.958, nearTaps: 16, rot: 0 }; // [Motion speed test]
 
 export class LensBlurEffect extends Effect {
   constructor({ maxCoC = 24, nearScale = 1.2, stage = MAIN }: { maxCoC?: number; nearScale?: number; stage?: Stage } = {}) {
@@ -94,9 +95,9 @@ export class LensBlurEffect extends Effect {
 export class LensBlur {
   readonly pre: LensBlurEffect;
   readonly main: LensBlurEffect;
-  constructor({ maxCoC = 24, nearScale = 1.2 } = {}) {
+  constructor({ maxCoC = 24, nearScale = 1.2, fast = false } = {}) {
     this.pre = new LensBlurEffect({ maxCoC, nearScale, stage: PRE });
-    this.main = new LensBlurEffect({ maxCoC, nearScale, stage: MAIN });
+    this.main = new LensBlurEffect({ maxCoC, nearScale, stage: fast ? MAIN_FAST : MAIN });
   }
   set focus(v: number) { this.pre.focus = v; this.main.focus = v; }
   set cInf(v: number) { this.pre.cInf = v; this.main.cInf = v; }

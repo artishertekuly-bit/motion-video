@@ -13,7 +13,7 @@ import { ThreeCanvas } from "@remotion/three";
 import { useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { BlendFunction, BloomEffect, ToneMappingEffect, ToneMappingMode } from "postprocessing";
-import { World, loadKit } from "./world";
+import { World, loadKit, SPEED } from "./world";
 import { InkPass, noInkFallback } from "./ink";
 import { LensBlur, GrainEffect } from "./lensblur";
 import { GradeEffect, GRADES, GRADE_STRENGTH, gradeFor } from "./grade";
@@ -76,7 +76,9 @@ const Diag: React.FC = () => {
   const lines = [`rendered=${DIAG.rendered}`, DIAG.info, ...DIAG.log.filter((l) => !l.includes("404")).slice(-12)];
   return <div style={{ position: "absolute", left: 0, top: 0, right: 0, background: "rgba(0,0,0,0.72)", color: "#fff", font: "24px monospace", padding: 10, whiteSpace: "pre-wrap", wordBreak: "break-all", zIndex: 10 }}>{lines.join("\n")}</div>;
 };
-type TestProps = { raw?: boolean; diag?: boolean };
+/** [Motion speed test] rs = render scale of the WebGL canvas (0.6667 = 720x1280, CSS-upscaled to 1080x1920); msaa; shadow map; fastLens = 32-tap blur */
+type Speed = { rs?: number; msaa?: number; shadow?: number; fastLens?: boolean };
+type TestProps = { raw?: boolean; diag?: boolean } & Speed;
 /** reads WebGL facts right after the frame was drawn (priority 2 = after the composer); raw mode draws without post */
 const FrameProbe: React.FC<{ raw: boolean }> = ({ raw }) => {
   const { gl, scene, camera } = useThree();
@@ -96,7 +98,7 @@ const FrameProbe: React.FC<{ raw: boolean }> = ({ raw }) => {
   return null;
 };
 
-const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean }> = ({ id, kit, raw = false }) => {
+const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean; sp: Speed }> = ({ id, kit, raw = false, sp }) => {
   const f = useCurrentFrame();
   const { camera, scene } = useThree();
   const world = useMemo(() => new World(kit), [kit]);
@@ -104,12 +106,12 @@ const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean }> = ({ id, kit, raw
   const on = useMemo(toggles, []);
   const fx = useMemo(() => ({
     ink: new InkPass(scene, camera as THREE.PerspectiveCamera),
-    lens: new LensBlur({ maxCoC: 24, nearScale: 1.2 }),
+    lens: new LensBlur({ maxCoC: 24, nearScale: 1.2, fast: !!sp.fastLens }),
     bloom: makeBloom(),
     tone: new ToneMappingEffect({ mode: ToneMappingMode.NEUTRAL }),
     grade: new GradeEffect(GRADES.day, GRADE_STRENGTH.day),
     grain: new GrainEffect({ amount: 0.025, cellPx: 1.5 }), // film grain, OFF by default (inputProps post.grain): the reference measures no grain and it quadruples the file size
-  }), [camera, scene]);
+  }), [camera, scene, sp.fastLens]);
   useEffect(() => () => fx.ink.dispose(), [fx]);
   // @react-three/postprocessing must stay at 3.0.4: from 3.2 the composer is created in an effect, one render late,
   // and Remotion draws each frame exactly once (frameloop "never"), so the post chain never ran (blank stills).
@@ -123,8 +125,8 @@ const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean }> = ({ id, kit, raw
     kids.push(<primitive key="tone" object={fx.tone} dispose={null} />);
     if (on.grade) kids.push(<primitive key="grade" object={fx.grade} dispose={null} />);
     if (on.grain) kids.push(<primitive key="grain" object={fx.grain} dispose={null} />);
-    return <EffectComposer multisampling={4}>{kids}</EffectComposer>;
-  }, [fx, on]);
+    return <EffectComposer multisampling={sp.msaa ?? 4}>{kids}</EffectComposer>;
+  }, [fx, on, sp.msaa]);
   const cam = camera as THREE.PerspectiveCamera;
   target.copy(world.update(id, f, cam, scene));
   noInkFallback(world.root);
@@ -147,22 +149,29 @@ const Inner: React.FC<{ id: number; kit: Kit; raw?: boolean }> = ({ id, kit, raw
 
 /** test stills only: inputProps `{ post: { dpr: 0.5 } }` forces the WebGL buffer size (R3F clamps dpr to >= 1 by default) */
 const dprOverride = () => (getInputProps() as { post?: { dpr?: number } }).post?.dpr;
-const ShotView: React.FC<{ id: number; kit: Kit; alpha: number; raw?: boolean }> = ({ id, kit, alpha, raw }) => (
-  <AbsoluteFill style={{ opacity: alpha }}>
-    <ThreeCanvas width={1080} height={1920} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
-      camera={{ fov: 40, near: 0.2, far: 1500 }}>
-      <Inner id={id} kit={kit} raw={raw} />
-    </ThreeCanvas>
-  </AbsoluteFill>
-);
+const ShotView: React.FC<{ id: number; kit: Kit; alpha: number; raw?: boolean; sp: Speed }> = ({ id, kit, alpha, raw, sp }) => {
+  const rs = sp.rs ?? 1;
+  const w = Math.round(1080 * rs), h = Math.round(1920 * rs);
+  return (
+    <AbsoluteFill style={{ opacity: alpha }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: w, height: h, transform: `scale(${1080 / w})`, transformOrigin: "0 0" }}>
+        <ThreeCanvas width={w} height={h} {...(dprOverride() ? { dpr: dprOverride() } : {})} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
+          camera={{ fov: 40, near: 0.2, far: 1500 }}>
+          <Inner id={id} kit={kit} raw={raw} sp={sp} />
+        </ThreeCanvas>
+      </div>
+    </AbsoluteFill>
+  );
+};
 
-export const BridgeShort: React.FC<TestProps> = ({ raw = false, diag = false }) => {
+export const BridgeShort: React.FC<TestProps> = ({ raw = false, diag = false, ...sp }) => {
   const f = useCurrentFrame();
+  if (sp.shadow) SPEED.shadow = sp.shadow;
   const kit = useKit();
   const flash = f >= FLASH_AT && f < FLASH_AT + 4 ? [1, 0.75, 0.45, 0.2][f - FLASH_AT] : 0;
   return (
     <AbsoluteFill style={{ background: "#cfe3f2" }}>
-      {kit ? layersAt(f).map((l, i) => <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} raw={raw} />) : null}
+      {kit ? layersAt(f).map((l, i) => <ShotView key={i ? "over" : "base"} id={l.id} kit={kit} alpha={l.alpha} raw={raw} sp={sp} />) : null}
       {flash > 0 && <AbsoluteFill style={{ background: "#ffffff", opacity: flash }} />}
       {diag ? <Diag /> : null}
     </AbsoluteFill>

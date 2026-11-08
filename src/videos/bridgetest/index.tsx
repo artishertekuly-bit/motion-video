@@ -11,5 +11,10 @@ export const BridgeTestComposition: React.FC = () => (
       durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} />
     <Composition id="BridgeTestRaw" component={BridgeShort} defaultProps={{ raw: true, diag: true }}
       durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} />
+    {/* [Motion speed test] cheaper frames: 720x1280 canvas upscaled, MSAA 2 / 0, shadow 2048, 32-tap blur */}
+    <Composition id="BridgeFast" component={BridgeShort} defaultProps={{ raw: false, diag: false, rs: 0.6667, msaa: 2, shadow: 2048, fastLens: true }}
+      durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} />
+    <Composition id="BridgeFast0" component={BridgeShort} defaultProps={{ raw: false, diag: false, rs: 0.6667, msaa: 0, shadow: 2048, fastLens: true }}
+      durationInFrames={BRIDGE_FRAMES} fps={30} width={1080} height={1920} />
   </>
 );

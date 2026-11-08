@@ -87,6 +87,9 @@ const sightLines = (): Ray[] => {
 
 type Mats = Record<string, THREE.Material>;
 
+/** [Motion speed test] cost knobs set by the composition before the World is built */
+export const SPEED = { shadow: 4096 };
+
 export class World {
   root = new THREE.Group();
   private pool = new Pool();
@@ -140,7 +143,7 @@ export class World {
     this.hemi = new THREE.HemisphereLight("#cfe6ff", "#6c5c8c", 1.1);
     this.sun = new THREE.DirectionalLight("#fff0d6", 2.6);
     this.sun.castShadow = true;
-    this.sun.shadow.mapSize.set(4096, 4096);
+    this.sun.shadow.mapSize.set(SPEED.shadow, SPEED.shadow); // [Motion speed test]
     this.fill = new THREE.DirectionalLight("#9fb8ff", 0.35);
     R.add(this.hemi, this.sun, this.sun.target, this.fill, this.fill.target);
     this.cloudMaps = { day: [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.day.cloud)), golden: [0, 1, 2, 3].map((k) => cloudHD(k, LOOK.golden.cloud)) };

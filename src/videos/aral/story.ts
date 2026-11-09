@@ -38,7 +38,7 @@ const segDist = (x: number, z: number, pts: V3[]) => {
 export const terrainH = (x: number, z: number) => {
   const dN = depthIn(ell(x, z, 0, 250, 650, 350), 12, 1.7);
   const dS = depthIn(ell(x, z, 0, -650, 800, 480), 30, 1.2);
-  const sill = depthIn(ell(x, z, 0, -130, 520, 95), 6.8, 0.6);
+  const sill = depthIn(ell(x, z, 0, -100, 560, 200), 7.5, 0.8); // wide shallow sill: north water reaches the dam in one body
   const strait = depthIn(ell(x, z, 270, -130, 75, 140), 9.8, 0.5);
   const sea = Math.max(dN, dS, sill, strait);
   const land = 0.6 + 2.2 * smooth((Math.max(0, z - 600) + Math.max(0, Math.abs(x) - 700)) / 400) + 0.35 * Math.sin(x * 0.013) * Math.sin(z * 0.011);
@@ -69,7 +69,7 @@ export const SHOTS: ShotDef[] = [
   { id: 11, a: 1152, b: 1545, light: "golden", era: "bath", fogK: 2 }, // the bathtub
   { id: 12, a: 1545, b: 1690, light: "day", era: "dam", fogK: 10 }, // the dam (aerial)
   { id: 13, a: 1690, b: 1785, light: "day", era: "dam", fogK: 2 }, // water back at the harbour, fish return
-  { id: 14, a: 1785, b: TOTAL, light: "golden", era: "now", fogK: 12 }, // twist: blue sea | endless sand
+  { id: 14, a: 1785, b: TOTAL, light: "day", era: "now", fogK: 12 }, // twist: blue sea | endless sand
 ];
 export const XFADE: Record<number, number> = { 5: 8, 6: 8, 9: 8, 11: 10, 12: 8, 14: 10 };
 export const FLASH_AT = 188;
@@ -101,7 +101,7 @@ export const levels = (id: number, f: number): { n: number; s: number; dam: numb
     case "bath": return { n: -8.5, s: -16, dam: 0 };
     case "dam": {
       // shot 12: the dam grows along the sill, then the north water rises against it; shot 13: up to the pier
-      const n = id === 12 ? -7.6 + 3.1 * glide((f - 1640) / 45) : -4.5 + 3.5 * glide((f - 1700) / 50);
+      const n = id === 12 ? -7.8 + 4.8 * glide((f - 1638) / 46) : -3.0 + 2.0 * glide((f - 1700) / 50);
       return { n, s: -18, dam: id === 12 ? glide((f - 1556) / 88) : 1 };
     }
     case "now": return { n: -1.5, s: -22, dam: 1 };
@@ -193,7 +193,7 @@ const C11c = (f: number) => zoom([B[0] + 4.0, B[1] + 0.8, B[2] + 5.0], [B[0] + 1
 const C11d = (f: number) => dolly([B[0] + 2.8, B[1] + 2.0, B[2] + 3.2], [B[0], B[1], B[2]], pushK(f, 1355, 0.0025, 0.006, 30), { fov: 40, roll: -0.03, near: 0.2 });
 const C11e = (f: number) => dolly([B[0] - 3.4, B[1] + 1.8, B[2] + 3.4], [B[0] - 0.4, B[1], B[2]], pushK(f, 1426, 0.0022), { fov: 40, roll: 0.03, near: 0.2 });
 // 12: the dam (aerial, along it)
-const C12a = (f: number) => dolly([DAM_X0 - 230, 115, DAM_Z + 170], [40, -6, DAM_Z - 20], pushK(f, 1545, 0.0018), { fov: 48, near: 1.5 });
+const C12a = (f: number) => dolly([90, 250, DAM_Z - 520], [40, -6, DAM_Z + 70], pushK(f, 1545, 0.0018), { fov: 50, near: 2 }); // from the dry south side: dam across the frame, the sea behind it
 // 13: the harbour again: water comes back, fish jump
 const C13a = (f: number) => dolly([PIER_END[0] + 6.5, 3.0, PIER_END[2] + 10], [PIER_END[0] - 1.5, 1.2, PIER_END[2] - 4], pushK(f, 1690, 0.0025), { fov: 44, near: 0.3 });
 // 14: twist: rise over the dam: blue small sea on the left, endless sand on the right

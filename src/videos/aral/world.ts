@@ -106,7 +106,7 @@ const rounded = (w: number, d: number, rr: number) => {
 };
 
 type Mats = Record<string, THREE.Material>;
-const SUN_SHOT: Record<number, { az?: number; el?: number }> = { 2: { az: 150, el: 14 }, 3: { az: 150, el: 22 }, 8: { az: 120, el: 40 }, 11: { az: 140, el: 18 }, 12: { az: 130, el: 40 }, 14: { az: 30, el: 9 } };
+const SUN_SHOT: Record<number, { az?: number; el?: number }> = { 2: { az: 150, el: 14 }, 3: { az: 150, el: 22 }, 8: { az: 120, el: 40 }, 11: { az: 140, el: 18 }, 12: { az: 140, el: 42 }, 14: { az: 120, el: 34 } };
 
 export class World {
   root = new THREE.Group();

@@ -12,8 +12,8 @@ const BOX_Y = 316, BOX_H = 124, BOX_W = 276, BOX_X = [60, 357, 654];
 const BOX1 = { x: BOX_X[0] + BOX_W / 2, y: BOX_Y + 78 };
 const FLY_AT = 2.2, FLY_DUR = 0.5;
 const SHOW = sec(FLY_AT + 0.25);
-const PHONE0 = ws("n2", 3); // «телефон» — 9 САҒ -> 0 САҒ
-const PULSES: { box: number; at: number }[] = [{ box: 2, at: PHONE0 }, { box: 0, at: ws("n11", 0) }];
+const PHONE0 = ws("n3b", 2); // «телефон — мұздатқышқа» — 9 САҒ -> 0 САҒ
+const PULSES: { box: number; at: number }[] = [{ box: 2, at: PHONE0 }, { box: 0, at: ws("n11b", 0) }];
 
 const Box: React.FC<{ i: number; f: number; label: string; value: string; color: string }> = ({ i, f, label, value, color }) => {
   const k = back((f - SHOW - i * 4) / 9);
@@ -81,59 +81,49 @@ export const Stamp: React.FC<{ f: number; at: number; until: number; text: strin
   );
 };
 
-const Check: React.FC = () => (
-  <svg width={260} height={260} viewBox="-130 -130 260 260">
-    <circle r={110} fill="#F4F1EA" stroke="#120C06" strokeWidth={10} />
-    <path d="M -55 0 L -15 42 L 60 -45" stroke="#1E8A4E" strokeWidth={30} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+const Bubble: React.FC = () => (
+  <svg width={300} height={250} viewBox="-150 -125 300 250">
+    <path d="M -120 -90 Q -120 -110 -100 -110 L 100 -110 Q 120 -110 120 -90 L 120 40 Q 120 60 100 60 L -10 60 L -60 110 L -50 60 L -100 60 Q -120 60 -120 40 Z" fill="#F4F1EA" stroke="#120C06" strokeWidth={10} strokeLinejoin="round" />
+    {[-55, 0, 55].map((x) => <circle key={x} cx={x} cy={-25} r={16} fill="#120C06" />)}
   </svg>
 );
-const Nose: React.FC = () => (
-  <svg width={260} height={260} viewBox="-130 -130 260 260">
-    <circle cx={-40} cy={0} r={78} fill="#F1C9A3" stroke="#120C06" strokeWidth={10} />
-    <path d="M 20 -12 L 125 -4 Q 132 4 125 12 L 22 18 Z" fill="#E8A87C" stroke="#120C06" strokeWidth={9} strokeLinejoin="round" />
-    <circle cx={-60} cy={-18} r={9} fill="#120C06" /><circle cx={-20} cy={-18} r={9} fill="#120C06" />
-    <path d="M -70 30 Q -40 48 -10 30" stroke="#120C06" strokeWidth={8} fill="none" strokeLinecap="round" />
-  </svg>
-);
+const IDEAS = ["таңғы жүгіру?", "Аружанмен бірге оқу?", "тағы бір күн телефонсыз?"];
 
-/** final card (frames >= CARD_AT): ШЫНДЫҚ vs ӨТІРІК, «БІР СӨЗ ЖАЗ», «ДАУЫС БЕР» */
+/** final card (frames >= CARD_AT): «3-КҮНДІ ҚАЛАЙ ӨТКІЗЕМІЗ?» — ideas in the comments, the most liked one starts Day 3 */
 export const VoteCard: React.FC<{ f: number }> = ({ f }) => {
   const st = shotStart("sh17");
   if (f < st) return null;
   const lf = f - st, inK = eo(lf / 10);
-  const hlA = cl((f - ws("n12", 7) + 3) / 6) * (1 - cl((f - ws("n12", 10)) / 6));
-  const hlB = cl((f - ws("n12", 11) + 3) / 6) * (1 - cl((f - ws("n12", 14)) / 6));
-  const btn = cl((f - ws("n12", 14) + 3) / 6);
-  const pulse = btn > 0 ? 1 + 0.06 * Math.sin((f - ws("n12", 14)) * 0.35) : 1;
-  const day3 = cl((f - ws("n12", 18) + 3) / 8);
-  const side = (hl: number, left: boolean): React.CSSProperties => ({
-    position: "absolute", top: 450, height: 620, width: 430, left: left ? 60 : 510, borderRadius: 40,
-    background: left ? "linear-gradient(180deg,#3CCB7E,#1E8A4E)" : "linear-gradient(180deg,#F05A4A,#B8322A)",
-    border: `6px solid ${hl > 0.1 ? "#FFFFFF" : "rgba(255,255,255,0.35)"}`, boxShadow: `0 14px 0 rgba(0,0,0,0.35), 0 0 ${60 * hl}px rgba(255,255,255,0.8)`,
-    transform: `translateX(${(1 - inK) * (left ? -500 : 500)}px) scale(${1 + 0.06 * hl})`,
-    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-end", paddingBottom: 40, overflow: "hidden",
-  });
-  const big: React.CSSProperties = { fontFamily: OSW, fontWeight: 700, fontSize: 84, lineHeight: 1, color: "#FFFFFF", textShadow: "0 6px 0 rgba(0,0,0,0.35)", whiteSpace: "nowrap" };
-  const small: React.CSSProperties = { fontFamily: MONT, fontWeight: 800, fontSize: 32, lineHeight: 1.15, color: "#FFFFFF", textAlign: "center", marginTop: 12 };
+  const btn = cl((f - ws("n12b", 4) + 3) / 6);
+  const pulse = btn > 0 ? 1 + 0.06 * Math.sin((f - ws("n12b", 4)) * 0.35) : 1;
+  const foot = cl((f - ws("n12b", 6) + 3) / 8);
   const conf = Array.from({ length: 26 }, (_, i) => {
     const r = (k: number) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
     const tt = ((lf * (0.6 + r(1) * 0.8) + r(2) * 400) % 400) / 400;
     return { x: r(3) * 1080, y: tt * 2000 - 80, rot: tt * 720 + i * 40, c: ["#FFD84A", "#E2483D", "#2FB36B", "#FFFFFF"][i % 4] };
   });
   return (
-    <AbsoluteFill style={{ pointerEvents: "none", background: "linear-gradient(90deg,#123a26 0%,#123a26 50%,#3a1418 50%,#3a1418 100%)" }}>
-      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 40%, rgba(255,255,255,0.10), rgba(0,0,0,0.45) 75%)" }} />
-      {conf.map((c, i) => <div key={i} style={{ position: "absolute", left: c.x, top: c.y, width: 16, height: 26, borderRadius: 4, background: c.c, opacity: 0.75, transform: `rotate(${c.rot}deg)` }} />)}
-      <div style={{ position: "absolute", left: 60, width: 870, top: 280, height: 130, display: "flex", flexDirection: "column", alignItems: "center", opacity: inK }}>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 34, color: "#A9BCE6", letterSpacing: 3 }}>АРУЖАНҒА НЕ АЙТАДЫ?</div>
-        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 92, lineHeight: 1.05, color: "#FFD84A", WebkitTextStroke: "4px #120C06", paintOrder: "stroke fill" }}>БІР СӨЗ ЖАЗ</div>
+    <AbsoluteFill style={{ pointerEvents: "none", background: "linear-gradient(180deg,#24305e 0%,#3a2a66 55%,#1a2040 100%)" }}>
+      <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 38%, rgba(255,216,74,0.18), rgba(0,0,0,0.4) 72%)" }} />
+      {conf.map((c, i) => <div key={i} style={{ position: "absolute", left: c.x, top: c.y, width: 16, height: 26, borderRadius: 4, background: c.c, opacity: 0.7, transform: `rotate(${c.rot}deg)` }} />)}
+      <div style={{ position: "absolute", left: 60, width: 870, top: 280, display: "flex", flexDirection: "column", alignItems: "center", opacity: inK, transform: `scale(${0.85 + 0.15 * inK})` }}>
+        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 120, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "5px #120C06", paintOrder: "stroke fill" }}>3-КҮНДІ</div>
+        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 92, lineHeight: 1.05, color: "#FFFFFF", WebkitTextStroke: "4px #120C06", paintOrder: "stroke fill", whiteSpace: "nowrap" }}>ҚАЛАЙ ӨТКІЗЕМІЗ?</div>
       </div>
-      <div style={side(hlA, true)}><div style={{ marginBottom: 10 }}><Check /></div><div style={big}>ШЫНДЫҚ</div><div style={small}>«мен әлі<br />дайын емеспін»</div></div>
-      <div style={side(hlB, false)}><div style={{ marginBottom: 10 }}><Nose /></div><div style={big}>ӨТІРІК</div><div style={small}>«мен күнде<br />оқимын»</div></div>
-      <div style={{ position: "absolute", left: 60, width: 870, top: 1100, height: 120, display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 54, color: "#120C06", background: "#FFD84A", borderRadius: 60, padding: "14px 64px", boxShadow: "0 10px 0 #B88A10", transform: `scale(${(0.5 + 0.5 * eo(btn)) * pulse})`, opacity: btn }}>ДАУЫС БЕР ↓</div>
+      <div style={{ position: "absolute", left: 60, width: 870, top: 560, display: "flex", justifyContent: "center", opacity: inK }}><Bubble /></div>
+      {IDEAS.map((t, i) => {
+        const k = back((lf - 18 - i * 12) / 9);
+        return (
+          <div key={t} style={{ position: "absolute", left: i % 2 ? 230 : 110, top: 830 + i * 100, opacity: cl(k * 2), transform: `scale(${0.4 + 0.6 * k}) rotate(${i % 2 ? 2 : -2}deg)`,
+            background: "#FFFFFF", borderRadius: 40, padding: "14px 34px", fontFamily: MONT, fontWeight: 800, fontSize: 40, color: "#120C06", boxShadow: "0 8px 0 rgba(0,0,0,0.35)", whiteSpace: "nowrap" }}>
+            {t} <span style={{ color: "#E2483D" }}>♥ {[312, 287, 254][i]}</span>
+          </div>
+        );
+      })}
+      <div style={{ position: "absolute", left: 60, width: 870, top: 1140, height: 110, display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 54, color: "#120C06", background: "#FFD84A", borderRadius: 60, padding: "14px 64px", boxShadow: "0 10px 0 #B88A10", transform: `scale(${(0.5 + 0.5 * eo(btn)) * pulse})`, opacity: btn }}>ПІКІРГЕ ЖАЗ ↓</div>
       </div>
-      <div style={{ position: "absolute", left: 60, width: 870, top: 1240, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 34, color: "#FFFFFF", opacity: day3 }}>3-КҮН СЕНІҢ ТАҢДАУЫҢНАН БАСТАЛАДЫ →</div>
+      <div style={{ position: "absolute", left: 60, width: 870, top: 1262, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 31, color: "#FFFFFF", opacity: foot }}>ЕҢ КӨП ЛАЙК ЖИНАҒАН ИДЕЯ — 3-КҮННІҢ БАСЫ →</div>
     </AbsoluteFill>
   );
 };

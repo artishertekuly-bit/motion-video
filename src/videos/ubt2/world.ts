@@ -177,6 +177,15 @@ export class World {
       g.strokeStyle = "#241726"; g.lineWidth = 12; g.strokeRect(6, 6, 408, 508);
     }));
     cal.position.set(-0.05, 1.85, -3.19); R.add(cal);
+    const clock = new THREE.Mesh(new THREE.CircleGeometry(0.2, 40), basic("clock6", 400, 400, (g) => {
+      g.fillStyle = "#f4f1ea"; g.beginPath(); g.arc(200, 200, 190, 0, 7); g.fill();
+      g.strokeStyle = "#241726"; g.lineWidth = 18; g.beginPath(); g.arc(200, 200, 182, 0, 7); g.stroke();
+      for (let i = 0; i < 12; i++) { const a = (i * Math.PI) / 6; g.lineWidth = i % 3 ? 6 : 12; g.beginPath(); g.moveTo(200 + 150 * Math.sin(a), 200 - 150 * Math.cos(a)); g.lineTo(200 + 168 * Math.sin(a), 200 - 168 * Math.cos(a)); g.stroke(); }
+      g.lineCap = "round"; g.lineWidth = 16; g.beginPath(); g.moveTo(200, 200); g.lineTo(200, 300); g.stroke(); // hour hand at 6
+      g.lineWidth = 10; g.beginPath(); g.moveTo(200, 200); g.lineTo(200, 60); g.stroke(); // minute hand at 12
+      g.fillStyle = "#d23b3b"; g.beginPath(); g.arc(200, 200, 16, 0, 7); g.fill();
+    }));
+    clock.position.set(-0.05, 2.55, -3.19); R.add(clock);
 
     // ======== library ========
     const LX0 = 24, LX1 = DOOR_X, LZ0 = -7, LZ1 = 5, LH = 4.0;
@@ -331,12 +340,12 @@ export class World {
     // freezer: open through shot 2, shuts on its last frames
     const open = s.key === "sh02" ? 1 - smooth((f - (s.b - 16)) / 12) : 0;
     d.drawer.position.z = -2.5 + 0.55 * open;
-    const drop = ws("n2", 9) - 2;
+    const drop = ws("n3b", 4) - 2;
     const fall = clamp01((f - drop) / 7);
     d.phone.visible = s.key === "sh02";
     d.phone.position.set(FRIDGE[0] + 0.02, 0.24 + (1 - fall * fall) * 0.75, d.drawer.position.z - 0.3);
     d.phone.rotation.set(0.15 * (1 - fall), 0.4, 0.1 * (1 - fall));
-    const frost = clamp01((f - ws("n2", 10)) / 14);
+    const frost = clamp01((f - ws("n3b", 5)) / 14);
     d.phoneMat.color.set("#1c1e26").lerp(new THREE.Color("#dcefff"), 0.75 * frost);
     // library door: shut except when Yerasyl opens it (shot 5) and when Aruzhan comes in (shot 8)
     const opening = s.key === "sh05" ? smooth((f - (ws("n5", 7) - 6)) / 14) : s.key === "sh08" ? smooth((f - ws("n8", 2)) / 16) : 0;

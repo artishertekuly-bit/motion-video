@@ -1,7 +1,7 @@
 // «30 КҮН» 2-күн: our cast (outfits), per-shot staging and the custom effect cards.
-import { Pen, bodyFront, fxBurst, Outfit, Expr, FrontOpts, INK } from "./toon";
+import { Pen, bodyFront, fxBurst, fxCreak, Outfit, Expr, FrontOpts, INK } from "./toon";
 import { FPS, clamp01, SHOTS, YSEAT, DESK, RTABLE, TABLE_K, DOOR_X, SHELF_Z } from "./story";
-import { talking, ws } from "./timeline";
+import { shotStart, talking, ws } from "./timeline";
 import { CamInfo, Stage, Who, person, blob, lidAt, viewOf, setLight, q } from "./cast";
 
 export const YERASYL: Outfit = { jacket: "#2e3e66", pants: "#2a2d38", boots: "#1c1c22", hat: "hair", hair: "#1a1410", skin: "#f1c9a3", buttons: "#d9dde0" };
@@ -33,6 +33,22 @@ const thought = (p: Pen) => {
     for (let i = 0; i < 10; i++) { const a = (i * Math.PI) / 5 - Math.PI / 2, r = (i % 2 ? 14 : 34) * s; pts.push([x + r * Math.cos(a), y + r * Math.sin(a)]); }
     p.poly(pts, "#ffd84a", 6);
   }
+};
+/** «Zzz» over a sleeper (400 x 400), k = which Z is biggest */
+const zzz = (p: Pen, k: number) => {
+  const g = p.g;
+  g.save(); g.font = `900 120px Montserrat, 'DejaVu Sans', sans-serif`; g.textAlign = "center"; g.lineJoin = "round";
+  [[110, 330, 0.7], [210, 220, 0.9], [310, 110, 1.15]].forEach(([x, y, s], i) => {
+    g.save(); g.translate(x, y); g.scale(s * (i === k ? 1.15 : 1), s * (i === k ? 1.15 : 1));
+    g.lineWidth = 14; g.strokeStyle = INK; g.strokeText("Z", 0, 0); g.fillStyle = "#ffffff"; g.fillText("Z", 0, 0); g.restore();
+  });
+  g.restore();
+};
+/** red «×3» badge (400 x 300): the alarm snoozed three times */
+const times3 = (p: Pen) => {
+  p.ell(200, 150, 180, 125, "#e2483d", 14);
+  const g = p.g; g.save(); g.font = `900 150px Montserrat, 'DejaVu Sans', sans-serif`; g.textAlign = "center"; g.textBaseline = "middle";
+  g.fillStyle = "#ffffff"; g.fillText("×3", 200, 160); g.restore();
 };
 /** a hand from the top of the card whose thumb «scrolls» a round loaf (flat card, 600 x 600) */
 const handBread = (p: Pen, ph: number) => {
@@ -66,8 +82,15 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
   };
   switch (k) {
     case "sh01":
-      front(M, -0.65, 0, -1.55, { mode: "stand", prop: "phone", facing: 1, expr: f < W("n2", 4) ? "stern" : "grin" });
-      front(Y, tx + 0.15, 0.3, tz - 0.65, { mode: "sit", facing: -1, expr: f < W("n2", 3) ? "neutral" : "pained" }, false);
+    {
+      const ring = (f >= W("n2b", 6) - 2 && f < W("n2b", 9) + 10) || (f >= W("n2b", 11) - 2 && f < W("n2b", 14) + 8);
+      const woke = f >= W("n3b", 0) - 2;
+      front(M, -0.65, 0, -1.55, { mode: "stand", prop: "phone", facing: 1, expr: woke ? "stern" : ring ? "nervous" : "neutral" });
+      front(Y, tx + 0.15, 0.3, tz - 0.65, { mode: "sit", facing: -1, expr: woke ? "shock" : "smile_closed", blink: woke ? undefined : 1, headTilt: woke ? 0 : 9 }, false);
+      if (ring) { const u = q((f % 8) / 8, 4); out.fx.push({ key: `ring${u}`, cw: 300, ch: 300, draw: (p) => fxCreak(p, u), x: -0.38, y: 1.32, z: -1.45, w: 0.32, h: 0.32 }); }
+      if (!woke) { const k2 = Math.floor(f / 14) % 3; out.fx.push({ key: `zzz${k2}`, cw: 400, ch: 400, draw: (p) => zzz(p, k2), x: tx + 0.45, y: 1.55, z: tz - 0.6, w: 0.42, h: 0.42 }); }
+      if (f >= W("n2b", 11) - 2 && !woke) { const k3 = clamp01((f - W("n2b", 11) + 2) / 6); out.fx.push({ key: "x3", cw: 400, ch: 300, draw: times3, x: tx + 0.05, y: 1.42, z: tz - 0.5, w: 0.4 * (0.6 + 0.4 * k3), h: 0.3 * (0.6 + 0.4 * k3) }); }
+    }
       break;
     case "sh03": {
       const ph = q(0.5 + 0.5 * Math.sin(f * 0.9), 6);
@@ -87,8 +110,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     }
     case "sh05": {
       const door = W("n5", 7) - 4;
-      const u = clamp01((f - 585) / 105), x = 37.05, z = 1.6 - 1.95 * u;
-      if (f < 690) {
+      const s5 = shotStart("sh05"), u = clamp01((f - s5) / 105), x = 37.05, z = 1.6 - 1.95 * u;
+      if (f < s5 + 105) {
         const view = viewOf(cam, x, z, 0, -1);
         out.places.push(person(cam, Y, x, 0, z, view, {}, { mode: "march", phase: t, stride: 0.55 * Math.max(0.3, view.fs), stomp: 0.6, blink: lidAt(t, 1) }));
         blob(out, x, 0, z);
@@ -112,7 +135,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh08":
       front(A, DOOR_X + 0.75, 0, 0.0, { mode: "stand", facing: -1, expr: "smile" });
       burst(DOOR_X + 0.6, 1.35, 0.0, W("n8", 4) - 2, 1.3, 12);
-      ySeat(f < 1054 ? 0 : f < 1058 ? 0.08 : 0.17, { expr: "shock" });
+      ySeat(f < W("n8", 4) + 12 ? 0 : f < W("n8", 4) + 16 ? 0.08 : 0.17, { expr: "shock" });
       break;
     case "sh09":
       front(A, RTABLE[0] + 0.5, 0, RTABLE[2] + 0.8, { mode: "stand", facing: -1, expr: say("a1", "say", "smile") });
@@ -146,7 +169,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       break;
     }
     case "sh16":
-      ySeat(f < W("n11", 4) - 2 ? 0.2 : 0.3, { expr: f < W("n11", 2) ? "neutral" : f < W("n11", 4) - 2 ? "nervous" : f < W("n11", 9) ? "shock" : "dazed" });
+      ySeat(f < W("n11b", 8) - 2 ? 0.2 : 0.3, { expr: f < W("n11b", 2) ? "neutral" : f < W("n11b", 4) ? "nervous" : f < W("n11b", 8) - 2 ? "pained" : f < W("n11b", 10) ? "shock" : "dazed" });
       break;
   }
   return out;

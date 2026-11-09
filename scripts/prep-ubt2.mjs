@@ -28,7 +28,7 @@ const cleanWords = (words) => {
   return out;
 };
 
-const LINES = ["n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "a1", "e1", "l1", "n9", "a2", "n10", "a3", "e2", "n11", "n12"];
+const LINES = ["n1", "n2b", "n3b", "n3", "n4", "n5", "n6", "n7", "n8", "a1", "e1", "l1", "n9", "a2", "n10", "a3", "e2", "n11b", "n12b"];
 // кітапханашы: Lily (анасының дауысы) — сәл төмен әрі баяу, анасына ұқсамасын
 const PITCH = { l1: 0.93 };
 const data = {};
@@ -69,6 +69,7 @@ const SRC = {
   "v-squeak": `${EP}/sfx/v-squeak.mp3`,
   "v-thud": `${EP}/sfx/v-thud.mp3`,
   "v-sparkle": `${EP}/sfx/v-sparkle.mp3`,
+  "v-alarm": `${EP}/sfx/v-alarm.mp3`,
 };
 const LEVEL = { "s-music": -28, "s-tick": -27 };
 const sfx = {};

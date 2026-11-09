@@ -167,7 +167,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       const c0 = W("n6", 2) - 2, c1 = W("n6", 5) + 4, walk0 = W("n6", 5) - 6;
       if (f >= c0) {
         const u = clamp01((f - c0) / (c1 - c0)), ph = q((f % 30) / 30, 15), fade = q(1 - clamp01((f - c1) / 12), 12);
-        if (fade > 0) fx(`stinkD${ph}|${fade}`, 600, 500, (p) => stink(p, ph, 0.25 + 0.6 * fade), DOOR_X + 0.4 - 1.1 * u, 1.5 + 0.12 * u, 0.05 - 1.15 * u, 1.05, 0.88, true);
+        if (fade > 0) fx(`stinkD${ph}|${fade}`, 600, 500, (p) => stink(p, ph, 0.25 + 0.6 * fade), DOOR_X + 0.4 - 1.25 * u, 1.5 + 0.12 * u, 0.05 - 0.5 * u, 1.05, 0.88, true);
       }
       if (f >= walk0) {
         const u = clamp01((f - walk0) / 26), x = DOOR_X + 0.9 - 1.6 * u, z = 0.05 - 0.4 * u;
@@ -226,7 +226,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       ySeat({ expr: f < W("n9", 2) - 2 ? "think" : "dazed", facing: 0 });
       aSeat({ expr: "smile" });
       const k0 = W("n9", 1) - 2, k1 = W("n9", 3) + 14, kk = q(clamp01((f - k0) / (k1 - k0)), 40);
-      if (f >= k0 - 4) fx(`load${kk}`, 800, 260, (p) => loading(p, kk), YSEAT[0], 1.6, YSEAT[2] + 0.1, 0.5, 0.16);
+      if (f >= k0 - 4) fx(`load${kk}`, 800, 260, (p) => loading(p, kk), YSEAT[0], 1.5, YSEAT[2] + 0.1, 0.5, 0.16);
       break;
     }
     case "sh14": {

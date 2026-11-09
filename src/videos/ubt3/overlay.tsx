@@ -158,7 +158,7 @@ export const VsScreen: React.FC<{ f: number }> = ({ f }) => {
       <div style={{ position: "absolute", left: 340 + shake, top: 830, width: 400, height: 300, display: "flex", justifyContent: "center", alignItems: "center", opacity: cl(vs * 3), transform: `rotate(-12deg) scale(${vsSc})` }}>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 250, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "10px #120C06", paintOrder: "stroke fill", textShadow: "0 14px 0 rgba(0,0,0,0.5)" }}>VS</div>
       </div>
-      <div style={{ position: "absolute", left: 40, width: 480, top: 1500, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
+      <div style={{ position: "absolute", left: 40, width: 480, top: 1550, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
         <div style={{ transform: `scale(${0.4 + 0.6 * pill})`, background: "#E2483D", borderRadius: 44, padding: "10px 40px", fontFamily: MONT, fontWeight: 800, fontSize: 54, color: "#FFFFFF", boxShadow: "0 10px 0 rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>ЖҰМАҒА 2 КҮН</div>
       </div>
     </AbsoluteFill>

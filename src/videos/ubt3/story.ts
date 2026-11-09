@@ -72,17 +72,17 @@ const A = (k: string) => shotStart(k); // shot start frame
 const at = (f: number, pos: V3, look: V3, fov: number, rate = 0.0025, roll = 0): Key => ({ f, cut: true, s: hold(pos, look, fov, f, rate, roll) });
 
 const [ykx] = YK, [ys] = YSEAT, [ax] = ASEAT, [dx, , dz] = DESK, [nx, , nz] = NOTE_AT;
-const TWO: V3 = [(ys + ax) / 2, 1.45, 0.25], TWO_L: V3 = [(ys + ax) / 2, 1.15, -2.75]; // the study two-shot
+const TWO: V3 = [(ys + ax) / 2, 1.42, 1.05], TWO_L: V3 = [(ys + ax) / 2, 1.08, -2.75]; // the study two-shot
 const CAMS: Record<string, Key[]> = {
   // night kitchen: Yerasyl sits in the dark; «таңғы жетіде» — thought cloud
   sh01: [
     { f: 0, s: hold([0.9, 1.55, 2.6], [0.25, 1.25, -1.4], 44, 0, 0.0016) },
-    { f: W("n2", 2) - 8, dur: 30, s: hold([0.8, 1.55, 1.25], [0.62, 1.45, -1.3], 42, W("n2", 2) - 8, 0.0022) },
+    { f: W("n2", 2) - 8, dur: 30, s: hold([0.6, 1.45, 1.75], [0.5, 1.4, -1.3], 42, W("n2", 2) - 8, 0.0022) },
   ],
   // clock 3:59 -> 4:00; sleepless eyes; sitting ready
   sh02: [
     { f: A("sh02"), s: hold([KCLOCK[0], 2.47, -1.8], [KCLOCK[0], 2.53, KCLOCK[2]], 36, A("sh02"), 0.002) },
-    at(W("n3", 2) - 3, [ykx, 1.36, 0.5], [ykx, 1.32, -1.25], 32, 0.003),
+    at(W("n3", 2) - 3, [ykx, 1.34, 1.05], [ykx, 1.22, -1.25], 34, 0.003),
     at(W("n3", 7) - 3, [0.55, 1.35, 2.35], [0.55, 1.0, -1.3], 42, 0.0022),
   ],
   // the light goes on: mom
@@ -105,7 +105,7 @@ const CAMS: Record<string, Key[]> = {
   // the door: first the smell, then Yerasyl
   sh06: [{ f: A("sh06"), s: hold([32.6, 1.5, -1.5], [36.4, 1.3, 0.0], 40, A("sh06"), 0.0018) }],
   // the librarian's flower wilts
-  sh07: [{ f: A("sh07"), s: hold([34.18, 1.36, 0.3], [34.42, 1.17, 2.25], 36, A("sh07"), 0.0025) }],
+  sh07: [{ f: A("sh07"), s: hold([34.05, 1.32, -0.25], [34.42, 1.18, 2.3], 38, A("sh07"), 0.0025) }],
   // Aruzhan sneezes
   sh08: [{ f: A("sh08"), s: hold([ax + 0.05, 1.38, -0.55], [ax, 1.25, -2.75], 36, A("sh08"), 0.0025) }],
   // «the smell of knowledge»
@@ -129,7 +129,7 @@ const CAMS: Record<string, Key[]> = {
   sh14: [{ f: A("sh14"), s: hold([ys + 0.2, 0.95, -0.4], [ys, 1.4, -2.75], 46, A("sh14"), 0.004, 0.05) }],
   // «Дұрыс!»; «with his own head»
   sh15: [
-    { f: A("sh15"), s: hold([TWO[0], 1.55, 0.35], [TWO[0], 1.3, -2.75], 40, A("sh15"), 0.002) },
+    { f: A("sh15"), s: hold([TWO[0], 1.5, 1.05], [TWO[0], 1.2, -2.75], 40, A("sh15"), 0.002) },
     at(W("n10", 1) - 3, [ys, 1.62, -0.6], [ys, 1.52, -2.75], 36, 0.003),
   ],
   // «Well done! But minus seven too»
@@ -140,7 +140,7 @@ const CAMS: Record<string, Key[]> = {
   // the bet; «Келістік!»
   sh17: [
     { f: A("sh17"), s: hold(TWO, TWO_L, 40, A("sh17"), 0.0018) },
-    at(W("e3", 0) - 3, [TWO[0], 1.28, -0.55], [TWO[0], 1.05, -2.5], 40, 0.004, -0.04),
+    at(W("e3", 0) - 3, [TWO[0], 1.3, 0.2], [TWO[0], 1.02, -2.6], 40, 0.004, -0.04),
   ],
 };
 

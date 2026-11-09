@@ -37,8 +37,8 @@ export const LIGHTS: Record<LightName, LightPreset> = {
   night: {
     // [ubt3] 4 a.m. kitchen, lights off: cool moonlight from the window side, readable blue shade (faces stay legible)
     az: 150, el: 34,
-    lit: [0.62, 0.74, 1.12], shade: [0.2, 0.24, 0.44], lift: [0.05, 0.06, 0.14], lambert: 0.35, sideK: 0.84, term: 0.2,
-    charTint: [0.66, 0.76, 1.05], charShade: 0.84, charGrad: 0.08, bodyGrad: 0.22, sideTint: [0.85, 0.88, 1.0],
+    lit: [0.44, 0.54, 0.95], shade: [0.14, 0.17, 0.36], lift: [0.04, 0.05, 0.12], lambert: 0.35, sideK: 0.84, term: 0.2,
+    charTint: [0.6, 0.7, 1.0], charShade: 0.84, charGrad: 0.08, bodyGrad: 0.22, sideTint: [0.85, 0.88, 1.0],
     blob: [0.5, 0.52, 0.66], actorShadow: false,
     top: "#1a2450", hor: "#3a4a80", skyCurve: [0.0, 0.5, 0.6], fog: "#3a4a80", fogNear: 25, fogFar: 300, sunDisc: "#000000",
     sunCol: "#b8c8ff", sunI: 1.6, sky: "#5a6aa0", ground: "#2a2440", hemiI: 0.35,

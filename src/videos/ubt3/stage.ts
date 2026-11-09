@@ -1,6 +1,6 @@
 // «30 КҮН» 3-күн: our cast (outfits), per-shot staging and the custom effect cards.
 import { Pen, bodyFront, fxBurst, Outfit, Expr, FrontOpts, INK } from "./toon";
-import { FPS, clamp01, SHOTS, YSEAT, ASEAT, YK, YSTAND_K, MOM_K, MOM_K2, DESK, FLOWER, DOOR_X, YIN } from "./story";
+import { FPS, clamp01, SHOTS, YSEAT, ASEAT, YK, YSTAND_K, MOM_K, MOM_K2, DESK, DOOR_X, YIN } from "./story";
 import { shotStart, talking, ws } from "./timeline";
 import { CamInfo, Stage, Who, person, blob, lidAt, viewOf, setLight, q } from "./cast";
 
@@ -66,13 +66,13 @@ const mist = (p: Pen, t: number) => {
   for (let i = 0; i < 5; i++) { const b = i * 1.3 + t * 2; star(p, 250 + r * 0.8 * Math.cos(b), 250 + r * 0.6 * Math.sin(b), 0.45 * (1 - t) + 0.2, "#ff9fd0"); }
 };
 /** falling snow (1000 x 1000), ph 0..1 = one loop; outlined flakes stay readable on pale walls */
-const snow = (p: Pen, ph: number, n = 46) => {
+const snow = (p: Pen, ph: number, n = 46, sz = 1) => {
   for (let i = 0; i < n; i++) {
     const r1 = Math.sin(i * 127.1) * 43758.5453, r2 = Math.sin(i * 311.7) * 23421.631, r3 = Math.sin(i * 74.7) * 9871.13;
     const fx = r1 - Math.floor(r1), fy = r2 - Math.floor(r2), fs = r3 - Math.floor(r3);
     const y = ((fy + ph * (0.6 + 0.6 * fs)) % 1) * 1060 - 30, x = fx * 1000 + 40 * Math.sin(ph * 6.28 + i);
-    const s = 7 + 9 * fs;
-    p.ell(x, y, s, s, "#ffffff", 3);
+    const s = (7 + 9 * fs) * sz;
+    p.ell(x, y, s, s, "#ffffff", 3 * sz);
   }
 };
 /** breath puff (300 x 200), t 0..1 */
@@ -124,7 +124,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     fx(`burst${u}${col ?? ""}`, 500, 500, (p) => fxBurst(p, u, col), x, y, z, w, w);
   };
   const shiver = (i: number) => 2.2 * (Math.floor(f / 2 + i) % 2 ? 1 : -1);
-  const snowAt = (x: number, y: number, z: number, w: number, n = 46) => { const ph = q((f % 60) / 60, 30); fx(`snow${ph}|${n}`, 1000, 1000, (p) => snow(p, ph, n), x, y, z, w, w); };
+  const snowAt = (x: number, y: number, z: number, w: number, n = 46, sz = 1) => { const ph = q((f % 60) / 60, 30); fx(`snow${ph}|${n}|${sz}`, 1000, 1000, (p) => snow(p, ph, n, sz), x, y, z, w, w); };
   const ySeat = (fo: FrontOpts) => front(Y, YSEAT[0], YSEAT[1], YSEAT[2], { mode: "sit", facing: 1, ...fo }, false);
   const aSeat = (fo: FrontOpts) => front(A, ASEAT[0], ASEAT[1], ASEAT[2], { mode: "sit", facing: -1, ...fo }, false);
   const cold = f >= W("n8", 3); // windows open from here on
@@ -132,7 +132,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh01": {
       front(Y, YK[0], YK[1], YK[2], { mode: "sit", facing: 0, expr: "stare", blink: 0 }, false);
       const t0 = W("n2", 2) - 4;
-      if (f >= t0) { const kk = clamp01((f - t0) / 6); fx("thought7", 800, 600, thought7, YK[0] + 0.12, 1.92, YK[2] - 0.05, 0.85 * (0.6 + 0.4 * kk), 0.64 * (0.6 + 0.4 * kk)); }
+      if (f >= t0) { const kk = clamp01((f - t0) / 6); fx("thought7", 800, 600, thought7, YK[0] - 0.42, 1.72, YK[2] + 0.05, 0.66 * (0.6 + 0.4 * kk), 0.5 * (0.6 + 0.4 * kk)); }
       break;
     }
     case "sh02":
@@ -148,7 +148,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       const [x, , z] = YSTAND_K, spray = W("n4", 6) - 2, big = W("n4", 7) - 3;
       const hold = f >= W("n4", 4) - 3;
       front(Y, x, 0, z, { mode: "stand", facing: f >= big ? -1 : 0, prop: hold ? "perfume" : null, expr: f < W("n4", 2) ? "smile" : f < big ? "grin" : "relief_open" });
-      burst(x - 0.02, 1.25, z + 0.05, W("n4", 2) - 2, 0.55, 12); // the tie sparkles
+      burst(x - 0.02, 0.98, z + 0.05, W("n4", 2) - 2, 0.38, 12); // the tie sparkles
       for (let i = 0; i < 3; i++) {
         const a0 = spray + i * 7;
         if (f >= a0 && f < a0 + 14 && f < big) { const u = q((f - a0) / 14, 14); fx(`mist${u}`, 500, 500, (p) => mist(p, u), x + 0.16, 1.4, z + 0.12, 0.42, 0.42, true); }
@@ -156,7 +156,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       if (f >= big) {
         const g = clamp01((f - big) / 10), ph = q((f % 30) / 30, 15);
         front(M, MOM_K2[0], 0, MOM_K2[2], { mode: "stand", facing: 1, expr: "pained", tilt: shiver(0) * 1.4 });
-        fx(`stink${ph}`, 600, 500, (p) => stink(p, ph), x - 0.25, 1.25, z + 0.35, 1.5 * (0.5 + 0.5 * g), 1.25 * (0.5 + 0.5 * g));
+        fx(`stinkH${ph}`, 600, 500, (p) => stink(p, ph, 0.5), x - 0.2, 0.75, z + 0.3, 1.5 * (0.5 + 0.5 * g), 1.0 * (0.5 + 0.5 * g), true);
       }
       break;
     }
@@ -166,8 +166,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh06": {
       const c0 = W("n6", 2) - 2, c1 = W("n6", 5) + 4, walk0 = W("n6", 5) - 6;
       if (f >= c0) {
-        const u = clamp01((f - c0) / (c1 - c0)), ph = q((f % 30) / 30, 15);
-        fx(`stink${ph}`, 600, 500, (p) => stink(p, ph), DOOR_X + 0.5 - 2.4 * u, 1.45 + 0.1 * Math.sin(u * 3), 0.05 - 0.75 * u, 1.3, 1.08);
+        const u = clamp01((f - c0) / (c1 - c0)), ph = q((f % 30) / 30, 15), fade = q(1 - clamp01((f - c1) / 12), 12);
+        if (fade > 0) fx(`stinkD${ph}|${fade}`, 600, 500, (p) => stink(p, ph, 0.25 + 0.6 * fade), DOOR_X + 0.4 - 1.1 * u, 1.5 + 0.12 * u, 0.05 - 1.15 * u, 1.05, 0.88, true);
       }
       if (f >= walk0) {
         const u = clamp01((f - walk0) / 26), x = DOOR_X + 0.9 - 1.6 * u, z = 0.05 - 0.4 * u;
@@ -182,14 +182,12 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh07": {
       const wilt = W("n7", 2) - 2;
       front(L, DESK[0], 0, DESK[2] + 0.75, { mode: "stand", facing: 1, expr: f < wilt - 6 ? "neutral" : f < wilt + 12 ? "shock" : "pained", look: f < wilt - 6 ? -0.4 : 0.5 });
-      const ph = q((f % 30) / 30, 15), u = clamp01((f - shotStart("sh07")) / 50);
-      fx(`stinkS${ph}`, 600, 500, (p) => stink(p, ph, 0.75), FLOWER[0] - 0.55 + 0.6 * u, 1.25, FLOWER[2] - 0.35, 0.55, 0.46, true);
       break;
     }
     case "sh08": {
       const sn = W("a1", 0);
       aSeat({ expr: f < sn - 8 ? "smile" : f < sn ? "pained" : f < sn + 16 ? "sneeze" : say("a1", "sayNervous", "nervous"), headTilt: f >= sn && f < sn + 16 ? -8 : 0, facing: 0 });
-      burst(ASEAT[0] + 0.05, 1.28, ASEAT[2] + 0.25, sn + 1, 0.7, 10, "#ffffff");
+      burst(ASEAT[0] - 0.3, 1.22, ASEAT[2] + 0.3, sn + 1, 0.42, 10, "#ffffff");
       const ph = q((f % 30) / 30, 15);
       fx(`stinkS${ph}`, 600, 500, (p) => stink(p, ph, 0.7), ASEAT[0] - 0.45, 1.55, ASEAT[2] + 0.4, 0.5, 0.42, true);
       break;
@@ -211,10 +209,10 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       } else {
         ySeat({ expr: "nervous", tilt: shiver(0) });
         aSeat({ expr: "nervous", tilt: shiver(1) });
-        snowAt(YSEAT[0] + 0.32, 1.35, -1.25, 1.7);
+        snowAt(YSEAT[0] + 0.32, 1.3, YSEAT[2] + 0.3, 1.5, 40, 0.6);
         for (const [i, x] of [[0, YSEAT[0]], [1, ASEAT[0]]] as const) {
           const u = q(((f + i * 17) % 34) / 34, 17);
-          if (u < 0.7) fx(`breath${u}`, 300, 200, (p) => breath(p, u / 0.7), x + (i ? -0.12 : 0.12), 1.2, YSEAT[2] + 0.2, 0.3, 0.2, true);
+          if (u < 0.7) fx(`breath${u}`, 300, 200, (p) => breath(p, u / 0.7), x + (i ? -0.14 : 0.14), 1.12, YSEAT[2] + 0.25, 0.26, 0.17, true);
         }
       }
       break;
@@ -222,13 +220,13 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh12":
       ySeat({ expr: "nervous", tilt: f < W("a2", 2) ? shiver(0) * 0.5 : 0 });
       aSeat({ expr: say("a2", "say", "smile") });
-      snowAt(YSEAT[0] + 0.32, 1.35, -1.25, 1.7, 22);
+      snowAt(YSEAT[0] + 0.32, 1.3, YSEAT[2] + 0.3, 1.5, 20, 0.6);
       break;
     case "sh13": {
       ySeat({ expr: f < W("n9", 2) - 2 ? "think" : "dazed", facing: 0 });
       aSeat({ expr: "smile" });
       const k0 = W("n9", 1) - 2, k1 = W("n9", 3) + 14, kk = q(clamp01((f - k0) / (k1 - k0)), 40);
-      if (f >= k0 - 4) fx(`load${kk}`, 800, 260, (p) => loading(p, kk), YSEAT[0], 1.82, YSEAT[2] + 0.05, 0.62, 0.2);
+      if (f >= k0 - 4) fx(`load${kk}`, 800, 260, (p) => loading(p, kk), YSEAT[0], 1.6, YSEAT[2] + 0.1, 0.5, 0.16);
       break;
     }
     case "sh14": {

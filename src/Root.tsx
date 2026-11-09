@@ -12,6 +12,7 @@ import { KorshiComposition } from "./videos/korshi";
 import { Ubt2Composition } from "./videos/ubt2/Ubt2";
 import { Ubt3Composition } from "./videos/ubt3/Ubt3";
 import { TundeComposition } from "./tunde";
+import { MugalimComposition } from "./videos/mugalim/Mugalim";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -30,6 +31,7 @@ export const RemotionRoot: React.FC = () => {
       <Ubt2Composition />
       <Ubt3Composition />
       <TundeComposition />
+      <MugalimComposition />
     </>
   );
 };

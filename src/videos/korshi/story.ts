@@ -133,7 +133,7 @@ const C15a = (f: number): Shot => {
 
 const CAMS: Record<number, Key[]> = {
   1: [{ f: 0, s: C1a }, { f: 60, dur: 40, s: C1b }],
-  2: [{ f: 125, s: C2a }, { f: 205, dur: 20, s: C2b }, { f: 236, dur: 18, s: C2c }],
+  2: [{ f: 125, s: C2a }, { f: 198, dur: 18, s: C2b }, { f: 224, dur: 15, s: C2c }], // on each boy as his name is said
   3: [{ f: 277, s: C3a }, { f: 370, dur: 22, s: C3b }],
   4: [{ f: 431, s: C4a }, { f: 540, dur: 20, s: C4b }],
   5: [{ f: 603, s: C5a }],

@@ -26,7 +26,7 @@ export const LIGHTS: Record<"day" | "golden", LightPreset> = {
   golden: {
     // [ubt2] evening sun through the library windows, low from behind-right; shade kept readable indoors
     az: 120, el: 14,
-    lit: [1.5, 0.86, 0.46], shade: [0.3, 0.28, 0.44], lift: [0.06, 0.07, 0.16], lambert: 0.35, sideK: 0.82, term: 0.07,
+    lit: [1.62, 0.8, 0.36], shade: [0.24, 0.22, 0.4], lift: [0.06, 0.06, 0.16], lambert: 0.35, sideK: 0.82, term: 0.07,
     charTint: [1.0, 0.78, 0.56], charShade: 0.88, charGrad: 0.1, bodyGrad: 0.25, sideTint: [0.85, 0.80, 0.95],
     blob: [0.75, 0.74, 0.9], actorShadow: true,
     top: "#6a4f8c", hor: "#ffd08a", skyCurve: [0.05, 0.6, 1.0], fog: "#efb489", fogNear: 50, fogFar: 380, sunDisc: "#ffcf9e",

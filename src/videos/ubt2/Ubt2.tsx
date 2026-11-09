@@ -107,7 +107,7 @@ export const Ubt2: React.FC = () => {
       {f < CARD_AT ? <Picture /> : null}
       <Big29 f={f} />
       <Hud f={f} />
-      <Stamp f={f} at={ws("n9", 2) - 1} until={ws("a2", 0) - 3} text="ӨТІРІК №2" />
+      <Stamp f={f} at={ws("n9", 2) - 1} until={ws("a2", 0) - 3} text="ӨТІРІК №2" y={1150} />
       <VoteCard f={f} />
       <Captions f={f} />
       <AbsoluteFill style={{ background: "#000", opacity: fadeEnd, pointerEvents: "none" }} />

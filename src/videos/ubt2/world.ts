@@ -229,7 +229,7 @@ export class World {
       g.fillStyle = "#1f4f8f"; g.fillRect(0, 0, 900, 252); g.strokeStyle = "#f4f1ea"; g.lineWidth = 14; g.strokeRect(14, 14, 872, 224);
       text(g, "КІТАПХАНА", 450, 130, 128, "#ffffff");
     }));
-    sign.position.set(CX0 + 0.02, 2.6, 0); sign.rotation.y = Math.PI / 2; R.add(sign);
+    sign.position.set(CX0 + 0.02, 2.48, 0); sign.rotation.y = Math.PI / 2; R.add(sign);
     const board = new THREE.Mesh(plane(1.6, 1.0), basic("boardC", 640, 400, (g) => {
       g.fillStyle = "#c99a5a"; g.fillRect(0, 0, 640, 400);
       for (const [x, y, c] of [[40, 40, "#ffffff"], [250, 60, "#ffe066"], [430, 30, "#9fe3b4"], [80, 220, "#ffb3c7"], [330, 230, "#ffffff"]] as const) { g.fillStyle = c as string; g.fillRect(x, y, 160, 130); }

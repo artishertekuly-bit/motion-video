@@ -285,7 +285,7 @@ export class World {
     this.gate = new THREE.Mesh(boxGeo(V(-0.6, -2.2, -25), V(0.6, 1.2, 25)), M.concrete);
     this.gate.position.set(CANAL[0][0] - 30, terrainH(CANAL[0][0] - 30, CANAL[0][2] + 26), CANAL[0][2]); this.gate.rotation.y = 0;
     this.gate.castShadow = true; R.add(this.gate);
-    this.dam = new THREE.Mesh(boxGeo(V(0, -12, -6), V(1, -1.0, 6), 3), M.concrete);
+    this.dam = new THREE.Mesh(boxGeo(V(0, -12, -7), V(DAM_X1 - DAM_X0, -1.0, 7), 4), M.concrete);
     this.dam.position.set(DAM_X0, 0, DAM_Z); this.dam.castShadow = true; this.dam.receiveShadow = true; R.add(this.dam);
 
     // ---- ships: one hull model, four clones that float or sit ----
@@ -443,7 +443,7 @@ export class World {
     this.canal.position.y = -0.4 - 1.0 * (1 - turned); this.canal.visible = turned > 0.02;
     this.gate.rotation.y = (1 - turned) * 1.4;
     this.dam.visible = lv.dam > 0.001;
-    this.dam.scale.x = Math.max(0.001, (DAM_X1 - DAM_X0) * lv.dam);
+    this.dam.scale.x = Math.max(0.001, lv.dam);
     // ---- ships: float while there is water under the keel, else sit rolled in the sand ----
     const rusty = s.era === "dry" || s.era === "now" || s.era === "low" || s.era === "dam" || (s.era === "retreat" && id === 7);
     for (let i = 0; i < SHIPS.length; i++) {

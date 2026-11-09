@@ -18,7 +18,7 @@ const T = (f: number) => f / FPS;
 // (-9.5 m) at x 200..340: lowering the water splits the sea in two; the dam (2005) closes that strait.
 export const HARBOR: V3 = [0, 0, 600];
 export const DAM_Z = -130;
-export const DAM_X0 = 190, DAM_X1 = 350;
+export const DAM_X0 = -540, DAM_X1 = 540; // the dam closes the whole sill between the basins (~1 km here, 13 km for real)
 const ell = (x: number, z: number, cx: number, cz: number, rx: number, rz: number) => Math.hypot((x - cx) / rx, (z - cz) / rz);
 const depthIn = (r: number, d: number, p: number) => (r >= 1 ? 0 : d * (1 - r) ** p);
 /** river channel (Syr Darya) from the east into the north basin, and the irrigation canal north to the cotton */
@@ -100,8 +100,9 @@ export const levels = (id: number, f: number): { n: number; s: number; dam: numb
     case "low": return { n: -8.5, s: -16, dam: 0 };
     case "bath": return { n: -8.5, s: -16, dam: 0 };
     case "dam": {
-      const n = id === 12 ? -9.4 + 3.6 * glide((f - 1640) / 50) : -5.8 + 4.8 * glide((f - 1700) / 50);
-      return { n, s: -18, dam: id === 12 ? glide((f - 1556) / 90) : 1 };
+      // shot 12: the dam grows along the sill, then the north water rises against it; shot 13: up to the pier
+      const n = id === 12 ? -7.6 + 3.1 * glide((f - 1640) / 45) : -4.5 + 3.5 * glide((f - 1700) / 50);
+      return { n, s: -18, dam: id === 12 ? glide((f - 1556) / 88) : 1 };
     }
     case "now": return { n: -1.5, s: -22, dam: 1 };
   }
@@ -158,7 +159,7 @@ export const BATH_C: V3 = [BATH[0], BATH_Y + 0.6, BATH[2]];
 // 1: hook — aerial over the dry shelf, down to a rusted hull, then low past it toward the empty horizon
 const C1a = (f: number) => dolly([S0[0] + 70, S0[1] + 44, S0[2] + 95], [S0[0] - 4, S0[1] + 1, S0[2] - 10], pushK(f, 0, 0.004), { fov: 42, near: 0.8 });
 const C1b = (f: number) => dolly([S0[0] + 16, S0[1] + 1.7, S0[2] + 24], [S0[0] - 2, S0[1] + 2.4, S0[2] - 4], pushK(f, 70, 0.003), { fov: 40, roll: 0.03, near: 0.4 });
-const C1c = (f: number) => dolly([S0[0] + 19, S0[1] + 2.2, S0[2] + 3], [S0[0] - 25, S0[1] + 0.5, S0[2] - 210], pushK(f, 140, 0.0015), { fov: 46, roll: -0.04, near: 0.4 });
+const C1c = (f: number) => dolly([S0[0] - 30, S0[1] + 2.2, S0[2] + 30], [S0[0] + 1, S0[1] + 2.6, S0[2] - 4], pushK(f, 140, 0.0018), { fov: 44, roll: -0.04, near: 0.4 });
 // 2: 1957 harbour from the shore, golden
 const C2a = (f: number) => dolly([15, 4.2, 606], [3, 1.4, 520], pushK(f, 188, 0.0025), { fov: 44, near: 0.4 });
 // 3: aerial: the sea to the horizon
@@ -192,12 +193,12 @@ const C11c = (f: number) => zoom([B[0] + 4.0, B[1] + 0.8, B[2] + 5.0], [B[0] + 1
 const C11d = (f: number) => dolly([B[0] + 2.8, B[1] + 2.0, B[2] + 3.2], [B[0], B[1], B[2]], pushK(f, 1355, 0.0025, 0.006, 30), { fov: 40, roll: -0.03, near: 0.2 });
 const C11e = (f: number) => dolly([B[0] - 3.4, B[1] + 1.8, B[2] + 3.4], [B[0] - 0.4, B[1], B[2]], pushK(f, 1426, 0.0022), { fov: 40, roll: 0.03, near: 0.2 });
 // 12: the dam (aerial, along it)
-const C12a = (f: number) => dolly([DAM_X0 - 70, 52, DAM_Z + 130], [275, -7, DAM_Z - 10], pushK(f, 1545, 0.002), { fov: 46, near: 1 });
+const C12a = (f: number) => dolly([DAM_X0 - 230, 115, DAM_Z + 170], [40, -6, DAM_Z - 20], pushK(f, 1545, 0.0018), { fov: 48, near: 1.5 });
 // 13: the harbour again: water comes back, fish jump
 const C13a = (f: number) => dolly([PIER_END[0] + 6.5, 3.0, PIER_END[2] + 10], [PIER_END[0] - 1.5, 1.2, PIER_END[2] - 4], pushK(f, 1690, 0.0025), { fov: 44, near: 0.3 });
 // 14: twist: rise over the dam: blue small sea on the left, endless sand on the right
-const C14a = (f: number) => dolly([470, 110, -112], [262, -8, -132], pushK(f, 1785, 0.0012), { fov: 48, near: 1.5 });
-const C14b = (f: number) => dolly([700, 330, -95], [180, -12, -150], pushK(f, 1860, 0.001), { fov: 54, near: 2.5 });
+const C14a = (f: number) => dolly([720, 170, DAM_Z + 6], [-120, -8, DAM_Z - 4], pushK(f, 1785, 0.0012), { fov: 48, near: 1.5 });
+const C14b = (f: number) => dolly([950, 470, DAM_Z + 8], [-280, -16, DAM_Z - 6], pushK(f, 1860, 0.001), { fov: 54, near: 2.5 });
 
 const CAMS: Record<number, Key[]> = {
   1: [{ f: 0, s: C1a }, { f: 70, dur: 40, s: C1b }, { f: 140, dur: 30, s: C1c }],

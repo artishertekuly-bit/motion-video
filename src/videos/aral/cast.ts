@@ -198,10 +198,10 @@ export const stage = (id: number, f: number, cam: CamInfo, lv: Lv): Stage => {
       stand(cam, out, 20, FISH[0], "fi0", ex - 1.0, py, ez + 2.2, t, { expr: "grin" });
       stand(cam, out, 21, FISH[1], "fi1", ex + 0.9, py, ez + 4.0, t, { expr: f > 420 ? "laugh" : "smile" });
       stand(cam, out, 22, FISH[2], "fi2", ex - 0.2, py, ez + 6.3, t, { expr: "smile_closed" });
-      const n = 3 + Math.max(0, Math.min(12, Math.floor((f - 394) / 4)));
+      const n = 2 + Math.max(0, Math.min(8, Math.floor((f - 394) / 6)));
       for (let k = 0; k < n; k++) {
         const row = k < 5 ? 0 : k < 9 ? 1 : k < 12 ? 2 : 3, inRow = row === 0 ? k : row === 1 ? k - 5 : row === 2 ? k - 9 : k - 12;
-        out.fx.push({ key: `crate${k % 3}`, cw: 360, ch: 300, draw: (p) => fxCrate(p, k % 3), x: ex + 1.3 + (inRow - (4 - row) / 2) * 0.45, y: py + 0.24 + row * 0.42, z: ez + 6.0, w: 0.6, h: 0.5 });
+        out.fx.push({ key: `crate${k % 3}`, cw: 360, ch: 300, draw: (p) => fxCrate(p, k % 3), x: ex + 1.2 + (inRow - (4 - row) / 2) * 0.4, y: py + 0.2 + row * 0.34, z: ez + 3.6, w: 0.48, h: 0.4 });
       }
       break;
     }
@@ -263,7 +263,7 @@ export const stage = (id: number, f: number, cam: CamInfo, lv: Lv): Stage => {
       // dust where the dam is growing
       if (lv.dam > 0 && lv.dam < 1) {
         const x = DAM_X0 + (DAM_X1 - DAM_X0) * lv.dam, u = (t * 1.7) % 1;
-        out.fx.push({ key: `puff${q(u, 30)}`, cw: 300, ch: 300, draw: (p) => fxPuff(p, q(u, 30)), x, y: 2, z: DAM_Z, w: 26, h: 26, soft: true });
+        out.fx.push({ key: `puff${q(u, 30)}`, cw: 300, ch: 300, draw: (p) => fxPuff(p, q(u, 30)), x, y: 1, z: DAM_Z, w: 34, h: 34, soft: true });
       }
       break;
     }

@@ -37,10 +37,10 @@ const sunburst = (p: Pen) => {
   for (let i = 0; i < 18; i++) {
     const a0 = (i / 18) * Math.PI * 2, a1 = a0 + Math.PI / 18;
     g.beginPath(); g.moveTo(300, 300); g.lineTo(300 + 300 * Math.cos(a0), 300 + 300 * Math.sin(a0)); g.lineTo(300 + 300 * Math.cos(a1), 300 + 300 * Math.sin(a1)); g.closePath();
-    g.fillStyle = "rgba(255,224,110,0.5)"; g.fill();
+    g.fillStyle = "rgba(255,224,110,0.3)"; g.fill();
   }
   const gr = g.createRadialGradient(300, 300, 0, 300, 300, 300);
-  gr.addColorStop(0, "rgba(255,248,210,0.85)"); gr.addColorStop(0.45, "rgba(255,240,180,0.35)"); gr.addColorStop(1, "rgba(255,240,180,0)");
+  gr.addColorStop(0, "rgba(255,248,210,0.7)"); gr.addColorStop(0.4, "rgba(255,240,180,0.2)"); gr.addColorStop(1, "rgba(255,240,180,0)");
   g.fillStyle = gr; g.fillRect(0, 0, 600, 600);
 };
 /** small thought bubble with a lightbulb (400 x 400) */

@@ -98,12 +98,12 @@ const TRAITS: [string, string][] = [["Ақылды", "#2f6fb0"], ["Мейірі�
 export const TurnPage: React.FC = () => (
   <AbsoluteFill style={paperBg}>
     <Title n="06" big="ЖАН-ЖАҚТАН" small="Ақ барыс · бойы 1,7 метр" />
-    <Draw w={1080} h={700} style={{ left: 0, top: 300 }} draw={turnDraw} />
-    {[0.5, 1.0, 1.5].map((m) => (
-      <div key={m} style={{ position: "absolute", right: 34, top: 300 + SOLE_Y - m * 463 * TS - 40, fontFamily: MONT, fontWeight: 700, fontSize: 24, color: "rgba(36,23,38,0.5)" }}>{String(m).replace(".", ",")} м</div>
+    <Draw w={1080} h={700} style={{ left: 0, top: 250 }} draw={turnDraw} />
+    {[1.0, 1.5].map((m) => (
+      <div key={m} style={{ position: "absolute", left: 30, top: 250 + SOLE_Y - m * 463 * TS - 38, fontFamily: MONT, fontWeight: 700, fontSize: 24, color: "rgba(36,23,38,0.5)" }}>{String(m).replace(".", ",")} м</div>
     ))}
     {VIEWS.map((v) => (
-      <div key={v.label} style={{ position: "absolute", left: v.x - 110, width: 220, top: 300 + SOLE_Y + 26, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 30, letterSpacing: 2, color: PLUM }}>{v.label}</div>
+      <div key={v.label} style={{ position: "absolute", left: v.x - 110, width: 220, top: 250 + SOLE_Y + 26, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 30, letterSpacing: 2, color: PLUM }}>{v.label}</div>
     ))}
     <div style={{ position: "absolute", left: 60, top: 1080, fontFamily: MONT, fontWeight: 900, fontSize: 46, color: PLUM }}>ТҮСТЕРІ</div>
     {SWATCH.map(([name, c], i) => (

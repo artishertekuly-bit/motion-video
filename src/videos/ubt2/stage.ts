@@ -88,8 +88,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       front(M, -0.65, 0, -1.55, { mode: "stand", prop: "phone", facing: 1, expr: woke ? "stern" : ring ? "nervous" : "neutral" });
       front(Y, tx + 0.15, 0.3, tz - 0.65, { mode: "sit", facing: -1, expr: woke ? "shock" : "smile_closed", blink: woke ? undefined : 1, headTilt: woke ? 0 : 9 }, false);
       if (ring) { const u = q((f % 8) / 8, 4); out.fx.push({ key: `ring${u}`, cw: 300, ch: 300, draw: (p) => fxCreak(p, u), x: -0.38, y: 1.32, z: -1.45, w: 0.32, h: 0.32 }); }
-      if (!woke) { const k2 = Math.floor(f / 14) % 3; out.fx.push({ key: `zzz${k2}`, cw: 400, ch: 400, draw: (p) => zzz(p, k2), x: tx + 0.45, y: 1.55, z: tz - 0.6, w: 0.42, h: 0.42 }); }
-      if (f >= W("n2b", 11) - 2 && !woke) { const k3 = clamp01((f - W("n2b", 11) + 2) / 6); out.fx.push({ key: "x3", cw: 400, ch: 300, draw: times3, x: tx + 0.05, y: 1.42, z: tz - 0.5, w: 0.4 * (0.6 + 0.4 * k3), h: 0.3 * (0.6 + 0.4 * k3) }); }
+      if (!woke) { const k2 = Math.floor(f / 14) % 3; out.fx.push({ key: `zzz${k2}`, cw: 400, ch: 400, draw: (p) => zzz(p, k2), x: tx + 0.42, y: 1.38, z: tz - 0.6, w: 0.42, h: 0.42 }); }
+      if (f >= W("n2b", 11) - 2 && !woke) { const k3 = clamp01((f - W("n2b", 11) + 2) / 6); out.fx.push({ key: "x3", cw: 400, ch: 300, draw: times3, x: tx - 0.12, y: 1.2, z: tz - 0.45, w: 0.4 * (0.6 + 0.4 * k3), h: 0.3 * (0.6 + 0.4 * k3) }); }
     }
       break;
     case "sh03": {

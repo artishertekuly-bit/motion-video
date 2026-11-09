@@ -335,10 +335,10 @@ export const leopardFront = (p: Pen, o: LeoOpts = {}) => {
       shoe(p, [ft[0] - dir * 4 * u, ft[1]], [ft[0] + dir * 15 * u, ft[1] + 0.6 * u]);
     }
   } else if (legs === "jump") {
-    const L1: [P2, P2, P2] = [[cx - 20 * u, hipY], [cx - 52 * u, hipY + 0.42 * HH], [cx - 30 * u, hipY + 0.82 * HH]];
-    const L2: [P2, P2, P2] = [[cx + 20 * u, hipY], [cx + 44 * u, hipY + 0.5 * HH], [cx + 72 * u, hipY + 0.7 * HH]];
-    limb(p, curve(...L2), LEO.pants, legW); shoe(p, [L2[2][0] - 4 * u, L2[2][1] + 2 * u], [L2[2][0] + 12 * u, L2[2][1] - 4 * u]);
-    limb(p, curve(...L1), LEO.pants, legW); shoe(p, [L1[2][0] + 3 * u, L1[2][1]], [L1[2][0] - 13 * u, L1[2][1] + 3 * u]);
+    const L1: [P2, P2, P2] = [[cx - 20 * u, hipY], [cx - 46 * u, hipY + 0.34 * HH], [cx - 26 * u, hipY + 0.66 * HH]];
+    const L2: [P2, P2, P2] = [[cx + 20 * u, hipY], [cx + 40 * u, hipY + 0.42 * HH], [cx + 64 * u, hipY + 0.54 * HH]];
+    limb(p, [L2[0], L2[1], L2[2]], LEO.pants, legW); shoe(p, [L2[2][0] - 4 * u, L2[2][1] + 2 * u], [L2[2][0] + 12 * u, L2[2][1] - 5 * u]);
+    limb(p, [L1[0], L1[1], L1[2]], LEO.pants, legW); shoe(p, [L1[2][0] + 3 * u, L1[2][1]], [L1[2][0] - 13 * u, L1[2][1] + 3 * u]);
   } else {
     for (const s of [-1, 1]) {
       const h: P2 = [cx + s * 18 * u, hipY], k: P2 = [cx + s * 38 * u, hipY + 0.22 * HH], ft: P2 = [cx + s * 42 * u, SOLE - 8 * u];

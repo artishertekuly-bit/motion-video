@@ -48,7 +48,7 @@ const MOODS: { e: LExpr; o: LeoOpts; label: string; bg: string; fx?: "idea" | "s
 const TILE = 470;
 const moodDraw = (m: (typeof MOODS)[number]) => (g: CanvasRenderingContext2D) => {
   const s = 1.18;
-  at(g, TILE / 2 - 300 * s, 250 - LEO_METRICS.hc * s, s, (p) => leopardFront(p, { expr: m.e, ...m.o }));
+  at(g, TILE / 2 - 300 * s, (m.e === "think" ? 205 : 240) - LEO_METRICS.hc * s, s, (p) => leopardFront(p, { expr: m.e, ...m.o }));
   const p = new Pen(g);
   if (m.fx === "idea") {
     for (const [a, l] of [[-80, 46], [-45, 58], [-10, 46]] as const) {
@@ -57,7 +57,7 @@ const moodDraw = (m: (typeof MOODS)[number]) => (g: CanvasRenderingContext2D) =>
     }
   }
   if (m.fx === "shock") for (const [x, y] of [[90, 70], [118, 58]] as const) { p.poly([[x - 7, y - 30], [x + 7, y - 30], [x + 3, y + 8], [x - 3, y + 8]], "#e2453c", 4); p.ell(x, y + 22, 7, 7, "#e2453c", 4); }
-  if (m.fx === "laugh") for (const [x, y, r] of [[70, 110, 12], [400, 96, 10], [388, 150, 7]] as const) p.ell(x, y, r * 0.8, r, "#9fd4ff", 3);
+  if (m.fx === "laugh") for (const [x, y, a] of [[78, 150, -150], [92, 112, -125], [392, 112, -55], [406, 150, -30]] as const) { const r = (a * Math.PI) / 180; p.stroke([[x, y], [x + 26 * Math.cos(r), y + 26 * Math.sin(r)]], 9, "#f2b928"); }
 };
 export const FacesPage: React.FC = () => (
   <AbsoluteFill style={paperBg}>
@@ -77,11 +77,11 @@ export const FacesPage: React.FC = () => (
 );
 
 // ---------------- page 6: turnaround, colours, character ----------------
-const TS = 0.7, SOLE_Y = 720;
+const TS = 0.66, SOLE_Y = 640;
 const VIEWS: { x: number; label: string; draw: (p: Pen) => void }[] = [
-  { x: 150, label: "АЛДЫ", draw: (p) => leopardFront(p, { expr: "smile", tail: -1 }) },
-  { x: 405, label: "ЖАРТЫЛАЙ", draw: (p) => leopardFront(p, { expr: "proud", facing: 1, tail: -1 }) },
-  { x: 690, label: "ЖАНЫ", draw: (p) => leopardSide(p, { expr: "smug" }) },
+  { x: 182, label: "АЛДЫ", draw: (p) => leopardFront(p, { expr: "smile", tail: -1 }) },
+  { x: 432, label: "ЖАРТЫЛАЙ", draw: (p) => leopardFront(p, { expr: "proud", facing: 1, tail: -1 }) },
+  { x: 702, label: "ЖАНЫ", draw: (p) => leopardSide(p, { expr: "smug" }) },
   { x: 925, label: "АРТЫ", draw: (p) => leopardBack(p) },
 ];
 const turnDraw = (g: CanvasRenderingContext2D) => {
@@ -98,25 +98,28 @@ const TRAITS: [string, string][] = [["Ақылды", "#2f6fb0"], ["Мейірі�
 export const TurnPage: React.FC = () => (
   <AbsoluteFill style={paperBg}>
     <Title n="06" big="ЖАН-ЖАҚТАН" small="Ақ барыс · бойы 1,7 метр" />
-    <Draw w={1080} h={780} style={{ left: 0, top: 330 }} draw={turnDraw} />
-    {VIEWS.map((v) => (
-      <div key={v.label} style={{ position: "absolute", left: v.x - 110, width: 220, top: 330 + SOLE_Y + 26, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 30, letterSpacing: 2, color: PLUM }}>{v.label}</div>
+    <Draw w={1080} h={700} style={{ left: 0, top: 300 }} draw={turnDraw} />
+    {[0.5, 1.0, 1.5].map((m) => (
+      <div key={m} style={{ position: "absolute", right: 34, top: 300 + SOLE_Y - m * 463 * TS - 40, fontFamily: MONT, fontWeight: 700, fontSize: 24, color: "rgba(36,23,38,0.5)" }}>{String(m).replace(".", ",")} м</div>
     ))}
-    <div style={{ position: "absolute", left: 60, top: 1170, fontFamily: MONT, fontWeight: 900, fontSize: 46, color: PLUM }}>ТҮСТЕРІ</div>
+    {VIEWS.map((v) => (
+      <div key={v.label} style={{ position: "absolute", left: v.x - 110, width: 220, top: 300 + SOLE_Y + 26, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 30, letterSpacing: 2, color: PLUM }}>{v.label}</div>
+    ))}
+    <div style={{ position: "absolute", left: 60, top: 1080, fontFamily: MONT, fontWeight: 900, fontSize: 46, color: PLUM }}>ТҮСТЕРІ</div>
     {SWATCH.map(([name, c], i) => (
-      <div key={name} style={{ position: "absolute", left: 60 + i * 162, top: 1245, width: 150, textAlign: "center" }}>
+      <div key={name} style={{ position: "absolute", left: 60 + i * 162, top: 1160, width: 150, textAlign: "center" }}>
         <div style={{ width: 112, height: 112, margin: "0 auto", borderRadius: 60, background: c, border: `6px solid ${PLUM}`, boxSizing: "border-box" }} />
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 25, color: PLUM, marginTop: 10 }}>{name}</div>
         <div style={{ fontFamily: MONT, fontWeight: 600, fontSize: 21, color: "#6a5a6e" }}>{c.toUpperCase()}</div>
       </div>
     ))}
-    <div style={{ position: "absolute", left: 60, top: 1500, fontFamily: MONT, fontWeight: 900, fontSize: 46, color: PLUM }}>МІНЕЗІ</div>
-    <div style={{ position: "absolute", left: 60, right: 60, top: 1580, display: "flex", flexWrap: "wrap", gap: 22 }}>
+    <div style={{ position: "absolute", left: 60, top: 1420, fontFamily: MONT, fontWeight: 900, fontSize: 46, color: PLUM }}>МІНЕЗІ</div>
+    <div style={{ position: "absolute", left: 60, right: 60, top: 1500, display: "flex", flexWrap: "wrap", gap: 22 }}>
       {TRAITS.map(([t, c]) => (
         <div key={t} style={{ fontFamily: MONT, fontWeight: 800, fontSize: 38, color: "#ffffff", background: c, border: `6px solid ${PLUM}`, borderRadius: 46, padding: "12px 34px" }}>{t}</div>
       ))}
     </div>
-    <div style={{ position: "absolute", left: 60, right: 60, top: 1780, fontFamily: MONT, fontWeight: 600, fontSize: 32, color: "#5a4a5e" }}>Әр оқушыға сенеді — қатесін де, жетістігін де көреді.</div>
+    <div style={{ position: "absolute", left: 60, right: 60, top: 1730, fontFamily: MONT, fontWeight: 700, fontSize: 36, lineHeight: 1.35, color: "#5a4a5e" }}>«Әр оқушыға сенеді — қатесін де, жетістігін де көреді.»</div>
   </AbsoluteFill>
 );
 

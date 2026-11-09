@@ -28,9 +28,9 @@ export const JUMP: V3 = [0.05, 0.3, -1.75]; // mid-jump in front of the first ro
 export type Cam = { pos: V3; look: V3; fov: number; roll: number };
 const CAMS: Record<string, Cam> = {
   hero: { pos: [-0.35, 1.0, 0.75], look: [-0.72, 1.02, -3.0], fov: 38, roll: 0 },
-  lesson: { pos: [0.55, 1.3, 0.35], look: [-1.45, 1.42, -3.3], fov: 40, roll: 0.035 },
-  desk: { pos: [1.95, 1.22, -0.85], look: [2.38, 1.02, -3.15], fov: 37, roll: 0 },
-  joy: { pos: [0.3, 0.62, 1.45], look: [0.05, 1.42, -1.75], fov: 46, roll: -0.04 },
+  lesson: { pos: [-0.25, 1.28, 0.25], look: [-1.72, 1.3, -3.3], fov: 38, roll: 0.03 },
+  desk: { pos: [1.95, 1.32, -0.85], look: [2.36, 1.2, -3.15], fov: 37, roll: 0 },
+  joy: { pos: [0.3, 1.0, 1.5], look: [0.05, 1.45, -1.75], fov: 44, roll: -0.04 },
 };
 export const camAt = (id: number, _f: number): Cam => CAMS[SHOTS[id - 1].key];
 

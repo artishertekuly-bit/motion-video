@@ -55,14 +55,15 @@ const boardTex = () => basic("boardM", 2048, 690, (g) => {
   for (let i = 0; i < 7; i++) { const a = Math.PI * (1.0 + i / 6); g.beginPath(); g.moveTo(250 + 135 * Math.cos(a), 270 + 135 * Math.sin(a)); g.lineTo(250 + 175 * Math.cos(a), 270 + 175 * Math.sin(a)); g.stroke(); }
   // formula + motto
   text(g, "a² + b² = c²", 1000, 215, 150, chalk, CHALK_FONT, "700");
-  text(g, "Білім — күш!", 1000, 430, 140, "rgba(255,226,120,0.95)", CHALK_FONT, "700");
-  g.beginPath(); g.moveTo(760, 515); g.quadraticCurveTo(1000, 545, 1240, 512); g.stroke();
+  text(g, "Білім — күш!", 1690, 520, 118, "rgba(255,226,120,0.95)", CHALK_FONT, "700");
+  g.beginPath(); g.moveTo(1470, 590); g.quadraticCurveTo(1690, 615, 1910, 588); g.stroke();
   // open book
+  g.translate(0, -60);
   g.beginPath(); g.moveTo(1640, 250); g.quadraticCurveTo(1730, 215, 1810, 255); g.lineTo(1810, 420); g.quadraticCurveTo(1730, 385, 1640, 420); g.closePath(); g.stroke();
   g.beginPath(); g.moveTo(1810, 255); g.quadraticCurveTo(1890, 215, 1980, 250); g.lineTo(1980, 420); g.quadraticCurveTo(1890, 385, 1810, 420); g.stroke();
   for (const y of [290, 325, 360]) { g.lineWidth = 5; g.beginPath(); g.moveTo(1665, y); g.lineTo(1785, y - 8); g.stroke(); g.beginPath(); g.moveTo(1835, y - 8); g.lineTo(1955, y); g.stroke(); }
-  g.lineWidth = 9;
-  text(g, "9 қараша", 1800, 90, 70, chalk, CHALK_FONT, "700");
+  g.translate(0, 60); g.lineWidth = 9;
+  text(g, "9 қараша", 1480, 90, 70, chalk, CHALK_FONT, "700");
   // little stars
   for (const [x, y, s] of [[520, 120, 1], [1420, 140, 0.8], [1500, 560, 1.1], [480, 560, 0.8]] as const) {
     g.beginPath(); for (let i = 0; i < 10; i++) { const a = (i * Math.PI) / 5 - Math.PI / 2, rr = (i % 2 ? 14 : 36) * s; g.lineTo(x + rr * Math.cos(a), y + rr * Math.sin(a)); } g.closePath(); g.stroke();

@@ -1,5 +1,5 @@
 // «Мұғалім» portfolio: where the snow-leopard teacher stands on each 3D page, his pose, and the effect cards.
-import { Pen, fxBurst, INK } from "./toon";
+import { Pen, INK } from "./toon";
 import { leopardFront, LeoOpts } from "./leopard";
 import { SHOTS, HERO, LESSON, SEATED, JUMP } from "./story";
 import { CamInfo, Stage, Place, blob, setLight, light2D } from "./cast";
@@ -31,21 +31,26 @@ const star = (p: Pen, s = 1, col = "#ffd84a") => {
   for (let i = 0; i < 10; i++) { const a = (i * Math.PI) / 5 - Math.PI / 2, r = (i % 2 ? 36 : 90) * s; pts.push([128 + r * Math.cos(a), 128 + r * Math.sin(a)]); }
   p.poly(pts, col, 10);
 };
-/** «!» spark lines over a head (300 x 300) */
-const sparks = (p: Pen) => {
-  for (const [a, l] of [[-150, 70], [-115, 90], [-75, 90], [-35, 70]] as const) {
-    const r = (a * Math.PI) / 180;
-    p.stroke([[150 + 70 * Math.cos(r), 220 + 70 * Math.sin(r)], [150 + (70 + l) * Math.cos(r), 220 + (70 + l) * Math.sin(r)]], 16, "#ffcf3a");
+/** soft sunburst behind a happy moment (600 x 600, no ink) */
+const sunburst = (p: Pen) => {
+  const g = p.g;
+  for (let i = 0; i < 18; i++) {
+    const a0 = (i / 18) * Math.PI * 2, a1 = a0 + Math.PI / 18;
+    g.beginPath(); g.moveTo(300, 300); g.lineTo(300 + 300 * Math.cos(a0), 300 + 300 * Math.sin(a0)); g.lineTo(300 + 300 * Math.cos(a1), 300 + 300 * Math.sin(a1)); g.closePath();
+    g.fillStyle = "rgba(255,224,110,0.5)"; g.fill();
   }
+  const gr = g.createRadialGradient(300, 300, 0, 300, 300, 300);
+  gr.addColorStop(0, "rgba(255,248,210,0.85)"); gr.addColorStop(0.45, "rgba(255,240,180,0.35)"); gr.addColorStop(1, "rgba(255,240,180,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 600, 600);
 };
 /** small thought bubble with a lightbulb (400 x 400) */
 const bulbThought = (p: Pen) => {
-  for (const [x, y, r] of [[70, 360, 16], [110, 320, 24]] as const) p.ell(x, y, r, r * 0.9, "#ffffff", 7);
-  p.ell(250, 170, 130, 120, "#ffffff", 9);
-  p.ell(250, 150, 52, 54, "#ffe27a", 8);
-  p.poly([[226, 196], [274, 196], [270, 236], [230, 236]], "#c9ccd2", 7);
-  p.stroke([[236, 150], [250, 130], [264, 150]], 6, "#e8a23a");
-  for (const a of [-160, -125, -90, -55, -20]) { const r = (a * Math.PI) / 180; p.stroke([[250 + 70 * Math.cos(r), 150 + 70 * Math.sin(r)], [250 + 92 * Math.cos(r), 150 + 92 * Math.sin(r)]], 7, "#e8a23a"); }
+  for (const [x, y, r] of [[350, 375, 14], [312, 330, 22]] as const) p.ell(x, y, r, r * 0.9, "#ffffff", 7);
+  p.ell(180, 170, 135, 125, "#ffffff", 9);
+  p.ell(180, 150, 52, 54, "#ffe27a", 8);
+  p.poly([[156, 196], [204, 196], [200, 236], [160, 236]], "#c9ccd2", 7);
+  p.stroke([[166, 150], [180, 130], [194, 150]], 6, "#e8a23a");
+  for (const a of [-160, -125, -90, -55, -20]) { const r = (a * Math.PI) / 180; p.stroke([[180 + 70 * Math.cos(r), 150 + 70 * Math.sin(r)], [180 + 92 * Math.cos(r), 150 + 92 * Math.sin(r)]], 7, "#e8a23a"); }
   void INK;
 };
 
@@ -66,20 +71,19 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       const [x, y, z] = LESSON;
       out.places.push(teacher(cam, x, y, z, { expr: "talk", facing: 1, arms: ["hang", "point"], tail: -1, look: 0.6, lookY: -1 }, "lesson"));
       blob(out, x, y, z);
-      fx("sparks", 300, 300, sparks, -0.95, 2.35, -3.6, 0.42, 0.42);
       break;
     }
     case "desk": {
       const [x, y, z] = SEATED;
       out.places.push(teacher(cam, x, y, z, { expr: "think", legs: "sit", arms: ["deskRest", "deskChin"], tail: 1, facing: 0, headTilt: 4 }, "desk"));
-      fx("bulb", 400, 400, bulbThought, x - 0.52, 1.72, z + 0.05, 0.52, 0.52);
+      fx("bulb", 400, 400, bulbThought, x - 0.25, 1.8, z + 0.08, 0.3, 0.3);
       break;
     }
     case "joy": {
       const [x, y, z] = JUMP;
       out.places.push(teacher(cam, x, y, z, { expr: "joy", legs: "jump", arms: ["up", "up"], tail: 1, facing: 0 }, "joy"));
       blob(out, x, 0, z, 0.8, 0.6);
-      fx("burst", 500, 500, (p) => fxBurst(p, 0.45, "#fff0a0", 14, 60, 240), x, 1.55, z - 0.35, 2.3, 2.3);
+      fx("sunburst", 600, 600, sunburst, x, 1.5, z - 0.4, 2.6, 2.6, true);
       fx("p5a", 300, 380, (p) => paper5(p, -0.25), x - 0.62, 1.95, z + 0.25, 0.32, 0.4);
       fx("p5b", 300, 380, (p) => paper5(p, 0.3), x + 0.66, 2.15, z + 0.15, 0.3, 0.38);
       fx("p5c", 300, 380, (p) => paper5(p, 0.1), x + 0.52, 1.35, z + 0.4, 0.26, 0.33);

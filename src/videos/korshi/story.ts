@@ -106,8 +106,8 @@ const S = SIT_Z;
 const C1a = (f: number) => dolly([70, 80, 140], [0, 1, 0], pushK(f, 0, 0.0035), { fov: 44, near: 0.5 });
 const C1b = (f: number) => dolly([18, 16, 46], [0, 1.2, 4], pushK(f, 60, 0.003), { fov: 42, near: 0.4 });
 const C2a = (f: number) => dolly([0.4, 2.4, 30], [0, 1.1, 8], pushK(f, 125, 0.0022), { fov: 42, near: 0.3 });
-const C2b = (f: number) => dolly([-3.5, 1.9, 22], [-5.5, 1.0, 10], pushK(f, 205, 0.003), { fov: 38, roll: 0.03, near: 0.3 });
-const C2c = (f: number) => dolly([3.5, 1.9, 22], [5.5, 1.0, 11], pushK(f, 236, 0.003), { fov: 38, roll: -0.03, near: 0.3 });
+const C2b = (f: number) => dolly([-1.6, 1.7, 19.5], [-2.6, 0.9, 11], pushK(f, 205, 0.003), { fov: 38, roll: 0.03, near: 0.3 });
+const C2c = (f: number) => dolly([1.6, 1.7, 20.0], [2.6, 0.9, 11.6], pushK(f, 236, 0.003), { fov: 38, roll: -0.03, near: 0.3 });
 const C3a = (f: number) => dolly([-15.5, 2.3, 9.5], [-6.5, 0.9, -0.5], pushK(f, 277, 0.0022), { fov: 42, near: 0.3 });
 const C3b = (f: number) => dolly([-12.4, 1.7, 6.4], [-8.6, 0.85, 1.6], pushK(f, 370, 0.003, 0.006, 30), { fov: 40, roll: 0.035, near: 0.2 });
 const C4a = (f: number) => dolly([-6, 3.0, 54], [-6, 0.8, 39], pushK(f, 431, 0.0022), { fov: 42, near: 0.3 });
@@ -124,7 +124,7 @@ const C11a = (f: number) => dolly([0, 1.35, S + 6.8], [0, 0.8, S], pushK(f, 1336
 const C12a = (f: number) => dolly([0, 1.75, S + 4.6], [0, 1.2, S], pushK(f, 1443, 0.0025), { fov: 40, near: 0.2 });
 const C12b = (f: number) => dolly([0, 2.4, S + 10.5], [0, 1.3, S - 1.0], pushK(f, BEAT.fathers, 0.002, 0.006, 30), { fov: 44, near: 0.2 });
 const C13a = (f: number) => dolly([-3.4, 2.5, 12.5], [19, 0.4, 14], pushK(f, 1632, 0.002), { fov: 40, near: 0.2 });
-const C13b = (f: number) => dolly([15.6, 0.55, 17.4], [18.2, 0.25, 13.6], pushK(f, BEAT.weeds, 0.003), { fov: 42, near: 0.1 });
+const C13b = (f: number) => dolly([17.2, 0.75, 21.2], [18.2, 0.32, 18.5], pushK(f, BEAT.weeds, 0.003), { fov: 42, near: 0.1 }); // from the garden's front edge into the first rows
 const C14a = (f: number) => dolly([0, 1.85, S + 6.0], [0, 1.45, S - 2.0], pushK(f, 1848, 0.0025), { fov: 40, near: 0.2 });
 const C15a = (f: number): Shot => {
   const u = glide((f - 2023) / 130);

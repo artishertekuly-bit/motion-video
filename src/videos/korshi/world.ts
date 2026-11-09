@@ -244,9 +244,9 @@ export class World {
         bush.push(new THREE.Matrix4().compose(V(x, s * 0.75, z), q, V(s, s * 0.8, s)));
         if (gr() < 0.35) weed.push(new THREE.Matrix4().compose(V(x + 0.7 * (gr() > 0.5 ? 1 : -1), 0.26, z + (gr() - 0.5) * 0.3), new THREE.Quaternion().setFromEuler(new THREE.Euler(0, gr() * 6, (gr() - 0.5) * 0.4)), V(0.13, 0.52, 0.13)));
       }
-      for (let k = 0; k < 26; k++) { // the close-up patch (shot 13b looks at 18.2, 13.6)
-        const a = k * 2.4, rr = 0.25 + 0.09 * k;
-        weed.push(new THREE.Matrix4().compose(V(18.2 + Math.cos(a) * rr, 0.24, 13.6 + Math.sin(a) * rr * 0.8), new THREE.Quaternion().setFromEuler(new THREE.Euler((gr() - 0.5) * 0.5, gr() * 6, (gr() - 0.5) * 0.5)), V(0.11, 0.5 + 0.2 * gr(), 0.11)));
+      for (let k = 0; k < 30; k++) { // the close-up patch in the first rows (shot 13b looks at 18.2, 18.5)
+        const a = k * 2.4, rr = 0.15 + 0.07 * k, h = 0.7 + 0.35 * gr();
+        weed.push(new THREE.Matrix4().compose(V(18.2 + Math.cos(a) * rr, h / 2, 18.4 + Math.sin(a) * rr * 0.45), new THREE.Quaternion().setFromEuler(new THREE.Euler((gr() - 0.5) * 0.6, gr() * 6, (gr() - 0.5) * 0.6)), V(0.12, h, 0.12)));
       }
       const bm = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 1), lam("gardenLeaf", () => ({ color: "#4f9a3a" })), bush.length);
       const wm = new THREE.InstancedMesh(new THREE.ConeGeometry(1, 1, 4), lam("weed", () => ({ color: "#8a7428" })), weed.length);

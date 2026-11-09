@@ -208,8 +208,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case 1: case 2: case 15: {
       // the two boys in their yards, the fathers by the houses, the flock beyond
       const evening = id === 15;
-      who(cam, out, 1, ERLAN, "erlan", evening ? -0.6 : -5.5, 0, evening ? SIT_Z + 1 : 10, t, { expr: evening ? "laugh" : "smile" }, KID);
-      who(cam, out, 2, DAUREN, "dauren", evening ? 0.6 : 5.5, 0, evening ? SIT_Z + 1 : 11, t, { expr: evening ? "laugh" : "smile_closed" }, KID);
+      who(cam, out, 1, ERLAN, "erlan", evening ? -0.6 : -2.6, 0, evening ? SIT_Z + 1 : 11, t, { expr: evening ? "laugh" : "smile" }, KID);
+      who(cam, out, 2, DAUREN, "dauren", evening ? 0.6 : 2.6, 0, evening ? SIT_Z + 1 : 11.6, t, { expr: evening ? "laugh" : "smile_closed" }, KID);
       who(cam, out, 3, ASQAR, "asqar", evening ? -0.8 : -12.5, 0, evening ? 12 : -8.5, t, { expr: "smile" });
       who(cam, out, 4, BERIK, "berik", evening ? 0.8 : 12.5, 0, evening ? 12 : -8.5, t, { expr: "smile" });
       flock(10, 46, 9, 4, 0, 1);
@@ -233,10 +233,10 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     }
     case 5: {
       // Asqar points over the fence: Dauren plays the dombra on the other side
-      who(cam, out, 3, ASQAR, "asqar", -0.95, 0, 6.2, t, { expr: "stern", wave: q(Math.sin(t * 5) * 0.4, 20) });
-      who(cam, out, 2, DAUREN, "dauren", 5.6, 0, 3.2, t, { expr: "smile_closed", mode: "sit" }, KID);
-      dombra(out, 5.75, 0.62, 3.2, Math.sin(t * 20));
-      notes(out, 5.6, 1.0, 3.2, t);
+      who(cam, out, 3, ASQAR, "asqar", -1.15, 0, 7.4, t, { expr: "stern", wave: q(Math.sin(t * 5) * 0.4, 20) });
+      who(cam, out, 2, DAUREN, "dauren", 3.4, 0, 3.4, t, { expr: "smile_closed" }, KID);
+      dombra(out, 3.55, 0.95, 3.4, Math.sin(t * 20));
+      notes(out, 3.4, 1.3, 3.4, t);
       break;
     }
     case 6: {
@@ -246,7 +246,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       dombra(out, tx + 0.36, 1.12, tz + 0.2, Math.sin(t * 24));
       notes(out, tx + 0.2, 1.5, tz + 0.2, t, 2);
       const hw = q(howl * (0.75 + 0.25 * Math.sin(t * 3)), 10);
-      card(cam, out, `dog${hw}`, (p) => dogCard(p, hw), -11.6, 0, 5.4, 1.0, -1);
+      card(cam, out, `dog${hw}`, (p) => dogCard(p, hw), -10.6, 0, 7.6, 1.5, -1);
       card(cam, out, `dog${hw}`, (p) => dogCard(p, hw), 10.5, 0, 3, 1.0, 1);
       break;
     }
@@ -254,7 +254,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       // "first at the bäige": Asqar opens his arms; beyond the fence Dauren with a medal, Berik beaming
       who(cam, out, 3, ASQAR, "asqar", -1.0, 0, 5.6, t, { expr: "nervous", wave: q(Math.sin(t * 7), 20) });
       who(cam, out, 2, DAUREN, "dauren", 5.2, 0, 2.6, t, { expr: "grin" }, KID);
-      out.fx.push({ key: "medal", cw: 300, ch: 400, draw: fxMedal, x: 5.2, y: 0.95, z: 2.75, w: 0.24, h: 0.32 });
+      out.fx.push({ key: "medal", cw: 300, ch: 400, draw: fxMedal, x: 5.2, y: 1.42, z: 2.8, w: 0.3, h: 0.4, rot: 0.15 * Math.sin(t * 6) });
       who(cam, out, 4, BERIK, "berik", 7.4, 0, 1.6, t, { expr: "laugh" });
       card(cam, out, "horse0", (p) => horseCard(p, 0, 0), 9.6, 0, 0.6, 1.9, 1);
       break;
@@ -294,8 +294,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       }
       if (id === 10) who(cam, out, 4, BERIK, "berik", 2.3, 0, SIT_Z - 0.6, t, { expr: "stern", wave: q(Math.sin(t * 6) * 0.5, 20) });
       if (fathers) {
-        who(cam, out, 3, ASQAR, "asqar", -1.9, 0, SIT_Z - 1.2, t, { expr: "nervous", look: 1 });
-        who(cam, out, 4, BERIK, "berik", 1.9, 0, SIT_Z - 1.2, t, { expr: "nervous", look: -1 });
+        who(cam, out, 3, ASQAR, "asqar", -1.45, 0, SIT_Z - 1.0, t, { expr: "nervous", look: 1 });
+        who(cam, out, 4, BERIK, "berik", 1.45, 0, SIT_Z - 1.0, t, { expr: "nervous", look: -1 });
       }
       break;
     }

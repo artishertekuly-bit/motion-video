@@ -14,15 +14,15 @@ const T = (f: number) => f / FPS;
 // ---------------- the aul ----------------
 // Two yards split by one plank fence (дуал) along x = 0. Asqar's house (green roof) on the left (x < 0), Berik's (red
 // roof) on the right; houses face +z (toward the camera side), the steppe pasture lies beyond z = 24, mountains far -z.
-export const FENCE = { x: 0, z0: -26, z1: 22, h: 1.35 };
+export const FENCE = { x: 0, z0: -26, z1: 16.8, h: 1.1 }; // ends 2.8 m past where the boys sit, so lenses on its line stay outside it
 export const HOUSE_A: V3 = [-15, 0, -14];
 export const HOUSE_B: V3 = [15, 0, -14];
 export const TAPSHAN: V3 = [-9, 0, 2]; // the wooden summer bed where Erlan sleeps / plays at night
-export const HAY_A: V3 = [-23, 0, 6];
+export const HAY_A: V3 = [-24, 0, -1];
 export const HAY_B: V3 = [27, 0, -2];
 export const GARDEN_A = { x0: -26, x1: -12, z0: 9, z1: 19 };
 export const GARDEN_B = { x0: 12, x1: 26, z0: 9, z1: 19 };
-export const HORSE: V3 = [-16, 0, 10];
+export const HORSE: V3 = [-17, 0, 3];
 export const SIT_Z = 14; // where the boys sit against the fence at sunset
 export const terrainH = (x: number, z: number) => {
   const r = Math.hypot(x, z - 10);
@@ -112,17 +112,17 @@ const C3a = (f: number) => dolly([-15.5, 2.3, 9.5], [-6.5, 0.9, -0.5], pushK(f, 
 const C3b = (f: number) => dolly([-12.4, 1.7, 6.4], [-8.6, 0.85, 1.6], pushK(f, 370, 0.003, 0.006, 30), { fov: 40, roll: 0.035, near: 0.2 });
 const C4a = (f: number) => dolly([-6, 3.0, 54], [-6, 0.8, 39], pushK(f, 431, 0.0022), { fov: 42, near: 0.3 });
 const C4b = (f: number) => dolly([-6, 9.0, 58], [-6, 0.0, 39], pushK(f, 540, 0.002), { fov: 46, roll: -0.03, near: 0.4 });
-const C5a = (f: number) => dolly([-5.2, 2.0, 12.5], [4.0, 1.2, 3.0], pushK(f, 603, 0.003), { fov: 40, near: 0.2 });
+const C5a = (f: number) => dolly([-4.6, 2.5, 13.2], [1.6, 1.25, 4.4], pushK(f, 603, 0.003), { fov: 42, near: 0.2 });
 const C6a = (f: number) => dolly([-3.2, 2.2, 9.2], [-9, 1.1, 1.6], pushK(f, 687, 0.0022), { fov: 42, near: 0.2 });
 const C6b = (f: number) => dolly([-6.8, 1.2, 13.5], [-11.4, 1.6, 5.6], pushK(f, 760, 0.003), { fov: 44, roll: 0.04, near: 0.2 });
-const C7a = (f: number) => dolly([-4.6, 1.9, 11.4], [3.4, 1.5, 3.6], pushK(f, 831, 0.003, 0.006, 30), { fov: 40, roll: -0.03, near: 0.2 });
-const C8a = (f: number) => dolly([-11.5, 2.4, 22], [-19, 1.5, 8], pushK(f, 910, 0.0022), { fov: 42, near: 0.3 });
+const C7a = (f: number) => dolly([-4.4, 2.4, 12.6], [2.6, 1.35, 3.8], pushK(f, 831, 0.003, 0.006, 30), { fov: 42, roll: -0.03, near: 0.2 });
+const C8a = (f: number) => dolly([-12.2, 2.5, 15.5], [-20.2, 1.5, 1.4], pushK(f, 910, 0.0022), { fov: 44, near: 0.3 });
 const C9a = (f: number) => dolly([-3.0, 1.05, S + 3.6], [-0.6, 0.75, S], pushK(f, 1040, 0.0025), { fov: 40, near: 0.2 });
-const C10a = (f: number) => dolly([4.6, 1.7, S + 4.4], [1.4, 1.2, S - 0.4], pushK(f, 1149, 0.0022), { fov: 40, near: 0.2 });
-const C10b = (f: number) => dolly([1.2, 3.4, S + 3.2], [0, 0.7, S], pushK(f, 1288, 0.002), { fov: 42, near: 0.2 });
-const C11a = (f: number) => dolly([0, 1.15, S + 6.5], [0, 0.85, S], pushK(f, 1336, 0.0025), { fov: 40, near: 0.2 });
-const C12a = (f: number) => dolly([0, 1.55, S + 3.8], [0, 1.3, S], pushK(f, 1443, 0.0025), { fov: 40, near: 0.2 });
-const C12b = (f: number) => dolly([0, 2.3, S + 9.0], [0, 1.4, S - 1.4], pushK(f, BEAT.fathers, 0.002, 0.006, 30), { fov: 42, near: 0.2 });
+const C10a = (f: number) => dolly([3.6, 1.5, S + 5.6], [1.3, 1.0, S - 0.3], pushK(f, 1149, 0.0022), { fov: 44, near: 0.2 });
+const C10b = (f: number) => dolly([0, 4.6, S + 3.4], [0, 0.4, S - 0.2], pushK(f, 1288, 0.002), { fov: 46, near: 0.2 });
+const C11a = (f: number) => dolly([0, 1.35, S + 6.8], [0, 0.8, S], pushK(f, 1336, 0.0025), { fov: 40, near: 0.2 });
+const C12a = (f: number) => dolly([0, 1.75, S + 4.6], [0, 1.2, S], pushK(f, 1443, 0.0025), { fov: 40, near: 0.2 });
+const C12b = (f: number) => dolly([0, 2.4, S + 10.5], [0, 1.3, S - 1.0], pushK(f, BEAT.fathers, 0.002, 0.006, 30), { fov: 44, near: 0.2 });
 const C13a = (f: number) => dolly([-3.4, 2.5, 12.5], [19, 0.4, 14], pushK(f, 1632, 0.002), { fov: 40, near: 0.2 });
 const C13b = (f: number) => dolly([15.6, 0.55, 17.4], [18.2, 0.25, 13.6], pushK(f, BEAT.weeds, 0.003), { fov: 42, near: 0.1 });
 const C14a = (f: number) => dolly([0, 1.85, S + 6.0], [0, 1.45, S - 2.0], pushK(f, 1848, 0.0025), { fov: 40, near: 0.2 });

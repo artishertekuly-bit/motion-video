@@ -115,7 +115,7 @@ const CAMS: Record<string, Key[]> = {
   // Әлихан on his feet: «бұл қате»
   sh13: [
     { f: A("sh13"), s: hold([aux - 0.2, 1.3, auz - 2.3], [aux, 0.95, auz], 40, A("sh13"), 0.002) },
-    at(W("a1", 6) - 3, [aux - 0.08, 1.2, auz - 1.75], [aux, 1.02, auz], 38, 0.003),
+    at(W("a1", 6) - 3, [aux - 0.08, 1.25, auz - 1.75], [aux, 1.08, auz], 38, 0.003),
   ],
   // the class laughs — wide left column, Әлихан standing at the back
   sh14: [{ f: A("sh14"), s: hold(COL_L[0], [-1.6, 1.0, 2.4], 50, A("sh14"), 0.002, -0.02) }],

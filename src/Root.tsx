@@ -14,6 +14,7 @@ import { Ubt3Composition } from "./videos/ubt3/Ubt3";
 import { TundeComposition } from "./tunde";
 import { MugalimComposition } from "./videos/mugalim/Mugalim";
 import { Mg1Composition } from "./videos/mg1/Mg1";
+import { Mg2Composition } from "./videos/mg2/Mg2";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -34,6 +35,7 @@ export const RemotionRoot: React.FC = () => {
       <TundeComposition />
       <MugalimComposition />
       <Mg1Composition />
+      <Mg2Composition />
     </>
   );
 };

@@ -227,22 +227,22 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       klass("calm", ["nur"]);
       seat(W_NUR, NUR, say("u2", "say", "grin"));
       const a0 = W("u2", 0) - 2;
-      if (has(a0)) { const kk = pop(a0); fx("boil0", 520, 420, (p) => boilCard(p, false), NUR[0] - 0.24, 1.0, NUR[2] - 0.55, 0.28 * kk, 0.22 * kk); }
+      if (has(a0)) { const kk = pop(a0); fx("boil0", 520, 420, (p) => boilCard(p, false), NUR[0] - 0.04, 1.42, NUR[2] - 0.35, 0.26 * kk, 0.21 * kk); }
       break;
     }
     case "sh06": {
       klass("laugh", ["nur"]);
       seat(W_NUR, NUR, "shock");
       const kk = pop(A("sh06"));
-      fx("boil1", 520, 420, (p) => boilCard(p, true), NUR[0] - 0.24, 1.0, NUR[2] - 0.55, 0.3 * kk, 0.24 * kk);
-      burst(NUR[0] - 0.24, 1.05, NUR[2] - 0.5, A("sh06") + 2, 0.75, 10, "#e2483d");
+      fx("boil1", 520, 420, (p) => boilCard(p, true), NUR[0] - 0.04, 1.42, NUR[2] - 0.35, 0.28 * kk, 0.23 * kk);
+      burst(NUR[0] - 0.04, 1.42, NUR[2] - 0.32, A("sh06") + 2, 0.75, 10, "#e2483d");
       break;
     }
     case "sh07": {
       klass("calm", ["tom"]);
       seat(W_TOM, TOM, "nervous");
       const kk = q(clamp01((f - A("sh07") - 4) / Math.max(10, W("n4", 7) - A("sh07"))), 14);
-      fx(`note${kk}`, 500, 600, (p) => notebook(p, kk), TOM[0] + 0.2, 1.0, TOM[2] - 0.55, 0.22, 0.27);
+      fx(`note${kk}`, 500, 600, (p) => notebook(p, kk), TOM[0] + 0.18, 1.14, TOM[2] - 0.5, 0.20, 0.24);
       break;
     }
     case "sh08": {
@@ -257,7 +257,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       klass("calm", ["san"]);
       const up = has(W("s1", 0) - 2);
       seat(W_SAN, SAN, up ? say("s1", "sayNervous", "nervous") : "think", { prop: "phone", look: up ? 0 : 0.4 });
-      if (up) { const kk = pop(W("s1", 0) - 2); fx("phone", 360, 640, phone, SAN[0] - 0.17, 1.2, SAN[2] - 0.35, 0.15 * kk, 0.27 * kk); }
+      if (up) { const kk = pop(W("s1", 0) - 2); fx("phone", 360, 640, phone, SAN[0] - 0.12, 1.08, SAN[2] - 0.35, 0.14 * kk, 0.25 * kk); }
       break;
     }
     case "sh10":
@@ -267,7 +267,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       klass("calm", ["ali"]);
       seat(W_ALI, ALI, "think");
       const n = [0, 1, 2].filter((i) => has(A("sh11") + 4 + i * 14)).length;
-      if (n) fx(`bchk${n}`, 600, 360, (p) => bookCheck(p, n), ALI[0] + 0.08, 0.85, ALI[2] - 0.45, 0.34, 0.2);
+      if (n) fx(`bchk${n}`, 600, 360, (p) => bookCheck(p, n), ALI[0] + 0.08, 1.42, ALI[2] - 0.35, 0.30, 0.18);
       break;
     }
     case "sh12": {
@@ -279,7 +279,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh13": {
       klass("ooh", ["ali"]);
       kid(W_ALI, ALI_UP, { mode: "stand", expr: say("a1", "say", "grin") }, true);
-      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pwrong", 640, 320, perfectWrong, ALI_UP[0] + 0.04, 1.43, ALI_UP[2] - 0.3, 0.32 * kk, 0.16 * kk); }
+      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pwrong", 640, 320, perfectWrong, ALI_UP[0] + 0.14, 1.43, ALI_UP[2] - 0.3, 0.32 * kk, 0.16 * kk); }
       break;
     }
     case "sh14": {

@@ -29,7 +29,7 @@ export const SeriesTag: React.FC<{ f: number }> = ({ f }) => {
 
 /** lesson timer: appears on «он минут», runs 10:00 -> 01:00 by «Бір минут қалды», then slowly, stops at the stamp */
 export const Timer: React.FC<{ f: number }> = ({ f }) => {
-  const a = ws("t2", 13) - 2, b = ws("n7", 0), stop = shotStart("sh15"), hide = shotStart("sh18");
+  const a = ws("t2", 13) - 2, b = ws("n7", 0), stop = shotStart("sh15"), hide = shotStart("sh16");
   if (f < a || f >= hide) return null;
   const ff = Math.min(f, stop);
   const left = ff <= b ? 600 - (540 * (ff - a)) / Math.max(1, b - a) : 60 - ((ff - b) / FPS) * 3.5;

@@ -89,16 +89,16 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh05: Нұрлыбек at his desk marking answers blindly: «Су неше градуста қайнайды? Жүз деп жаза салайын!»
   sh05: [
-    { f: A("sh05"), s: hold([NUR[0] - 0.3, 1.45, NUR[2] - 1.9], [NUR[0] - 0.05, 0.95, NUR[2]], 38, A("sh05"), 0.0022) },
-    at(W("u2", 0) - 3, [NUR[0] - 0.1, 1.28, NUR[2] - 1.55], [NUR[0], 1.02, NUR[2]], 36, 0.0028, -0.02),
+    { f: A("sh05"), s: hold([NUR[0] - 0.3, 1.48, NUR[2] - 1.9], [NUR[0] - 0.03, 1.1, NUR[2]], 40, A("sh05"), 0.0022) },
+    at(W("u2", 0) - 3, [NUR[0] - 0.1, 1.38, NUR[2] - 1.65], [NUR[0], 1.14, NUR[2]], 38, 0.0028, -0.02),
   ],
   // sh06: Нұрлыбек gets «100°C ✔ ДҰРЫС! → БАҒА: 2!» and panics
   sh06: [
-    { f: A("sh06"), s: hold([NUR[0] - 0.18, 1.35, NUR[2] - 1.75], [NUR[0] - 0.05, 1.02, NUR[2]], 38, A("sh06"), 0.0028, 0.03) },
+    { f: A("sh06"), s: hold([NUR[0] - 0.16, 1.42, NUR[2] - 1.8], [NUR[0] - 0.03, 1.14, NUR[2]], 40, A("sh06"), 0.0028, 0.03) },
   ],
   // sh07: Томирис writes, her notebook fills with «✔ ДҰРЫС»
   sh07: [
-    { f: A("sh07"), s: hold([tx + 0.3, 1.45, tz - 1.9], [tx + 0.05, 0.95, tz], 38, A("sh07"), 0.0022) },
+    { f: A("sh07"), s: hold([tx + 0.3, 1.45, tz - 1.9], [tx + 0.05, 0.98, tz], 38, A("sh07"), 0.0022) },
   ],
   // sh08: Томирис: «Ағай! Мен қате жазғым келеді, бірақ қолым өзі дұрыс жаза береді!» + class laughs
   sh08: [
@@ -113,7 +113,7 @@ const CAMS: Record<string, Key[]> = {
   // sh10: Barys straightens his glasses & smirks
   sh10: [{ f: A("sh10"), s: hold([tdx + 0.2, 1.45, tdz + 1.9], [tdx + 0.1, 1.35, tdz], 36, A("sh10"), 0.003) }],
   // sh11: Әлихан reads the textbook and marks wrong answers deliberately
-  sh11: [{ f: A("sh11"), s: hold([ax + 0.15, 1.28, az - 1.65], [ax + 0.05, 0.98, az - 0.2], 36, A("sh11"), 0.0025) }],
+  sh11: [{ f: A("sh11"), s: hold([ax + 0.15, 1.38, az - 1.75], [ax + 0.05, 1.12, az - 0.2], 38, A("sh11"), 0.0025) }],
   // sh12: «Бір минут қалды!» — left column; Әлихан raises his hand at the back
   sh12: [
     { f: A("sh12"), s: hold([-1.1, 2.45, -3.3], [-1.75, 0.75, 1.6], 48, A("sh12"), 0.0015) },

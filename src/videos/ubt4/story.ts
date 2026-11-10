@@ -157,7 +157,7 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh20: Aruzhan pulling sled with Yerasyl
   sh20: [
-    { f: A("sh20"), s: hold([72.4, 1.35, 3.5], [72.4, 0.7, 0], 42, A("sh20"), 0.002) },
+    { f: A("sh20"), s: hold([72.4, 1.35, 4.2], [72.4, 1.15, 0], 42, A("sh20"), 0.0015) },
   ],
 };
 

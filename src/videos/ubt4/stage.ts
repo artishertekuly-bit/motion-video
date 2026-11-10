@@ -83,6 +83,8 @@ const sledWithYerasyl = (p: Pen) => {
   p.stroke([[80, 320], [380, 320], [420, 280]], 12, "#7a4a26");
   p.stroke([[120, 290], [360, 290]], 10, "#9a6234");
   for (const x of [150, 240, 330]) p.stroke([[x, 320], [x, 290]], 8, "#5a3418");
+  // pulling rope
+  p.stroke([[420, 280], [500, 230]], 6, "#5a3418");
   // blanket bundle / sleeping Yerasyl
   p.ell(240, 240, 100, 50, "#3a4a70", 10); // coat bundle
   p.ell(180, 205, 40, 36, "#f1c9a3", 8); // head

@@ -88,20 +88,20 @@ export const EndCard: React.FC<{ f: number; chalk: string }> = ({ f, chalk }) =>
     <AbsoluteFill style={{ pointerEvents: "none", background: "#6b4526", opacity: inK }}>
       <div style={{ position: "absolute", left: 34, top: 150, right: 34, bottom: 150, borderRadius: 18, background: "radial-gradient(ellipse at 45% 35%, #3a6e57 0%, #2e5b47 55%, #244a3a 100%)", boxShadow: "inset 0 0 0 14px #4a2e18, inset 0 0 60px rgba(0,0,0,0.45)" }} />
       {dust.map((d, i) => <div key={i} style={{ position: "absolute", left: d.x, top: d.y, width: d.s, height: d.s, borderRadius: d.s, background: "rgba(255,255,255,0.18)" }} />)}
-      <div style={{ position: "absolute", left: 90, top: 300, width: 900 }}>
-        <div style={{ opacity: line(0), transform: `translateX(${(1 - line(0)) * -40}px)` }}>{T("Ал сен", 120)}</div>
-        <div style={{ opacity: line(1), transform: `translateX(${(1 - line(1)) * -40}px)`, marginTop: 16 }}>{T("мұғаліміңе", 120)}</div>
+      <div style={{ position: "absolute", left: 90, top: 330, width: 900 }}>
+        <div style={{ opacity: line(0), transform: `translateX(${(1 - line(0)) * -40}px)` }}>{T("Ал сен", 110)}</div>
+        <div style={{ opacity: line(1), transform: `translateX(${(1 - line(1)) * -40}px)`, marginTop: 16 }}>{T("мұғаліміңе", 110)}</div>
         <div style={{ opacity: line(2), transform: `translateX(${(1 - line(2)) * -40}px)`, marginTop: 22, whiteSpace: "nowrap" }}>
-          {T("«ҚАТЕ»", 170, "#FFE278")} {T(" дей алар", 120)}
+          {T("«ҚАТЕ»", 150, "#FFE278")} {T(" дей алар", 104)}
         </div>
-        <div style={{ opacity: line(2), marginTop: 18 }}>{T("ма едің?", 120)}</div>
+        <div style={{ opacity: line(2), marginTop: 18 }}>{T("ма едің?", 110)}</div>
         <svg width={520} height={40} style={{ marginTop: 6, opacity: line(2) }}><path d="M 10 22 Q 260 40 510 14" stroke="#FFE278" strokeWidth={8} fill="none" strokeLinecap="round" /></svg>
       </div>
-      <div style={{ position: "absolute", left: 470, top: 930, transform: `translateY(${(1 - leo) * 260}px)`, opacity: cl(leo * 2) }}><Leo w={540} /></div>
+      <div style={{ position: "absolute", left: 540, top: 880, transform: `translateY(${(1 - leo) * 260}px)`, opacity: cl(leo * 2) }}><Leo w={470} /></div>
       <div style={{ position: "absolute", left: 70, top: 1250, width: 520, display: "flex", justifyContent: "center" }}>
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 52, color: "#120C06", background: "#FFD84A", borderRadius: 60, padding: "16px 50px", boxShadow: "0 10px 0 #B88A10", transform: `scale(${(0.4 + 0.6 * btn) * pulse})`, opacity: cl(btn * 2), whiteSpace: "nowrap" }}>ПІКІРГЕ ЖАЗ ↓</div>
       </div>
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 1648, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 32, letterSpacing: 2, color: "#FFD84A", opacity: cl((lf - 30) / 12) }}>БАРЫС АҒАЙ · 2-САБАҚ ЖАҚЫНДА</div>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 212, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 32, letterSpacing: 2, color: "#FFD84A", opacity: cl((lf - 30) / 12) }}>БАРЫС АҒАЙ · 2-САБАҚ ЖАҚЫНДА</div>
     </AbsoluteFill>
   );
 };

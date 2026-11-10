@@ -71,64 +71,64 @@ const BOARD_WIDE: [V3, V3] = [[-0.22, 1.4, 0.95], [-0.24, 1.45, -3.6]];
 const CAMS: Record<string, Key[]> = {
   // chalk «2 + 2 = 5»; Barys turns and points; push in on «Кім дәлелдесе»
   sh01: [
-    { f: 0, s: hold([-0.46, 1.52, 0.55], [-0.5, 1.6, -3.6], 46, 0, 0.0018) },
-    { f: W("t1", 6) - 6, dur: 40, s: hold([-0.62, 1.55, -0.6], [-0.78, 1.55, -3.5], 40, W("t1", 6) - 6, 0.002) },
+    { f: 0, s: hold([-0.38, 1.45, 0.5], [-0.42, 1.5, -3.6], 52, 0, 0.0016) },
+    { f: W("t1", 6) - 6, dur: 40, s: hold([-0.95, 1.5, -1.6], [-1.1, 1.45, -3.5], 42, W("t1", 6) - 6, 0.002) },
   ],
-  // «Ооо!» — the left column from the front
-  sh02: [{ f: A("sh02"), s: hold(COL_L[0], COL_L[1], 50, A("sh02"), 0.003) }],
+  // «Ооо!» — the left column from high up by the board
+  sh02: [{ f: A("sh02"), s: hold([-1.1, 2.45, -3.3], [-1.75, 0.75, 1.6], 50, A("sh02"), 0.003) }],
   // back desk: Әлихан; the diary; his face
   sh03: [
-    { f: A("sh03"), s: hold([ax + 0.35, 1.45, az - 2.0], [ax, 1.0, az], 40, A("sh03"), 0.002) },
-    at(W("n1", 4) - 3, [ax + 0.1, 1.3, az - 1.15], [ax + 0.05, 1.0, az], 36, 0.003),
-    at(W("n1", 8) - 3, [ax + 0.05, 1.22, az - 0.95], [ax, 1.12, az], 32, 0.0035),
+    { f: A("sh03"), s: hold([ax + 0.35, 1.6, az - 2.6], [ax, 0.95, az], 40, A("sh03"), 0.002) },
+    at(W("n1", 4) - 3, [ax + 0.15, 1.35, az - 1.75], [ax + 0.1, 0.95, az], 38, 0.0025),
+    at(W("n1", 8) - 3, [ax + 0.05, 1.25, az - 1.45], [ax, 1.05, az], 36, 0.003),
   ],
   // Barys behind his desk: «он бес минут»
   sh04: [{ f: A("sh04"), s: hold([tdx + 0.3, 1.5, tdz + 2.6], [tdx, 1.42, tdz], 38, A("sh04"), 0.0025) }],
   // Томирис writes; «мүмкін емес қой!»
   sh05: [
-    { f: A("sh05"), s: hold([tx + 0.25, 1.38, tz - 1.25], [tx + 0.05, 0.92, tz], 40, A("sh05"), 0.0025) },
-    at(W("o1", 0) - 3, [tx + 0.05, 1.22, tz - 0.95], [tx, 1.12, tz], 32, 0.004, 0.03),
+    { f: A("sh05"), s: hold([tx + 0.3, 1.45, tz - 1.9], [tx + 0.05, 0.95, tz], 38, A("sh05"), 0.0022) },
+    at(W("o1", 0) - 3, [tx + 0.05, 1.25, tz - 1.45], [tx, 1.05, tz], 36, 0.003, 0.03),
   ],
   // insert: pencils on Әлихан's desk
-  sh06: [{ f: A("sh06"), s: hold([ax + 0.1, 1.18, az - 1.45], [ax + 0.05, 0.95, az - 0.3], 34, A("sh06"), 0.004) }],
-  // Санжар and the phone; he lifts it
+  sh06: [{ f: A("sh06"), s: hold([ax + 0.1, 1.25, az - 1.6], [ax + 0.08, 0.92, az - 0.3], 34, A("sh06"), 0.003) }],
+  // Санжар and the phone; he lifts it (camera between the front-row pupils and his desk)
   sh07: [
-    { f: A("sh07"), s: hold([sx - 0.2, 1.3, sz - 1.35], [sx, 0.95, sz], 38, A("sh07"), 0.0025) },
-    at(W("s1", 0) - 3, [sx - 0.1, 1.25, sz - 1.05], [sx + 0.05, 1.12, sz], 34, 0.003, -0.03),
+    { f: A("sh07"), s: hold([sx - 0.3, 1.45, 0.12], [sx, 0.98, sz], 40, A("sh07"), 0.002) },
+    at(W("s1", 0) - 3, [sx - 0.15, 1.3, 0.3], [sx - 0.05, 1.05, sz], 36, 0.0025, -0.03),
   ],
-  // Barys: «жер жалпақ деп те жазылған»
-  sh08: [{ f: A("sh08"), s: hold([tdx + 0.25, 1.55, tdz + 1.75], [tdx, 1.55, tdz], 36, A("sh08"), 0.003) }],
+  // Barys: «жер жалпақ деп те жазылған» (bubble above his head)
+  sh08: [{ f: A("sh08"), s: hold([tdx + 0.2, 1.6, tdz + 2.3], [tdx + 0.12, 1.62, tdz], 40, A("sh08"), 0.0025) }],
   // the right column laughs; Нұрлыбек gets up and makes his case
   sh09: [
     { f: A("sh09"), s: hold(COL_R[0], COL_R[1], 50, A("sh09"), 0.0025) },
-    at(W("u1", 0) - 3, [nx - 0.15, 1.45, nz - 1.7], [nx, 1.3, nz], 40, 0.003, 0.03),
+    at(W("u1", 0) - 3, [nx - 0.2, 1.35, nz - 2.3], [nx, 1.0, nz], 40, 0.0025, 0.03),
   ],
   // Barys straightens his glasses
-  sh10: [{ f: A("sh10"), s: hold([tdx - 0.15, 1.62, tdz + 1.2], [tdx, 1.6, tdz], 32, A("sh10"), 0.004) }],
+  sh10: [{ f: A("sh10"), s: hold([tdx + 0.2, 1.6, tdz + 1.9], [tdx + 0.1, 1.55, tdz], 36, A("sh10"), 0.003) }],
   // Әлихан counts his pencils
-  sh11: [{ f: A("sh11"), s: hold([ax + 0.2, 1.2, az - 1.15], [ax + 0.05, 1.0, az], 36, A("sh11"), 0.003) }],
+  sh11: [{ f: A("sh11"), s: hold([ax + 0.15, 1.25, az - 1.6], [ax + 0.05, 0.98, az - 0.2], 36, A("sh11"), 0.0025) }],
   // «Бес минут қалды» — the left column; a hand at the back
   sh12: [
-    { f: A("sh12"), s: hold(COL_L[0], COL_L[1], 48, A("sh12"), 0.0015) },
-    { f: W("n6", 4) - 4, dur: 34, s: hold([-1.15, 1.45, 0.9], [ax, 1.25, az], 42, W("n6", 4) - 4, 0.002) },
+    { f: A("sh12"), s: hold([-1.1, 2.45, -3.3], [-1.75, 0.75, 1.6], 48, A("sh12"), 0.0015) },
+    { f: W("n6", 4) - 4, dur: 34, s: hold([-1.15, 1.5, 0.9], [ax, 1.15, az], 42, W("n6", 4) - 4, 0.002) },
   ],
   // Әлихан on his feet: «бұл қате»
   sh13: [
-    { f: A("sh13"), s: hold([aux - 0.25, 1.45, auz - 1.9], [aux, 1.35, auz], 40, A("sh13"), 0.0025) },
-    at(W("a1", 6) - 3, [aux - 0.1, 1.42, auz - 1.25], [aux, 1.4, auz], 34, 0.0035),
+    { f: A("sh13"), s: hold([aux - 0.2, 1.3, auz - 2.3], [aux, 0.95, auz], 40, A("sh13"), 0.002) },
+    at(W("a1", 6) - 3, [aux - 0.08, 1.2, auz - 1.6], [aux, 1.0, auz], 36, 0.003),
   ],
   // the class laughs — wide left column, Әлихан standing at the back
   sh14: [{ f: A("sh14"), s: hold(COL_L[0], [-1.6, 1.0, 2.4], 50, A("sh14"), 0.002, -0.02) }],
   // the journal on Barys's desk: red «5»
-  sh15: [{ f: A("sh15"), s: hold([tdx - 0.1, 1.45, tdz + 0.55], [tdx - 0.05, 0.8, tdz + 0.38], 40, A("sh15"), 0.003) }],
+  sh15: [{ f: A("sh15"), s: hold([tdx - 0.05, 1.42, tdz + 1.05], [tdx - 0.05, 0.78, tdz + 0.42], 40, A("sh15"), 0.003) }],
   // Barys: «Ол дәлелдеді — бұл қате.»
-  sh16: [{ f: A("sh16"), s: hold([tdx - 0.4, 1.5, tdz + 2.0], [tdx, 1.5, tdz], 36, A("sh16"), 0.0025) }],
+  sh16: [{ f: A("sh16"), s: hold([tdx - 0.1, 1.6, tdz + 2.1], [tdx, 1.5, tdz], 38, A("sh16"), 0.0025) }],
   // Әлихан beams
-  sh17: [{ f: A("sh17"), s: hold([aux - 0.1, 1.42, auz - 1.35], [aux, 1.4, auz], 36, A("sh17"), 0.003, 0.03) }],
+  sh17: [{ f: A("sh17"), s: hold([aux - 0.15, 1.3, auz - 2.1], [aux, 0.95, auz], 40, A("sh17"), 0.0025, 0.03) }],
   // at the board: tap-tap, the chalk
   sh18: [{ f: A("sh18"), s: hold(BOARD_WIDE[0], BOARD_WIDE[1], 54, A("sh18"), 0.002) }],
   // board close-up: strike, «4», the motto
-  sh19: [{ f: A("sh19"), s: hold([EQ_X + 0.02, 1.58, -0.95], [EQ_X + 0.02, 1.6, -3.97], 46, A("sh19"), 0.0015) }],
+  sh19: [{ f: A("sh19"), s: hold([EQ_X - 0.05, 1.5, -0.3], [EQ_X - 0.05, 1.55, -3.97], 46, A("sh19"), 0.0012) }],
   // the two of them at the board
   sh20: [{ f: A("sh20"), s: hold(BOARD_WIDE[0], BOARD_WIDE[1], 54, A("sh20"), 0.0025) }],
 };

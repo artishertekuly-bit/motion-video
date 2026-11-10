@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate } from "remotion";
 import { C, MONT } from "../../qagaz/theme";
-import { AUDIO, CUTS, sec, START } from "./timeline";
+import { AUDIO, CARD_AT, CUTS, sec, START } from "./timeline";
 
 export const CAP_Y = 1420;
 
@@ -78,6 +78,7 @@ const CHUNKS: Chunk[] = (() => {
 })();
 
 export const Captions: React.FC<{ f: number }> = ({ f }) => {
+  if (f >= CARD_AT) return null;
   const c = CHUNKS.find((x) => f >= x.from && f < x.to);
   if (!c) return null;
   const out = c.fade ? interpolate(f, [c.to - 3, c.to], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) : 1;

@@ -119,45 +119,45 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh11: City park: evening walk in falling snow
   sh11: [
-    { f: A("sh11"), s: hold([PARK_X, 1.5, 4.2], [PARK_X, 1.2, 0], 42, A("sh11"), 0.0018) },
-    { f: W("n9", 2), dur: 32, s: hold([PARK_X - 0.2, 1.42, 3.2], [PARK_X - 0.1, 1.25, 0], 40, W("n9", 2), 0.002) },
+    { f: A("sh11"), s: hold([PARK_X, 1.45, 3.2], [PARK_X, 1.15, 0], 42, A("sh11"), 0.0018) },
+    { f: W("n9", 2), dur: 32, s: hold([PARK_X, 1.4, 2.6], [PARK_X, 1.15, 0], 40, W("n9", 2), 0.002) },
   ],
   // sh12: Aruzhan: "Қандай әдемі..."
   sh12: [
-    { f: A("sh12"), s: hold([APARK[0] + 0.1, 1.42, 1.5], [APARK[0], 1.35, APARK[2]], 34, A("sh12"), 0.0025) },
+    { f: A("sh12"), s: hold([APARK[0] + 0.1, 1.4, 1.4], [APARK[0], 1.3, APARK[2]], 34, A("sh12"), 0.0025) },
   ],
   // sh13: Yerasyl: "Иә... өте әдемі" (hearts)
   sh13: [
-    { f: A("sh13"), s: hold([YPARK[0] - 0.1, 1.42, 1.5], [YPARK[0], 1.35, YPARK[2]], 34, A("sh13"), 0.003, 0.03) },
+    { f: A("sh13"), s: hold([YPARK[0] - 0.1, 1.4, 1.4], [YPARK[0], 1.3, YPARK[2]], 34, A("sh13"), 0.003, 0.03) },
   ],
   // sh14: Aruzhan giggles: "Мен қарды айтып тұрмын ғой"
   sh14: [
-    { f: A("sh14"), s: hold([APARK[0] + 0.1, 1.42, 1.4], [APARK[0], 1.35, APARK[2]], 34, A("sh14"), 0.0025) },
+    { f: A("sh14"), s: hold([APARK[0] + 0.1, 1.4, 1.4], [APARK[0], 1.3, APARK[2]], 34, A("sh14"), 0.0025) },
   ],
   // sh15: Yerasyl flustered: "Мен де... қарды"
   sh15: [
-    { f: A("sh15"), s: hold([YPARK[0] - 0.1, 1.42, 1.4], [YPARK[0], 1.35, YPARK[2]], 34, A("sh15"), 0.003) },
+    { f: A("sh15"), s: hold([YPARK[0] - 0.1, 1.4, 1.4], [YPARK[0], 1.3, YPARK[2]], 34, A("sh15"), 0.003) },
   ],
   // sh16: Under street lantern: confession
   sh16: [
-    { f: A("sh16"), s: hold([PARK_X, 1.45, 2.5], [PARK_X, 1.22, 0], 38, A("sh16"), 0.0025) },
+    { f: A("sh16"), s: hold([PARK_X, 1.42, 2.4], [PARK_X, 1.15, 0], 38, A("sh16"), 0.0025) },
   ],
   // sh17: Falls into snowbank!
   sh17: [
-    { f: A("sh17"), s: hold([PARK_X, 1.38, 2.4], [PARK_X, 1.1, 0], 40, A("sh17"), 0.003) },
-    at(W("n10", 3), [PARK_X, 1.25, 2.2], [PARK_X, 0.7, 0], 42, 0.004, -0.05),
+    { f: A("sh17"), s: hold([PARK_X, 1.35, 2.4], [PARK_X, 1.1, 0], 40, A("sh17"), 0.003) },
+    at(W("n10", 3), [SNOWDRIFT_POS[0], 1.25, 2.4], [SNOWDRIFT_POS[0], 0.6, 0], 42, 0.004, -0.05),
   ],
   // sh18: Aruzhan: "Ерасыл?!"
   sh18: [
-    { f: A("sh18"), s: hold([APARK[0] + 0.15, 1.35, 1.4], [APARK[0], 1.15, 0], 36, A("sh18"), 0.003) },
+    { f: A("sh18"), s: hold([SNOWDRIFT_POS[0], 1.25, 2.3], [SNOWDRIFT_POS[0], 0.65, 0], 36, A("sh18"), 0.003) },
   ],
   // sh19: Snowbank with kicking boots: "минус жеті де бар..."
   sh19: [
-    { f: A("sh19"), s: hold([SNOWDRIFT_POS[0], 1.15, 1.8], [SNOWDRIFT_POS[0], 0.5, SNOWDRIFT_POS[2]], 36, A("sh19"), 0.0025) },
+    { f: A("sh19"), s: hold([SNOWDRIFT_POS[0], 1.2, 2.2], [SNOWDRIFT_POS[0], 0.55, 0], 36, A("sh19"), 0.0025) },
   ],
   // sh20: Aruzhan pulling sled with Yerasyl
   sh20: [
-    { f: A("sh20"), s: hold([PARK_X - 0.4, 1.35, 3.2], [PARK_X, 0.95, 0], 42, A("sh20"), 0.002) },
+    { f: A("sh20"), s: hold([72.4, 1.25, 2.8], [72.4, 0.75, 0], 42, A("sh20"), 0.002) },
   ],
 };
 

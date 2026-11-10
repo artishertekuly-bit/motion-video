@@ -10,7 +10,7 @@ import { TONE, CHAR, untone } from "./shade";
 import { NOINK } from "./ink";
 import { Pool, Actor, Fx } from "./cast";
 import { stage } from "./stage";
-import { FPS, SHOTS, ShotDef, camAt, FRIDGE, KCLOCK, SNOWDRIFT_POS } from "./story";
+import { FPS, SHOTS, ShotDef, camAt, FRIDGE, KCLOCK } from "./story";
 
 export const loadKit = () => Promise.resolve({} as Kit);
 
@@ -248,15 +248,15 @@ export class World {
     // Paved walkway with snow
     box(furn, M.cfloor, 63, 0.01, -1.2, 84, 0.02, 1.2, 2);
 
-    // Street Lanterns
-    for (const lx of [66, 72, 78]) {
-      furn.add(new THREE.CylinderGeometry(0.035, 0.05, 3.2, 8).translate(lx, 1.6, 1.8), M.dark);
-      furn.add(new THREE.BoxGeometry(0.25, 0.35, 0.25).translate(lx, 3.3, 1.8), M.lampWarm);
-      box(furn, M.snow, lx - 0.16, 3.48, 1.64, lx + 0.16, 3.55, 1.96); // snow cap on lamp
+    // Street Lanterns (placed on the side z = -2.2, clear of camera sightlines)
+    for (const lx of [66, 75, 82]) {
+      furn.add(new THREE.CylinderGeometry(0.035, 0.05, 3.2, 8).translate(lx, 1.6, -2.2), M.dark);
+      furn.add(new THREE.BoxGeometry(0.25, 0.35, 0.25).translate(lx, 3.3, -2.2), M.lampWarm);
+      box(furn, M.snow, lx - 0.16, 3.48, -2.36, lx + 0.16, 3.55, -2.04); // snow cap on lamp
     }
 
     // Bare snowy trees
-    for (const [tx, tz] of [[65, -3.5], [70, 3.8], [75, -4.2], [79, 3.5], [83, -3.0]]) {
+    for (const [tx, tz] of [[65, 3.5], [69, -3.8], [76, 3.8], [80, -3.5], [83, 3.2]]) {
       furn.add(new THREE.CylinderGeometry(0.08, 0.14, 2.8, 8).translate(tx, 1.4, tz), M.bark);
       furn.add(new THREE.SphereGeometry(0.9, 8, 6).translate(tx, 3.2, tz), M.snow);
       furn.add(new THREE.SphereGeometry(0.65, 8, 6).translate(tx + 0.3, 3.6, tz - 0.2), M.snow);
@@ -267,9 +267,6 @@ export class World {
       furn.add(boxGeo(V(bx - bw / 2, 0, bz - 2), V(bx + bw / 2, bh, bz)), M.city);
       box(furn, M.snow, bx - bw / 2 - 0.2, bh, bz - 2.2, bx + bw / 2 + 0.2, bh + 0.3, bz + 0.2); // snow on roofs
     }
-
-    // Snowbank where Yerasyl falls (x = 72, z = -0.2)
-    furn.add(new THREE.SphereGeometry(0.7, 12, 8).translate(SNOWDRIFT_POS[0], 0.2, SNOWDRIFT_POS[2]), M.snow);
 
     walls.build(R, false);
     furn.build(R, true);

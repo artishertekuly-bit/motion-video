@@ -253,7 +253,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh11": {
       klass("calm", ["ali"]);
       seat(W_ALI, ALI, "think");
-      fx("pen4", 640, 320, (p) => pencils(p, 4, false), ALI[0] + 0.08, 0.97, ALI[2] - 0.45, 0.36, 0.18);
+      fx("pen4", 640, 320, (p) => pencils(p, 4, false), ALI[0] + 0.08, 0.86, ALI[2] - 0.45, 0.36, 0.18);
       break;
     }
     case "sh12": {
@@ -265,7 +265,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh13": {
       klass("calm", ["ali"]);
       kid(W_ALI, ALI_UP, { mode: "stand", expr: say("a1", "sayNervous", "nervous") }, true);
-      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pen4eq", 640, 320, (p) => pencils(p, 4, true), ALI_UP[0] + 0.02, 1.0, ALI_UP[2] - 0.3, 0.4 * kk, 0.2 * kk); }
+      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pen4eq", 640, 320, (p) => pencils(p, 4, true), ALI_UP[0] + 0.02, 0.88, ALI_UP[2] - 0.3, 0.4 * kk, 0.2 * kk); }
       break;
     }
     case "sh14":

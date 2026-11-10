@@ -198,9 +198,9 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       break;
     case "sh03": {
       klass("calm", ["ali"]);
-      seat(W_ALI, ALI, has(W("n1", 8) - 2) ? "pained" : "nervous");
+      seat(W_ALI, ALI, has(W("n1", 8) - 2) ? "stare" : "nervous");
       const a0 = W("n1", 4) - 4;
-      if (has(a0)) { const kk = pop(a0); fx("diary", 600, 420, diary, ALI[0] + 0.2, 0.84, ALI[2] - 0.55, 0.32 * kk, 0.22 * kk); }
+      if (has(a0)) { const kk = pop(a0); fx("diary", 600, 420, diary, ALI[0] + 0.26, 1.0, ALI[2] - 0.55, 0.32 * kk, 0.22 * kk); }
       break;
     }
     case "sh04":
@@ -212,8 +212,8 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       seat(W_TOM, TOM, talk ? say("o1", "sayNervous", "nervous") : "think");
       if (!talk) {
         const kk = q(clamp01((f - A("sh05") - 6) / (W("n2", 4) + 14 - A("sh05"))), 14);
-        fx(`note${kk}`, 500, 600, (p) => notebook(p, kk), TOM[0] + 0.2, 0.86, TOM[2] - 0.55, 0.22, 0.27);
-      } else fx("qm", 200, 260, qmark, TOM[0] + 0.3, 1.45, TOM[2], 0.12, 0.16);
+        fx(`note${kk}`, 500, 600, (p) => notebook(p, kk), TOM[0] + 0.2, 1.0, TOM[2] - 0.55, 0.22, 0.27);
+      } else fx("qm", 200, 260, qmark, TOM[0] + 0.18, 1.38, TOM[2], 0.12, 0.16);
       break;
     }
     case "sh06": {
@@ -227,13 +227,13 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       klass("calm", ["san"]);
       const up = has(W("s1", 0) - 2);
       seat(W_SAN, SAN, up ? say("s1", "say", "grin") : "grin", { prop: "phone", look: up ? 0 : 0.4 });
-      if (up) { const kk = pop(W("s1", 0) - 2); fx("phone", 360, 640, phone, SAN[0] - 0.22, 1.15, SAN[2] - 0.35, 0.17 * kk, 0.3 * kk); }
+      if (up) { const kk = pop(W("s1", 0) - 2); fx("phone", 360, 640, phone, SAN[0] - 0.17, 1.2, SAN[2] - 0.35, 0.15 * kk, 0.27 * kk); }
       break;
     }
     case "sh08": {
       out.places.push(barys(cam, T_DESK, { expr: lsay("t3", "meh"), arms: ["cross", "cross"], tail: -1 }, f));
       const a0 = W("t3", 1) - 3;
-      if (has(a0)) { const kk = pop(a0); fx("flat", 600, 480, flatEarth, T_DESK[0] + 0.18, 2.2, T_DESK[2] + 0.1, 0.5 * kk, 0.4 * kk); }
+      if (has(a0)) { const kk = pop(a0); fx("flat", 600, 480, flatEarth, T_DESK[0] + 0.18, 1.95, T_DESK[2] + 0.1, 0.5 * kk, 0.4 * kk); }
       break;
     }
     case "sh09": {
@@ -253,7 +253,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh11": {
       klass("calm", ["ali"]);
       seat(W_ALI, ALI, "think");
-      fx("pen4", 640, 320, (p) => pencils(p, 4, false), ALI[0] + 0.08, 0.86, ALI[2] - 0.45, 0.36, 0.18);
+      fx("pen4", 640, 320, (p) => pencils(p, 4, false), ALI[0] + 0.08, 0.97, ALI[2] - 0.45, 0.36, 0.18);
       break;
     }
     case "sh12": {
@@ -265,7 +265,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh13": {
       klass("calm", ["ali"]);
       kid(W_ALI, ALI_UP, { mode: "stand", expr: say("a1", "sayNervous", "nervous") }, true);
-      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pen4eq", 640, 320, (p) => pencils(p, 4, true), ALI_UP[0] + 0.02, 0.85, ALI_UP[2] - 0.3, 0.38 * kk, 0.19 * kk); }
+      if (has(W("a1", 6) - 3)) { const kk = pop(W("a1", 6) - 3); fx("pen4eq", 640, 320, (p) => pencils(p, 4, true), ALI_UP[0] + 0.02, 1.0, ALI_UP[2] - 0.3, 0.4 * kk, 0.2 * kk); }
       break;
     }
     case "sh14":

@@ -97,14 +97,14 @@ const CAMS: Record<string, Key[]> = {
     at(W("s1", 0) - 3, [sx - 0.15, 1.3, 0.3], [sx - 0.05, 1.05, sz], 36, 0.0025, -0.03),
   ],
   // Barys: «жер жалпақ деп те жазылған» (bubble above his head)
-  sh08: [{ f: A("sh08"), s: hold([tdx + 0.2, 1.6, tdz + 2.3], [tdx + 0.12, 1.62, tdz], 40, A("sh08"), 0.0025) }],
+  sh08: [{ f: A("sh08"), s: hold([tdx + 0.2, 1.5, tdz + 2.3], [tdx + 0.12, 1.45, tdz], 40, A("sh08"), 0.0025) }],
   // the right column laughs; Нұрлыбек gets up and makes his case
   sh09: [
     { f: A("sh09"), s: hold(COL_R[0], COL_R[1], 50, A("sh09"), 0.0025) },
     at(W("u1", 0) - 3, [nx - 0.2, 1.35, nz - 2.3], [nx, 1.0, nz], 40, 0.0025, 0.03),
   ],
   // Barys straightens his glasses
-  sh10: [{ f: A("sh10"), s: hold([tdx + 0.2, 1.6, tdz + 1.9], [tdx + 0.1, 1.55, tdz], 36, A("sh10"), 0.003) }],
+  sh10: [{ f: A("sh10"), s: hold([tdx + 0.2, 1.45, tdz + 1.9], [tdx + 0.1, 1.35, tdz], 36, A("sh10"), 0.003) }],
   // Әлихан counts his pencils
   sh11: [{ f: A("sh11"), s: hold([ax + 0.15, 1.25, az - 1.6], [ax + 0.05, 0.98, az - 0.2], 36, A("sh11"), 0.0025) }],
   // «Бес минут қалды» — the left column; a hand at the back
@@ -115,20 +115,20 @@ const CAMS: Record<string, Key[]> = {
   // Әлихан on his feet: «бұл қате»
   sh13: [
     { f: A("sh13"), s: hold([aux - 0.2, 1.3, auz - 2.3], [aux, 0.95, auz], 40, A("sh13"), 0.002) },
-    at(W("a1", 6) - 3, [aux - 0.08, 1.2, auz - 1.6], [aux, 1.0, auz], 36, 0.003),
+    at(W("a1", 6) - 3, [aux - 0.08, 1.2, auz - 1.75], [aux, 1.02, auz], 38, 0.003),
   ],
   // the class laughs — wide left column, Әлихан standing at the back
   sh14: [{ f: A("sh14"), s: hold(COL_L[0], [-1.6, 1.0, 2.4], 50, A("sh14"), 0.002, -0.02) }],
   // the journal on Barys's desk: red «5»
-  sh15: [{ f: A("sh15"), s: hold([tdx - 0.05, 1.42, tdz + 1.05], [tdx - 0.05, 0.78, tdz + 0.42], 40, A("sh15"), 0.003) }],
+  sh15: [{ f: A("sh15"), s: hold([tdx - 0.12, 1.55, tdz + 1.35], [tdx - 0.08, 0.78, tdz + 0.42], 40, A("sh15"), 0.003) }],
   // Barys: «Ол дәлелдеді — бұл қате.»
-  sh16: [{ f: A("sh16"), s: hold([tdx - 0.1, 1.6, tdz + 2.1], [tdx, 1.5, tdz], 38, A("sh16"), 0.0025) }],
+  sh16: [{ f: A("sh16"), s: hold([tdx - 0.1, 1.45, tdz + 2.1], [tdx, 1.32, tdz], 38, A("sh16"), 0.0025) }],
   // Әлихан beams
   sh17: [{ f: A("sh17"), s: hold([aux - 0.15, 1.3, auz - 2.1], [aux, 0.95, auz], 40, A("sh17"), 0.0025, 0.03) }],
   // at the board: tap-tap, the chalk
   sh18: [{ f: A("sh18"), s: hold(BOARD_WIDE[0], BOARD_WIDE[1], 54, A("sh18"), 0.002) }],
   // board close-up: strike, «4», the motto
-  sh19: [{ f: A("sh19"), s: hold([EQ_X - 0.05, 1.5, -0.3], [EQ_X - 0.05, 1.55, -3.97], 46, A("sh19"), 0.0012) }],
+  sh19: [{ f: A("sh19"), s: hold([EQ_X + 0.05, 1.5, -0.3], [EQ_X + 0.05, 1.55, -3.97], 46, A("sh19"), 0.0012) }],
   // the two of them at the board
   sh20: [{ f: A("sh20"), s: hold(BOARD_WIDE[0], BOARD_WIDE[1], 54, A("sh20"), 0.0025) }],
 };

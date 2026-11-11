@@ -112,11 +112,11 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       break;
     }
     case "sh02": {
-      fx("bedSleep", 600, 450, bedSleeping, BED_POS[0], 0.25, BED_POS[2], 2.2, 1.65);
+      fx("bedSleep", 600, 450, bedSleeping, BED_POS[0], 0.8, -0.3, 2.3, 1.7);
       break;
     }
     case "sh03": {
-      fx("bedSleep", 600, 450, bedSleeping, BED_POS[0], 0.25, BED_POS[2], 2.2, 1.65);
+      fx("bedSleep", 600, 450, bedSleeping, BED_POS[0], 0.8, -0.3, 2.3, 1.7);
       break;
     }
     case "sh04": {

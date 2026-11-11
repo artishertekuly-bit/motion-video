@@ -82,7 +82,7 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh02: bedroom, Yerasyl sleeping in bed
   sh02: [
-    { f: A("sh02"), s: hold([0, 1.4, 2.9], [0, 0.75, -1.0], 42, A("sh02"), 0.0025) },
+    { f: A("sh02"), s: hold([0, 1.35, 3.0], [0, 0.85, -0.3], 42, A("sh02"), 0.0025) },
   ],
   // sh03: clock 10:00 zoom
   sh03: [
@@ -90,7 +90,7 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh04: Yerasyl shocked in bed
   sh04: [
-    { f: A("sh04"), s: hold([-0.2, 1.35, 1.4], [-0.2, 0.95, -0.7], 36, A("sh04"), 0.003) },
+    { f: A("sh04"), s: hold([-0.2, 1.42, 2.2], [-0.2, 1.15, -0.7], 38, A("sh04"), 0.0025) },
   ],
   // sh05: packing rush, flying clothes
   sh05: [

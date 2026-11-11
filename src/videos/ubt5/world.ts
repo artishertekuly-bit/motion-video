@@ -162,7 +162,7 @@ export class World {
       box(walls, fl, x0, -0.05, z0, x1, 0, z1, 2);
       box(walls, M.ceil, x0, h, z0, x1, h + 0.05, z1, 4);
       box(walls, m, x0, 0, z0 - 0.1, x1, h, z0, h);
-      box(walls, m, x0, 0, z1, x1, h, z1 + 0.1, h);
+      // Front wall omitted: diorama open to camera
       box(walls, m, x0 - 0.1, 0, z0, x0, h, z1, h);
       box(walls, m, x1, 0, z0, x1 + 0.1, h, z1, h);
     };

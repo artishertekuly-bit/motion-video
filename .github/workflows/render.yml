@@ -69,10 +69,12 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
 
-      - name: Install FFmpeg
+      - name: Verify FFmpeg
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ffmpeg
+          if ! command -v ffmpeg &> /dev/null; then
+            sudo apt-get update -qq || true
+            sudo apt-get install -y -qq --fix-missing ffmpeg || true
+          fi
           ffmpeg -version | head -1
 
       - name: Install dependencies

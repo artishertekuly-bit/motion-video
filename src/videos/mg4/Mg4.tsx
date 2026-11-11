@@ -98,11 +98,10 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   fx.lens.focus = Math.max(0.3, fpt.sub(cam.position).dot(fwd));
   fx.lens.cInf = d.cInf;
   const lt = SHOTS[id - 1].light;
-  fx.grade.target = gradeFor(lt);
-  fx.grade.strength = GRADE_STRENGTH[lt];
+  gradeFor(fx.grade, lt === "golden" ? "golden" : "day");
   return (
     <>
-      <primitive object={world.root} />
+      <primitive object={world.root} dispose={null} />
       {post}
     </>
   );

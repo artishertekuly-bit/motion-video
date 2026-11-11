@@ -1,0 +1,456 @@
+{
+ "u1": {
+  "file": "mg4/audio/u1.mp3",
+  "duration": 3.645,
+  "words": [
+   {
+    "word": "Ағай!",
+    "start": 0,
+    "end": 0.545
+   },
+   {
+    "word": "Мынадай",
+    "start": 0.576,
+    "end": 0.97
+   },
+   {
+    "word": "3D",
+    "start": 1,
+    "end": 1.333
+   },
+   {
+    "word": "мультик",
+    "start": 1.394,
+    "end": 1.636
+   },
+   {
+    "word": "жасау",
+    "start": 1.667,
+    "end": 1.879
+   },
+   {
+    "word": "үшін",
+    "start": 1.939,
+    "end": 2.242
+   },
+   {
+    "word": "миллиондық",
+    "start": 2.303,
+    "end": 2.727
+   },
+   {
+    "word": "компьютер",
+    "start": 2.788,
+    "end": 3.091
+   },
+   {
+    "word": "керек",
+    "start": 3.121,
+    "end": 3.273
+   },
+   {
+    "word": "шығар?!",
+    "start": 3.303,
+    "end": 3.697
+   }
+  ]
+ },
+ "t1": {
+  "file": "mg4/audio/t1.mp3",
+  "duration": 3.611,
+  "words": [
+   {
+    "word": "Қой",
+    "start": 0,
+    "end": 0.2
+   },
+   {
+    "word": "әрі,",
+    "start": 0.233,
+    "end": 0.367
+   },
+   {
+    "word": "Нұрлыбек!",
+    "start": 0.4,
+    "end": 1.083
+   },
+   {
+    "word": "Бүгінде",
+    "start": 1.1,
+    "end": 1.4
+   },
+   {
+    "word": "мұның",
+    "start": 1.423,
+    "end": 1.667
+   },
+   {
+    "word": "бәрін",
+    "start": 1.733,
+    "end": 2.067
+   },
+   {
+    "word": "жасанды",
+    "start": 2.133,
+    "end": 2.533
+   },
+   {
+    "word": "интеллект",
+    "start": 2.6,
+    "end": 2.933
+   },
+   {
+    "word": "жасайды!",
+    "start": 2.967,
+    "end": 3.667
+   }
+  ]
+ },
+ "t2": {
+  "file": "mg4/audio/t2.mp3",
+  "duration": 6.465,
+  "words": [
+   {
+    "word": "Сурет",
+    "start": 0,
+    "end": 0.267
+   },
+   {
+    "word": "сала",
+    "start": 0.333,
+    "end": 0.533
+   },
+   {
+    "word": "білудің",
+    "start": 0.556,
+    "end": 0.867
+   },
+   {
+    "word": "де,",
+    "start": 0.967,
+    "end": 1.2
+   },
+   {
+    "word": "монтаждың",
+    "start": 1.267,
+    "end": 1.667
+   },
+   {
+    "word": "да",
+    "start": 1.733,
+    "end": 1.8
+   },
+   {
+    "word": "керегі",
+    "start": 1.867,
+    "end": 2.067
+   },
+   {
+    "word": "жоқ.",
+    "start": 2.1,
+    "end": 2.567
+   },
+   {
+    "word": "Сценарий,",
+    "start": 2.6,
+    "end": 3.233
+   },
+   {
+    "word": "3D",
+    "start": 3.267,
+    "end": 3.533
+   },
+   {
+    "word": "анимация,",
+    "start": 3.633,
+    "end": 4.3
+   },
+   {
+    "word": "дауыс",
+    "start": 4.333,
+    "end": 4.867
+   },
+   {
+    "word": "—",
+    "start": 4.933,
+    "end": 4.95
+   },
+   {
+    "word": "бірнеше",
+    "start": 4.967,
+    "end": 5.267
+   },
+   {
+    "word": "минутта",
+    "start": 5.333,
+    "end": 5.667
+   },
+   {
+    "word": "дайын",
+    "start": 5.7,
+    "end": 5.9
+   },
+   {
+    "word": "болады!",
+    "start": 5.933,
+    "end": 6.533
+   }
+  ]
+ },
+ "t3": {
+  "file": "mg4/audio/t3.mp3",
+  "duration": 5.741,
+  "words": [
+   {
+    "word": "Мен",
+    "start": 0,
+    "end": 0.2
+   },
+   {
+    "word": "осыны",
+    "start": 0.267,
+    "end": 0.467
+   },
+   {
+    "word": "үйрететін",
+    "start": 0.5,
+    "end": 1
+   },
+   {
+    "word": "авторлық",
+    "start": 1.133,
+    "end": 1.533
+   },
+   {
+    "word": "КУРС",
+    "start": 1.6,
+    "end": 1.8
+   },
+   {
+    "word": "дайындадым!",
+    "start": 1.833,
+    "end": 2.6
+   },
+   {
+    "word": "Нөлден",
+    "start": 2.667,
+    "end": 2.933
+   },
+   {
+    "word": "бастап",
+    "start": 3,
+    "end": 3.333
+   },
+   {
+    "word": "тренд",
+    "start": 3.367,
+    "end": 3.6
+   },
+   {
+    "word": "видео",
+    "start": 3.633,
+    "end": 3.833
+   },
+   {
+    "word": "жасап,",
+    "start": 3.867,
+    "end": 4.356
+   },
+   {
+    "word": "миллион",
+    "start": 4.378,
+    "end": 4.733
+   },
+   {
+    "word": "қаралым",
+    "start": 4.767,
+    "end": 5.067
+   },
+   {
+    "word": "жинайсыңдар!",
+    "start": 5.111,
+    "end": 5.8
+   }
+  ]
+ },
+ "t4": {
+  "file": "mg4/audio/t4.mp3",
+  "duration": 4.137,
+  "words": [
+   {
+    "word": "Курстың",
+    "start": 0,
+    "end": 0.467
+   },
+   {
+    "word": "барлық",
+    "start": 0.533,
+    "end": 0.8
+   },
+   {
+    "word": "құпиялары,",
+    "start": 0.867,
+    "end": 1.5
+   },
+   {
+    "word": "промпттары",
+    "start": 1.533,
+    "end": 1.933
+   },
+   {
+    "word": "мен",
+    "start": 2,
+    "end": 2.067
+   },
+   {
+    "word": "сабақтары",
+    "start": 2.133,
+    "end": 2.733
+   },
+   {
+    "word": "Телеграм",
+    "start": 2.8,
+    "end": 3.133
+   },
+   {
+    "word": "каналымда",
+    "start": 3.2,
+    "end": 3.533
+   },
+   {
+    "word": "өтеді!",
+    "start": 3.6,
+    "end": 4.2
+   }
+  ]
+ },
+ "u2": {
+  "file": "mg4/audio/u2.mp3",
+  "duration": 1.284,
+  "words": [
+   {
+    "word": "Ағай,",
+    "start": 0,
+    "end": 0.485
+   },
+   {
+    "word": "сілтеме",
+    "start": 0.545,
+    "end": 0.848
+   },
+   {
+    "word": "қайда?!",
+    "start": 0.879,
+    "end": 1.333
+   }
+  ]
+ },
+ "t5": {
+  "file": "mg4/audio/t5.mp3",
+  "duration": 3.337,
+  "words": [
+   {
+    "word": "Сілтеме",
+    "start": 0,
+    "end": 0.4
+   },
+   {
+    "word": "профильде!",
+    "start": 0.467,
+    "end": 1.233
+   },
+   {
+    "word": "Дәл",
+    "start": 1.267,
+    "end": 1.467
+   },
+   {
+    "word": "қазір",
+    "start": 1.5,
+    "end": 1.733
+   },
+   {
+    "word": "жазылып",
+    "start": 1.8,
+    "end": 2.083
+   },
+   {
+    "word": "үлгер,",
+    "start": 2.1,
+    "end": 2.5
+   },
+   {
+    "word": "қалып",
+    "start": 2.533,
+    "end": 2.733
+   },
+   {
+    "word": "қойма!",
+    "start": 2.767,
+    "end": 3.4
+   }
+  ]
+ },
+ "_sfx": {
+  "s-tick": {
+   "file": "mg4/sfx-n/s-tick.mp3",
+   "duration": 10
+  },
+  "s-pop": {
+   "file": "mg4/sfx-n/s-pop.mp3",
+   "duration": 0.48
+  },
+  "s-boing": {
+   "file": "mg4/sfx-n/s-boing.mp3",
+   "duration": 1
+  },
+  "s-ping": {
+   "file": "mg4/sfx-n/s-ping.mp3",
+   "duration": 1.6
+  },
+  "s-music": {
+   "file": "mg4/sfx-n/s-music.mp3",
+   "duration": 22
+  },
+  "s-stamp": {
+   "file": "mg4/sfx-n/s-stamp.mp3",
+   "duration": 1.2
+  },
+  "s-whoosh": {
+   "file": "mg4/sfx-n/s-whoosh.mp3",
+   "duration": 0.88
+  },
+  "v-sparkle": {
+   "file": "mg4/sfx-n/v-sparkle.mp3",
+   "duration": 1.6
+  },
+  "w-correct": {
+   "file": "mg4/sfx-n/w-correct.mp3",
+   "duration": 1.36
+  },
+  "x-chalk": {
+   "file": "mg4/sfx-n/x-chalk.mp3",
+   "duration": 1.36
+  },
+  "x-ooh": {
+   "file": "mg4/sfx-n/x-ooh.mp3",
+   "duration": 1.6
+  },
+  "x-laugh": {
+   "file": "mg4/sfx-n/x-laugh.mp3",
+   "duration": 2.56
+  },
+  "x-tap": {
+   "file": "mg4/sfx-n/x-tap.mp3",
+   "duration": 0.8
+  },
+  "x-bell": {
+   "file": "mg4/sfx-n/x-bell.mp3",
+   "duration": 2
+  },
+  "x-scribble": {
+   "file": "mg4/sfx-n/x-scribble.mp3",
+   "duration": 1.76
+  }
+ }
+}

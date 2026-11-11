@@ -10,8 +10,8 @@
 import * as THREE from "three";
 import { Pen, Outfit, Expr, FrontOpts, INK, fxBurst } from "./toon";
 import { leopardFront, leopardBack, LeoOpts, LExpr } from "./leopard";
-import { FPS, clamp01, SHOTS, T_BOARD, T_DESK, A_BOARD, ALI, TOM, NUR, SAN, NUR_UP, ROWZ, SEAT_Y, TDESK, EQ_X, V3 } from "./story";
-import { shotStart, talking, ws } from "./timeline";
+import { FPS, clamp01, SHOTS, T_BOARD, ALI, TOM, NUR, SAN, NUR_UP, ROWZ, SEAT_Y, V3 } from "./story";
+import { shotStart, talking } from "./timeline";
 import { CamInfo, Stage, Who, Place, person, blob, lidAt, setLight, light2D, q } from "./cast";
 
 // ---------------- the class ----------------
@@ -218,8 +218,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     k = s.key,
     t = f / FPS;
   setLight(s.light, cam);
-  const W = ws,
-    A = shotStart;
+  const A = shotStart;
 
   const kid = (who: Who, at: V3, fo: FrontOpts, shadow = false) => {
     out.places.push(person(cam, who, at[0], at[1], at[2], { side: false, mirror: false }, { blink: lidAt(t, who.i), facing: 0, ...fo }, {}));

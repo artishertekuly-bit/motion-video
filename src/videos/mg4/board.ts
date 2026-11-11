@@ -10,7 +10,7 @@
 // 6) sh07: «СІЛТЕМЕ ПРОФИЛЬДЕ! 👆»
 import * as THREE from "three";
 import { BOARD, EQ_X } from "./story";
-import { FPS, shotStart } from "./timeline";
+import { shotStart } from "./timeline";
 
 export const CHALK_FONT = "Caveat";
 const CW = 2048, CH = 690;

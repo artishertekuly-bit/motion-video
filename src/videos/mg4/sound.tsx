@@ -1,14 +1,13 @@
 import React from "react";
 import { Audio, Sequence, interpolate, staticFile } from "remotion";
 import raw from "./audio-data.json";
-import { BOUND as B, CARD_AT, TOTAL as DURATION, FPS, sec, ws } from "./timeline";
+import { BOUND as B, TOTAL as DURATION, FPS, sec, ws } from "./timeline";
 
 type SfxMeta = { file: string; duration: number };
 const SFX = (raw as unknown as { _sfx: Record<string, SfxMeta> })._sfx;
 type Ev = { id: string; at: number; vol?: number; len?: number; fadeIn?: number; fade?: number; loop?: boolean };
 const END = DURATION / FPS;
 const W = (id: string, i: number) => ws(id, i) / FPS;
-const C0 = CARD_AT / FPS;
 
 const EVENTS: Ev[] = [
   // Background upbeat music

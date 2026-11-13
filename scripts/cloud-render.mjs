@@ -48,6 +48,13 @@ const findGh = () => {
   }
   die("GitHub CLI (gh) not found");
 };
+const findGit = () => {
+  for (const c of ["git", "C:\\Users\\Artur\\AppData\\Local\\GitHubDesktop\\app-3.6.10\\resources\\app\\git\\cmd\\git.exe"]) {
+    if (spawnSync(c, ["--version"], { encoding: "utf8" }).status === 0) return c;
+  }
+  return "git";
+};
+const GIT = findGit();
 const GH = findGh();
 
 const run = (cmd, args, { allowFail = false, stdio } = {}) => {
@@ -55,7 +62,7 @@ const run = (cmd, args, { allowFail = false, stdio } = {}) => {
   if (r.status !== 0 && !allowFail) die(`${basename(cmd)} ${args.join(" ")}\n${(r.stderr || r.stdout || "").trim()}`);
   return r;
 };
-const git = (...args) => run("git", args).stdout.trim();
+const git = (...args) => run(GIT, args).stdout.trim();
 const gh = (...args) => run(GH, args).stdout.trim();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -65,11 +72,11 @@ if (dirty && opts.allowDirty) console.log(`! --allow-dirty: rendering the pushed
 ${dirty}`);
 else if (dirty) die(`Uncommitted changes — commit them first, the server renders what is pushed:\n${dirty}`);
 const branch = git("rev-parse", "--abbrev-ref", "HEAD");
-const upstream = run("git", ["rev-parse", "--abbrev-ref", "@{u}"], { allowFail: true });
+const upstream = run(GIT, ["rev-parse", "--abbrev-ref", "@{u}"], { allowFail: true });
 if (upstream.status !== 0) die(`Branch ${branch} has no upstream on GitHub (git push -u origin ${branch})`);
 if (Number(git("rev-list", "--count", "@{u}..HEAD")) > 0) {
   console.log(`→ git push (${branch})`);
-  run("git", ["push", "--quiet"]);
+  run(GIT, ["push", "--quiet"]);
 }
 const sha = git("rev-parse", "--short", "HEAD");
 

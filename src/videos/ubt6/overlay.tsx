@@ -23,7 +23,7 @@ const Box: React.FC<{ i: number; f: number; label: string; value: string; color:
   const pulse = PULSES.filter((p) => p.box === i).reduce((a, p) => Math.max(a, Math.max(0, 1 - Math.abs(f - p.at - 3) / 8)), 0);
   return (
     <div style={{
-      position: "absolute", left: BOX_X[i], top: BOX_Y, width: BOX_W, height: BOX_H, borderRadius: 26, background: "rgba(10,14,32,0.84)",
+      position: "absolute", left: BOX_X[i], top: BOX_Y, width: BOX_W, height: BOX_H, borderRadius: 26, background: "rgba(10,14,32,0.92)",
       border: `4px solid ${pulse > 0.05 ? color : "rgba(255,255,255,0.85)"}`, boxShadow: `0 8px 0 rgba(0,0,0,0.35), 0 0 ${40 * pulse}px ${color}`,
       transform: `scale(${(0.2 + 0.8 * k) * (1 + 0.12 * pulse)})`, opacity: cl(k * 2), display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
     }}>
@@ -161,8 +161,8 @@ export const VsScreen: React.FC<{ f: number }> = ({ f }) => {
       <div style={{ position: "absolute", left: 340 + shake, top: 830, width: 400, height: 300, display: "flex", justifyContent: "center", alignItems: "center", opacity: cl(vs * 3), transform: `rotate(-12deg) scale(${vsSc})` }}>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 220, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "10px #120C06", paintOrder: "stroke fill", textShadow: "0 14px 0 rgba(0,0,0,0.5)" }}>&</div>
       </div>
-      <div style={{ position: "absolute", left: 40, width: 480, top: 1550, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
-        <div style={{ transform: `scale(${0.4 + 0.6 * pill})`, background: "#2FB36B", borderRadius: 44, padding: "10px 40px", fontFamily: MONT, fontWeight: 800, fontSize: 44, color: "#FFFFFF", boxShadow: "0 10px 0 rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 1550, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
+        <div style={{ transform: `scale(${0.4 + 0.6 * pill})`, background: "#2FB36B", borderRadius: 44, padding: "12px 48px", fontFamily: MONT, fontWeight: 800, fontSize: 44, color: "#FFFFFF", boxShadow: "0 10px 0 rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
           ШПАРГАЛКА-БУКЕТ СӘТТІ!
         </div>
       </div>

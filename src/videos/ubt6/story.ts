@@ -98,7 +98,7 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh07: formula bouquet close-up
   sh07: [
-    { f: A("sh07"), s: hold([DESK_POS[0], 1.3, 1.6], [DESK_POS[0], 1.12, 0], 32, A("sh07"), 0.003) },
+    { f: A("sh07"), s: hold([DESK_POS[0], 1.35, 2.3], [DESK_POS[0], 1.15, 0], 36, A("sh07"), 0.002) },
   ],
   // sh08: library entrance wide, peaceful snowy morning
   sh08: [
@@ -122,7 +122,7 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh13: Aruzhan spots formulas on wrapper
   sh13: [
-    { f: A("sh13"), s: hold([LIB_OUT[0] + 0.4, 1.4, 2.2], [LIB_OUT[0] + 0.4, 1.15, 0], 34, A("sh13"), 0.003) },
+    { f: A("sh13"), s: hold([LIB_OUT[0] + 0.4, 1.38, 2.7], [LIB_OUT[0] + 0.4, 1.1, 0], 36, A("sh13"), 0.0025) },
   ],
   // sh14: Erasyl proud romantic: "Гүл солады, ал тригонометрия өлмейді!"
   sh14: [

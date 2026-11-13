@@ -184,7 +184,7 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
       break;
 
     case "sh07": // Formula bouquet CU
-      fx("formulaBouquetCU", 600, 800, (p) => formulaBouquet(p, t), DESK_POS[0], 1.1, 0, 1.8, 2.4);
+      fx("formulaBouquetCU", 600, 800, (p) => formulaBouquet(p, t), DESK_POS[0], 1.15, 0, 1.45, 1.95);
       break;
 
     case "sh08": // Library entrance wide

@@ -148,15 +148,15 @@ export const VsScreen: React.FC<{ f: number }> = ({ f }) => {
       </div>
       <div style={{ position: "absolute", left: -55 - 600 * (1 - inA), top: 140 }}><Portrait o={ARUZHAN} expr={aExpr} facing={1} w={640} wave={0.8} /></div>
       <div style={{ position: "absolute", left: 560, top: 470, width: 480, textAlign: "center", opacity: inA }}>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 48, color: "#FFFFFF", letterSpacing: 3 }}>АРУЖАН</div>
-        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 200, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "7px #120C06", paintOrder: "stroke fill", textShadow: "0 12px 0 rgba(0,0,0,0.4)" }}>⛸️ 10/10</div>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 34, color: "#FFFFFF" }}>МҰЗ ХАНШАЙЫМЫ!</div>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 50, color: "#FFFFFF", letterSpacing: 3 }}>АРУЖАН</div>
+        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 210, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "7px #120C06", paintOrder: "stroke fill", textShadow: "0 12px 0 rgba(0,0,0,0.4)" }}>10/10</div>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 36, color: "#FFFFFF" }}>МҰЗ ХАНШАЙЫМЫ! ⛸️</div>
       </div>
-      <div style={{ position: "absolute", left: 475 + 600 * (1 - inY), top: 690 }}><Portrait o={YSUIT} expr={yExpr} facing={-1} w={640} /></div>
-      <div style={{ position: "absolute", left: 40, top: 1190, width: 480, textAlign: "center", opacity: inY }}>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 48, color: "#FFFFFF", letterSpacing: 3 }}>ЕРАСЫЛ</div>
+      <div style={{ position: "absolute", left: 475 + 600 * (1 - inY), top: 675 }}><Portrait o={YSUIT} expr={yExpr} facing={-1} w={650} /></div>
+      <div style={{ position: "absolute", left: 40, top: 1180, width: 480, textAlign: "center", opacity: inY }}>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 50, color: "#FFFFFF", letterSpacing: 3 }}>ЕРАСЫЛ</div>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 230, lineHeight: 1, color: "#FFFFFF", WebkitTextStroke: "7px #120C06", paintOrder: "stroke fill", textShadow: "0 12px 0 rgba(0,0,0,0.4)" }}>{yS}</div>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 32, color: "#4CD98A", whiteSpace: "nowrap" }}>+4 БАЛЛ! (ФИЗИК ҚҰЛАУШЫ ❄️)</div>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 34, color: "#4CD98A", whiteSpace: "nowrap" }}>+4 БАЛЛ! (ФИЗИК ❄️)</div>
       </div>
       <div style={{ position: "absolute", left: 340 + shake, top: 830, width: 400, height: 300, display: "flex", justifyContent: "center", alignItems: "center", opacity: cl(vs * 3), transform: `rotate(-12deg) scale(${vsSc})` }}>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 220, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "10px #120C06", paintOrder: "stroke fill", textShadow: "0 14px 0 rgba(0,0,0,0.5)" }}>&</div>

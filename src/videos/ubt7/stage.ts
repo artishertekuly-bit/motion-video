@@ -46,7 +46,7 @@ const examBooklet82 = (p: Pen, _t: number) => {
 /** Erasyl flying through the air in an awkward leap */
 const erasylMidAir = (p: Pen, _t: number) => {
   const g = p.g; g.save();
-  g.translate(300, 450);
+  g.translate(300, 300);
   g.rotate(-0.35);
 
   // Speed lines
@@ -58,6 +58,7 @@ const erasylMidAir = (p: Pen, _t: number) => {
   p.ell(0, -60, 65, 75, "#f1c9a3", 8); // Head
   p.poly([[-35, -115], [35, -115], [30, -70], [-35, -70]], "#1a1410", 6); // Hair
   p.poly([[-55, -20], [55, -20], [45, 110], [-45, 110]], "#32436d", 8); // Jacket
+  p.stroke([[0, -20], [10, 50]], 8, "#c0353a"); // Tie
 
   // Flailing arms
   p.stroke([[-45, 0], [-130, -70], [-180, -30]], 18, "#32436d");
@@ -82,45 +83,46 @@ const erasylMidAir = (p: Pen, _t: number) => {
 /** Erasyl fallen on the ice in a split, holding his sore back */
 const erasylFallen = (p: Pen, _t: number) => {
   const g = p.g; g.save();
-  g.translate(300, 580);
+  g.translate(300, 300);
 
   // Ice crack marks under him
-  p.stroke([[-80, 130], [-140, 150]], 6, "rgba(255,255,255,0.8)");
-  p.stroke([[80, 130], [150, 160]], 6, "rgba(255,255,255,0.8)");
-  p.stroke([[0, 140], [20, 180]], 6, "rgba(255,255,255,0.8)");
+  p.stroke([[-80, 110], [-140, 130]], 6, "rgba(255,255,255,0.85)");
+  p.stroke([[80, 110], [150, 140]], 6, "rgba(255,255,255,0.85)");
+  p.stroke([[0, 120], [20, 160]], 6, "rgba(255,255,255,0.85)");
 
   // Split legs flat on ice
-  p.stroke([[-40, 100], [-160, 120], [-230, 110]], 22, "#2b2d36");
-  p.stroke([[40, 100], [160, 120], [230, 110]], 22, "#2b2d36");
+  p.stroke([[-40, 80], [-160, 100], [-230, 90]], 22, "#2b2d36");
+  p.stroke([[40, 80], [160, 100], [230, 90]], 22, "#2b2d36");
   // Silver skate blades sticking up
-  p.stroke([[-245, 95], [-205, 95]], 8, "#d9dde0");
-  p.stroke([[205, 95], [245, 95]], 8, "#d9dde0");
+  p.stroke([[-245, 75], [-205, 75]], 8, "#d9dde0");
+  p.stroke([[205, 75], [245, 75]], 8, "#d9dde0");
 
   // Torso slumped, leaning sideways
-  p.poly([[-50, 10], [50, 10], [40, 105], [-40, 105]], "#32436d", 8);
+  p.poly([[-50, -10], [50, -10], [40, 85], [-40, 85]], "#32436d", 8);
+  p.stroke([[0, -10], [15, 40]], 8, "#c0353a"); // Tie
 
   // One hand holding lower back in pain, other hand on the ice
-  p.stroke([[-40, 30], [-100, 80], [-80, 120]], 18, "#32436d");
-  p.stroke([[40, 30], [85, 60], [45, 95]], 18, "#32436d");
+  p.stroke([[-40, 10], [-100, 60], [-80, 100]], 18, "#32436d");
+  p.stroke([[40, 10], [85, 40], [45, 75]], 18, "#32436d");
 
   // Head tilted with groaning face
-  p.ell(0, -45, 65, 75, "#f1c9a3", 8);
-  p.poly([[-35, -100], [35, -100], [30, -55], [-35, -55]], "#1a1410", 6); // Hair
+  p.ell(0, -65, 65, 75, "#f1c9a3", 8);
+  p.poly([[-35, -120], [35, -120], [30, -75], [-35, -75]], "#1a1410", 6); // Hair
 
   // Dazed dizzy eyes (crosses)
-  p.stroke([[-25, -55], [-12, -42]], 5, "#241726");
-  p.stroke([[-25, -42], [-12, -55]], 5, "#241726");
-  p.stroke([[12, -55], [25, -42]], 5, "#241726");
-  p.stroke([[12, -42], [25, -55]], 5, "#241726");
+  p.stroke([[-25, -75], [-12, -62]], 5, "#241726");
+  p.stroke([[-25, -62], [-12, -75]], 5, "#241726");
+  p.stroke([[12, -75], [25, -62]], 5, "#241726");
+  p.stroke([[12, -62], [25, -75]], 5, "#241726");
 
   // Wavy mouth
-  p.stroke([[-18, -25], [-5, -20], [5, -30], [18, -22]], 5, "#241726");
+  p.stroke([[-18, -45], [-5, -40], [5, -50], [18, -42]], 5, "#241726");
 
-  // Thought / groan bubble: «Fүйк = 0 !»
-  p.ell(130, -110, 80, 45, "#ffffff", 6);
-  p.ell(65, -75, 12, 12, "#ffffff", 4);
+  // Thought / groan bubble: «Fүйк ≈ 0 !»
+  p.ell(130, -130, 80, 45, "#ffffff", 6);
+  p.ell(65, -95, 12, 12, "#ffffff", 4);
   g.fillStyle = "#e2483d"; g.font = "900 24px Montserrat, sans-serif"; g.textAlign = "center";
-  g.fillText("Fүйк ≈ 0 !", 130, -102);
+  g.fillText("Fүйк ≈ 0 !", 130, -122);
 
   g.restore();
 };
@@ -128,10 +130,10 @@ const erasylFallen = (p: Pen, _t: number) => {
 /** Spinning cartoon dizzy stars and swirls */
 const dizzyStars = (p: Pen, t: number) => {
   const g = p.g; g.save();
-  g.translate(300, 320);
+  g.translate(300, 300);
   for (let i = 0; i < 4; i++) {
     const ang = t * 4 + (i * Math.PI) / 2;
-    const radX = 140, radY = 55;
+    const radX = 130, radY = 50;
     const sx = Math.cos(ang) * radX;
     const sy = Math.sin(ang) * radY;
 
@@ -229,35 +231,35 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
 
     case "sh09": // Ice Rink: Erasyl stepping onto ice
       front(YS, RINK_POS[0] - 0.2, 0, 0, { mode: "stand", expr: say("e3", "say", "grin"), facing: 1, wave: 0.8 });
-      front(AS, RINK_POS[0] + 1.2, 0, 0.3, { mode: "stand", expr: "smile", facing: -1 });
+      front(AS, RINK_POS[0] + 0.45, 0, 0.2, { mode: "stand", expr: "smile", facing: -1 });
       break;
 
     case "sh10": // Ice Rink: Erasyl leap attempt!
-      fx("erasylMidAir", 600, 600, (p) => erasylMidAir(p, t), RINK_POS[0] - 0.1, 0.9, 0, 1.6, 1.6);
-      front(AS, RINK_POS[0] + 1.1, 0, 0.3, { mode: "stand", expr: "shock", facing: -1 });
+      fx("erasylMidAir", 600, 600, (p) => erasylMidAir(p, t), RINK_POS[0] - 0.2, 1.2, 0, 1.6, 1.6);
+      front(AS, RINK_POS[0] + 0.45, 0, 0.2, { mode: "stand", expr: "shock", facing: -1 });
       break;
 
     case "sh11": // Ice Rink: COMEDIC CRASH!
-      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.1, 0.45, 0, 1.8, 1.8);
-      burst(RINK_POS[0] - 0.1, 0.4, 0, shotStart("sh11") + 10, 1.3, 12, "#ffffff");
-      front(AS, RINK_POS[0] + 1.0, 0, 0.2, { mode: "stand", expr: "shock", facing: -1, wave: 0.6 });
+      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.15, 0.65, 0, 1.6, 1.6);
+      burst(RINK_POS[0] - 0.15, 0.35, 0, shotStart("sh11") + 5, 1.2, 12, "#ffffff");
+      front(AS, RINK_POS[0] + 0.45, 0, 0.1, { mode: "stand", expr: "shock", facing: -1, wave: 0.6 });
       break;
 
     case "sh12": // Ice Rink: Erasyl lying on ice groaning
-      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.2, 0.45, 0, 1.8, 1.8);
-      fx("dizzyStars", 600, 600, (p) => dizzyStars(p, t), RINK_POS[0] - 0.2, 1.05, 0, 1.3, 1.3);
-      front(AS, RINK_POS[0] + 0.9, 0, 0.2, { mode: "stand", expr: "laugh", facing: -1 });
+      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.15, 0.65, 0, 1.6, 1.6);
+      fx("dizzyStars", 600, 600, (p) => dizzyStars(p, t), RINK_POS[0] - 0.15, 1.05, 0.05, 1.2, 1.2);
+      front(AS, RINK_POS[0] + 0.45, 0, 0.1, { mode: "stand", expr: "laugh", facing: -1 });
       break;
 
     case "sh13": // Ice Rink: Aruzhan laughing
       front(AS, RINK_POS[0] + 0.35, 0, 0, { mode: "stand", expr: say("a4", "laugh", "grin"), facing: -1, wave: 0.9 });
-      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.35, 0.45, 0.1, 1.5, 1.5);
+      fx("erasylFallen", 600, 600, (p) => erasylFallen(p, t), RINK_POS[0] - 0.25, 0.65, 0.1, 1.5, 1.5);
       break;
 
     case "sh14": // Ice Rink: Aruzhan offering hand
       fx("hearts", 600, 600, (p) => heartsFx(p, t), RINK_POS[0] - 0.05, 1.35, 0.2, 1.3, 1.3);
       front(AS, RINK_POS[0] + 0.3, 0, 0, { mode: "stand", expr: "smile", facing: -1, wave: 0.7 });
-      front(YS, RINK_POS[0] - 0.35, 0, 0, { mode: "stand", expr: "nervous", facing: 1 });
+      front(YS, RINK_POS[0] - 0.3, 0, 0, { mode: "stand", expr: "nervous", facing: 1 });
       break;
 
     case "sh15": // Ice Rink: Erasyl standing up, blushing

@@ -96,23 +96,23 @@ const CAMS: Record<string, Key[]> = {
   ],
   // sh09: ice rink, Erasyl steps onto ice
   sh09: [
-    { f: A("sh09"), s: hold([RINK_POS[0] - 0.1, 1.35, 2.8], [RINK_POS[0] - 0.1, 1.05, 0], 38, A("sh09"), 0.0024) },
+    { f: A("sh09"), s: hold([RINK_POS[0] + 0.1, 1.35, 3.0], [RINK_POS[0] + 0.1, 1.05, 0], 38, A("sh09"), 0.0024) },
   ],
   // sh10: ice rink, Erasyl leap attempt
   sh10: [
-    { f: A("sh10"), s: hold([RINK_POS[0], 1.38, 3.0], [RINK_POS[0], 1.05, 0], 40, A("sh10"), 0.003) },
+    { f: A("sh10"), s: hold([RINK_POS[0] + 0.1, 1.35, 3.2], [RINK_POS[0] + 0.1, 1.05, 0], 40, A("sh10"), 0.003) },
   ],
   // sh11: ice rink, COMEDIC SLIP IMPACT (subtle roll in radians, safe bounds)
   sh11: [
-    { f: A("sh11"), s: hold([RINK_POS[0], 1.25, 2.7], [RINK_POS[0], 0.85, 0], 38, A("sh11"), 0.003, -0.04) },
+    { f: A("sh11"), s: hold([RINK_POS[0] + 0.15, 1.25, 3.0], [RINK_POS[0] + 0.15, 0.85, 0], 38, A("sh11"), 0.003, -0.04) },
   ],
   // sh12: ice rink, Erasyl on ice dazed with stars
   sh12: [
-    { f: A("sh12"), s: hold([RINK_POS[0] - 0.1, 1.25, 2.6], [RINK_POS[0] - 0.1, 0.85, 0], 36, A("sh12"), 0.0025) },
+    { f: A("sh12"), s: hold([RINK_POS[0] + 0.15, 1.25, 2.9], [RINK_POS[0] + 0.15, 0.85, 0], 38, A("sh12"), 0.0025) },
   ],
   // sh13: ice rink, Aruzhan laughing holding stomach
   sh13: [
-    { f: A("sh13"), s: hold([RINK_POS[0] + 0.1, 1.32, 2.8], [RINK_POS[0] + 0.1, 0.95, 0], 38, A("sh13"), 0.0022) },
+    { f: A("sh13"), s: hold([RINK_POS[0] + 0.05, 1.25, 2.8], [RINK_POS[0] + 0.05, 0.9, 0], 38, A("sh13"), 0.0022) },
   ],
   // sh14: ice rink, Aruzhan extending hands
   sh14: [

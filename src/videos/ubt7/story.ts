@@ -63,72 +63,72 @@ const A = (k: string) => shotStart(k);
 const CAMS: Record<string, Key[]> = {
   // sh01: calendar «24» hook, rink establishing in distance
   sh01: [
-    { f: 0, s: hold([RINK_POS[0], 1.5, 4.6], [RINK_POS[0], 1.15, 0], 42, 0, 0.0016) },
-    { f: W("n1", 4) - 6, dur: 24, s: hold([RINK_POS[0], 1.45, 3.4], [RINK_POS[0], 1.2, 0], 38, W("n1", 4) - 6, 0.002) },
+    { f: 0, s: hold([RINK_POS[0], 1.45, 4.6], [RINK_POS[0], 1.05, 0], 42, 0, 0.0016) },
+    { f: W("n1", 4) - 6, dur: 24, s: hold([RINK_POS[0], 1.4, 3.5], [RINK_POS[0], 1.08, 0], 38, W("n1", 4) - 6, 0.002) },
   ],
-  // sh02: classroom, Erasyl says he analyzed tests
+  // sh02: classroom, Erasyl says he analyzed tests (safe headroom below HUD)
   sh02: [
-    { f: A("sh02"), s: hold([CLASS_POS[0], 1.4, 2.7], [CLASS_POS[0], 1.15, 0], 38, A("sh02"), 0.0022) },
+    { f: A("sh02"), s: hold([CLASS_POS[0], 1.35, 2.9], [CLASS_POS[0], 1.05, 0], 38, A("sh02"), 0.0022) },
   ],
   // sh03: classroom, Aruzhan with test booklet
   sh03: [
-    { f: A("sh03"), s: hold([CLASS_POS[0] + 0.1, 1.38, 2.3], [CLASS_POS[0] + 0.1, 1.15, 0], 36, A("sh03"), 0.0025) },
+    { f: A("sh03"), s: hold([CLASS_POS[0] + 0.1, 1.35, 2.7], [CLASS_POS[0] + 0.1, 1.05, 0], 36, A("sh03"), 0.0025) },
   ],
   // sh04: classroom, score pop 82 points
   sh04: [
-    { f: A("sh04"), s: hold([CLASS_POS[0], 1.45, 2.8], [CLASS_POS[0], 1.18, 0], 38, A("sh04"), 0.002) },
+    { f: A("sh04"), s: hold([CLASS_POS[0], 1.38, 3.0], [CLASS_POS[0], 1.05, 0], 38, A("sh04"), 0.002) },
   ],
   // sh05: classroom, Aruzhan invites to ice rink
   sh05: [
-    { f: A("sh05"), s: hold([CLASS_POS[0] + 0.1, 1.4, 2.6], [CLASS_POS[0] + 0.1, 1.18, 0], 38, A("sh05"), 0.0022) },
+    { f: A("sh05"), s: hold([CLASS_POS[0] + 0.1, 1.35, 2.8], [CLASS_POS[0] + 0.1, 1.05, 0], 38, A("sh05"), 0.0022) },
   ],
   // sh06: classroom, Erasyl boasts
   sh06: [
-    { f: A("sh06"), s: hold([CLASS_POS[0] - 0.1, 1.38, 2.4], [CLASS_POS[0] - 0.1, 1.15, 0], 36, A("sh06"), 0.0025) },
+    { f: A("sh06"), s: hold([CLASS_POS[0] - 0.1, 1.35, 2.7], [CLASS_POS[0] - 0.1, 1.05, 0], 36, A("sh06"), 0.0025) },
   ],
   // sh07: ice rink wide establishing
   sh07: [
-    { f: A("sh07"), s: hold([RINK_POS[0], 1.6, 5.0], [RINK_POS[0], 1.1, 0], 42, A("sh07"), 0.0018) },
+    { f: A("sh07"), s: hold([RINK_POS[0], 1.5, 5.0], [RINK_POS[0], 1.05, 0], 42, A("sh07"), 0.0018) },
   ],
   // sh08: ice rink, Aruzhan spinning gracefully
   sh08: [
-    { f: A("sh08"), s: hold([RINK_POS[0] + 0.2, 1.4, 2.7], [RINK_POS[0] + 0.2, 1.15, 0], 38, A("sh08"), 0.0022) },
+    { f: A("sh08"), s: hold([RINK_POS[0] + 0.15, 1.35, 2.9], [RINK_POS[0] + 0.15, 1.05, 0], 38, A("sh08"), 0.0022) },
   ],
   // sh09: ice rink, Erasyl steps onto ice
   sh09: [
-    { f: A("sh09"), s: hold([RINK_POS[0] - 0.1, 1.4, 2.6], [RINK_POS[0] - 0.1, 1.15, 0], 38, A("sh09"), 0.0024) },
+    { f: A("sh09"), s: hold([RINK_POS[0] - 0.1, 1.35, 2.8], [RINK_POS[0] - 0.1, 1.05, 0], 38, A("sh09"), 0.0024) },
   ],
   // sh10: ice rink, Erasyl leap attempt
   sh10: [
-    { f: A("sh10"), s: hold([RINK_POS[0], 1.45, 2.8], [RINK_POS[0], 1.15, 0], 40, A("sh10"), 0.003) },
+    { f: A("sh10"), s: hold([RINK_POS[0], 1.38, 3.0], [RINK_POS[0], 1.05, 0], 40, A("sh10"), 0.003) },
   ],
-  // sh11: ice rink, COMEDIC SLIP IMPACT
+  // sh11: ice rink, COMEDIC SLIP IMPACT (subtle roll in radians, safe bounds)
   sh11: [
-    { f: A("sh11"), s: hold([RINK_POS[0] - 0.1, 1.25, 2.4], [RINK_POS[0] - 0.1, 0.95, 0], 38, A("sh11"), 0.004, -2) },
+    { f: A("sh11"), s: hold([RINK_POS[0], 1.25, 2.7], [RINK_POS[0], 0.85, 0], 38, A("sh11"), 0.003, -0.04) },
   ],
   // sh12: ice rink, Erasyl on ice dazed with stars
   sh12: [
-    { f: A("sh12"), s: hold([RINK_POS[0] - 0.2, 1.25, 2.3], [RINK_POS[0] - 0.2, 0.95, 0], 36, A("sh12"), 0.0025) },
+    { f: A("sh12"), s: hold([RINK_POS[0] - 0.1, 1.25, 2.6], [RINK_POS[0] - 0.1, 0.85, 0], 36, A("sh12"), 0.0025) },
   ],
-  // sh13: ice rink, Aruzhan laughing
+  // sh13: ice rink, Aruzhan laughing holding stomach
   sh13: [
-    { f: A("sh13"), s: hold([RINK_POS[0] + 0.2, 1.35, 2.5], [RINK_POS[0] + 0.2, 1.1, 0], 38, A("sh13"), 0.0022) },
+    { f: A("sh13"), s: hold([RINK_POS[0] + 0.1, 1.32, 2.8], [RINK_POS[0] + 0.1, 0.95, 0], 38, A("sh13"), 0.0022) },
   ],
   // sh14: ice rink, Aruzhan extending hands
   sh14: [
-    { f: A("sh14"), s: hold([RINK_POS[0], 1.38, 2.5], [RINK_POS[0], 1.12, 0], 38, A("sh14"), 0.002) },
+    { f: A("sh14"), s: hold([RINK_POS[0], 1.35, 2.7], [RINK_POS[0], 1.02, 0], 38, A("sh14"), 0.002) },
   ],
   // sh15: ice rink, Erasyl standing up blushing
   sh15: [
-    { f: A("sh15"), s: hold([RINK_POS[0], 1.38, 2.4], [RINK_POS[0], 1.12, 0], 36, A("sh15"), 0.0022) },
+    { f: A("sh15"), s: hold([RINK_POS[0], 1.35, 2.6], [RINK_POS[0], 1.02, 0], 36, A("sh15"), 0.0022) },
   ],
   // sh16: ice rink, Aruzhan holding hand
   sh16: [
-    { f: A("sh16"), s: hold([RINK_POS[0] + 0.05, 1.4, 2.5], [RINK_POS[0] + 0.05, 1.15, 0], 38, A("sh16"), 0.0022) },
+    { f: A("sh16"), s: hold([RINK_POS[0] + 0.05, 1.35, 2.7], [RINK_POS[0] + 0.05, 1.05, 0], 38, A("sh16"), 0.0022) },
   ],
   // sh17: ice rink, gliding together holding hands
   sh17: [
-    { f: A("sh17"), s: hold([RINK_POS[0], 1.45, 2.8], [RINK_POS[0], 1.15, 0], 40, A("sh17"), 0.002) },
+    { f: A("sh17"), s: hold([RINK_POS[0], 1.4, 3.0], [RINK_POS[0], 1.05, 0], 40, A("sh17"), 0.002) },
   ],
 };
 
@@ -139,14 +139,14 @@ export const camAt = (id: number, f: number): Cam => {
   if (!keys || keys.length === 0) return { pos: [0, 1.5, 3.5], look: [0, 1.15, 0], fov: 40, roll: 0 };
   const c = run(keys, f);
 
-  // Impact shake for sh11 (comedic slip crash)
+  // Impact shake for sh11 (subtle physical shake in radians and meters)
   if (s.key === "sh11") {
     const lf = f - s.a;
-    if (lf >= 8 && lf < 22) {
-      const sh = Math.sin(lf * 3.5) * (22 - lf) * 0.018;
+    if (lf >= 6 && lf < 20) {
+      const sh = Math.sin(lf * 3.5) * (20 - lf) * 0.008;
       c.pos[0] += sh;
-      c.pos[1] += Math.abs(sh) * 0.8;
-      c.roll += (lf % 2 ? 1 : -1) * 2.2 * Math.exp(-(lf - 8) * 0.18);
+      c.pos[1] += Math.abs(sh) * 0.5;
+      c.roll += (lf % 2 ? 1 : -1) * 0.04 * Math.exp(-(lf - 6) * 0.15);
     }
   }
 

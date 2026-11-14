@@ -141,28 +141,28 @@ export const VsScreen: React.FC<{ f: number }> = ({ f }) => {
         {lines.map((l, i) => <rect key={i} x={l.x} y={l.y} width={l.len} height={6} rx={3} fill="#ffffff" opacity={0.12} />)}
         <polygon points="0,1160 1080,800 1080,840 0,1200" fill="#FFD84A" />
       </svg>
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 236, display: "flex", justifyContent: "center", opacity: inA }}>
-        <div style={{ background: "#FFD84A", borderRadius: 34, padding: "6px 40px", fontFamily: MONT, fontWeight: 800, fontSize: 44, color: "#120C06", boxShadow: "0 8px 0 rgba(0,0,0,0.35)", whiteSpace: "nowrap" }}>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 220, display: "flex", justifyContent: "center", opacity: inA }}>
+        <div style={{ background: "#FFD84A", borderRadius: 34, padding: "6px 36px", fontFamily: MONT, fontWeight: 800, fontSize: 42, color: "#120C06", boxShadow: "0 8px 0 rgba(0,0,0,0.35)", whiteSpace: "nowrap" }}>
           7-КҮН · ДЕМАЛЫС ҚОРЫТЫНДЫСЫ
         </div>
       </div>
-      <div style={{ position: "absolute", left: -55 - 600 * (1 - inA), top: 105 }}><Portrait o={ARUZHAN} expr={aExpr} facing={1} w={650} wave={0.8} /></div>
+      <div style={{ position: "absolute", left: -55 - 600 * (1 - inA), top: 140 }}><Portrait o={ARUZHAN} expr={aExpr} facing={1} w={640} wave={0.8} /></div>
       <div style={{ position: "absolute", left: 560, top: 470, width: 480, textAlign: "center", opacity: inA }}>
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 48, color: "#FFFFFF", letterSpacing: 3 }}>АРУЖАН</div>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 200, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "7px #120C06", paintOrder: "stroke fill", textShadow: "0 12px 0 rgba(0,0,0,0.4)" }}>⛸️ 10/10</div>
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 34, color: "#FFFFFF" }}>МҰЗ ХАНШАЙЫМЫ!</div>
       </div>
-      <div style={{ position: "absolute", left: 475 + 600 * (1 - inY), top: 675 }}><Portrait o={YSUIT} expr={yExpr} facing={-1} w={650} /></div>
-      <div style={{ position: "absolute", left: 40, top: 1180, width: 480, textAlign: "center", opacity: inY }}>
+      <div style={{ position: "absolute", left: 475 + 600 * (1 - inY), top: 690 }}><Portrait o={YSUIT} expr={yExpr} facing={-1} w={640} /></div>
+      <div style={{ position: "absolute", left: 40, top: 1190, width: 480, textAlign: "center", opacity: inY }}>
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 48, color: "#FFFFFF", letterSpacing: 3 }}>ЕРАСЫЛ</div>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 230, lineHeight: 1, color: "#FFFFFF", WebkitTextStroke: "7px #120C06", paintOrder: "stroke fill", textShadow: "0 12px 0 rgba(0,0,0,0.4)" }}>{yS}</div>
-        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 36, color: "#4CD98A" }}>+4 БАЛЛ! (ФИЗИК ҚҰЛАУШЫ ❄️)</div>
+        <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 32, color: "#4CD98A", whiteSpace: "nowrap" }}>+4 БАЛЛ! (ФИЗИК ҚҰЛАУШЫ ❄️)</div>
       </div>
       <div style={{ position: "absolute", left: 340 + shake, top: 830, width: 400, height: 300, display: "flex", justifyContent: "center", alignItems: "center", opacity: cl(vs * 3), transform: `rotate(-12deg) scale(${vsSc})` }}>
         <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 220, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "10px #120C06", paintOrder: "stroke fill", textShadow: "0 14px 0 rgba(0,0,0,0.5)" }}>&</div>
       </div>
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 1550, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
-        <div style={{ transform: `scale(${0.4 + 0.6 * pill})`, background: "#2FB36B", borderRadius: 44, padding: "12px 48px", fontFamily: MONT, fontWeight: 800, fontSize: 42, color: "#FFFFFF", boxShadow: "0 10px 0 rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 1530, display: "flex", justifyContent: "center", opacity: cl(pill * 2) }}>
+        <div style={{ transform: `scale(${0.4 + 0.6 * pill})`, background: "#2FB36B", borderRadius: 44, padding: "12px 48px", fontFamily: MONT, fontWeight: 800, fontSize: 40, color: "#FFFFFF", boxShadow: "0 10px 0 rgba(0,0,0,0.4)", whiteSpace: "nowrap" }}>
           МҰЗДАҒЫ ҮЙКЕЛІС ЖӘНЕ КҮЛКІ!
         </div>
       </div>

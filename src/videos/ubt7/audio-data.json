@@ -1,0 +1,1006 @@
+{
+ "n1": {
+  "file": "ubt7/audio/n1.mp3",
+  "duration": 4.529,
+  "words": [
+   {
+    "word": "Жетінші",
+    "start": 0,
+    "end": 0.519
+   },
+   {
+    "word": "күн.",
+    "start": 0.556,
+    "end": 1.111
+   },
+   {
+    "word": "Жексенбі",
+    "start": 1.148,
+    "end": 1.63
+   },
+   {
+    "word": "болса",
+    "start": 1.741,
+    "end": 2
+   },
+   {
+    "word": "да,",
+    "start": 2.111,
+    "end": 2.444
+   },
+   {
+    "word": "ҰБТ",
+    "start": 2.519,
+    "end": 3.111
+   },
+   {
+    "word": "демалыс",
+    "start": 3.333,
+    "end": 3.778
+   },
+   {
+    "word": "бермейді.",
+    "start": 3.852,
+    "end": 4.593
+   }
+  ]
+ },
+ "e1": {
+  "file": "ubt7/audio/e1.mp3",
+  "duration": 3.84,
+  "words": [
+   {
+    "word": "Аружан,",
+    "start": 0.08,
+    "end": 0.72
+   },
+   {
+    "word": "мен",
+    "start": 0.88,
+    "end": 1.04
+   },
+   {
+    "word": "кешегі",
+    "start": 1.08,
+    "end": 1.44
+   },
+   {
+    "word": "тесттің",
+    "start": 1.48,
+    "end": 2
+   },
+   {
+    "word": "барлық",
+    "start": 2.12,
+    "end": 2.4
+   },
+   {
+    "word": "қатесін",
+    "start": 2.44,
+    "end": 2.8
+   },
+   {
+    "word": "талдап",
+    "start": 2.88,
+    "end": 3.12
+   },
+   {
+    "word": "шықтым!",
+    "start": 3.16,
+    "end": 3.84
+   }
+  ]
+ },
+ "a1": {
+  "file": "ubt7/audio/a1.mp3",
+  "duration": 5.36,
+  "words": [
+   {
+    "word": "Жарайсың!",
+    "start": 0.224,
+    "end": 1.08
+   },
+   {
+    "word": "Тест",
+    "start": 1.28,
+    "end": 1.52
+   },
+   {
+    "word": "нәтижесі",
+    "start": 1.6,
+    "end": 2.16
+   },
+   {
+    "word": "—",
+    "start": 2.32,
+    "end": 2.36
+   },
+   {
+    "word": "тура",
+    "start": 2.4,
+    "end": 2.72
+   },
+   {
+    "word": "сексен",
+    "start": 2.8,
+    "end": 3.2
+   },
+   {
+    "word": "екі",
+    "start": 3.28,
+    "end": 3.44
+   },
+   {
+    "word": "балл!",
+    "start": 3.52,
+    "end": 3.96
+   },
+   {
+    "word": "Өз",
+    "start": 4.16,
+    "end": 4.4
+   },
+   {
+    "word": "рекордың!",
+    "start": 4.44,
+    "end": 5.2
+   }
+  ]
+ },
+ "n2": {
+  "file": "ubt7/audio/n2.mp3",
+  "duration": 3.944,
+  "words": [
+   {
+    "word": "Еңбек",
+    "start": 0,
+    "end": 0.444
+   },
+   {
+    "word": "ақталды.",
+    "start": 0.481,
+    "end": 1.333
+   },
+   {
+    "word": "Ерасылдың",
+    "start": 1.407,
+    "end": 1.926
+   },
+   {
+    "word": "балы",
+    "start": 2,
+    "end": 2.37
+   },
+   {
+    "word": "сексен",
+    "start": 2.444,
+    "end": 2.815
+   },
+   {
+    "word": "екіге",
+    "start": 2.889,
+    "end": 3.185
+   },
+   {
+    "word": "көтерілді.",
+    "start": 3.234,
+    "end": 4
+   }
+  ]
+ },
+ "a2": {
+  "file": "ubt7/audio/a2.mp3",
+  "duration": 5.28,
+  "words": [
+   {
+    "word": "Керемет",
+    "start": 0.34,
+    "end": 0.72
+   },
+   {
+    "word": "нәтиже!",
+    "start": 0.8,
+    "end": 1.6
+   },
+   {
+    "word": "Енді",
+    "start": 1.84,
+    "end": 2.16
+   },
+   {
+    "word": "демалыс",
+    "start": 2.2,
+    "end": 2.64
+   },
+   {
+    "word": "ретінде",
+    "start": 2.68,
+    "end": 3.2
+   },
+   {
+    "word": "мұз",
+    "start": 3.227,
+    "end": 3.36
+   },
+   {
+    "word": "айдынына",
+    "start": 3.44,
+    "end": 3.92
+   },
+   {
+    "word": "барып",
+    "start": 3.96,
+    "end": 4.2
+   },
+   {
+    "word": "серуендейік!",
+    "start": 4.24,
+    "end": 5.28
+   }
+  ]
+ },
+ "e2": {
+  "file": "ubt7/audio/e2.mp3",
+  "duration": 4.4,
+  "words": [
+   {
+    "word": "Мұз",
+    "start": 0.16,
+    "end": 0.32
+   },
+   {
+    "word": "айдыны?!",
+    "start": 0.4,
+    "end": 0.96
+   },
+   {
+    "word": "Әрине!",
+    "start": 1.12,
+    "end": 1.8
+   },
+   {
+    "word": "Конькиде",
+    "start": 2,
+    "end": 2.48
+   },
+   {
+    "word": "маған",
+    "start": 2.56,
+    "end": 2.88
+   },
+   {
+    "word": "тең",
+    "start": 2.96,
+    "end": 3.12
+   },
+   {
+    "word": "келер",
+    "start": 3.16,
+    "end": 3.52
+   },
+   {
+    "word": "ешкім",
+    "start": 3.64,
+    "end": 3.92
+   },
+   {
+    "word": "жоқ!",
+    "start": 3.96,
+    "end": 4.48
+   }
+  ]
+ },
+ "n3": {
+  "file": "ubt7/audio/n3.mp3",
+  "duration": 4.966,
+  "words": [
+   {
+    "word": "Тау",
+    "start": 0,
+    "end": 0.222
+   },
+   {
+    "word": "баурайындағы",
+    "start": 0.296,
+    "end": 1.111
+   },
+   {
+    "word": "мұз",
+    "start": 1.148,
+    "end": 1.333
+   },
+   {
+    "word": "айдыны.",
+    "start": 1.407,
+    "end": 2.259
+   },
+   {
+    "word": "Таза",
+    "start": 2.296,
+    "end": 2.593
+   },
+   {
+    "word": "ауа",
+    "start": 2.667,
+    "end": 2.889
+   },
+   {
+    "word": "мен",
+    "start": 2.963,
+    "end": 3.185
+   },
+   {
+    "word": "сықырлаған",
+    "start": 3.259,
+    "end": 3.926
+   },
+   {
+    "word": "аяз.",
+    "start": 4.074,
+    "end": 4.519
+   }
+  ]
+ },
+ "a3": {
+  "file": "ubt7/audio/a3.mp3",
+  "duration": 4.8,
+  "words": [
+   {
+    "word": "Қандай",
+    "start": 1.12,
+    "end": 1.6
+   },
+   {
+    "word": "керемет",
+    "start": 1.68,
+    "end": 2.08
+   },
+   {
+    "word": "сырғанау!",
+    "start": 2.16,
+    "end": 2.92
+   },
+   {
+    "word": "Ерасыл,",
+    "start": 3.12,
+    "end": 3.72
+   },
+   {
+    "word": "тезірек",
+    "start": 3.84,
+    "end": 4.24
+   },
+   {
+    "word": "кел!",
+    "start": 4.32,
+    "end": 4.88
+   }
+  ]
+ },
+ "e3": {
+  "file": "ubt7/audio/e3.mp3",
+  "duration": 4.88,
+  "words": [
+   {
+    "word": "Аружан,",
+    "start": 0.08,
+    "end": 0.72
+   },
+   {
+    "word": "қара!",
+    "start": 0.76,
+    "end": 1.44
+   },
+   {
+    "word": "Қазір",
+    "start": 1.48,
+    "end": 1.76
+   },
+   {
+    "word": "саған",
+    "start": 1.84,
+    "end": 2.16
+   },
+   {
+    "word": "мәнерлеп",
+    "start": 2.2,
+    "end": 2.64
+   },
+   {
+    "word": "сырғанау",
+    "start": 2.72,
+    "end": 3.12
+   },
+   {
+    "word": "мен",
+    "start": 3.24,
+    "end": 3.36
+   },
+   {
+    "word": "физика",
+    "start": 3.44,
+    "end": 3.84
+   },
+   {
+    "word": "заңын",
+    "start": 3.88,
+    "end": 4.08
+   },
+   {
+    "word": "көрсетемін!",
+    "start": 4.12,
+    "end": 4.96
+   }
+  ]
+ },
+ "e4": {
+  "file": "ubt7/audio/e4.mp3",
+  "duration": 3.76,
+  "words": [
+   {
+    "word": "Үйкеліс",
+    "start": 0.08,
+    "end": 0.6
+   },
+   {
+    "word": "күші...",
+    "start": 0.64,
+    "end": 1.44
+   },
+   {
+    "word": "инерция...",
+    "start": 1.56,
+    "end": 2.56
+   },
+   {
+    "word": "секірууу!",
+    "start": 2.64,
+    "end": 3.76
+   }
+  ]
+ },
+ "n4": {
+  "file": "ubt7/audio/n4.mp3",
+  "duration": 3.715,
+  "words": [
+   {
+    "word": "Бірақ",
+    "start": 0,
+    "end": 0.519
+   },
+   {
+    "word": "мұз",
+    "start": 0.593,
+    "end": 0.815
+   },
+   {
+    "word": "айдыны",
+    "start": 0.926,
+    "end": 1.185
+   },
+   {
+    "word": "мен",
+    "start": 1.296,
+    "end": 1.407
+   },
+   {
+    "word": "физиканың",
+    "start": 1.519,
+    "end": 2.074
+   },
+   {
+    "word": "өз",
+    "start": 2.222,
+    "end": 2.37
+   },
+   {
+    "word": "ережелері",
+    "start": 2.444,
+    "end": 2.963
+   },
+   {
+    "word": "бар",
+    "start": 3.037,
+    "end": 3.111
+   },
+   {
+    "word": "еді.",
+    "start": 3.185,
+    "end": 3.778
+   }
+  ]
+ },
+ "e5": {
+  "file": "ubt7/audio/e5.mp3",
+  "duration": 7.44,
+  "words": [
+   {
+    "word": "Ойбай...",
+    "start": 1.12,
+    "end": 2.48
+   },
+   {
+    "word": "Физикада",
+    "start": 2.64,
+    "end": 3.2
+   },
+   {
+    "word": "үйкеліс",
+    "start": 3.28,
+    "end": 3.68
+   },
+   {
+    "word": "коэффициенті",
+    "start": 3.76,
+    "end": 4.4
+   },
+   {
+    "word": "нөлге",
+    "start": 4.48,
+    "end": 4.8
+   },
+   {
+    "word": "тең",
+    "start": 4.88,
+    "end": 5
+   },
+   {
+    "word": "екен",
+    "start": 5.04,
+    "end": 5.28
+   },
+   {
+    "word": "ғой...",
+    "start": 5.32,
+    "end": 6.08
+   },
+   {
+    "word": "белім-ай...",
+    "start": 6.24,
+    "end": 7.44
+   }
+  ]
+ },
+ "a4": {
+  "file": "ubt7/audio/a4.mp3",
+  "duration": 6.88,
+  "words": [
+   {
+    "word": "Ахахаха!",
+    "start": 1.2,
+    "end": 2.16
+   },
+   {
+    "word": "Ерасыл,",
+    "start": 2.56,
+    "end": 3.36
+   },
+   {
+    "word": "бұл",
+    "start": 3.4,
+    "end": 3.6
+   },
+   {
+    "word": "«құлаудың",
+    "start": 3.627,
+    "end": 4.08
+   },
+   {
+    "word": "үшінші",
+    "start": 4.12,
+    "end": 4.44
+   },
+   {
+    "word": "заңы»",
+    "start": 4.48,
+    "end": 4.773
+   },
+   {
+    "word": "ма?!",
+    "start": 4.8,
+    "end": 5.36
+   },
+   {
+    "word": "Тұр,",
+    "start": 5.387,
+    "end": 5.84
+   },
+   {
+    "word": "қолыңнан",
+    "start": 5.88,
+    "end": 6.24
+   },
+   {
+    "word": "ұстайын!",
+    "start": 6.28,
+    "end": 6.96
+   }
+  ]
+ },
+ "n5": {
+  "file": "ubt7/audio/n5.mp3",
+  "duration": 3.558,
+  "words": [
+   {
+    "word": "Бірақ",
+    "start": 0,
+    "end": 0.444
+   },
+   {
+    "word": "күлкінің",
+    "start": 0.481,
+    "end": 0.889
+   },
+   {
+    "word": "артында",
+    "start": 0.963,
+    "end": 1.481
+   },
+   {
+    "word": "ерекше",
+    "start": 1.556,
+    "end": 2.074
+   },
+   {
+    "word": "жылы",
+    "start": 2.111,
+    "end": 2.37
+   },
+   {
+    "word": "сезім",
+    "start": 2.444,
+    "end": 2.778
+   },
+   {
+    "word": "бар",
+    "start": 2.815,
+    "end": 2.963
+   },
+   {
+    "word": "еді.",
+    "start": 3.037,
+    "end": 3.63
+   }
+  ]
+ },
+ "e6": {
+  "file": "ubt7/audio/e6.mp3",
+  "duration": 6.56,
+  "words": [
+   {
+    "word": "Аружан...",
+    "start": 0.24,
+    "end": 1.16
+   },
+   {
+    "word": "рахмет.",
+    "start": 1.44,
+    "end": 2.16
+   },
+   {
+    "word": "Бірақ",
+    "start": 2.48,
+    "end": 2.96
+   },
+   {
+    "word": "есеп",
+    "start": 3.04,
+    "end": 3.36
+   },
+   {
+    "word": "шығарған",
+    "start": 3.4,
+    "end": 3.76
+   },
+   {
+    "word": "мұзда",
+    "start": 3.84,
+    "end": 4.32
+   },
+   {
+    "word": "сырғанаудан",
+    "start": 4.4,
+    "end": 5.12
+   },
+   {
+    "word": "әлдеқайда",
+    "start": 5.2,
+    "end": 5.76
+   },
+   {
+    "word": "оңай",
+    "start": 5.8,
+    "end": 6
+   },
+   {
+    "word": "екен...",
+    "start": 6.08,
+    "end": 6.64
+   }
+  ]
+ },
+ "a5": {
+  "file": "ubt7/audio/a5.mp3",
+  "duration": 5.68,
+  "words": [
+   {
+    "word": "Кел,",
+    "start": 0.88,
+    "end": 1.36
+   },
+   {
+    "word": "қолымнан",
+    "start": 1.52,
+    "end": 1.92
+   },
+   {
+    "word": "ұста,",
+    "start": 2,
+    "end": 2.48
+   },
+   {
+    "word": "бірге",
+    "start": 2.56,
+    "end": 2.8
+   },
+   {
+    "word": "сырғанаймыз.",
+    "start": 2.84,
+    "end": 3.84
+   },
+   {
+    "word": "Қорықпа,",
+    "start": 3.88,
+    "end": 4.64
+   },
+   {
+    "word": "құламайсың!",
+    "start": 4.667,
+    "end": 5.68
+   }
+  ]
+ },
+ "n6": {
+  "file": "ubt7/audio/n6.mp3",
+  "duration": 2.606,
+  "words": [
+   {
+    "word": "Қол",
+    "start": 0,
+    "end": 0.222
+   },
+   {
+    "word": "ұстасып",
+    "start": 0.259,
+    "end": 0.778
+   },
+   {
+    "word": "сырғанаған",
+    "start": 0.815,
+    "end": 1.63
+   },
+   {
+    "word": "қос",
+    "start": 1.704,
+    "end": 2
+   },
+   {
+    "word": "жүрек.",
+    "start": 2.037,
+    "end": 2.667
+   }
+  ]
+ },
+ "n7": {
+  "file": "ubt7/audio/n7.mp3",
+  "duration": 4.523,
+  "words": [
+   {
+    "word": "ҰБТ-ға",
+    "start": 0,
+    "end": 0.667
+   },
+   {
+    "word": "жиырма",
+    "start": 0.815,
+    "end": 1.111
+   },
+   {
+    "word": "төрт",
+    "start": 1.185,
+    "end": 1.407
+   },
+   {
+    "word": "күн",
+    "start": 1.481,
+    "end": 1.63
+   },
+   {
+    "word": "қалды.",
+    "start": 1.667,
+    "end": 2.296
+   },
+   {
+    "word": "Ерасыл",
+    "start": 2.37,
+    "end": 2.815
+   },
+   {
+    "word": "сексен",
+    "start": 2.963,
+    "end": 3.333
+   },
+   {
+    "word": "екі",
+    "start": 3.407,
+    "end": 3.519
+   },
+   {
+    "word": "баллға",
+    "start": 3.556,
+    "end": 3.852
+   },
+   {
+    "word": "жетті.",
+    "start": 3.926,
+    "end": 4.593
+   }
+  ]
+ },
+ "n8": {
+  "file": "ubt7/audio/n8.mp3",
+  "duration": 7.56,
+  "words": [
+   {
+    "word": "Сегізінші",
+    "start": 0,
+    "end": 0.519
+   },
+   {
+    "word": "күнге",
+    "start": 0.593,
+    "end": 0.889
+   },
+   {
+    "word": "қандай",
+    "start": 0.963,
+    "end": 1.259
+   },
+   {
+    "word": "тапсырма",
+    "start": 1.296,
+    "end": 1.63
+   },
+   {
+    "word": "бересіздер?",
+    "start": 1.704,
+    "end": 2.63
+   },
+   {
+    "word": "Таңғы",
+    "start": 2.667,
+    "end": 3.037
+   },
+   {
+    "word": "алтыда",
+    "start": 3.111,
+    "end": 3.481
+   },
+   {
+    "word": "оқу",
+    "start": 3.556,
+    "end": 3.778
+   },
+   {
+    "word": "ма,",
+    "start": 3.852,
+    "end": 4.259
+   },
+   {
+    "word": "әлде",
+    "start": 4.296,
+    "end": 4.741
+   },
+   {
+    "word": "қатал",
+    "start": 4.815,
+    "end": 5.037
+   },
+   {
+    "word": "апайдың",
+    "start": 5.111,
+    "end": 5.481
+   },
+   {
+    "word": "сынағы",
+    "start": 5.519,
+    "end": 5.778
+   },
+   {
+    "word": "ма?",
+    "start": 6.074,
+    "end": 6.395
+   },
+   {
+    "word": "Пікірге",
+    "start": 6.419,
+    "end": 6.741
+   },
+   {
+    "word": "жазыңыздар!",
+    "start": 6.778,
+    "end": 7.63
+   }
+  ]
+ },
+ "_sfx": {
+  "s-tick": {
+   "file": "ubt7/sfx-n/s-tick.mp3",
+   "duration": 10
+  },
+  "s-pop": {
+   "file": "ubt7/sfx-n/s-pop.mp3",
+   "duration": 0.48
+  },
+  "s-boing": {
+   "file": "ubt7/sfx-n/s-boing.mp3",
+   "duration": 1
+  },
+  "s-ping": {
+   "file": "ubt7/sfx-n/s-ping.mp3",
+   "duration": 1.6
+  },
+  "s-music": {
+   "file": "ubt7/sfx-n/s-music.mp3",
+   "duration": 22
+  },
+  "s-whoosh": {
+   "file": "ubt7/sfx-n/s-whoosh.mp3",
+   "duration": 0.88
+  },
+  "u-slam": {
+   "file": "ubt7/sfx-n/u-slam.mp3",
+   "duration": 1.2
+  },
+  "v-sparkle": {
+   "file": "ubt7/sfx-n/v-sparkle.mp3",
+   "duration": 1.6
+  },
+  "w-wind": {
+   "file": "ubt7/sfx-n/w-wind.mp3",
+   "duration": 3
+  },
+  "w-correct": {
+   "file": "ubt7/sfx-n/w-correct.mp3",
+   "duration": 1.36
+  },
+  "w-switch": {
+   "file": "ubt7/sfx-n/w-switch.mp3",
+   "duration": 0.6
+  },
+  "w-vs": {
+   "file": "ubt7/sfx-n/w-vs.mp3",
+   "duration": 1.6
+  },
+  "x-romantic": {
+   "file": "ubt7/sfx-n/x-romantic.mp3",
+   "duration": 2.48
+  },
+  "x-heartbeat": {
+   "file": "ubt7/sfx-n/x-heartbeat.mp3",
+   "duration": 1.48
+  },
+  "x-chime": {
+   "file": "ubt7/sfx-n/x-chime.mp3",
+   "duration": 2
+  },
+  "x-skate": {
+   "file": "ubt7/sfx-n/x-skate.mp3",
+   "duration": 2.48
+  },
+  "x-slip": {
+   "file": "ubt7/sfx-n/x-slip.mp3",
+   "duration": 2.039
+  }
+ }
+}

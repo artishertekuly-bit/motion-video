@@ -1,0 +1,74 @@
+{
+ "sky": {
+  "file": "barys/sky.webp",
+  "depth": 8000,
+  "x0": -60,
+  "y0": -230,
+  "w": 2220,
+  "h": 1380
+ },
+ "far": {
+  "file": "barys/far.webp",
+  "depth": 4000,
+  "x0": -60,
+  "y0": 200,
+  "w": 2400,
+  "h": 980
+ },
+ "mid": {
+  "file": "barys/mid.webp",
+  "depth": 2200,
+  "x0": -60,
+  "y0": 380,
+  "w": 2700,
+  "h": 850
+ },
+ "clouds": {
+  "file": "barys/clouds.webp",
+  "depth": 1500,
+  "x0": -60,
+  "y0": 620,
+  "w": 3000,
+  "h": 670
+ },
+ "cliffL": {
+  "file": "barys/cliffL.webp",
+  "depth": 1000,
+  "x0": -170,
+  "y0": 560,
+  "w": 1000,
+  "h": 800
+ },
+ "cliffR": {
+  "file": "barys/cliffR.webp",
+  "depth": 1000,
+  "x0": 1300,
+  "y0": 470,
+  "w": 1480,
+  "h": 890
+ },
+ "bbg": {
+  "file": "barys/bbg.webp",
+  "depth": 0,
+  "x0": -96,
+  "y0": -54,
+  "w": 2112,
+  "h": 1188
+ },
+ "brock": {
+  "file": "barys/brock.webp",
+  "depth": 0,
+  "x0": -120,
+  "y0": 540,
+  "w": 2160,
+  "h": 660
+ },
+ "bfg": {
+  "file": "barys/bfg.webp",
+  "depth": 0,
+  "x0": 1380,
+  "y0": 780,
+  "w": 760,
+  "h": 420
+ }
+}

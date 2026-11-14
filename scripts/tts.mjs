@@ -23,8 +23,20 @@ const segments = JSON.parse(readFileSync(segFile, "utf8"));
 const outDir = resolve(outDirArg);
 mkdirSync(outDir, { recursive: true });
 
+const fetchWithRetry = async (url, options, maxRetries = 3) => {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await fetch(url, options);
+    } catch (e) {
+      console.warn(`Fetch attempt ${attempt} failed: ${e.message}. Retrying in 2s...`);
+      if (attempt === maxRetries) throw e;
+      await new Promise((r) => setTimeout(r, 2000));
+    }
+  }
+};
+
 const credits = async () => {
-  const r = await fetch("https://api.elevenlabs.io/v1/user/subscription", { headers: { "xi-api-key": KEY } });
+  const r = await fetchWithRetry("https://api.elevenlabs.io/v1/user/subscription", { headers: { "xi-api-key": KEY } });
   const j = await r.json();
   return j.character_count;
 };
@@ -61,20 +73,31 @@ for (const s of segments) {
     ...(s.prev ? { previous_text: s.prev } : {}),
     ...(s.next ? { next_text: s.next } : {}),
   };
-  const r = await fetch(
-    `https://api.elevenlabs.io/v1/text-to-speech/${s.voice}/with-timestamps?output_format=mp3_44100_128`,
-    { method: "POST", headers: { "xi-api-key": KEY, "Content-Type": "application/json" }, body: JSON.stringify(body) },
-  );
-  if (!r.ok) {
-    console.error(`✗ ${s.id}: HTTP ${r.status} ${(await r.text()).slice(0, 400)}`);
-    continue;
+  let success = false;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const r = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/${s.voice}/with-timestamps?output_format=mp3_44100_128`,
+        { method: "POST", headers: { "xi-api-key": KEY, "Content-Type": "application/json" }, body: JSON.stringify(body) },
+      );
+      if (!r.ok) {
+        console.error(`✗ ${s.id}: HTTP ${r.status} ${(await r.text()).slice(0, 400)}`);
+        break;
+      }
+      const j = await r.json();
+      writeFileSync(mp3, Buffer.from(j.audio_base64, "base64"));
+      const words = toWords(j.alignment);
+      writeFileSync(join(outDir, `${s.id}.words.json`), JSON.stringify(words, null, 2));
+      const dur = words.length ? words[words.length - 1].end : 0;
+      console.log(`✓ ${s.id}  ${dur.toFixed(2)} s  ${words.map((w) => w.word).join(" ")}`);
+      success = true;
+      break;
+    } catch (e) {
+      console.warn(`Attempt ${attempt} for ${s.id} failed: ${e.message}. Retrying in 2.5s...`);
+      if (attempt === 4) throw e;
+      await new Promise((res) => setTimeout(res, 2500));
+    }
   }
-  const j = await r.json();
-  writeFileSync(mp3, Buffer.from(j.audio_base64, "base64"));
-  const words = toWords(j.alignment);
-  writeFileSync(join(outDir, `${s.id}.words.json`), JSON.stringify(words, null, 2));
-  const dur = words.length ? words[words.length - 1].end : 0;
-  console.log(`✓ ${s.id}  ${dur.toFixed(2)} s  ${words.map((w) => w.word).join(" ")}`);
 }
 const after = await credits();
 console.log(`credits spent: ${after - before}  (used ${after})`);

@@ -155,9 +155,9 @@ export const VoteCard: React.FC<{ f: number }> = ({ f }) => {
   const st = shotStart("sh20");
   if (f < st) return null;
   const lf = f - st, inK = eo(lf / 10);
-  const btn = cl((f - ws("n8", 10) + 3) / 6);
-  const pulse = btn > 0 ? 1 + 0.06 * Math.sin((f - ws("n8", 10)) * 0.35) : 1;
-  const foot = cl((f - ws("n8", 12) + 3) / 8);
+  const btn = cl((lf - 46) / 8);
+  const pulse = f >= ws("n8", 12) ? 1 + 0.08 * Math.sin((f - ws("n8", 12)) * 0.4) : 1;
+  const foot = cl((lf - 54) / 8);
   const conf = Array.from({ length: 26 }, (_, i) => {
     const r = (k: number) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
     const tt = ((lf * (0.6 + r(1) * 0.8) + r(2) * 400) % 400) / 400;
@@ -167,15 +167,15 @@ export const VoteCard: React.FC<{ f: number }> = ({ f }) => {
     <AbsoluteFill style={{ pointerEvents: "none", background: "linear-gradient(180deg,#24305e 0%,#46244c 55%,#1a2040 100%)" }}>
       <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 38%, rgba(232,67,104,0.18), rgba(0,0,0,0.4) 72%)" }} />
       {conf.map((c, i) => <div key={i} style={{ position: "absolute", left: c.x, top: c.y, width: 16, height: 26, borderRadius: 4, background: c.c, opacity: 0.7, transform: `rotate(${c.rot}deg)` }} />)}
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 270, display: "flex", flexDirection: "column", alignItems: "center", opacity: inK, transform: `scale(${0.85 + 0.15 * inK})` }}>
-        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 104, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "5px #120C06", paintOrder: "stroke fill" }}>9-КҮН: СЕЙСЕНБІДЕ</div>
-        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 78, lineHeight: 1.05, color: "#FFFFFF", WebkitTextStroke: "4px #120C06", paintOrder: "stroke fill", whiteSpace: "nowrap" }}>ЕРАСЫЛ МЕН АРУЖАН НЕ ІСТЕЙДІ?</div>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 250, display: "flex", flexDirection: "column", alignItems: "center", opacity: inK, transform: `scale(${0.85 + 0.15 * inK})` }}>
+        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 96, lineHeight: 1, color: "#FFD84A", WebkitTextStroke: "5px #120C06", paintOrder: "stroke fill" }}>9-КҮН: СЕЙСЕНБІДЕ</div>
+        <div style={{ fontFamily: OSW, fontWeight: 700, fontSize: 58, lineHeight: 1.1, color: "#FFFFFF", WebkitTextStroke: "4px #120C06", paintOrder: "stroke fill", whiteSpace: "nowrap", marginTop: 8 }}>ЕРАСЫЛ МЕН АРУЖАН НЕ ІСТЕЙДІ?</div>
       </div>
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 560, display: "flex", justifyContent: "center", opacity: inK }}><Bubble /></div>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 530, display: "flex", justifyContent: "center", opacity: inK }}><Bubble /></div>
       {IDEAS.map((t, i) => {
         const k = back((lf - 18 - i * 12) / 9);
         return (
-          <div key={t} style={{ position: "absolute", left: 0, width: 1080, top: 820 + i * 110, display: "flex", justifyContent: "center", opacity: cl(k * 2) }}>
+          <div key={t} style={{ position: "absolute", left: 0, width: 1080, top: 780 + i * 115, display: "flex", justifyContent: "center", opacity: cl(k * 2) }}>
             <div style={{ transform: `scale(${0.4 + 0.6 * k}) rotate(${i % 2 ? 1.5 : -1.5}deg)`,
               background: "#FFFFFF", borderRadius: 40, padding: "14px 42px", fontFamily: MONT, fontWeight: 800, fontSize: 36, color: "#120C06", boxShadow: "0 8px 0 rgba(0,0,0,0.35)", whiteSpace: "nowrap" }}>
               {t} <span style={{ color: "#E84368" }}>♥ {[1180, 1350, 940][i]}</span>
@@ -183,10 +183,10 @@ export const VoteCard: React.FC<{ f: number }> = ({ f }) => {
           </div>
         );
       })}
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 1160, height: 110, display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 1150, height: 110, display: "flex", justifyContent: "center", alignItems: "center" }}>
         <div style={{ fontFamily: MONT, fontWeight: 800, fontSize: 54, color: "#120C06", background: "#FFD84A", borderRadius: 60, padding: "14px 64px", boxShadow: "0 10px 0 #B88A10", transform: `scale(${(0.5 + 0.5 * eo(btn)) * pulse})`, opacity: btn }}>ПІКІРГЕ ЖАЗ ↓</div>
       </div>
-      <div style={{ position: "absolute", left: 0, width: 1080, top: 1290, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 31, color: "#FFFFFF", opacity: foot }}>ЕҢ КӨП ЛАЙК ЖИНАҒАН НҰСҚА — 9-КҮННІҢ БАСЫ →</div>
+      <div style={{ position: "absolute", left: 0, width: 1080, top: 1285, textAlign: "center", fontFamily: MONT, fontWeight: 800, fontSize: 31, color: "#FFFFFF", opacity: foot }}>ЕҢ КӨП ЛАЙК ЖИНАҒАН НҰСҚА — 9-КҮННІҢ БАСЫ →</div>
     </AbsoluteFill>
   );
 };

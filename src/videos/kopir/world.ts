@@ -195,6 +195,7 @@ export class World {
     this.frustum.setFromProjectionMatrix(this.m4.multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse));
 
     let ai = 0;
+    const used: Actor[] = [];
     for (const p of st.places) {
       const sc2 = p.scale ?? 1;
       if (!this.frustum.intersectsSphere(this.sph.set(this.v.set(p.x, p.y + 1.1 * sc2, p.z), 2.0))) continue;
@@ -206,10 +207,12 @@ export class World {
       a.mesh.rotation.set(0, p.yaw ?? Math.atan2(cam.position.x - p.x, cam.position.z - p.z), p.roll ?? 0);
       a.mesh.scale.set(p.mirror ? -sc2 : sc2, sc2, sc2);
       a.mesh.castShadow = L.actorShadow;
+      used.push(a);
     }
     for (let i = ai; i < this.actors.length; i++) this.actors[i].mesh.visible = false;
 
     let fi = 0;
+    const fused: Fx[] = [];
     for (const p of st.fx) {
       if (!this.frustum.intersectsSphere(this.sph.set(this.v.set(p.x, p.y, p.z), Math.max(p.w, p.h)))) continue;
       const e = this.fx(fi++);
@@ -218,12 +221,16 @@ export class World {
       e.mesh.visible = true;
       e.mesh.position.set(p.x, p.y, p.z);
       if (p.flat) e.mesh.rotation.set(-Math.PI / 2, 0, p.rot ?? 0);
-      else e.mesh.rotation.set(0, Math.atan2(cam.position.x - p.x, cam.position.z - p.z), 0);
+      else { e.mesh.quaternion.copy(cam.quaternion); e.mesh.rotateZ(p.rot ?? 0); }
       e.mesh.scale.set(p.w, p.h, 1);
+      fused.push(e);
     }
     for (let i = fi; i < this.fxs.length; i++) this.fxs[i].mesh.visible = false;
 
     this.pool.flush();
+    for (const a of used) a.bind();
+    for (const e of fused) e.bind();
+
     return focus;
   }
 }

@@ -1,0 +1,567 @@
+{
+  "g1": {
+    "file": "kopir/audio/g1.mp3",
+    "duration": 10.72,
+    "words": [
+      {
+        "word": "Аружан,",
+        "start": 0,
+        "end": 0.8
+      },
+      {
+        "word": "бүгін",
+        "start": 0.88,
+        "end": 1.2
+      },
+      {
+        "word": "алдын",
+        "start": 1.28,
+        "end": 1.48
+      },
+      {
+        "word": "ала",
+        "start": 1.52,
+        "end": 1.68
+      },
+      {
+        "word": "айтайын:",
+        "start": 1.72,
+        "end": 2.4
+      },
+      {
+        "word": "орның",
+        "start": 2.48,
+        "end": 2.88
+      },
+      {
+        "word": "сол",
+        "start": 3,
+        "end": 3.12
+      },
+      {
+        "word": "жақ,",
+        "start": 3.2,
+        "end": 3.68
+      },
+      {
+        "word": "терезенің",
+        "start": 3.76,
+        "end": 4.24
+      },
+      {
+        "word": "қасында,",
+        "start": 4.28,
+        "end": 5.04
+      },
+      {
+        "word": "бірақ",
+        "start": 5.08,
+        "end": 5.44
+      },
+      {
+        "word": "топпен",
+        "start": 5.52,
+        "end": 5.92
+      },
+      {
+        "word": "отырасың.",
+        "start": 6,
+        "end": 6.8
+      },
+      {
+        "word": "Міне,",
+        "start": 6.84,
+        "end": 7.28
+      },
+      {
+        "word": "жоспар,",
+        "start": 7.32,
+        "end": 8
+      },
+      {
+        "word": "төрт",
+        "start": 8.04,
+        "end": 8.24
+      },
+      {
+        "word": "қадам.",
+        "start": 8.32,
+        "end": 8.96
+      },
+      {
+        "word": "Қаласаң,",
+        "start": 9,
+        "end": 9.6
+      },
+      {
+        "word": "өзің",
+        "start": 9.68,
+        "end": 9.92
+      },
+      {
+        "word": "сызып",
+        "start": 10,
+        "end": 10.293
+      },
+      {
+        "word": "отыр.",
+        "start": 10.347,
+        "end": 10.8
+      }
+    ]
+  },
+  "g2": {
+    "file": "kopir/audio/g2.mp3",
+    "duration": 13.04,
+    "words": [
+      {
+        "word": "Бүгінгі",
+        "start": 0,
+        "end": 0.4
+      },
+      {
+        "word": "квест:",
+        "start": 0.44,
+        "end": 1.28
+      },
+      {
+        "word": "екі",
+        "start": 1.36,
+        "end": 1.6
+      },
+      {
+        "word": "үстелдің",
+        "start": 1.64,
+        "end": 2.04
+      },
+      {
+        "word": "арасына",
+        "start": 2.08,
+        "end": 2.64
+      },
+      {
+        "word": "көпір",
+        "start": 2.68,
+        "end": 2.96
+      },
+      {
+        "word": "салыңдар.",
+        "start": 3.04,
+        "end": 3.84
+      },
+      {
+        "word": "Ең",
+        "start": 4,
+        "end": 4.32
+      },
+      {
+        "word": "көп",
+        "start": 4.36,
+        "end": 4.56
+      },
+      {
+        "word": "жүк",
+        "start": 4.6,
+        "end": 4.72
+      },
+      {
+        "word": "көтерген",
+        "start": 4.8,
+        "end": 5.2
+      },
+      {
+        "word": "топ",
+        "start": 5.28,
+        "end": 5.52
+      },
+      {
+        "word": "жеңеді.",
+        "start": 5.6,
+        "end": 6.56
+      },
+      {
+        "word": "Рөлдер:",
+        "start": 6.64,
+        "end": 7.6
+      },
+      {
+        "word": "инженер,",
+        "start": 7.68,
+        "end": 8.56
+      },
+      {
+        "word": "модельдеуші,",
+        "start": 8.64,
+        "end": 9.76
+      },
+      {
+        "word": "тестілеуші,",
+        "start": 9.84,
+        "end": 10.8
+      },
+      {
+        "word": "спикер.",
+        "start": 10.88,
+        "end": 11.76
+      },
+      {
+        "word": "Өздерің",
+        "start": 11.84,
+        "end": 12.24
+      },
+      {
+        "word": "таңдаңдар.",
+        "start": 12.32,
+        "end": 13.12
+      }
+    ]
+  },
+  "e1": {
+    "file": "kopir/audio/e1.mp3",
+    "duration": 1.76,
+    "words": [
+      {
+        "word": "Мен",
+        "start": 0,
+        "end": 0.24
+      },
+      {
+        "word": "тек",
+        "start": 0.32,
+        "end": 0.56
+      },
+      {
+        "word": "отыра",
+        "start": 0.64,
+        "end": 0.88
+      },
+      {
+        "word": "алмаймын...",
+        "start": 0.96,
+        "end": 1.84
+      }
+    ]
+  },
+  "g3": {
+    "file": "kopir/audio/g3.mp3",
+    "duration": 7.68,
+    "words": [
+      {
+        "word": "Сен",
+        "start": 0,
+        "end": 0.24
+      },
+      {
+        "word": "тестілеушісің",
+        "start": 0.28,
+        "end": 0.96
+      },
+      {
+        "word": "ғой.",
+        "start": 1,
+        "end": 1.44
+      },
+      {
+        "word": "Ал",
+        "start": 1.68,
+        "end": 1.92
+      },
+      {
+        "word": "тестілеу",
+        "start": 2.08,
+        "end": 2.52
+      },
+      {
+        "word": "үшін",
+        "start": 2.56,
+        "end": 2.8
+      },
+      {
+        "word": "жүк",
+        "start": 2.96,
+        "end": 3.12
+      },
+      {
+        "word": "әкелу",
+        "start": 3.16,
+        "end": 3.44
+      },
+      {
+        "word": "керек.",
+        "start": 3.52,
+        "end": 4.16
+      },
+      {
+        "word": "Бар,",
+        "start": 4.24,
+        "end": 4.72
+      },
+      {
+        "word": "әкел.",
+        "start": 4.76,
+        "end": 5.52
+      },
+      {
+        "word": "Таймер",
+        "start": 5.56,
+        "end": 6
+      },
+      {
+        "word": "жеті",
+        "start": 6.16,
+        "end": 6.4
+      },
+      {
+        "word": "минутқа",
+        "start": 6.48,
+        "end": 6.8
+      },
+      {
+        "word": "қойылды.",
+        "start": 6.88,
+        "end": 7.68
+      }
+    ]
+  },
+  "e2": {
+    "file": "kopir/audio/e2.mp3",
+    "duration": 4.56,
+    "words": [
+      {
+        "word": "Салмақ",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "сегіз",
+        "start": 0.64,
+        "end": 0.92
+      },
+      {
+        "word": "жүз",
+        "start": 0.96,
+        "end": 1.08
+      },
+      {
+        "word": "грамм",
+        "start": 1.12,
+        "end": 1.36
+      },
+      {
+        "word": "болды...",
+        "start": 1.48,
+        "end": 2.24
+      },
+      {
+        "word": "Тоқтаңыздар,",
+        "start": 2.267,
+        "end": 3.2
+      },
+      {
+        "word": "қазір",
+        "start": 3.28,
+        "end": 3.52
+      },
+      {
+        "word": "сынайын",
+        "start": 3.6,
+        "end": 3.92
+      },
+      {
+        "word": "деп",
+        "start": 3.973,
+        "end": 4.08
+      },
+      {
+        "word": "тұр!",
+        "start": 4.16,
+        "end": 4.64
+      }
+    ]
+  },
+  "grp1": {
+    "file": "kopir/audio/grp1.mp3",
+    "duration": 1.52,
+    "words": [
+      {
+        "word": "Иә,",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "бұл",
+        "start": 0.72,
+        "end": 0.92
+      },
+      {
+        "word": "дұрыс!",
+        "start": 0.96,
+        "end": 1.6
+      }
+    ]
+  },
+  "a1": {
+    "file": "kopir/audio/a1.mp3",
+    "duration": 6.16,
+    "words": [
+      {
+        "word": "Біздің",
+        "start": 0,
+        "end": 0.4
+      },
+      {
+        "word": "көпір",
+        "start": 0.44,
+        "end": 0.88
+      },
+      {
+        "word": "үшбұрышты",
+        "start": 0.96,
+        "end": 1.6
+      },
+      {
+        "word": "ферма",
+        "start": 1.68,
+        "end": 2
+      },
+      {
+        "word": "жүйесімен",
+        "start": 2.08,
+        "end": 2.64
+      },
+      {
+        "word": "жасалды.",
+        "start": 2.68,
+        "end": 3.6
+      },
+      {
+        "word": "Бір",
+        "start": 3.68,
+        "end": 3.8
+      },
+      {
+        "word": "килограмм",
+        "start": 3.84,
+        "end": 4.36
+      },
+      {
+        "word": "жүкті",
+        "start": 4.4,
+        "end": 4.8
+      },
+      {
+        "word": "еркін",
+        "start": 5.04,
+        "end": 5.36
+      },
+      {
+        "word": "көтерді.",
+        "start": 5.44,
+        "end": 6.24
+      }
+    ]
+  },
+  "nar1": {
+    "file": "kopir/audio/nar1.mp3",
+    "duration": 5.52,
+    "words": [
+      {
+        "word": "Бұл",
+        "start": 0,
+        "end": 0.2
+      },
+      {
+        "word": "сабақта",
+        "start": 0.24,
+        "end": 0.8
+      },
+      {
+        "word": "ешкім",
+        "start": 0.92,
+        "end": 1.28
+      },
+      {
+        "word": "«ерекше»",
+        "start": 1.36,
+        "end": 1.84
+      },
+      {
+        "word": "болып",
+        "start": 1.88,
+        "end": 2.08
+      },
+      {
+        "word": "сезінбеді.",
+        "start": 2.12,
+        "end": 3.04
+      },
+      {
+        "word": "Әркім",
+        "start": 3.12,
+        "end": 3.68
+      },
+      {
+        "word": "өз",
+        "start": 3.76,
+        "end": 3.92
+      },
+      {
+        "word": "жолымен",
+        "start": 3.96,
+        "end": 4.4
+      },
+      {
+        "word": "нәтижеге",
+        "start": 4.44,
+        "end": 4.88
+      },
+      {
+        "word": "жетті.",
+        "start": 4.96,
+        "end": 5.6
+      }
+    ]
+  },
+  "_sfx": {
+    "s-tick": {
+      "file": "kopir/sfx-n/s-tick.mp3",
+      "duration": 10
+    },
+    "s-pop": {
+      "file": "kopir/sfx-n/s-pop.mp3",
+      "duration": 0.48
+    },
+    "s-ping": {
+      "file": "kopir/sfx-n/s-ping.mp3",
+      "duration": 1.6
+    },
+    "s-music": {
+      "file": "kopir/sfx-n/s-music.mp3",
+      "duration": 22
+    },
+    "s-whoosh": {
+      "file": "kopir/sfx-n/s-whoosh.mp3",
+      "duration": 0.88
+    },
+    "u-slam": {
+      "file": "kopir/sfx-n/u-slam.mp3",
+      "duration": 1.2
+    },
+    "w-correct": {
+      "file": "kopir/sfx-n/w-correct.mp3",
+      "duration": 1.36
+    },
+    "v-sparkle": {
+      "file": "kopir/sfx-n/v-sparkle.mp3",
+      "duration": 1.6
+    },
+    "x-bell": {
+      "file": "kopir/sfx-n/x-bell.mp3",
+      "duration": 2
+    },
+    "x-crash": {
+      "file": "kopir/sfx-n/x-crash.mp3",
+      "duration": 3
+    }
+  }
+}

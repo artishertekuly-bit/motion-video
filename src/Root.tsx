@@ -25,6 +25,7 @@ import { Mg4Composition } from "./videos/mg4/Mg4";
 import { Mg5Composition } from "./videos/mg5/Mg5";
 import { Mg6Composition } from "./videos/mg6/Mg6";
 import { Mg7Composition } from "./videos/mg7/Mg7";
+import { KopirComposition } from "./videos/kopir/Kopir";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -56,6 +57,7 @@ export const RemotionRoot: React.FC = () => {
       <Mg5Composition />
       <Mg6Composition />
       <Mg7Composition />
+      <KopirComposition />
     </>
   );
 };

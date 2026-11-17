@@ -29,36 +29,36 @@ type ShotPreset = { pos: V3; look: V3; fov: number; roll?: number };
 
 const PRESETS: Record<string, ShotPreset> = {
   // Act 1: Сабаққа дейін
-  sh01: { pos: [0.0, 1.35, 3.2], look: [0.0, 1.1, 0.0], fov: 42 },   // Teacher at blackboard
-  sh02: { pos: [1.8, 1.3, 2.8], look: [0.6, 1.05, 0.2], fov: 38 },   // Aruzhan at door
-  sh03: { pos: [0.0, 1.32, 2.7], look: [0.0, 1.05, 0.0], fov: 36 },  // Teacher offering card
-  sh04: { pos: [-1.4, 1.25, 2.4], look: [-1.0, 1.02, 0.0], fov: 36 }, // Aruzhan at window desk
+  sh01: { pos: [0.0, 1.45, 3.4], look: [0.0, 1.22, 0.0], fov: 42 },   // Teacher at blackboard
+  sh02: { pos: [1.8, 1.45, 3.0], look: [0.6, 1.24, 0.2], fov: 38 },   // Aruzhan at door
+  sh03: { pos: [0.0, 1.45, 3.1], look: [0.0, 1.25, 0.0], fov: 38 },  // Teacher offering card
+  sh04: { pos: [-1.4, 1.42, 2.8], look: [-1.0, 1.22, 0.0], fov: 38 }, // Aruzhan at window desk
 
   // Act 2: Тапсырма
-  sh05: { pos: [0.0, 1.4, 3.4], look: [0.0, 1.05, 0.2], fov: 42 },   // Teacher placing kits
-  sh06: { pos: [0.2, 1.35, 2.8], look: [0.2, 1.05, 0.0], fov: 36 },  // Teacher explaining quest
-  sh07: { pos: [0.8, 1.25, 2.2], look: [0.5, 1.0, 0.1], fov: 34 },   // Dina watching lips
-  sh08: { pos: [-0.6, 1.25, 2.2], look: [-0.3, 1.0, 0.1], fov: 34 }, // Nursultan large print
+  sh05: { pos: [0.0, 1.5, 3.5], look: [0.0, 1.25, 0.2], fov: 42 },   // Teacher placing kits
+  sh06: { pos: [0.2, 1.45, 3.1], look: [0.2, 1.25, 0.0], fov: 38 },  // Teacher explaining quest
+  sh07: { pos: [0.8, 1.45, 2.9], look: [0.5, 1.22, 0.1], fov: 38 },   // Dina watching lips
+  sh08: { pos: [-0.6, 1.45, 2.9], look: [-0.3, 1.22, 0.1], fov: 38 }, // Nursultan large print
 
   // Act 3: Жұмыс басталады
-  sh09: { pos: [0.0, 1.28, 2.4], look: [0.0, 1.02, 0.0], fov: 36 },  // Ermek fidgeting
-  sh10: { pos: [0.0, 1.28, 2.2], look: [0.0, 1.02, 0.0], fov: 34 },  // Ermek speaks: «Мен отыра алмаймын»
-  sh11: { pos: [0.1, 1.32, 2.6], look: [0.1, 1.05, 0.0], fov: 36 },  // Teacher gives tester role
-  sh12: { pos: [0.8, 1.32, 2.8], look: [0.3, 1.05, 0.1], fov: 38 },  // Ermek fetching weights
-  sh13: { pos: [-0.8, 1.22, 2.2], look: [-0.4, 0.98, 0.1], fov: 34 }, // Miras 3D model on tablet
-  sh14: { pos: [0.5, 1.22, 2.2], look: [0.3, 0.98, 0.1], fov: 34 },  // Nursultan tactile test
-  sh15: { pos: [0.0, 1.32, 2.6], look: [0.0, 1.05, 0.0], fov: 38 },  // Prompt card on table
+  sh09: { pos: [0.0, 1.42, 2.9], look: [0.0, 1.22, 0.0], fov: 38 },  // Ermek fidgeting
+  sh10: { pos: [0.0, 1.42, 2.8], look: [0.0, 1.22, 0.0], fov: 38 },  // Ermek speaks
+  sh11: { pos: [0.1, 1.45, 3.1], look: [0.1, 1.25, 0.0], fov: 38 },  // Teacher gives tester role
+  sh12: { pos: [0.8, 1.45, 3.1], look: [0.3, 1.25, 0.1], fov: 40 },  // Ermek fetching weights
+  sh13: { pos: [-0.8, 1.4, 2.8], look: [-0.4, 1.2, 0.1], fov: 38 }, // Miras 3D model on tablet
+  sh14: { pos: [0.5, 1.4, 2.8], look: [0.3, 1.2, 0.1], fov: 38 },  // Nursultan tactile test
+  sh15: { pos: [0.0, 1.45, 3.0], look: [0.0, 1.25, 0.0], fov: 40 },  // Prompt card on table
 
   // Act 4: Тест
-  sh16: { pos: [0.0, 1.25, 2.4], look: [0.0, 0.98, 0.0], fov: 36 },  // Testing 200g - 500g
-  sh17: { pos: [0.0, 1.22, 2.2], look: [0.0, 0.96, 0.0], fov: 34 },  // 800g bridge cracks!
-  sh18: { pos: [0.4, 1.25, 2.3], look: [0.2, 1.02, 0.1], fov: 35 },  // Dina sign language
-  sh19: { pos: [0.0, 1.32, 2.8], look: [0.0, 1.05, 0.0], fov: 38 },  // Group agrees, star awarded
+  sh16: { pos: [0.0, 1.42, 2.9], look: [0.0, 1.2, 0.0], fov: 38 },  // Testing 200g - 500g
+  sh17: { pos: [0.0, 1.42, 2.8], look: [0.0, 1.2, 0.0], fov: 38 },  // 800g bridge cracks!
+  sh18: { pos: [0.4, 1.45, 2.9], look: [0.2, 1.24, 0.1], fov: 38 },  // Dina sign language
+  sh19: { pos: [0.0, 1.45, 3.1], look: [0.0, 1.25, 0.0], fov: 40 },  // Group agrees, star awarded
 
   // Act 5: Аяқталуы
-  sh20: { pos: [0.0, 1.32, 2.6], look: [0.0, 1.05, 0.0], fov: 36 },  // Aruzhan presenting bridge
-  sh21: { pos: [0.0, 1.36, 3.2], look: [0.0, 1.1, 0.0], fov: 42 },   // Class empties, wiping board
-  sh22: { pos: [0.0, 1.38, 3.6], look: [0.0, 1.12, 0.0], fov: 44 },  // Final slow zoom out
+  sh20: { pos: [0.0, 1.45, 2.9], look: [0.0, 1.24, 0.0], fov: 38 },  // Aruzhan presenting bridge
+  sh21: { pos: [0.0, 1.48, 3.4], look: [0.0, 1.22, 0.0], fov: 42 },   // Class empties, wiping board
+  sh22: { pos: [0.0, 1.5, 3.8], look: [0.0, 1.22, 0.0], fov: 44 },  // Final slow zoom out
 };
 
 export const camAt = (id: number, f: number): Cam => {

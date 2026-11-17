@@ -311,12 +311,12 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh11": // Gulnar giving tester role & timer (dialogue g3)
       front(G, CX - 0.45, CY, CZ, { mode: "stand", expr: say("g3", "say", "smile"), facing: 1, wave: 0.4 });
       front(E, CX + 0.45, CY, CZ, { mode: "stand", expr: "grin", facing: -1 });
-      fx("timerCard", 600, 600, (p) => timerCard(p, t), CX, CY + 0.6, CZ + 0.1, 0.95, 0.95);
+      fx("timerCard", 600, 600, (p) => timerCard(p, t), CX, CY + 0.85, CZ + 0.1, 0.95, 0.95);
       break;
 
     case "sh12": // Ermek carrying metal weights happily
       front(E, CX - 0.1, CY, CZ, { mode: "stand", expr: "grin", facing: 1, wave: 0.6 });
-      fx("timerCard", 600, 600, (p) => timerCard(p, t), CX + 0.65, CY + 0.55, CZ, 0.85, 0.85);
+      fx("timerCard", 600, 600, (p) => timerCard(p, t), CX + 0.65, CY + 0.8, CZ, 0.85, 0.85);
       break;
 
     case "sh13": // Miras tablet 3D model
@@ -338,13 +338,13 @@ export const stage = (id: number, f: number, cam: CamInfo): Stage => {
     case "sh16": // Bridge test 200g - 500g
       front(E, CX - 0.5, CY, CZ, { mode: "stand", expr: "think", facing: 1 });
       front(D, CX + 0.5, CY, CZ, { mode: "stand", expr: "think", facing: -1 });
-      fx("triangleTruss", 600, 600, (p) => triangleTrussBridge(p), CX, CY + 0.55, CZ, 1.3, 1.3);
+      fx("triangleTruss", 600, 600, (p) => triangleTrussBridge(p), CX, CY + 0.75, CZ, 1.3, 1.3);
       break;
 
     case "sh17": // Ermek adding 800g, bridge cracks! (dialogue e2)
       burst(CX, CY + 0.5, CZ, shotStart("sh17") + 60, 1.3, 14, "#ff4d4d");
       front(E, CX - 0.55, CY, CZ, { mode: "stand", expr: say("e2", "sayNervous", "shock"), facing: 1, wave: 0.7 });
-      fx("brokenBridge", 600, 600, (p) => brokenBridgeModel(p), CX, CY + 0.5, CZ + 0.1, 1.35, 1.35);
+      fx("brokenBridge", 600, 600, (p) => brokenBridgeModel(p), CX, CY + 0.72, CZ + 0.1, 1.35, 1.35);
       break;
 
     case "sh18": // Dina sign language

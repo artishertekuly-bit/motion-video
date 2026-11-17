@@ -21,7 +21,7 @@ const makeBloom = () => {
   const b = new BloomEffect({ blendFunction: BlendFunction.ADD, intensity: 0.45, luminanceThreshold: 1.0, luminanceSmoothing: 0.25, mipmapBlur: true, levels: 6, radius: 0.6 });
   const mip = b.mipmapBlurPass;
   const setSize = mip.setSize.bind(mip);
-  mip.setSize = (w: number, h: number) => setSize(Math.round((1920 * w) / Math.max(h, 1)), 1920);
+  mip.setSize = (w: number, h: number) => setSize(Math.round((1920 * w) / Math.max(h, 1)), 1080);
   return b;
 };
 const fwd = new THREE.Vector3(), fpt = new THREE.Vector3();
@@ -82,12 +82,12 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
 
 const RS = 0.6667;
 const ShotView: React.FC<{ id: number; kit: Kit; alpha: number }> = ({ id, kit, alpha }) => {
-  const w = Math.round(1080 * RS), h = Math.round(1920 * RS);
+  const w = Math.round(1920 * RS), h = Math.round(1080 * RS);
   return (
     <AbsoluteFill style={{ opacity: alpha }}>
-      <div style={{ position: "absolute", left: 0, top: 0, width: w, height: h, transform: `scale(${1080 / w})`, transformOrigin: "0 0" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: w, height: h, transform: `scale(${1920 / w})`, transformOrigin: "0 0" }}>
         <ThreeCanvas width={w} height={h} shadows gl={{ antialias: false, stencil: false, powerPreference: "high-performance", toneMappingExposure: 1.0 }}
-          camera={{ fov: 40, near: 0.05, far: 200 }}>
+          camera={{ fov: 36, near: 0.05, far: 200 }}>
           <Inner id={id} kit={kit} />
         </ThreeCanvas>
       </div>
@@ -126,5 +126,5 @@ export const Kopir: React.FC = () => {
 };
 
 export const KopirComposition: React.FC = () => (
-  <Composition id="Kopir" component={Kopir} durationInFrames={TOTAL} fps={FPS} width={1080} height={1920} />
+  <Composition id="Kopir" component={Kopir} durationInFrames={TOTAL} fps={FPS} width={1920} height={1080} />
 );

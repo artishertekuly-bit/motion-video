@@ -29,7 +29,7 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
     return (
       <AbsoluteFill style={{ pointerEvents: "none", zIndex: 90 }}>
         <div style={{
-          position: "absolute", left: 0, width: 1080, bottom: 210,
+          position: "absolute", left: 0, width: 1920, bottom: 75,
           display: "flex", flexDirection: "column", alignItems: "center",
           opacity: anim, transform: `translateY(${(1 - anim) * 15}px)`,
         }}>
@@ -42,12 +42,12 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
             {sp.name}
           </div>
           <div style={{
-            maxWidth: 960, background: "rgba(10, 14, 26, 0.94)",
+            maxWidth: 1200, background: "rgba(10, 14, 26, 0.94)",
             border: "2px solid rgba(255,255,255,0.25)", borderRadius: 24,
-            padding: "16px 36px", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.55)",
+            padding: "14px 38px", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.55)",
           }}>
             <span style={{
-              fontFamily: MONT, fontWeight: 800, fontSize: 40, lineHeight: 1.35,
+              fontFamily: MONT, fontWeight: 800, fontSize: 36, lineHeight: 1.35,
               color: "#FFFFFF",
             }}>
               «Орталықты күшейту керек еді.»
@@ -79,7 +79,7 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
       return (
         <AbsoluteFill style={{ pointerEvents: "none", zIndex: 90 }}>
           <div style={{
-            position: "absolute", left: 0, width: 1080, bottom: 200,
+            position: "absolute", left: 0, width: 1920, bottom: 75,
             display: "flex", flexDirection: "column", alignItems: "center",
           }}>
             <div style={{
@@ -91,9 +91,9 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
               {sp.name}
             </div>
             <div style={{
-              maxWidth: 960, background: "rgba(10, 14, 26, 0.94)",
+              maxWidth: 1350, background: "rgba(10, 14, 26, 0.94)",
               border: "2px solid rgba(255,255,255,0.22)", borderRadius: 24,
-              padding: "16px 36px", textAlign: "center",
+              padding: "14px 38px", textAlign: "center",
               boxShadow: "0 10px 30px rgba(0,0,0,0.55)",
             }}>
               {chunkWords.map((w, idx) => {
@@ -104,7 +104,7 @@ export const Captions: React.FC<{ f: number }> = ({ f }) => {
                     style={{
                       fontFamily: MONT,
                       fontWeight: 800,
-                      fontSize: 38,
+                      fontSize: 34,
                       lineHeight: 1.35,
                       color: isHighlight ? "#FFD84A" : "rgba(255,255,255,0.92)",
                       textShadow: isHighlight ? "0 0 16px rgba(255,216,74,0.6)" : "none",

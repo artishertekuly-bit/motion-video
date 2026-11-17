@@ -19,7 +19,7 @@ export const DocHeader: React.FC<{ f: number }> = ({ f }) => {
     const k = cl(t / 0.8) * (1 - cl((t - 6.0) / 0.8));
     return (
       <div style={{
-        position: "absolute", left: 50, top: 90, opacity: k, pointerEvents: "none",
+        position: "absolute", left: 60, top: 45, opacity: k, pointerEvents: "none",
         display: "flex", flexDirection: "column", gap: 6,
       }}>
         <div style={{
@@ -67,7 +67,7 @@ export const DocHeader: React.FC<{ f: number }> = ({ f }) => {
     const k = cl((t - bStart) / 0.5) * (1 - cl((t - (bEnd - 0.5)) / 0.5));
     return (
       <div style={{
-        position: "absolute", left: 0, width: 1080, top: 90, display: "flex", justifyContent: "center",
+        position: "absolute", left: 0, width: 1920, top: 45, display: "flex", justifyContent: "center",
         opacity: k, pointerEvents: "none", transform: `translateY(${(1 - k) * -15}px)`,
       }}>
         <div style={{
@@ -96,7 +96,7 @@ export const LoadHud: React.FC<{ f: number }> = ({ f }) => {
 
   return (
     <div style={{
-      position: "absolute", right: 50, top: 160, pointerEvents: "none",
+      position: "absolute", right: 60, top: 45, pointerEvents: "none",
       background: "rgba(12, 16, 30, 0.92)", border: `3px solid ${isCrack ? "#FF4D4D" : "#4CD98A"}`,
       borderRadius: 24, padding: "14px 28px", textAlign: "center",
       boxShadow: "0 10px 25px rgba(0,0,0,0.5)",

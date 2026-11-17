@@ -69,8 +69,8 @@ export class Actor {
     this.dmat = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking, map: blank, alphaTest: 0.5, side: THREE.DoubleSide });
     this.mesh = new THREE.Mesh(geo, this.mat);
     this.mesh.customDepthMaterial = this.dmat;
-    // rim width is in output pixels: tell the card shader the render height (1920 = 1080 x 1920 frame)
-    this.mesh.onBeforeRender = (r) => { const rt = r.getRenderTarget(); CARD_K.uPx.value = (rt ? rt.height : r.domElement.height) / 1920; };
+    // rim width is in output pixels: tell the card shader the render height (1080 = 1920 x 1080 frame)
+    this.mesh.onBeforeRender = (r) => { const rt = r.getRenderTarget(); CARD_K.uPx.value = (rt ? rt.height : r.domElement.height) / 1080; };
     this.mesh.castShadow = false; this.mesh.receiveShadow = true; this.mesh.visible = false;
     this.mesh.rotation.order = "YXZ"; this.mesh.renderOrder = 1; this.mesh.layers.set(NOINK);
     parent.add(this.mesh);

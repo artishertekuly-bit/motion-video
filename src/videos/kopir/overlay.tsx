@@ -71,8 +71,8 @@ export const DocHeader: React.FC<{ f: number }> = ({ f }) => {
         opacity: k, pointerEvents: "none", transform: `translateY(${(1 - k) * -15}px)`,
       }}>
         <div style={{
-          background: "rgba(10, 16, 32, 0.88)", border: "2px solid rgba(255, 216, 74, 0.8)",
-          borderRadius: 25, padding: "8px 28px", boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
+          background: "rgba(10, 14, 28, 0.96)", border: "2px solid rgba(255, 216, 74, 0.9)",
+          borderRadius: 25, padding: "10px 32px", boxShadow: "0 10px 30px rgba(0,0,0,0.75)",
           display: "flex", alignItems: "center", gap: 12,
         }}>
           <span style={{ fontFamily: MONT, fontWeight: 800, fontSize: 24, color: "#FFD84A", letterSpacing: 1 }}>

@@ -49,7 +49,7 @@ const Inner: React.FC<{ id: number; kit: Kit }> = ({ id, kit }) => {
   useEffect(() => () => fx.ink.dispose(), [fx]);
 
   const post = useMemo(() => (
-    <EffectComposer multisampling={2}>
+    <EffectComposer multisampling={0}>
       {[
         <primitive key="ink" object={fx.ink} dispose={null} />,
         <primitive key="lensPre" object={fx.lens.pre} dispose={null} />,
